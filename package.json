@@ -1,0 +1,15 @@
+{
+  "name": "sf-eats",
+  "version": "1.0.0",
+  "description": "SF 'what to eat & where' — live data from Google Places API (New).",
+  "private": true,
+  "scripts": {
+    "generate": "node generate-data.js",
+    "generate:dry": "node generate-data.js --dry-run",
+    "deploy": "npx convex deploy"
+  },
+  "engines": { "node": ">=18" },
+  "dependencies": {
+    "convex": "^1.42.1"
+  }
+}

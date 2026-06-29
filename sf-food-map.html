@@ -1,0 +1,911 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>SF Eats — Ranked Spots</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<style>
+  :root {
+    --sage-bg: #C3C9B8;
+    --sage-dark: #A9B09A;
+    --olive-dark: #444B41;
+    --mustard-yellow: #DFD154;
+    --ink-dark: #2A2F28;
+    --ink-light: #C3C9B8;
+    --ink-muted: rgba(42, 47, 40, 0.5);
+    --line-color: #2A2F28;
+    --border-width: 1px;
+    --love-high: #4a6e3a;
+    --love-mid: #8a7a2a;
+    --love-low: #8a3a3a;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background-color: var(--sage-dark);
+    color: var(--ink-dark);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    min-height: 100vh;
+    overflow: hidden;
+  }
+
+  .text-thin { font-weight: 300; }
+  .text-medium { font-weight: 500; }
+  .text-label {
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--ink-muted);
+  }
+  .text-number {
+    font-variant-numeric: tabular-nums;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  }
+
+  .barcode-pattern {
+    background-image: repeating-linear-gradient(
+      to right,
+      var(--line-color) 0,
+      var(--line-color) 1px,
+      transparent 1px,
+      transparent 4px
+    );
+    opacity: 0.15;
+  }
+
+  .app-container {
+    width: 100%;
+    height: 100vh;
+    background-color: var(--sage-bg);
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+  }
+
+  /* ─── Header ─── */
+  .header-section {
+    border-bottom: var(--border-width) solid var(--line-color);
+    padding: 1.5rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+  }
+
+  .header-left {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .avatar {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background-color: var(--ink-dark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .avatar svg { width: 14px; height: 14px; fill: var(--sage-bg); }
+
+  .search-title {
+    font-size: 1.25rem;
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+
+  .header-right {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .badge {
+    font-size: 0.6rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 4px 10px;
+    border: var(--border-width) solid var(--line-color);
+    color: var(--ink-muted);
+  }
+  .badge.live { color: var(--ink-dark); border-color: var(--ink-dark); background: rgba(42, 47, 40, 0.08); }
+  .badge.demo { color: var(--olive-dark); border-color: var(--olive-dark); background: rgba(68, 75, 65, 0.08); }
+
+  .cuisines { display: flex; gap: 6px; flex-wrap: wrap; }
+
+  .cuisine-btn {
+    border: var(--border-width) solid var(--line-color);
+    background: transparent;
+    color: var(--ink-dark);
+    padding: 6px 14px;
+    cursor: pointer;
+    font-size: 0.7rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.15s;
+  }
+  .cuisine-btn .swatch { width: 8px; height: 8px; border-radius: 50%; }
+  .cuisine-btn:hover { background: rgba(42, 47, 40, 0.06); }
+  .cuisine-btn.active {
+    background: var(--ink-dark);
+    color: var(--sage-bg);
+    border-color: var(--ink-dark);
+  }
+
+  /* ─── Main layout ─── */
+  .main {
+    display: flex;
+    min-height: 0;
+    overflow: hidden;
+  }
+
+  /* ─── Left panel (dishes) ─── */
+  .left {
+    width: 260px;
+    border-right: var(--border-width) solid var(--line-color);
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+  }
+
+  .panel-head {
+    padding: 1rem 1.25rem 0.75rem;
+    border-bottom: var(--border-width) solid var(--line-color);
+  }
+  .panel-head .label { font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--ink-muted); }
+  .panel-head .title { font-size: 0.95rem; font-weight: 500; margin-top: 4px; letter-spacing: -0.01em; }
+
+  .dishes {
+    overflow-y: auto;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .dish {
+    border-bottom: var(--border-width) solid var(--line-color);
+    padding: 0.85rem 1.25rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    transition: background 0.12s;
+  }
+  .dish:hover { background: rgba(42, 47, 40, 0.04); }
+  .dish.active { background: var(--mustard-yellow); }
+  .dish .emoji { font-size: 1.1rem; }
+  .dish .name { font-size: 0.8rem; font-weight: 500; line-height: 1.25; }
+  .dish .meta { font-size: 0.65rem; color: var(--ink-muted); margin-top: 2px; text-transform: uppercase; letter-spacing: 0.05em; }
+
+  /* ─── Center (map) ─── */
+  .center { flex: 1; position: relative; min-width: 0; }
+  #map { position: absolute; inset: 0; background: var(--sage-dark); }
+
+  /* ─── Right panel (ranked spots) ─── */
+  .right {
+    width: 400px;
+    border-left: var(--border-width) solid var(--line-color);
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+    overflow: hidden;
+  }
+
+  .results-head {
+    padding: 1rem 1.5rem;
+    border-bottom: var(--border-width) solid var(--line-color);
+  }
+  .results-head .dishname {
+    font-size: 1.1rem;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+  }
+  .results-head .hint {
+    font-size: 0.65rem;
+    color: var(--ink-muted);
+    margin-top: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    line-height: 1.5;
+  }
+
+  .spots {
+    overflow-y: auto;
+    flex: 1;
+  }
+
+  .spot {
+    border-bottom: var(--border-width) solid var(--line-color);
+    padding: 1.5rem;
+    cursor: pointer;
+    position: relative;
+    transition: background 0.12s;
+  }
+  .spot:hover { background: rgba(42, 47, 40, 0.03); }
+  .spot.active { background: var(--mustard-yellow); }
+  .spot.featured-spot { background: var(--mustard-yellow); }
+
+  .spot .rank-label {
+    font-size: 0.6rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--ink-muted);
+    margin-bottom: 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .spot.featured-spot .rank-label { color: var(--ink-dark); }
+
+  .spot .sname {
+    font-size: 1.25rem;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    margin-bottom: 0.75rem;
+  }
+
+  .spot .card-meta {
+    display: flex;
+    gap: 1.25rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .spot .meta-item {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .spot .meta-item .meta-label {
+    font-size: 0.6rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--ink-muted);
+  }
+  .spot .meta-item .meta-value {
+    font-size: 0.85rem;
+    font-variant-numeric: tabular-nums;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  }
+  .spot .meta-item .meta-value.text-val {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-weight: 500;
+  }
+
+  /* hype/love metrics */
+  .spot .hl {
+    display: flex;
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+  }
+  .spot .hl .metric {
+    flex: 1;
+    border: var(--border-width) solid var(--line-color);
+    padding: 0.5rem 0.65rem;
+  }
+  .spot .hl .metric .k {
+    font-size: 0.55rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--ink-muted);
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .spot .hl .metric .v {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-top: 2px;
+    font-variant-numeric: tabular-nums;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  }
+  .spot .hl .metric .s {
+    font-size: 0.55rem;
+    color: var(--ink-muted);
+    margin-top: 1px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  .spot .hl .love .v { color: var(--love-high); }
+  .spot .hl .love.mid .v { color: var(--love-mid); }
+  .spot .hl .love.low .v { color: var(--love-low); }
+  .spot .hl .metric.na { opacity: 0.5; }
+  .spot .hl .metric.na .v { font-size: 0.75rem; font-weight: 500; color: var(--ink-muted); }
+
+  .spot .lovebar { height: 3px; background: rgba(42, 47, 40, 0.12); margin-top: 4px; overflow: hidden; }
+  .spot .lovebar > i { display: block; height: 100%; }
+
+  .spot .source-tag {
+    font-size: 0.6rem;
+    color: var(--ink-muted);
+    margin-bottom: 0.75rem;
+    letter-spacing: 0.03em;
+  }
+
+  .spot .trapflag {
+    margin-bottom: 0.75rem;
+    font-size: 0.7rem;
+    color: var(--love-low);
+    border: var(--border-width) solid var(--love-low);
+    padding: 0.5rem 0.65rem;
+    line-height: 1.4;
+  }
+
+  .spot .quote-box {
+    font-style: italic;
+    font-size: 0.85rem;
+    line-height: 1.5;
+    margin-bottom: 0.75rem;
+    padding-left: 1rem;
+    border-left: 2px solid var(--line-color);
+    opacity: 0.8;
+  }
+
+  .spot .card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+
+  .spot .addr {
+    font-size: 0.75rem;
+    color: var(--ink-muted);
+    line-height: 1.4;
+  }
+
+  .spot .pattern-accent {
+    width: 60px;
+    height: 30px;
+    flex-shrink: 0;
+  }
+
+  .spot .links {
+    margin-top: 0.5rem;
+  }
+  .spot a.maplink {
+    font-size: 0.65rem;
+    color: var(--ink-dark);
+    text-decoration: none;
+    border: var(--border-width) solid var(--line-color);
+    padding: 4px 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    transition: background 0.12s;
+  }
+  .spot a.maplink:hover { background: rgba(42, 47, 40, 0.06); }
+
+  .empty {
+    padding: 3rem 1.5rem;
+    text-align: center;
+    color: var(--ink-muted);
+    font-size: 0.85rem;
+    line-height: 1.6;
+  }
+  .empty .big { font-size: 2rem; margin-bottom: 0.5rem; }
+
+  /* ─── Community recs ─── */
+  .community-section {
+    border-top: 2px dashed var(--line-color);
+    margin-top: 0.5rem;
+  }
+  .community-header {
+    padding: 1rem 1.5rem 0.75rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .community-header .ch-title {
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--ink-muted);
+  }
+  .community-header .ch-count {
+    font-size: 0.6rem;
+    color: var(--ink-muted);
+  }
+
+  .rec-card {
+    border-bottom: var(--border-width) solid var(--line-color);
+    padding: 1rem 1.5rem;
+    background: rgba(42, 47, 40, 0.03);
+  }
+  .rec-card .rec-name {
+    font-size: 1rem;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+  }
+  .rec-card .rec-meta {
+    font-size: 0.7rem;
+    color: var(--ink-muted);
+    margin-top: 4px;
+  }
+  .rec-card .rec-note {
+    font-size: 0.8rem;
+    line-height: 1.5;
+    margin-top: 0.5rem;
+    font-style: italic;
+    opacity: 0.8;
+  }
+  .rec-card .rec-byline {
+    font-size: 0.6rem;
+    color: var(--ink-muted);
+    margin-top: 0.4rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .add-rec-btn {
+    width: 100%;
+    border: none;
+    border-top: var(--border-width) dashed var(--line-color);
+    background: transparent;
+    color: var(--ink-dark);
+    padding: 1rem 1.5rem;
+    cursor: pointer;
+    font-size: 0.75rem;
+    font-weight: 500;
+    text-align: left;
+    transition: background 0.12s;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .add-rec-btn:hover { background: rgba(42, 47, 40, 0.06); }
+
+  .rec-form {
+    padding: 1rem 1.5rem;
+    border-top: var(--border-width) solid var(--line-color);
+    background: rgba(42, 47, 40, 0.04);
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+  .rec-form label {
+    font-size: 0.6rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--ink-muted);
+  }
+  .rec-form input, .rec-form textarea {
+    width: 100%;
+    border: var(--border-width) solid var(--line-color);
+    background: var(--sage-bg);
+    color: var(--ink-dark);
+    padding: 8px 10px;
+    font-size: 0.8rem;
+    font-family: inherit;
+    resize: vertical;
+  }
+  .rec-form input:focus, .rec-form textarea:focus {
+    outline: none;
+    border-color: var(--ink-dark);
+  }
+  .rec-form .form-actions {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 0.25rem;
+  }
+  .rec-form .btn-submit {
+    border: var(--border-width) solid var(--ink-dark);
+    background: var(--ink-dark);
+    color: var(--sage-bg);
+    padding: 6px 16px;
+    cursor: pointer;
+    font-size: 0.65rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    transition: opacity 0.12s;
+  }
+  .rec-form .btn-submit:hover { opacity: 0.85; }
+  .rec-form .btn-cancel {
+    border: var(--border-width) solid var(--line-color);
+    background: transparent;
+    color: var(--ink-dark);
+    padding: 6px 16px;
+    cursor: pointer;
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+  .rec-form .btn-cancel:hover { background: rgba(42, 47, 40, 0.06); }
+
+  /* ─── Footer ─── */
+  .footer {
+    padding: 0.5rem 1.5rem;
+    border-top: var(--border-width) solid var(--line-color);
+    font-size: 0.6rem;
+    color: var(--ink-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+  .footer b { font-weight: 500; color: var(--ink-dark); }
+
+  /* ─── Leaflet overrides ─── */
+  .leaflet-popup-content-wrapper {
+    background: var(--sage-bg);
+    color: var(--ink-dark);
+    border-radius: 0;
+    border: var(--border-width) solid var(--line-color);
+    box-shadow: 4px 4px 0 rgba(42, 47, 40, 0.1);
+  }
+  .leaflet-popup-tip { background: var(--sage-bg); }
+  .leaflet-popup-content { margin: 10px 12px; font-size: 0.8rem; }
+  .leaflet-popup-content b { font-weight: 500; }
+
+  .pin {
+    background: var(--ink-dark);
+    color: var(--sage-bg);
+    border-radius: 50% 50% 50% 0;
+    width: 26px;
+    height: 26px;
+    transform: rotate(-45deg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid var(--sage-bg);
+    box-shadow: 0 2px 6px rgba(42, 47, 40, 0.3);
+    font-weight: 700;
+    font-size: 11px;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  }
+  .pin span { transform: rotate(45deg); }
+  .pin.gold {
+    background: var(--mustard-yellow);
+    color: var(--ink-dark);
+    border-color: var(--ink-dark);
+  }
+
+  /* ─── Responsive ─── */
+  @media (max-width: 1024px) {
+    .left { width: 200px; }
+    .right { width: 340px; }
+  }
+  @media (max-width: 768px) {
+    .main { flex-direction: column; }
+    .left { width: 100%; border-right: none; border-bottom: var(--border-width) solid var(--line-color); }
+    .dishes { flex-direction: row; overflow-x: auto; }
+    .dish { border-bottom: none; border-right: var(--border-width) solid var(--line-color); white-space: nowrap; }
+    .center { min-height: 300px; }
+    .right { width: 100%; border-left: none; border-top: var(--border-width) solid var(--line-color); }
+  }
+</style>
+</head>
+<body>
+<div class="app-container">
+  <header class="header-section">
+    <div class="header-left">
+      <div class="nav-logo">
+        <div class="avatar">
+          <svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+        </div>
+        <span class="text-label" style="color: var(--ink-dark); font-weight: 600;">SF EATS</span>
+      </div>
+      <h1 class="search-title">
+        <span class="text-thin">What to Eat</span>
+        <span class="text-medium">&amp; Where</span>
+      </h1>
+    </div>
+    <div class="header-right">
+      <span class="badge" id="srcBadge">loading...</span>
+      <div class="cuisines" id="cuisines"></div>
+    </div>
+  </header>
+
+  <div class="main">
+    <div class="left">
+      <div class="panel-head">
+        <div class="label">Dishes</div>
+        <div class="title" id="dishPanelTitle">&mdash;</div>
+      </div>
+      <div class="dishes" id="dishes"></div>
+    </div>
+    <div class="center"><div id="map"></div></div>
+    <div class="right">
+      <div class="results-head">
+        <div class="dishname" id="resultsTitle">Pick a dish</div>
+        <div class="hint" id="resultsHint">Spots appear here, ranked best-first.</div>
+      </div>
+      <div class="spots" id="spots">
+        <div class="empty"><div class="big">&#9733;</div>Choose a dish to see where to eat it in SF.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer" id="footer">Ranked by Google review consensus &middot; re-run <b>generate-data.js</b> monthly to refresh.</div>
+</div>
+
+<script>
+const COLORS = { mexican:'#8a6e3a', italian:'#4a6e3a', turkish:'#3a5a6e' };
+
+const DEMO = { mexican:{ label:"Mexican", dishes:[
+  {id:"demo-burrito", emoji:"\u{1F32F}", name:"Mission Burrito", spots:[
+    {name:"La Taqueria", neighborhood:"Mission", rating:4.5, reviews:"7,315", price:"$$", why:"“The carne asada burrito is the one to get — worth the line.”", address:"2889 Mission St", lat:37.7509, lng:-122.4181, mapsUri:"",
+      dishMentions:107, dishApproval:90, dishSample:8, dishChip:"carne asada burrito", dishVerified:true},
+    {name:"(demo) Over-hyped Spot", neighborhood:"SoMa", rating:4.3, reviews:"1,900", price:"$$", why:"“Everyone raves about the burrito but it was just okay — over-hyped.”", address:"Run the generator for real spots", lat:37.7785, lng:-122.4056, mapsUri:"",
+      dishMentions:140, dishApproval:57, dishSample:12, dishChip:"burrito", dishVerified:true}
+  ]}
+]}};
+
+let DATA = DEMO, map, markers = [], activeCuisine, activeDishId = null;
+
+function initMap(){
+  map = L.map('map',{zoomControl:true}).setView([37.7649,-122.4194],12.6);
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png',{attribution:'© OpenStreetMap © CARTO',maxZoom:19}).addTo(map);
+}
+function clearMarkers(){ markers.forEach(m=>m&&map.removeLayer(m)); markers=[]; }
+function pinIcon(r, gold){
+  return L.divIcon({className:'',html:`<div class="pin${gold?' gold':''}""><span>${r}</span></div>`,iconSize:[26,26],iconAnchor:[13,24],popupAnchor:[0,-22]});
+}
+
+function renderCuisines(){
+  const el=document.getElementById('cuisines'); el.innerHTML='';
+  Object.keys(DATA).forEach(key=>{
+    const b=document.createElement('button');
+    b.className='cuisine-btn'+(key===activeCuisine?' active':'');
+    b.innerHTML=`<span class="swatch" style="background:${COLORS[key]||'#666'}"></span>${DATA[key].label}`;
+    b.onclick=()=>{ activeCuisine=key; activeDishId=null; renderCuisines(); renderDishes(); resetResults(); };
+    el.appendChild(b);
+  });
+}
+function renderDishes(){
+  const c=DATA[activeCuisine]; document.getElementById('dishPanelTitle').textContent=c.label;
+  const el=document.getElementById('dishes'); el.innerHTML='';
+  c.dishes.forEach(d=>{
+    const div=document.createElement('div');
+    div.className='dish'+(d.id===activeDishId?' active':'');
+    div.innerHTML=`<div class="emoji">${d.emoji||'\u{1F374}'}</div><div><div class="name">${d.name}</div><div class="meta">${d.spots.length} spot${d.spots.length!==1?'s':''}</div></div>`;
+    div.onclick=()=>{ activeDishId=d.id; renderDishes(); showDish(d); };
+    el.appendChild(div);
+  });
+}
+function resetResults(){
+  document.getElementById('resultsTitle').textContent='Pick a dish';
+  document.getElementById('resultsHint').textContent='Spots appear here, ranked best-first.';
+  document.getElementById('spots').innerHTML='<div class="empty"><div class="big">✳</div>Choose a dish.</div>';
+  clearMarkers();
+}
+
+function hypeLove(s, dishName){
+  const m = s.dishMentions, a = s.dishApproval;
+  if (m == null && a == null){
+    return `<div class="hl"><div class="metric na"><div class="k">Mentions</div><div class="v">not yet rated</div></div></div>`;
+  }
+  const loveClass = a == null ? '' : (a >= 80 ? '' : (a >= 65 ? 'mid' : 'low'));
+  const barColor  = a == null ? 'var(--ink-muted)' : (a >= 80 ? 'var(--love-high)' : (a >= 65 ? 'var(--love-mid)' : 'var(--love-low)'));
+  const mentionsCell = m == null
+    ? `<div class="metric na"><div class="k">Mentions</div><div class="v">—</div></div>`
+    : `<div class="metric"><div class="k">Mentions</div><div class="v">${m}</div><div class="s">reviews name it</div></div>`;
+  const loveCell = a == null
+    ? `<div class="metric na"><div class="k">Loved</div><div class="v">—</div></div>`
+    : `<div class="metric love ${loveClass}"><div class="k">Loved</div><div class="v">${a}%</div>
+         <div class="lovebar"><i style="width:${a}%;background:${barColor}"></i></div>
+         <div class="s">of ${s.dishSample||'the'} dish reviews</div></div>`;
+  const trap = (m != null && a != null && m >= 60 && a < 70)
+    ? `<div class="trapflag"><b>Hyped, but mixed on the plate.</b> The ${dishName.toLowerCase()} is one of the most-mentioned dishes here, yet only ${a}% of those mentions are positive.</div>`
+    : '';
+  return `<div class="hl">${mentionsCell}${loveCell}</div>${trap}`;
+}
+
+function sourceTag(s) {
+  if (s.dishApproval == null && s.dishMentions == null) return '';
+  const src = s.dishSource || 'sentiment';
+  const n = s.dishSample || s.dishMentions || 0;
+  const verified = s.dishVerified ? ' · verified' : '';
+  return `<div class="source-tag">via ${src} · ${n} review${n !== 1 ? 's' : ''}${verified}</div>`;
+}
+
+// ─── Community recs (Convex backend) ───
+const CONVEX_URL = 'https://peaceful-cricket-351.convex.cloud';
+
+async function convexQuery(name, args) {
+  const res = await fetch(`${CONVEX_URL}/api/query`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ path: name, args })
+  });
+  if (!res.ok) throw new Error(`Convex query failed: ${res.status}`);
+  const j = await res.json();
+  return j.value;
+}
+
+async function convexMutation(name, args) {
+  const res = await fetch(`${CONVEX_URL}/api/mutation`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ path: name, args })
+  });
+  if (!res.ok) throw new Error(`Convex mutation failed: ${res.status}`);
+  const j = await res.json();
+  return j.value;
+}
+
+async function renderCommunitySection(dishId, container) {
+  const section = document.createElement('div');
+  section.className = 'community-section';
+
+  const header = document.createElement('div');
+  header.className = 'community-header';
+  header.innerHTML = `<span class="ch-title">Community Picks</span><span class="ch-count" id="rec-count">loading...</span>`;
+  section.appendChild(header);
+
+  const recsWrap = document.createElement('div');
+  recsWrap.id = 'recs-list';
+  section.appendChild(recsWrap);
+
+  const addBtn = document.createElement('button');
+  addBtn.className = 'add-rec-btn';
+  addBtn.innerHTML = '＋ Know a better spot? Add your rec';
+  addBtn.onclick = () => showRecForm(dishId, section, addBtn);
+  section.appendChild(addBtn);
+
+  container.appendChild(section);
+
+  try {
+    const recs = await convexQuery('recs:list', { dishId });
+    document.getElementById('rec-count').textContent = recs.length ? `${recs.length} rec${recs.length !== 1 ? 's' : ''}` : '';
+    renderRecCards(recs, recsWrap);
+  } catch (e) {
+    document.getElementById('rec-count').textContent = '';
+    recsWrap.innerHTML = '<div style="padding:0.5rem 1.5rem;font-size:0.7rem;color:var(--ink-muted)">Could not load community recs.</div>';
+  }
+}
+
+function renderRecCards(recs, container) {
+  container.innerHTML = '';
+  recs.forEach(r => {
+    const card = document.createElement('div');
+    card.className = 'rec-card';
+    const when = new Date(r._creationTime).toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric' });
+    card.innerHTML = `
+      <div class="rec-name">${esc(r.name)}</div>
+      ${r.neighborhood ? `<div class="rec-meta">${esc(r.neighborhood)}</div>` : ''}
+      ${r.note ? `<div class="rec-note">"${esc(r.note)}"</div>` : ''}
+      <div class="rec-byline">${r.by ? esc(r.by) : 'Anonymous'} · ${when}</div>`;
+    container.appendChild(card);
+  });
+}
+
+function esc(s) { const d = document.createElement('div'); d.textContent = s; return d.innerHTML; }
+
+function showRecForm(dishId, section, addBtn) {
+  addBtn.style.display = 'none';
+  const form = document.createElement('div');
+  form.className = 'rec-form';
+  form.innerHTML = `
+    <label>Restaurant name *</label>
+    <input type="text" id="rec-name" placeholder="e.g. Cocina Mamá Cholita" />
+    <label>Neighborhood</label>
+    <input type="text" id="rec-hood" placeholder="e.g. Mission District" />
+    <label>Why is it the best?</label>
+    <textarea id="rec-note" rows="2" placeholder="Their mole is unreal — rich, smoky, perfect."></textarea>
+    <label>Your name (optional)</label>
+    <input type="text" id="rec-by" placeholder="Anonymous" />
+    <div class="form-actions">
+      <button class="btn-submit" id="rec-submit">Submit</button>
+      <button class="btn-cancel" id="rec-cancel">Cancel</button>
+    </div>`;
+  section.appendChild(form);
+  form.querySelector('#rec-name').focus();
+
+  form.querySelector('#rec-cancel').onclick = () => { form.remove(); addBtn.style.display = ''; };
+  form.querySelector('#rec-submit').onclick = async () => {
+    const nameVal = form.querySelector('#rec-name').value.trim();
+    if (!nameVal) { form.querySelector('#rec-name').style.borderColor = 'var(--love-low)'; return; }
+    const btn = form.querySelector('#rec-submit');
+    btn.textContent = 'Saving...'; btn.disabled = true;
+    try {
+      await convexMutation('recs:add', {
+        dishId,
+        name: nameVal,
+        neighborhood: form.querySelector('#rec-hood').value.trim() || undefined,
+        note: form.querySelector('#rec-note').value.trim() || undefined,
+        by: form.querySelector('#rec-by').value.trim() || undefined
+      });
+      const dish = DATA[activeCuisine].dishes.find(d => d.id === dishId);
+      if (dish) showDish(dish);
+    } catch (e) {
+      btn.textContent = 'Error — retry'; btn.disabled = false;
+    }
+  };
+}
+
+function showDish(d){
+  document.getElementById('resultsTitle').textContent=d.name;
+  document.getElementById('resultsHint').innerHTML=`Top ${d.spots.length} SF spots &middot; Mentions = how talked-about &middot; Loved = how positive`;
+  const wrap=document.getElementById('spots'); wrap.innerHTML=''; clearMarkers();
+  const bounds=[];
+  d.spots.forEach((s,i)=>{
+    const rank=i+1;
+    const isFeatured = rank === 1;
+    const cnt=s.reviews?`(${s.reviews})`:'';
+    const link=s.mapsUri?s.mapsUri:`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(s.name+' '+(s.address||'San Francisco'))}`;
+    const card=document.createElement('article');
+    card.className='spot'+(isFeatured?' featured-spot':'');
+    card.dataset.idx=i;
+
+    const rankSuffix = isFeatured ? ' — THE GOLD STANDARD' : '';
+    const rankNum = String(rank).padStart(2,'0');
+
+    card.innerHTML=`
+      <div class="rank-label">RANK ${rankNum}${rankSuffix}</div>
+      <div class="sname">${s.name}</div>
+      <div class="card-meta">
+        <div class="meta-item">
+          <span class="meta-label">Rating</span>
+          <span class="meta-value">${s.rating??'—'} / 5.0 ${cnt}</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Price</span>
+          <span class="meta-value">${s.price||'—'}</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Area</span>
+          <span class="meta-value text-val">${s.neighborhood||'—'}</span>
+        </div>
+      </div>
+      ${hypeLove(s, d.name)}
+      ${sourceTag(s)}
+      ${s.why?`<div class="quote-box">${s.why}</div>`:''}
+      <div class="card-footer">
+        <div>
+          ${s.address?`<div class="addr">${s.address}</div>`:''}
+          <div class="links"><a class="maplink" href="${link}" target="_blank" rel="noopener">Google Maps &rarr;</a></div>
+        </div>
+        <div class="pattern-accent barcode-pattern"></div>
+      </div>`;
+    card.onclick=()=>focusSpot(i);
+    wrap.appendChild(card);
+    if(typeof s.lat==='number'&&typeof s.lng==='number'){
+      const m=L.marker([s.lat,s.lng],{icon:pinIcon(rank, isFeatured)}).addTo(map);
+      m.bindPopup(`<b>#${rank} ${s.name}</b><br>★ ${s.rating??'—'} · ${s.neighborhood||''}<br><span style="color:var(--ink-muted)">${s.address||''}</span>`);
+      m.on('click',()=>highlight(i)); markers.push(m); bounds.push([s.lat,s.lng]);
+    } else markers.push(null);
+  });
+  if(bounds.length) map.flyToBounds(bounds,{padding:[60,60],maxZoom:14.5,duration:.6});
+  renderCommunitySection(d.id, wrap);
+}
+function highlight(i){ document.querySelectorAll('.spot').forEach(c=>c.classList.remove('active')); const c=document.querySelector(`.spot[data-idx="${i}"]`); if(c){c.classList.add('active');c.scrollIntoView({behavior:'smooth',block:'nearest'});} }
+function focusSpot(i){ highlight(i); const m=markers[i]; if(m){map.flyTo(m.getLatLng(),15.5,{duration:.5});m.openPopup();} }
+
+function boot(){
+  const live = window.SF_FOOD_DATA;
+  const badge = document.getElementById('srcBadge');
+  if(live && live.cuisines){
+    DATA = live.cuisines;
+    const when = live.generatedAt ? new Date(live.generatedAt).toLocaleDateString(undefined,{month:'short',day:'numeric',year:'numeric'}) : '';
+    badge.className='badge live'; badge.textContent=`Live · ${when}`;
+    document.getElementById('footer').innerHTML=`Live data from Google Places API · last refreshed <b>${when}</b> · re-run generate-data.js to update.`;
+  } else {
+    badge.className='badge demo'; badge.textContent='Demo — run generator';
+  }
+  activeCuisine = Object.keys(DATA)[0];
+  initMap(); renderCuisines(); renderDishes();
+}
+
+(function(){
+  const s=document.createElement('script');
+  s.src='sf-food-data.js';
+  s.onload=boot; s.onerror=boot;
+  document.head.appendChild(s);
+})();
+</script>
+</body>
+</html>
