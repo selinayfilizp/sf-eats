@@ -45,12 +45,12 @@ cp .env.example .env
 
 # 2. Try it offline first (no keys needed)
 node generate-data.js --dry-run
-open sf-food-map.html
+open index.html
 
 # 3. Generate live data
 npm install           # installs convex (only dependency)
 node generate-data.js
-open sf-food-map.html
+open index.html
 ```
 
 Requires **Node 18+** (uses global `fetch`).
@@ -71,7 +71,7 @@ The app includes a **Community Picks** section below the ranked spots for each d
 ## Project structure
 
 ```
-sf-food-map.html      # The entire front-end (single file)
+index.html      # The entire front-end (single file)
 generate-data.js      # CLI data generator (Google Places + reviews)
 dishes.js             # Cuisine/dish catalog — edit to add dishes
 reviews-provider.js   # SerpAPI/Outscraper review fetching + scoring

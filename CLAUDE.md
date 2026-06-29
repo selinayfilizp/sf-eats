@@ -12,14 +12,14 @@ Plain Node + a static HTML front-end. No framework, no build step, no dependenci
 cp .env.example .env          # then paste your keys in .env
 node generate-data.js --dry-run   # offline: writes fake sample data, no keys needed
 node generate-data.js             # live: needs GOOGLE_PLACES_API_KEY (+ reviews key)
-open sf-food-map.html             # static front-end; loads sf-food-data.js
+open index.html             # static front-end; loads sf-food-data.js
 ```
 
 Requires Node 18+ (uses global `fetch`). There is no package to install.
 
 ## Files
 
-- `sf-food-map.html` — the whole front-end (Leaflet map + dish panel + ranked spots).
+- `index.html` — the whole front-end (Leaflet map + dish panel + ranked spots).
   Loads `sf-food-data.js` via a `<script>` tag, so it works from `file://` (no server).
 - `generate-data.js` — CLI generator. Queries Google Places (New) per dish, ranks SF
   spots (Bayesian-weighted in `score()`), pulls a review quote, computes hype/love, and

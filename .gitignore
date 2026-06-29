@@ -1,8 +1,8 @@
 # secrets — never commit
 .env
 
-# generated build output (re-create with: node generate-data.js)
-sf-food-data.js
+# sf-food-data.js is checked in so Vercel can serve it.
+# Re-generate with: node generate-data.js
 
 # node
 node_modules/
