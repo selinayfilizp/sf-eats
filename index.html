@@ -691,13 +691,13 @@ function hypeLove(s, dishName){
   const loveClass = a == null ? '' : (a >= 80 ? '' : (a >= 65 ? 'mid' : 'low'));
   const barColor  = a == null ? 'var(--ink-muted)' : (a >= 80 ? 'var(--love-high)' : (a >= 65 ? 'var(--love-mid)' : 'var(--love-low)'));
   const mentionsCell = m == null
-    ? `<div class="metric na"><div class="k">Mentions</div><div class="v">—</div></div>`
-    : `<div class="metric"><div class="k">Mentions</div><div class="v">${m}</div><div class="s">reviews name it</div></div>`;
+    ? `<div class="metric na"><div class="k">Talked about</div><div class="v">—</div></div>`
+    : `<div class="metric"><div class="k">Talked about</div><div class="v">${m}</div><div class="s">${m === 1 ? 'review mentions' : 'reviews mention'} this dish</div></div>`;
   const loveCell = a == null
-    ? `<div class="metric na"><div class="k">Loved</div><div class="v">—</div></div>`
-    : `<div class="metric love ${loveClass}"><div class="k">Loved</div><div class="v">${a}%</div>
+    ? `<div class="metric na"><div class="k">Positive</div><div class="v">—</div></div>`
+    : `<div class="metric love ${loveClass}"><div class="k">Positive</div><div class="v">${a}%</div>
          <div class="lovebar"><i style="width:${a}%;background:${barColor}"></i></div>
-         <div class="s">of ${s.dishSample||'the'} dish reviews</div></div>`;
+         <div class="s">${a}% of ${s.dishSample||m} reviewers loved it</div></div>`;
   const trap = (m != null && a != null && m >= 60 && a < 70)
     ? `<div class="trapflag"><b>Hyped, but mixed on the plate.</b> The ${dishName.toLowerCase()} is one of the most-mentioned dishes here, yet only ${a}% of those mentions are positive.</div>`
     : '';
