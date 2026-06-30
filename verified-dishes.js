@@ -914,6 +914,440 @@ module.exports = {
       asOf: "2026-06",
       note: "Western Addition Chinese. Wonton soup is a comfort-food hit — generous portions, flavorful broth. The spicy wontons in chili oil are also excellent."
     }
+  ],
+
+  // ── NEW MEXICAN DISHES ───────────────────────────────────────────────────
+
+  "mex-carnitas": [
+    {
+      place: "La Taqueria",
+      mentions: 80,
+      approval: 91,
+      sample: 8,
+      chip: "carnitas",
+      asOf: "2026-06",
+      note: "Mission institution since 1973. Carnitas are the star — crispy-edged, tender pork in a riceless burrito. The carnitas super burrito is the order."
+    },
+    {
+      place: "El Metate",
+      mentions: 40,
+      approval: 93,
+      sample: 8,
+      chip: "carnitas",
+      asOf: "2026-06",
+      note: "Bernal Heights gem. Carnitas super burrito with perfectly braised pork. The salsa bar and horchata round out the experience."
+    },
+    {
+      place: "Taqueria Guadalajara",
+      mentions: 30,
+      approval: 87,
+      sample: 6,
+      chip: "carnitas",
+      asOf: "2026-06",
+      note: "Mission corner taqueria with juicy, well-seasoned carnitas. Cash-friendly, no-frills, consistent quality."
+    }
+  ],
+
+  "mex-tamale": [
+    {
+      place: "La Palma Mexicatessen",
+      mentions: 95,
+      approval: 94,
+      sample: 8,
+      chip: "tamales",
+      asOf: "2026-06",
+      note: "Mission institution since 1953. Grinds own non-GMO masa daily. Infatuation 8.3/10. Pork tamales called 'a revelation.' Also a tortilleria and market — buy raw masa to make your own at home."
+    },
+    {
+      place: "Donaji",
+      mentions: 55,
+      approval: 96,
+      sample: 8,
+      chip: "tamales",
+      asOf: "2026-06",
+      note: "Michelin-listed. Chef Isai Cuevas started as a farmers market tamale vendor. Infatuation says masa is 'flawless in all its forms.' Creative flavors including Pumpkin Spice. Google 4.6★, TripAdvisor 5.0."
+    },
+    {
+      place: "Nopalito",
+      mentions: 25,
+      approval: 90,
+      sample: 6,
+      chip: "tamales",
+      asOf: "2026-06",
+      note: "Michelin Bib Gourmand. Chef Gonzalo Guzman (Veracruz). Banana leaf tamales with ancho & guajillo chile chicken. Tamal De Rajas (veggie) is beloved. Sister restaurant to Nopa."
+    },
+    {
+      place: "La Oaxaqueña",
+      mentions: 70,
+      approval: 93,
+      sample: 8,
+      chip: "tamales",
+      asOf: "2026-06",
+      note: "Oaxacan specialist in the Mission. Banana leaf-wrapped tamales with complex mole sauces. Google 4.7★. Also runs a farmers market tamale stand."
+    }
+  ],
+
+  "mex-chilaquiles": [
+    {
+      place: "el Mil Amores",
+      mentions: 60,
+      approval: 95,
+      sample: 8,
+      chip: "chilaquiles",
+      asOf: "2026-06",
+      note: "Infatuation 9.0 (Best Of The Best). Mission CDMX-style brunch. The CDMX Plate is a 'Godzilla-sized behemoth' with chilaquiles de mole, scrambled eggs, potatoes, concha French toast. Best mole chilaquiles in SF — dried peppers, balanced sweetness, bitter cacao. Latinx & women-owned."
+    },
+    {
+      place: "San Jalisco",
+      mentions: 45,
+      approval: 92,
+      sample: 8,
+      chip: "chilaquiles",
+      asOf: "2026-06",
+      note: "Family-owned since the 1940s. Chilaquiles served all day — perfectly crisp chips smothered in rich red salsa. Chilaquiles Remo (with chicken) is the standout. Enormous portions, unbeatable value."
+    },
+    {
+      place: "Nopalito",
+      mentions: 30,
+      approval: 90,
+      sample: 8,
+      chip: "chilaquiles",
+      asOf: "2026-06",
+      note: "Michelin Bib Gourmand. Chilaquiles rojos en cazuela — 'the spiciest we have tasted.' Handmade tortillas, sustainable sourcing. The most upscale option."
+    },
+    {
+      place: "Primavera",
+      mentions: 50,
+      approval: 97,
+      sample: 6,
+      chip: "chilaquiles",
+      asOf: "2026-06",
+      note: "Saturday-only farmers market stand behind Ferry Building. SF Standard: 'best brunch at the Ferry Building.' Handmade chips that stay crispy under sauce. Refried beans made with lard are legendary. $14. 98% of customers order the chilaquiles."
+    },
+    {
+      place: "Al Carajo",
+      mentions: 20,
+      approval: 88,
+      sample: 6,
+      chip: "chilaquiles",
+      asOf: "2026-06",
+      note: "Yucateco-style. Red chilaquiles topped with chicken tinga with punchy chipotle flavor. Also offers a torta de chilaquiles (chilaquiles in a sandwich!). Tiny counter-service spot."
+    }
+  ],
+
+  // ── NEW ITALIAN DISHES ───────────────────────────────────────────────────
+
+  "ita-carbonara": [
+    {
+      place: "Bella Trattoria",
+      mentions: 50,
+      approval: 93,
+      sample: 8,
+      chip: "carbonara",
+      asOf: "2026-06",
+      note: "#1 on Yelp for carbonara in SF. Uniquely offers TWO versions: La Vera Carbonara (purist) and Carbonara Sbagliata (the richer 'wrong' version — crowd favorite). Reviewers compare it to carbonara eaten in Rome. 2,115 Yelp reviews."
+    },
+    {
+      place: "Roma Antica",
+      mentions: 50,
+      approval: 93,
+      sample: 8,
+      chip: "carbonara",
+      asOf: "2026-06",
+      note: "Smoked guanciale with mezze maniche pasta (not spaghetti) — a distinctive Roman twist. 50+ Yelp reviews filtered for carbonara. The owner serenades you in Italian opera."
+    },
+    {
+      place: "Piccolo Forno",
+      mentions: 25,
+      approval: 88,
+      sample: 6,
+      chip: "carbonara",
+      asOf: "2026-06",
+      note: "North Beach hidden gem. Some say 'best carbonara in the city' — good pancetta, light sauce. Also excellent wood-fired pizza. Some inconsistency noted."
+    },
+    {
+      place: "Ideale",
+      mentions: 20,
+      approval: 90,
+      sample: 6,
+      chip: "carbonara",
+      asOf: "2026-06",
+      note: "North Beach Roman restaurant. Traditional carbonara with guanciale. The pasta is made fresh and the execution is textbook."
+    }
+  ],
+
+  "ita-tiramisu": [
+    {
+      place: "Stella Pastry & Cafe",
+      mentions: 200,
+      approval: 92,
+      sample: 18,
+      chip: "tiramisu",
+      asOf: "2026-06",
+      note: "North Beach since 1942. Uses vanilla sponge cake instead of ladyfingers — lighter, airier. Espresso and rum soaked layers with mascarpone cream. 3,100+ reviews across platforms. Also famous for trademarked Sacripantina. Grab and go to Washington Square Park."
+    },
+    {
+      place: "Dianda's Italian American Pastry",
+      mentions: 120,
+      approval: 90,
+      sample: 10,
+      chip: "tiramisu",
+      asOf: "2026-06",
+      note: "Mission District since 1962. Classic Luccan recipe — traditional ladyfingers, espresso, rum, mascarpone. Sells out by 1pm daily. Multiple high-end SF restaurants buy their tiramisu wholesale. Heavy coffee flavor. 'Still thinking about it 3 weeks later.'"
+    },
+    {
+      place: "Gold Mirror Restaurant",
+      mentions: 45,
+      approval: 90,
+      sample: 8,
+      chip: "tiramisu",
+      asOf: "2026-06",
+      note: "Taraval/Parkside family-owned since 1969. Housemade with ladyfingers, espresso liqueur, mascarpone cream. Creamy and decadent. Old-world Italian setting. A must-order for dessert."
+    }
+  ],
+
+  // ── NEW TURKISH DISHES ───────────────────────────────────────────────────
+
+  "tur-borek": [
+    {
+      place: "Kitchen Istanbul",
+      mentions: 85,
+      approval: 94,
+      sample: 8,
+      chip: "börek",
+      asOf: "2026-06",
+      note: "SF Chronicle Top 100, Michelin Guide listed. Ultra-flaky börek with goat cheese and leek, plus sigara böreği (cheese cigars). Reviewers call the börek 'addictive'. Dinner-only Thu-Mon 5-9:30pm. The most critically acclaimed börek in SF."
+    },
+    {
+      place: "Turquaz SF",
+      mentions: 45,
+      approval: 92,
+      sample: 8,
+      chip: "börek",
+      asOf: "2026-06",
+      note: "Multiple börek varieties: Three Cheese, Anatolian Cheese, Roll Börek. Featured in their Turkish Breakfast Feast. Bakery-first — pastry quality is top-tier."
+    },
+    {
+      place: "Anatolian Table",
+      mentions: 30,
+      approval: 91,
+      sample: 6,
+      chip: "börek",
+      asOf: "2026-06",
+      note: "Mission District newcomer (702 Valencia). Cheese börek is 'crispy, golden, filled with flavor.' Walk-in-only. The Infatuation calls it 'a great catch-all dinner spot.'"
+    }
+  ],
+
+  "tur-breakfast": [
+    {
+      place: "Turquaz SF",
+      mentions: 70,
+      approval: 93,
+      sample: 8,
+      chip: "Turkish Breakfast",
+      asOf: "2026-06",
+      note: "THE showstopper. $140 weekend feast for 4+: baked simit, börek, 4 cheeses, olives, pastirma, menemen, honey, kaymak, and a full thermos of Turkish tea in tulip glasses. Feels like Istanbul in SoMa. 7x7's pick for group kahvaltı."
+    },
+    {
+      place: "Lokma",
+      mentions: 180,
+      approval: 90,
+      sample: 8,
+      chip: "Turkish Breakfast",
+      asOf: "2026-06",
+      note: "The OG — popularized Turkish breakfast in SF since 2018. $42 for 2 (Thu-Sun): scrambled eggs with sujuk, feta, olives, muhammara, kaymak, flatbread. Outer Richmond neighborhood gem. 1,020 Yelp reviews."
+    },
+    {
+      place: "Troya",
+      mentions: 95,
+      approval: 87,
+      sample: 8,
+      chip: "Turkish Breakfast",
+      asOf: "2026-06",
+      note: "Pacific Heights scene on Fillmore. $60 family-style breakfast for 2: simit flown in from Turkey, cheese börek, shakshuka with beef sausage. DJ spinning on weekends — brunch-as-lifestyle."
+    }
+  ],
+
+  // ── NEW INDIAN DISHES ────────────────────────────────────────────────────
+
+  "ind-tandoori": [
+    {
+      place: "Shalimar",
+      mentions: 180,
+      approval: 88,
+      sample: 8,
+      chip: "tandoori chicken",
+      asOf: "2026-06",
+      note: "Tenderloin legend at 532 Jones St. Real tandoor, no-frills counter service. Tandoori chicken leg called 'probably the best I've ever had' — juicy, tender, nice crust. Garlic naan baked fresh. 1,560 Yelp reviews. The place where char meets affordability."
+    },
+    {
+      place: "Roti Indian Bistro",
+      mentions: 110,
+      approval: 90,
+      sample: 8,
+      chip: "tandoori",
+      asOf: "2026-06",
+      note: "West Portal gem. Uses a MESQUITE-fired clay oven — unique among SF tandoors. Game hen and tandoori specialties are signature. KQED-reviewed. 977 Yelp reviews. The mesquite adds smokiness you won't find elsewhere."
+    },
+    {
+      place: "Himalayan Cuisine SF",
+      mentions: 35,
+      approval: 91,
+      sample: 6,
+      chip: "tandoori chicken",
+      asOf: "2026-06",
+      note: "Newer spot (est. 2022) at 1412 Polk St. Himalayan spice blend marinade — distinct from Punjabi or Pakistani tandoori. Tandoori chicken 'tender and juicy,' served sizzling. 4.9 aggregate rating."
+    },
+    {
+      place: "Amber India",
+      mentions: 96,
+      approval: 82,
+      sample: 8,
+      chip: "tandoori chicken",
+      asOf: "2026-06",
+      note: "Upscale modern Indian at Yerba Buena. 2,427 Yelp reviews. Refined, polished tandoori — the char is there but it's a lunch-buffet-crowd vibe, not street-level smoke."
+    }
+  ],
+
+  "ind-curry": [
+    {
+      place: "Pakwan Restaurant",
+      mentions: 310,
+      approval: 92,
+      sample: 8,
+      chip: "lamb curry",
+      asOf: "2026-06",
+      note: "Mission institution at 3180 16th St. Bhuna lamb curry, goat kadahi, mutton curry — all legendary. 'Tender, smoky, perfectly seasoned' lamb, goat curry 'out of this world.' 2,079 Yelp reviews. The definitive SF spot for bold Pakistani-style curries. Hole-in-the-wall, no-holds-barred spice."
+    },
+    {
+      place: "Shalimar",
+      mentions: 200,
+      approval: 89,
+      sample: 8,
+      chip: "goat curry",
+      asOf: "2026-06",
+      note: "Goat karahi has 'sensibly pitched seasoning' with spice that builds, 'the real deal.' Bhuna gosht is the lamb star. Doesn't water down spices. The goat has 'just the right amount of gaminess.'"
+    },
+    {
+      place: "Keeva Indian Kitchen",
+      mentions: 85,
+      approval: 91,
+      sample: 8,
+      chip: "lamb rogan josh",
+      asOf: "2026-06",
+      note: "Inner Richmond at 908 Clement St. Lamb Rogan Josh with Kashmiri chilis — 'satisfying heat that lingers.' The Infatuation highlighted the rogan josh specifically. The refined-but-spicy option: depth without aggression. 814 Yelp reviews."
+    }
+  ],
+
+  // ── NEW CHINESE DISHES ───────────────────────────────────────────────────
+
+  "chn-bbq": [
+    {
+      place: "Good Mong Kok Bakery",
+      mentions: 250,
+      approval: 93,
+      sample: 8,
+      chip: "char siu bao",
+      asOf: "2026-06",
+      note: "Chinatown institution at 1039 Stockton. Google 4.2★, 3,850+ Yelp reviews. Baked char siu bao are HUGE and under $4. 'Best char siu bao ever' — Tripadvisor. Line out the door, no seating, cash-speed service. The definitive grab-and-go char siu bao in SF."
+    },
+    {
+      place: "Go Duck Yourself",
+      mentions: 95,
+      approval: 92,
+      sample: 8,
+      chip: "roast duck",
+      asOf: "2026-06",
+      note: "Bernal Heights — Hing Lung Company reborn. SF Chronicle Top 10 Best New Restaurants 2024. Deboned roast duck with plum vinaigrette is required ordering. Crispy, golden skin that crackles. Char siu, siu yuk (roast pork belly), soy sauce chicken all excellent. 218 Yelp reviews. The Cheung brothers carry 40+ years of Chinatown BBQ tradition."
+    },
+    {
+      place: "Quack House",
+      mentions: 70,
+      approval: 90,
+      sample: 6,
+      chip: "roast duck",
+      asOf: "2026-06",
+      note: "Lower Nob Hill (927 Post) — second outpost from Go Duck Yourself / Hing Lung family. Opened Nov 2025. Glistening char siu, crispy pork belly, juicy roast duck with house plum vinaigrette. To-go focused, limited seating. 284 Yelp reviews. Same legendary Cantonese BBQ DNA."
+    },
+    {
+      place: "Wing Lee Bakery",
+      mentions: 60,
+      approval: 88,
+      sample: 6,
+      chip: "bbq pork bun",
+      asOf: "2026-06",
+      note: "Richmond District (503 Clement). 638 Yelp reviews. Frisbee-sized BBQ pork buns — steamed and baked. Cash only, in-and-out with a full meal for under $10. Pillowy bun, savory-tender pork filling. No-frills dim sum factory."
+    },
+    {
+      place: "Cheung Hing",
+      mentions: 55,
+      approval: 82,
+      sample: 8,
+      chip: "roast duck",
+      asOf: "2026-06",
+      note: "Sunset (2339 Noriega). Google 4.1★, 822 Yelp reviews. Hong Kong-style BBQ — roast duck, char siu, roast pork hanging in the window. Authentic HK quality when it's good. Cash only, 3 tiny dine-in tables. Some inconsistency noted — duck can be fatty — but the highs rival anything in Chinatown."
+    },
+    {
+      place: "Hing Lung",
+      mentions: 45,
+      approval: 88,
+      sample: 6,
+      chip: "roast pork",
+      asOf: "2026-06",
+      note: "The original Chinatown BBQ shop (est. 1977, 1261 Stockton). Char siu has caramelized edges, good fat-to-lean ratio. Roast duck and roast pork combo over rice is the go-to. Cash only. Spawned Go Duck Yourself and Quack House."
+    },
+    {
+      place: "New Luen Sing",
+      mentions: 30,
+      approval: 86,
+      sample: 6,
+      chip: "bbq pork",
+      asOf: "2026-06",
+      note: "Chinatown fish market & BBQ counter (1207 Stockton). Google 3.7★. Char siu is consistently good — sweet glaze, tender meat. Duck and soy sauce chicken also reliable. No-frills takeout-heavy, mostly a local secret."
+    }
+  ],
+
+  "chn-hotpot": [
+    {
+      place: "IPOT",
+      mentions: 120,
+      approval: 91,
+      sample: 8,
+      chip: "hot pot",
+      asOf: "2026-06",
+      note: "Sunset AYCE hot pot — ~$38 for two broth flavors with endless sliced meats, marinated proteins, and noodles. 'Probably never going to any other AYCE hot pot in SF' — that's a real review. Order via QR code every 15 min. Individual pots for smaller parties."
+    },
+    {
+      place: "Liuyishou Hot Pot",
+      mentions: 80,
+      approval: 88,
+      sample: 8,
+      chip: "hot pot",
+      asOf: "2026-06",
+      note: "Chongqing-style with real mala broth. Premium marbled beef, wild mushrooms, seasonal greens. Main Bay Area location in San Mateo but the quality of broth and ingredients is a cut above most."
+    }
+  ],
+
+  "chn-congee": [
+    {
+      place: "Sam Wo Restaurant",
+      mentions: 85,
+      approval: 82,
+      sample: 8,
+      chip: "congee",
+      asOf: "2026-06",
+      note: "Chinatown legend — 100+ years old. Reopened Sep 2025 under new ownership honoring its legacy. Chicken jook with scallions and pork-preserved-egg jook are staples. Mixed reviews on consistency — some say not soupy enough — but the history is unbeatable. 1,450 Yelp reviews."
+    },
+    {
+      place: "Hai Ky Mi Gia Chinese Cuisine",
+      mentions: 40,
+      approval: 89,
+      sample: 6,
+      chip: "congee",
+      asOf: "2026-06",
+      note: "Little Saigon Cantonese-Vietnamese spot. Congee is silky smooth with good depth of flavor. Also excellent for wonton noodles — a two-category contender."
+    }
   ]
 
 };
+
