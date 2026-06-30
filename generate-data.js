@@ -207,6 +207,12 @@ async function processDish(dish) {
     }
   }
 
+  // Exclude places with null-approval verified entries (manual exclusions)
+  places = places.filter(p => {
+    const v = verifiedFor(dish.id, p.displayName?.text);
+    return !(v && v.approval === null);
+  });
+
   // prefer places with enough reviews; relax if that leaves too few
   let pool = places.filter(p => p.userRatingCount >= MIN_REVIEWS);
   if (pool.length < TOP) pool = places;

@@ -1506,7 +1506,8 @@ module.exports = {
     { place: "Han Il Kwan", mentions: 320, approval: 90, sample: 320, chip: "galbi & bulgogi", source: "manual", asOf: "2026-06", note: "Richmond staple. Lavish banchan spread. Deeply flavored spicy pork and bulgogi." },
     { place: "Brothers Restaurant", mentions: 280, approval: 91, sample: 280, chip: "charcoal bulgogi", source: "manual", asOf: "2026-06", note: "One of few SF spots using charcoal grills — smokiness elevates bulgogi and galbi. Zagat-rated." },
     { place: "Um.Ma", mentions: 190, approval: 88, sample: 190, chip: "pork belly & bulgogi", source: "manual", asOf: "2026-06", note: "Former Michelin star (2021). Dreamy back patio with tabletop grills under 80-year-old trees. Inner Sunset." },
-    { place: "Kogi Gogi BBQ", mentions: 250, approval: 87, sample: 250, chip: "AYCE kalbi", source: "manual", asOf: "2026-06", note: "Sunset. Best-value AYCE deal in SF ($29 weekday). 951 Yelp reviews." }
+    { place: "Kogi Gogi BBQ", mentions: 250, approval: 87, sample: 250, chip: "AYCE kalbi", source: "manual", asOf: "2026-06", note: "Sunset. Best-value AYCE deal in SF ($29 weekday). 951 Yelp reviews." },
+    { place: "Daeho Kalbijim & Beef Soup", approval: null, note: "Exclude: braised kalbijjim (stew), not tabletop BBQ." }
   ],
 
   "kor-friedchx": [
@@ -1519,25 +1520,31 @@ module.exports = {
   "kor-bibimbap": [
     { place: "Manna", mentions: 380, approval: 91, sample: 380, chip: "dolsot bibimbap", source: "manual", asOf: "2026-06", note: "Inner Sunset. Charred rice crust at the bottom of the stone pot. 1,639 Yelp reviews." },
     { place: "Muguboka Restaurant", mentions: 240, approval: 89, sample: 240, chip: "hot stone bibimbap", source: "manual", asOf: "2026-06", note: "Richmond. Flavorful hot stone bibimbap with generous banchan. 981 Yelp reviews." },
-    { place: "Han Il Kwan", mentions: 160, approval: 88, sample: 160, chip: "bibimbap & seafood pancake", source: "manual", asOf: "2026-06", note: "Central Richmond. Extensive menu of classics. Seafood pancake one of SF's best." }
+    { place: "Han Il Kwan", mentions: 160, approval: 88, sample: 160, chip: "bibimbap & seafood pancake", source: "manual", asOf: "2026-06", note: "Central Richmond. Extensive menu of classics. Seafood pancake one of SF's best." },
+    { place: "The Pots Hot Pot", approval: null, note: "Exclude: hot pot restaurant, not bibimbap." },
+    { place: "Boiling Hot Pot", approval: null, note: "Exclude: hot pot restaurant, not bibimbap." }
   ],
 
   "kor-jjigae": [
     { place: "My Tofu House", mentions: 480, approval: 92, sample: 480, chip: "fish egg sundubu", source: "manual", asOf: "2026-06", note: "Richmond institution. 9 sundubu varieties. Tableside rice from stone pot. 1,826 Yelp reviews." },
     { place: "Manna", mentions: 340, approval: 90, sample: 340, chip: "soondubu jjigae", source: "manual", asOf: "2026-06", note: "Inner Sunset. Deep umami broth. Tiny space, 15-min waits. 1,639 Yelp reviews." },
     { place: "Muguboka Restaurant", mentions: 220, approval: 89, sample: 220, chip: "tofu stew combo", source: "manual", asOf: "2026-06", note: "Balboa & 5th in Richmond. Chill homey vibe. Complimentary tofu soup with mains." },
-    { place: "Ollei", mentions: 95, approval: 87, sample: 95, chip: "soft tofu soup", source: "manual", asOf: "2026-06", note: "Russian Hill. Praised for authentic taste. Family-run since 2023." }
+    { place: "Ollei", mentions: 95, approval: 87, sample: 95, chip: "soft tofu soup", source: "manual", asOf: "2026-06", note: "Russian Hill. Praised for authentic taste. Family-run since 2023." },
+    { place: "Daeho Kalbijim & Beef Soup", approval: null, note: "Exclude: kalbijjim is braised short ribs, not jjigae/sundubu stew." }
   ],
 
   "kor-tteokbokki": [
-    { place: "Daeho Kalbijjim & Beef Soup", mentions: 820, approval: 89, sample: 820, chip: "blowtorched kalbijjim", source: "manual", asOf: "2026-06", note: "Japantown icon. Dramatic tableside blowtorch cheese finish. 2,404 Yelp reviews. Hour-plus waits." },
+    { place: "Daeho Kalbijjim & Beef Soup", approval: null, note: "Exclude: kalbijjim is braised short ribs, not tteokbokki street food." },
     { place: "Kokio Republic", mentions: 45, approval: 86, sample: 45, chip: "disco tteokbokki skewers", source: "manual", asOf: "2026-06", note: "711 Geary. Tteokbokki skewers praised as crispy and chewy. Great late-night." },
     { place: "Ollei", mentions: 60, approval: 85, sample: 60, chip: "tteokbokki", source: "manual", asOf: "2026-06", note: "Russian Hill. Tteokbokki served alongside galbi jjim." }
   ],
 
   "kor-kbbqtaco": [
     { place: "Namu Stonepot", mentions: 300, approval: 90, sample: 300, chip: "Korean stonepot & tacos", source: "manual", asOf: "2026-06", note: "Divisadero. Korean-Californian fusion — stonepots, burritos, okonomiyaki. 2,000+ Yelp reviews." },
-    { place: "Jina Bakes", mentions: 80, approval: 92, sample: 80, chip: "Korean fusion pastries", source: "manual", asOf: "2026-06", note: "Inner Richmond bakery. Kimchi croissants, gochujang everything bagels. Korean-French fusion." }
+    { place: "Jina Bakes", mentions: 80, approval: 92, sample: 80, chip: "Korean fusion pastries", source: "manual", asOf: "2026-06", note: "Inner Richmond bakery. Kimchi croissants, gochujang everything bagels. Korean-French fusion." },
+    { place: "Californios", approval: null, note: "Exclude: Mexican tasting menu, not Korean fusion." },
+    { place: "SPARK Social SF", approval: null, note: "Exclude: food truck park, not a Korean fusion spot." },
+    { place: "Go Go 7", approval: null, note: "Exclude: general Korean, not fusion tacos." }
   ],
 
   // ── VIETNAMESE ───────────────────────────────────────────────────────────
@@ -1573,7 +1580,8 @@ module.exports = {
   "viet-garlicnoodle": [
     { place: "Thanh Long", mentions: 1800, approval: 91, sample: 1800, chip: "garlic noodles & roast crab", source: "manual", asOf: "2026-06", note: "INVENTED garlic noodles in the 1970s. SF's first Vietnamese restaurant (est. 1971). 3,551 Yelp reviews. ~$80/crab." },
     { place: "PPQ Dungeness Island", mentions: 1500, approval: 92, sample: 1500, chip: "roast crab & garlic noodles", source: "manual", asOf: "2026-06", note: "Outer Richmond. 3,375 Yelp reviews. Deep-fried crab with jalapeno butter sauce. Infatuation, Eater SF top pick." },
-    { place: "Bac Lieu", mentions: 280, approval: 89, sample: 280, chip: "garlic noodles & five-spice chicken", source: "manual", asOf: "2026-06", note: "Bernal Heights. Chewy noodles generously coated in garlic butter. Infatuation: 'garlic noodles reign supreme.'" }
+    { place: "Bac Lieu", mentions: 280, approval: 89, sample: 280, chip: "garlic noodles & five-spice chicken", source: "manual", asOf: "2026-06", note: "Bernal Heights. Chewy noodles generously coated in garlic butter. Infatuation: 'garlic noodles reign supreme.'" },
+    { place: "Cordon Bleu Vietnamese Restaurant", approval: null, note: "Exclude: known for five-spice chicken, not garlic noodles/crab." }
   ],
 
   "viet-banhxeo": [
