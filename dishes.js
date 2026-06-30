@@ -42,5 +42,16 @@ module.exports = {
       { id:"tur-doner",     name:"Doner Kebab",              emoji:"🌯", query:"doner kebab San Francisco",                    keywords:["doner","döner","durum"] },
       { id:"tur-baklava",   name:"Baklava",                  emoji:"🍯", query:"baklava turkish San Francisco",                keywords:["baklava"] }
     ]
+  },
+
+  indian: {
+    label: "Indian",
+    dishes: [
+      { id:"ind-butter-chicken", name:"Butter Chicken",       emoji:"🧡", query:"butter chicken murgh makhani Indian restaurant San Francisco",  keywords:["butter chicken","makhani","murgh makhani"] },
+      { id:"ind-biryani",        name:"Biryani",              emoji:"🍛", query:"biryani dum biryani Indian restaurant San Francisco",            keywords:["biryani","dum biryani","basmati"] },
+      { id:"ind-tikka-masala",   name:"Chicken Tikka Masala", emoji:"🍲", query:"chicken tikka masala curry Indian San Francisco",                keywords:["tikka masala","tikka","masala"] },
+      { id:"ind-dosa",           name:"Masala Dosa",          emoji:"🫓", query:"masala dosa south indian restaurant San Francisco",              keywords:["dosa","masala dosa","dosai"] },
+      { id:"ind-samosa",         name:"Samosa",               emoji:"🥟", query:"samosa Indian appetizer San Francisco",                          keywords:["samosa","samosas","chaat"] }
+    ]
   }
 };

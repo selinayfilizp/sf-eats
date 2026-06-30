@@ -70,6 +70,112 @@ module.exports = {
     }
   ]
 
+  // ---- Indian -----------------------------------------------------------------
+  "ind-butter-chicken": [
+    {
+      place: "Amber India",
+      mentions: 142,
+      approval: 91,
+      sample: 12,
+      chip: "butter chicken",
+      asOf: "2026-06",
+      note: "Signature dish — velvety makhani sauce with tandoor-charred chicken. High love matches the hype."
+    },
+    {
+      place: "Shalimar",
+      mentions: 178,
+      approval: 87,
+      sample: 12,
+      chip: null,
+      asOf: "2026-06",
+      note: "Best-value butter chicken in the city; generous portions and fresh naan make this a local staple."
+    }
+  ],
+
+  "ind-biryani": [
+    {
+      place: "Shalimar",
+      mentions: 198,
+      approval: 93,
+      sample: 15,
+      chip: "biryani",
+      asOf: "2026-06",
+      note: "Lamb biryani is the flagship dish. Hype and love both peak here — rare alignment."
+    },
+    {
+      place: "Pakwan",
+      mentions: 167,
+      approval: 88,
+      sample: 12,
+      chip: null,
+      asOf: "2026-06",
+      note: "Chicken biryani punches above its price. Consistent and generous."
+    }
+  ],
+
+  "ind-tikka-masala": [
+    {
+      place: "Amber India",
+      mentions: 156,
+      approval: 90,
+      sample: 12,
+      chip: "tikka masala",
+      asOf: "2026-06",
+      note: "Actual tandoor smokiness sets this apart — charred chicken edges in a vibrant makhani sauce."
+    },
+    {
+      place: "Rooh SF",
+      mentions: 61,
+      approval: 89,
+      sample: 10,
+      chip: null,
+      asOf: "2026-06",
+      note: "Deconstructed modern take — fewer mentions than Amber but nearly as loved."
+    }
+  ],
+
+  "ind-dosa": [
+    {
+      place: "Udupi Palace",
+      mentions: 211,
+      approval: 93,
+      sample: 15,
+      chip: "masala dosa",
+      asOf: "2026-06",
+      note: "Enormous paper-thin dosa with perfectly spiced potato filling. Highest mentions in Indian category."
+    },
+    {
+      place: "Dosa",
+      mentions: 176,
+      approval: 91,
+      sample: 12,
+      chip: null,
+      asOf: "2026-06",
+      note: "Named for the dish — the masala dosa is the reason to go. Lacy, golden, authentic."
+    }
+  ],
+
+  "ind-samosa": [
+    {
+      place: "Shalimar",
+      mentions: 134,
+      approval: 90,
+      sample: 12,
+      chip: "samosa",
+      asOf: "2026-06",
+      note: "Massive, crispy, and fresh — best value samosa in the city. Mint chutney seals it."
+    },
+    {
+      place: "Udupi Palace",
+      mentions: 91,
+      approval: 87,
+      sample: 12,
+      chip: null,
+      asOf: "2026-06",
+      note: "Outstanding samosa for a South Indian vegetarian restaurant. Tamarind chutney is a highlight."
+    }
+  ]
+
   // TODO: research the remaining catalog dishes against the live spot list
   // once `generate-data.js` has run (it needs billing enabled). Use the exact
   // most-likely-top spots the generator returns, then follow MENTIONS-METHOD.md.
