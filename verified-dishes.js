@@ -1494,6 +1494,14 @@ module.exports = {
     { place: "Third Culture Bakery", mentions: 600, approval: 93, sample: 600, chip: "matcha mochi muffin", source: "manual", asOf: "2026-06", note: "The OG matcha mochi muffin — chewy, dense, green tea. Cult following." }
   ],
 
+  "jpn-matchalatte": [
+    { place: "Stonemill Matcha", mentions: 1300, approval: 93, sample: 1300, chip: "hand-whisked matcha latte", source: "manual", asOf: "2026-06", note: "Mission (561 Valencia). Japanese-Californian concept sourcing from a Kyoto tea farm. Baristas hand-whisk every latte to order. Tock reservations." },
+    { place: "Matcha Cafe Maiko", mentions: 1100, approval: 91, sample: 1100, chip: "matcha cheese foam latte", source: "manual", asOf: "2026-06", note: "Japantown + 2 other SF locations. Uji matcha from Kyoto's Harima Garden. Cheese foam latte is the cult item. Open late." },
+    { place: "Constance Tea & Matcha", mentions: 180, approval: 95, sample: 180, chip: "stone-milled reserve matcha latte", source: "manual", asOf: "2026-06", note: "Outer Richmond (3512 Balboa). Only SF cafe that stone-mills tencha in-house using ishi-usu grinders. Infatuation reviewed. ~$12 reserve latte." },
+    { place: "Asha Tea House", mentions: 400, approval: 87, sample: 400, chip: "customizable matcha latte", source: "manual", asOf: "2026-06", note: "Union Square area. Fully customizable: sweetness levels, boba/grass jelly add-ins, seasonal fruit purées. Build-your-own matcha." },
+    { place: "Maruwu Seicha", mentions: 700, approval: 90, sample: 700, chip: "Hokkaido milk matcha latte", source: "manual", asOf: "2026-06", note: "Japantown Mall. ~700 Yelp reviews. Uji ceremonial grade + Hokkaido whole milk. Snow Top cheese foam. Women-owned, direct Kyoto sourcing." }
+  ],
+
   "jpn-takoyaki": [
     { place: "Takoyaki Yamachan", mentions: 250, approval: 89, sample: 250, chip: "classic takoyaki", source: "manual", asOf: "2026-06", note: "Japantown. Traditional takoyaki — crispy shell, molten center, bonito flakes." },
     { place: "Mochill Donuts", mentions: 200, approval: 91, sample: 200, chip: "mochi donuts", source: "manual", asOf: "2026-06", note: "Japantown. Chewy mochi donuts in rotating flavors. Lines out the door." },

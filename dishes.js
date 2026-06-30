@@ -90,6 +90,7 @@ module.exports = {
       { id:"jpn-udon",      name:"Handmade Udon",               emoji:"🍲", query:"udon noodles handmade San Francisco",                          keywords:["udon","thick noodles","tempura udon","curry udon","dashi"] },
       { id:"jpn-tonkatsu",  name:"Tonkatsu & Katsu Sando",      emoji:"🥩", query:"tonkatsu katsu sando pork cutlet San Francisco",                keywords:["tonkatsu","katsu sando","panko","pork cutlet"] },
       { id:"jpn-matcha",    name:"Matcha Desserts",              emoji:"🍵", query:"matcha desserts soft serve San Francisco",                      keywords:["matcha","soft serve","mochi","green tea","parfait"] },
+      { id:"jpn-matchalatte", name:"Matcha Latte",              emoji:"🍵", query:"matcha latte cafe San Francisco",                                keywords:["matcha latte","matcha","ceremonial grade","oat milk matcha","iced matcha"] },
       { id:"jpn-takoyaki",  name:"Takoyaki & Japantown Snacks",  emoji:"🐙", query:"takoyaki Japantown street food San Francisco",                  keywords:["takoyaki","octopus balls","mochi donuts","taiyaki"] }
     ]
   },
