@@ -202,99 +202,186 @@ module.exports = {
 
   // ── ITALIAN ──────────────────────────────────────────────────────────────
 
-  "ita-pizza": [
+  "ita-neapolitan": [
     {
-      place: "Gusto Pinsa Romana",
-      mentions: 81,
-      approval: 92,
+      place: "Tony's Pizza Napoletana",
+      mentions: 300,
+      approval: 88,
       sample: 8,
-      chip: "pinsa",
+      chip: "margherita",
       asOf: "2026-06",
-      note: "Not Neapolitan — Roman pinsa with a lighter, airier, crunchier crust. Triple-fermented rice flour blend dough. The margherita pinsa is the benchmark. Also has 'pinsa dough 9' chip. Unique in SF, ranked #26 of 840 pizza spots."
+      note: "13-time World Pizza Champion Tony Gemignani. #2 (tied) in 50 Top Pizza USA 2026. 7 different ovens, 12 pizza styles. The Margherita Napoletana is the signature. First American to win the World Pizza Cup in Naples (2007). 8,800 Yelp reviews. North Beach institution since 2009."
     },
     {
-      place: "Pizzetta Napoletana",
-      mentions: 45,
+      place: "Del Popolo",
+      mentions: 80,
       approval: 92,
       sample: 8,
       chip: "margherita",
       asOf: "2026-06",
-      note: "True VPN-certified Neapolitan. Blistered, leopard-spotted crust, San Marzano sauce, fresh mozzarella. Tiny spot, big flavors."
+      note: "Michelin Bib Gourmand (2024-2025). Started as a food truck with a wood oven on a shipping container. Blistered, caramelized crusts using sourdough starter. California-inflected seasonal pies. Lower Nob Hill. 'As good as they've had anywhere.' No reservations."
+    },
+    {
+      place: "Pizzeria Delfina",
+      mentions: 120,
+      approval: 87,
+      sample: 8,
+      chip: "margherita",
+      asOf: "2026-06",
+      note: "Mission + Pacific Heights. James Beard Award (parent Delfina). Michelin listed. Gooey mozzarella, sweet tomatoes, blistery charred crust. The clam pie (cherrystone clams, hot peppers) is a sleeper hit. 3,974 Yelp reviews across 2 locations."
     },
     {
       place: "Il Casaro Pizzeria",
       mentions: 88,
-      approval: 87,
+      approval: 90,
       sample: 8,
       chip: "margherita pizza",
       asOf: "2026-06",
-      note: "North Beach crowd-pleaser. High mention count but some reviewers find it inconsistent — when it's on, it's excellent. Fresh burrata upgrade is worth it."
+      note: "Confirmed AVPN-certified. Wood-burning oven imported from Naples. D.O.P. San Marzano tomatoes, Caputo flour. The mozzarella bar is a standout — imported bufala and burrata. KQED Check, Please! featured. North Beach."
     },
     {
-      place: "Pizzetta 211",
-      mentions: 55,
+      place: "Sforno Pizzeria Napoletana",
+      mentions: 30,
       approval: 94,
-      sample: 8,
-      chip: "pizza",
+      sample: 6,
+      chip: "margherita",
       asOf: "2026-06",
-      note: "Tiny Richmond gem. Weekly rotating toppings on thin, crispy crust. Not classic margherita but the pizza craft is impeccable. Cash only, limited hours."
+      note: "Hayes Valley newcomer. A 200-YEAR-OLD wood-fired oven transported from Naples and reassembled under AVPN supervision. Pizza a portafoglio (Neapolitan street-style wallet pizza). San Marzano tomatoes from Salento. SF Standard profiled Mar 2026. Small but stellar early reviews."
+    }
+  ],
+
+  "ita-detroit": [
+    {
+      place: "Square Pie Guys",
+      mentions: 150,
+      approval: 89,
+      sample: 8,
+      chip: "detroit style pizza",
+      asOf: "2026-06",
+      note: "The leader of SF's Detroit-style scene. SoMa flagship + Ghirardelli. Infatuation 8.5. Baked cheddar edges are crispy perfection. The '6x8' (48 pepperoni cups) and 'Big Von' (sausage, hot honey, ricotta cream) are signatures. 1,458 Yelp reviews across 2 locations. Best New Restaurants 2019."
     },
     {
       place: "Cellarmaker House of Pizza",
       mentions: 99,
-      approval: 90,
+      approval: 91,
+      sample: 8,
+      chip: "detroit style pizza",
+      asOf: "2026-06",
+      note: "Brewery-pizzeria hybrid from Cellarmaker Brewing. Individual 8x8 squares that are 'extraordinarily pillowy and light.' Golden-brown cheese walls, slightly chunky tomato sauce on top. SFist #2 in SF. House-brewed beer pairings. Expanded to Berkeley and Oakland."
+    },
+    {
+      place: "Joyride Pizza",
+      mentions: 80,
+      approval: 78,
+      sample: 8,
+      chip: "detroit style pizza",
+      asOf: "2026-06",
+      note: "5+ SF locations (Mission, Embarcadero, Yerba Buena). Infatuation 8.4. 'Encyclopedia-thick behemoths that are surprisingly light.' Strong vegan menu (8 options). Divisive — fans love it, some find it salty and pricey (~$30/pie). Best for accessibility."
+    },
+    {
+      place: "Long Bridge Pizza Co.",
+      mentions: 40,
+      approval: 85,
       sample: 6,
       chip: "detroit style pizza",
       asOf: "2026-06",
-      note: "Detroit-style squares with caramelized cheese walls — 99 reviews mention 'detroit style pizza'. Pepperoni is a must. Pairs with Cellarmaker's craft beer rotation. Not Neapolitan."
+      note: "Dogpatch sourdough pizzeria. Infatuation 8.5. Detroit-style is a SPECIAL (limited days — check schedule). Sourdough-fed Detroit hybrid with baked yellow and white cheese on fluffy rim. Hot n' Honey pie is the standout. Korean-owned with interesting flavor influences."
+    }
+  ],
+
+  "ita-nyslice": [
+    {
+      place: "Outta Sight Pizza",
+      mentions: 60,
+      approval: 92,
+      sample: 8,
+      chip: "slice",
+      asOf: "2026-06",
+      note: "Current critical favorite for slices in SF. Infatuation recommended. One Bite 8.5. Two locations. Properly foldable, crispy-bottomed, NYC-caliber slices. The pepperoni cup slice is outstanding."
+    },
+    {
+      place: "Golden Boy Pizza",
+      mentions: 250,
+      approval: 91,
+      sample: 8,
+      chip: "pizza",
+      asOf: "2026-06",
+      note: "North Beach since 1978. 4,900+ Yelp reviews, Google 4.7. Technically Genovese focaccia-style (thick, oily, square) not thin-crust NY — but SF's most iconic late-night slice. The combo and clam & garlic are legendary. Cash only, no seating."
+    },
+    {
+      place: "Gioia Pizzeria",
+      mentions: 70,
+      approval: 88,
+      sample: 8,
+      chip: "slice",
+      asOf: "2026-06",
+      note: "Eater 38 list. The 'fold your slice' standard in SF — thin, floppy, properly greasy NY-style. California seasonal toppings on a NY base. Russian Hill + Hayes Valley locations."
+    },
+    {
+      place: "The Pizza Shop",
+      mentions: 40,
+      approval: 93,
+      sample: 6,
+      chip: "slice",
+      asOf: "2026-06",
+      note: "One Bite 9.5 — highest score of any pizza in SF. Run by a NY transplant. Arguably the most authentically New York slice in the city. The cheese slice is the litmus test and it passes."
+    },
+    {
+      place: "Hi Hat",
+      mentions: 35,
+      approval: 96,
+      sample: 6,
+      chip: "pizza",
+      asOf: "2026-06",
+      note: "Newest entry (2026). Mission Local review: stellar. Late-night $3 slices. Jersey tomato pie you won't find elsewhere in SF. 96% early satisfaction. The value play for late-night pizza."
     }
   ],
 
   "ita-cacio": [
     {
-      place: "Serafina",
-      mentions: 5,
-      approval: 72,
-      sample: 5,
+      place: "Roma Antica",
+      mentions: 100,
+      approval: 90,
+      sample: 8,
       chip: "cacio e pepe",
       asOf: "2026-06",
-      note: "Only confirmed cacio e pepe on this list — tonnarelli cacio e pepe with homemade tonnarelli, olive oil, black pepper, pecorino. Gambero Rosso-awarded. Reviews polarized: 5/5 praise perfect seasoning; others call sauce gloppy with too much pepper. When it hits, authentic Roman-style. Google 4.7 (390 reviews)."
+      note: "Marina District, authentic Roman kitchen. Tonnarelli cacio e pepe $18 — 'super cheesy and rich in flavor,' '100/10.' Most frequently recommended cacio e pepe in SF. Staff splits plates unprompted. 1,956 Yelp reviews."
     },
     {
-      place: "Bocconcino",
-      mentions: 0,
-      approval: null,
-      sample: 0,
-      chip: "N/A",
+      place: "54 Mint Cucina Romana",
+      mentions: 45,
+      approval: 85,
+      sample: 8,
+      chip: "cacio e pepe",
       asOf: "2026-06",
-      note: "No confirmed cacio e pepe on menu despite Tuscan-inspired approach. Opened 2024, 246 Yelp reviews. Standouts are tortelloni alla panna and spaghettini burrata instead. Tableside pepper-parmesan finish on other dishes."
+      note: "Chef Mattia Marcelli, native of Rome. Tonnarelli — 'long square spaghetti emulsified with pecorino and toasted black pepper.' Mint Plaza (SoMa). Explicitly Roman menu (carbonara, amatriciana, supplì). The purist's pick."
     },
     {
-      place: "La Ciccia",
-      mentions: 0,
-      approval: null,
-      sample: 0,
-      chip: "N/A",
+      place: "Ideale",
+      mentions: 45,
+      approval: 80,
+      sample: 8,
+      chip: "cacio e pepe",
       asOf: "2026-06",
-      note: "Sardinian specialist — NOT Roman cuisine. Menu features fregola sarda, malloreddus, spaghetti with bottarga, fettuccine with sea urchin. Uses pecorino sardo but no cacio e pepe. The cicciones cun crema de casu (gnocchi in pecorino sardo sauce) is the closest cousin."
+      note: "North Beach, 30+ years. TWO versions: Tonnarelli ($24-28) and Spaghetti ($19). Gambero Rosso recognized, Zagat 'Best Italian,' SF Chronicle 'Best Pasta in North Beach.' Can be salty from the pecorino. 897 Yelp reviews."
     },
     {
-      place: "Collina",
-      mentions: 0,
-      approval: null,
-      sample: 0,
-      chip: "N/A",
+      place: "Che Fico Alimentari",
+      mentions: 35,
+      approval: 85,
+      sample: 6,
+      chip: "cacio e pepe",
       asOf: "2026-06",
-      note: "From Seven Hills team, opened 2023. Pasta-forward rotating seasonal menu — no confirmed cacio e pepe. Known for 14-layer lasagnette and raviolo al uovo. Possible as a special but no evidence in reviews. 120 Yelp reviews, 4.8 on TripAdvisor."
+      note: "Casual counterpart to Michelin-recognized Che Fico. Mezze maniche with pecorino, $20. Permanent menu item. NB: main Che Fico upstairs temporarily closed as of 2026; Alimentari is the active location."
     },
     {
-      place: "Marcella's Lasagneria",
-      mentions: 0,
-      approval: null,
-      sample: 0,
-      chip: "N/A",
+      place: "Penny Roma",
+      mentions: 30,
+      approval: 85,
+      sample: 6,
+      chip: "cacio e pepe",
       asOf: "2026-06",
-      note: "Cacio e pepe is NOT on their menu. Lasagna-focused: 7 lasagnas, carbonara, fettuccine ragu, rigatoni, ravioli, puttanesca. Google 4.8 (677 reviews). The butternut squash and Abruzzo lasagnas are the stars."
+      note: "Flour + Water group. Tonnarelli cacio e pepe with house-made pasta. The Infatuation calls the tonnarelli 'a grounding option.' Same fresh-rolled pasta as F+W Pasta Shop next door. Mission District."
     }
   ],
 
@@ -335,15 +422,6 @@ module.exports = {
       asOf: "2026-06",
       note: "Emilia-Romagna owners serve a heavy pork-and-beef bolognese on fresh tagliatelle. Authentic, generous, counter-service casual. Occasional complaints about greasiness."
     },
-    {
-      place: "La Ciccia",
-      mentions: 0,
-      approval: null,
-      sample: 0,
-      chip: "N/A",
-      asOf: "2026-06",
-      note: "Sardinian specialist — no traditional bolognese/ragu on menu. Their pasta focus is Sardinian: fregola, malloreddus, bottarga spaghetti. The fettuccine with sea urchin and tuna heart is the closest pasta ragout but it's seafood-based, not a meat ragu."
-    }
   ],
 
   "ita-lasagna": [

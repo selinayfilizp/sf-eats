@@ -28,13 +28,15 @@ module.exports = {
   italian: {
     label: "Italian",
     dishes: [
-      { id:"ita-pizza",      name:"Pizza",                           emoji:"🍕", query:"best pizza San Francisco",                    keywords:["pizza","margherita","neapolitan","napoletana","detroit","slice","pie"] },
-      { id:"ita-cacio",      name:"Cacio e Pepe",                    emoji:"🧀", query:"cacio e pepe pasta San Francisco",            keywords:["cacio e pepe","pecorino","pepe"] },
+      { id:"ita-neapolitan",  name:"Neapolitan Pizza",                 emoji:"🍕", query:"neapolitan margherita pizza wood fired oven pizzeria San Francisco",  keywords:["neapolitan","napoletana","margherita","wood fired","VPN","blistered","pizza"] },
+      { id:"ita-detroit",     name:"Detroit-Style Pizza",               emoji:"🟥", query:"detroit style square pan pizza pepperoni San Francisco",  keywords:["detroit","detroit style","square","pan","cheese crust","pizza"] },
+      { id:"ita-nyslice",     name:"NY Slice & Classic Pizza",          emoji:"🍕", query:"pizza by the slice new york style San Francisco",        keywords:["slice","new york","NY","foldable","by the slice","pizza"] },
+      { id:"ita-cacio",      name:"Cacio e Pepe",                    emoji:"🧀", query:"cacio e pepe tonnarelli Roman pasta restaurant San Francisco", keywords:["cacio e pepe","pecorino","pepe","tonnarelli"] },
       { id:"ita-bolognese",  name:"Tagliatelle Bolognese & Ragu",    emoji:"🍝", query:"tagliatelle bolognese ragu pasta San Francisco", keywords:["bolognese","ragu","ragù","tagliatelle","pappardelle"] },
       { id:"ita-lasagna",    name:"Lasagna",                         emoji:"🍲", query:"lasagna San Francisco",                       keywords:["lasagna","lasagne"] },
       { id:"ita-cioppino",   name:"Cioppino",                        emoji:"🦀", query:"cioppino seafood stew San Francisco",         keywords:["cioppino","crab","dungeness"] },
       { id:"ita-carbonara",  name:"Carbonara",                       emoji:"🥚", query:"carbonara pasta San Francisco",               keywords:["carbonara","guanciale","pancetta","egg"] },
-      { id:"ita-tiramisu",   name:"Tiramisu",                        emoji:"🍰", query:"tiramisu Italian dessert San Francisco",      keywords:["tiramisu","tiramisù","mascarpone","ladyfinger"] }
+      { id:"ita-tiramisu",   name:"Tiramisu",                        emoji:"🍰", query:"tiramisu Italian bakery pastry cafe San Francisco",  keywords:["tiramisu","tiramisù","mascarpone","ladyfinger"] }
     ]
   },
 

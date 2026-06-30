@@ -159,15 +159,66 @@ async function processDish(dish) {
     p.rating && p.userRatingCount
   );
 
-  // dedupe by id
+  // dedupe by id and catch multi-location chains (e.g. "Joyride Pizza - Yerba Buena"
+  // vs "Joyride Pizza, Pier 1") — keep only the highest-reviewed location.
   const seen = new Set();
-  places = places.filter(p => (seen.has(p.id) ? false : seen.add(p.id)));
+  const seenNames = [];
+  const sameChain = (a, b) => {
+    if (a.includes(b) || b.includes(a)) return true;
+    // Check if they share enough leading words to be the same chain
+    const wa = a.split(/\s+/), wb = b.split(/\s+/);
+    let shared = 0;
+    while (shared < wa.length && shared < wb.length && wa[shared] === wb[shared]) shared++;
+    return shared >= 2 && shared >= Math.min(wa.length, wb.length) * 0.5;
+  };
+  places = places
+    .sort((a, b) => (b.userRatingCount || 0) - (a.userRatingCount || 0))
+    .filter(p => {
+      if (seen.has(p.id)) return false;
+      seen.add(p.id);
+      const nn = normName(p.displayName?.text);
+      if (seenNames.some(sn => sameChain(nn, sn))) return false;
+      seenNames.push(nn);
+      return true;
+    });
+
+  // Supplement: search for verified places that the main query missed.
+  // This ensures hand-researched spots appear even when the generic API
+  // query returns different restaurants.
+  const vList = VERIFIED[dish.id] || [];
+  const foundNames = new Set(places.map(p => normName(p.displayName?.text)));
+  const missing = vList.filter(v =>
+    v.approval != null && !foundNames.has(normName(v.place)) &&
+    ![...foundNames].some(fn => fn.includes(normName(v.place)) || normName(v.place).includes(fn))
+  );
+  for (const v of missing.slice(0, 5)) {
+    await sleep(120);
+    const extra = await searchText({ query: v.place + " restaurant San Francisco", keywords: dish.keywords });
+    const match = extra.find(p =>
+      p.businessStatus === "OPERATIONAL" &&
+      p.location && inSF(p.location.latitude, p.location.longitude) &&
+      p.rating && p.userRatingCount &&
+      (normName(p.displayName?.text).includes(normName(v.place)) ||
+       normName(v.place).includes(normName(p.displayName?.text)))
+    );
+    if (match && !seen.has(match.id)) {
+      seen.add(match.id);
+      places.push(match);
+    }
+  }
 
   // prefer places with enough reviews; relax if that leaves too few
   let pool = places.filter(p => p.userRatingCount >= MIN_REVIEWS);
   if (pool.length < TOP) pool = places;
 
-  pool.sort((a, b) => score(b.rating, b.userRatingCount) - score(a.rating, a.userRatingCount));
+  // Boost verified places in the sort — they are hand-researched and known
+  // to actually serve the dish, unlike generic API results.
+  pool.sort((a, b) => {
+    const aV = verifiedFor(dish.id, a.displayName?.text) ? 1 : 0;
+    const bV = verifiedFor(dish.id, b.displayName?.text) ? 1 : 0;
+    if (aV !== bV) return bV - aV;
+    return score(b.rating, b.userRatingCount) - score(a.rating, a.userRatingCount);
+  });
   const top = pool.slice(0, TOP);
 
   const spots = [];
