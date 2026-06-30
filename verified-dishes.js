@@ -205,12 +205,12 @@ module.exports = {
   "ita-pizza": [
     {
       place: "Gusto Pinsa Romana",
-      mentions: 72,
-      approval: 93,
+      mentions: 81,
+      approval: 92,
       sample: 8,
       chip: "pinsa",
       asOf: "2026-06",
-      note: "Not Neapolitan — Roman pinsa with a lighter, airier, crunchier crust. Triple-fermented dough. The margherita pinsa is the benchmark. Unique in SF."
+      note: "Not Neapolitan — Roman pinsa with a lighter, airier, crunchier crust. Triple-fermented rice flour blend dough. The margherita pinsa is the benchmark. Also has 'pinsa dough 9' chip. Unique in SF, ranked #26 of 840 pizza spots."
     },
     {
       place: "Pizzetta Napoletana",
@@ -241,42 +241,60 @@ module.exports = {
     },
     {
       place: "Cellarmaker House of Pizza",
-      mentions: 40,
+      mentions: 99,
       approval: 90,
       sample: 6,
-      chip: "pizza",
+      chip: "detroit style pizza",
       asOf: "2026-06",
-      note: "Brewery-meets-pizzeria in Bernal. Detroit and NY styles alongside Neapolitan. The margherita is solid; the real draw is pairing with house-brewed beers."
+      note: "Detroit-style squares with caramelized cheese walls — 99 reviews mention 'detroit style pizza'. Pepperoni is a must. Pairs with Cellarmaker's craft beer rotation. Not Neapolitan."
     }
   ],
 
   "ita-cacio": [
     {
-      place: "Marcella's Lasagneria",
-      mentions: 15,
-      approval: 90,
-      sample: 6,
+      place: "Serafina",
+      mentions: 5,
+      approval: 72,
+      sample: 5,
       chip: "cacio e pepe",
       asOf: "2026-06",
-      note: "Known for lasagna but the cacio e pepe holds its own — simple, peppery, with that trademark thin fresh pasta. A bonus order alongside the lasagna."
+      note: "Only confirmed cacio e pepe on this list — tonnarelli cacio e pepe with homemade tonnarelli, olive oil, black pepper, pecorino. Gambero Rosso-awarded. Reviews polarized: 5/5 praise perfect seasoning; others call sauce gloppy with too much pepper. When it hits, authentic Roman-style. Google 4.7 (390 reviews)."
     },
     {
       place: "Bocconcino",
-      mentions: 28,
-      approval: 91,
-      sample: 8,
-      chip: "cacio e pepe",
+      mentions: 0,
+      approval: null,
+      sample: 0,
+      chip: "N/A",
       asOf: "2026-06",
-      note: "North Beach's most authentic Roman pasta. Properly emulsified pecorino-pepper sauce, none of the cream shortcuts. Intimate space, feels like Rome."
+      note: "No confirmed cacio e pepe on menu despite Tuscan-inspired approach. Opened 2024, 246 Yelp reviews. Standouts are tortelloni alla panna and spaghettini burrata instead. Tableside pepper-parmesan finish on other dishes."
     },
     {
-      place: "Serafina",
-      mentions: 22,
-      approval: 88,
-      sample: 6,
-      chip: "cacio e pepe",
+      place: "La Ciccia",
+      mentions: 0,
+      approval: null,
+      sample: 0,
+      chip: "N/A",
       asOf: "2026-06",
-      note: "Russian Hill neighborhood Italian. Solid cacio e pepe with good pecorino bite. Cozy date-night spot."
+      note: "Sardinian specialist — NOT Roman cuisine. Menu features fregola sarda, malloreddus, spaghetti with bottarga, fettuccine with sea urchin. Uses pecorino sardo but no cacio e pepe. The cicciones cun crema de casu (gnocchi in pecorino sardo sauce) is the closest cousin."
+    },
+    {
+      place: "Collina",
+      mentions: 0,
+      approval: null,
+      sample: 0,
+      chip: "N/A",
+      asOf: "2026-06",
+      note: "From Seven Hills team, opened 2023. Pasta-forward rotating seasonal menu — no confirmed cacio e pepe. Known for 14-layer lasagnette and raviolo al uovo. Possible as a special but no evidence in reviews. 120 Yelp reviews, 4.8 on TripAdvisor."
+    },
+    {
+      place: "Marcella's Lasagneria",
+      mentions: 0,
+      approval: null,
+      sample: 0,
+      chip: "N/A",
+      asOf: "2026-06",
+      note: "Cacio e pepe is NOT on their menu. Lasagna-focused: 7 lasagnas, carbonara, fettuccine ragu, rigatoni, ravioli, puttanesca. Google 4.8 (677 reviews). The butternut squash and Abruzzo lasagnas are the stars."
     }
   ],
 
@@ -316,6 +334,15 @@ module.exports = {
       chip: "bolognese",
       asOf: "2026-06",
       note: "Emilia-Romagna owners serve a heavy pork-and-beef bolognese on fresh tagliatelle. Authentic, generous, counter-service casual. Occasional complaints about greasiness."
+    },
+    {
+      place: "La Ciccia",
+      mentions: 0,
+      approval: null,
+      sample: 0,
+      chip: "N/A",
+      asOf: "2026-06",
+      note: "Sardinian specialist — no traditional bolognese/ragu on menu. Their pasta focus is Sardinian: fregola, malloreddus, bottarga spaghetti. The fettuccine with sea urchin and tuna heart is the closest pasta ragout but it's seafood-based, not a meat ragu."
     }
   ],
 
@@ -346,6 +373,15 @@ module.exports = {
       chip: "lasagna",
       asOf: "2026-06",
       note: "Roman-recipe-driven Bernal Heights gem. Lasagna appears as a rotating special — when it lands, reviewers love it. The day-to-day stars are rigatoni, gnocchi, and cacio e pepe."
+    },
+    {
+      place: "La Ciccia",
+      mentions: 0,
+      approval: null,
+      sample: 0,
+      chip: "N/A",
+      asOf: "2026-06",
+      note: "Sardinian specialist — no lasagna on menu. Their pastas are distinctly Sardinian (fregola, malloreddus). Not the right spot for this dish."
     }
   ],
 
@@ -385,6 +421,15 @@ module.exports = {
       chip: "cioppino",
       asOf: "2026-06",
       note: "Founded by ex-Sotto Mare family. Classic Cioppino ($45, serves two) — Dungeness crab, prawns, mussels, clams, Bay shrimp, calamari in spicy red broth. Chef Hector's version is the real North Beach deal."
+    },
+    {
+      place: "La Ciccia",
+      mentions: 0,
+      approval: null,
+      sample: 0,
+      chip: "N/A",
+      asOf: "2026-06",
+      note: "Sardinian, not Ligurian/SF seafood tradition. No cioppino on menu. Their seafood pasta is Sardinian-style: bottarga spaghetti, sea urchin fettuccine, fregola with clams. Different lineage entirely."
     }
   ],
 
