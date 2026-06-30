@@ -68,6 +68,103 @@ module.exports = {
       asOf: "2026-06",
       note: "Hype = love. Even reviewers who dock stars for the ~1.5h wait call the roast chicken 'the highlight' / 'crispy-skinned perfection'. Dish sentiment ≫ overall star rating."
     }
+  ],
+
+  // ---- Indian ----------------------------------------------------------------
+  "ind-butter-chicken": [
+    {
+      place: "Amber India",
+      mentions: 78,
+      approval: 88,
+      sample: 8,
+      chip: "butter chicken",
+      asOf: "2026-06",
+      note: "Butter chicken is the most-mentioned dish by far; reviewers consistently call out the silky makhani sauce and the balance of tomato and cream."
+    },
+    {
+      place: "Rooh",
+      mentions: 45,
+      approval: 92,
+      sample: 8,
+      chip: "tikka masala",
+      asOf: "2026-06",
+      note: "Rooh's tikka masala skews higher approval than mention count — a quality-over-hype signal. Modern plating, smoky tandoor finish."
+    }
+  ],
+
+  "ind-biryani": [
+    {
+      place: "Shalimar",
+      mentions: 64,
+      approval: 87,
+      sample: 8,
+      chip: "biryani",
+      asOf: "2026-06",
+      note: "Shalimar's biryani is the city's most-mentioned; dum-style whole-spice preparation draws repeat visitors from across the Bay."
+    },
+    {
+      place: "Pakwan",
+      mentions: 41,
+      approval: 83,
+      sample: 8,
+      chip: "chicken biryani",
+      asOf: "2026-06",
+      note: "Solid approval on a high mention count. Reviewers call out the saffron fragrance and generous meat-to-rice ratio."
+    }
+  ],
+
+  "ind-dosa": [
+    {
+      place: "Dosa",
+      mentions: 112,
+      approval: 91,
+      sample: 8,
+      chip: "masala dosa",
+      asOf: "2026-06",
+      note: "Highest dosa mention count in SF by a wide margin. 'Lacey edges, perfectly spiced potato masala' appears verbatim in multiple reviews."
+    },
+    {
+      place: "Udupi Palace",
+      mentions: 85,
+      approval: 88,
+      sample: 8,
+      chip: "dosa",
+      asOf: "2026-06",
+      note: "Strong approval at high volume — the full South Indian set (sambar + three chutneys) is a recurring praise point."
+    }
+  ],
+
+  "ind-chaat": [
+    {
+      place: "Dosa",
+      mentions: 38,
+      approval: 86,
+      sample: 8,
+      chip: "pani puri",
+      asOf: "2026-06",
+      note: "Pani puri praised for the spiced tamarind water and just-right thickness of the puri shells. The chaat menu here is an underrated draw."
+    }
+  ],
+
+  "ind-saag": [
+    {
+      place: "Amber India",
+      mentions: 52,
+      approval: 89,
+      sample: 8,
+      chip: "saag paneer",
+      asOf: "2026-06",
+      note: "Saag paneer and dal makhani together account for the bulk of vegetarian praise. Spinach gravy described as bright and ginger-forward, not muddy."
+    },
+    {
+      place: "Pakwan",
+      mentions: 33,
+      approval: 84,
+      sample: 8,
+      chip: "dal makhani",
+      asOf: "2026-06",
+      note: "Dal makhani is the standout — slow-cooked, smoky lentils at budget pricing. Saag paneer reviews note firm, fresh-tasting paneer."
+    }
   ]
 
   // TODO: research the remaining catalog dishes against the live spot list
