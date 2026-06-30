@@ -1,0 +1,47 @@
+[
+  {
+    "place": "Gusto Pinsa Romana",
+    "neighborhood": "Lower Nob Hill",
+    "mentions": 142,
+    "approval": 92,
+    "sample": 862,
+    "chip": "pinsa · 142",
+    "note": "Roman-style pinsa with impossibly light, airy dough — crispy outside, cloud-soft inside. Authentic oval shape, not round pizza. Uses rice flour blend for that signature crunch. Ranked #26 of 840 SF pizza spots. Vegan options genuinely good."
+  },
+  {
+    "place": "Pizzetta Napoletana",
+    "neighborhood": "Parnassus Heights",
+    "mentions": 95,
+    "approval": 90,
+    "sample": 450,
+    "chip": "pizza · 95",
+    "note": "Wood-fired Neapolitan with beautifully leopard-spotted crust — crispy yet addictively chewy. Nitrate-free meats, locally sourced produce. The Diavola with lettuce on top is a clever signature. Formerly Kezar Pizzetta, rebranded but same soul."
+  },
+  {
+    "place": "Il Casaro Pizzeria & Mozzarella Bar",
+    "neighborhood": "North Beach",
+    "mentions": 380,
+    "approval": 85,
+    "sample": 1532,
+    "chip": "margherita · 380",
+    "note": "The mozzarella bar is the real draw — bufala and burrata flown in from Italy. Margherita is balanced and light with DOP San Marzanos and Caputo flour. Some reviewers want more cheese; delivery quality can dip. Get burrata on top — it transforms the pie."
+  },
+  {
+    "place": "Pizzetta 211",
+    "neighborhood": "Central Richmond",
+    "mentions": 210,
+    "approval": 93,
+    "sample": 1055,
+    "chip": "pizza · 210",
+    "note": "Thin-crust royalty since 2000 — cracker-crisp bottoms, chewy rims, seasonal toppings that rotate biweekly. Tiny 4-table spot with cult following. The flourless chocolate cake is a permanent must-order. Go early or wait. SF's best-kept neighborhood pizzeria."
+  },
+  {
+    "place": "Cellarmaker House of Pizza",
+    "neighborhood": "Bernal Heights",
+    "mentions": 175,
+    "approval": 88,
+    "sample": 700,
+    "chip": "pizza · 175",
+    "note": "Detroit-style squares with caramelized cheese walls and chunky tomato sauce on top. The pepperoni is a must. Pairs with Cellarmaker's rotating craft beer list. Slices available — Tuesday happy hour is the move. Deceptively small portions but deeply satisfying crust."
+  }
+]
