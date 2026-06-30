@@ -53,5 +53,16 @@ module.exports = {
       { id:"ind-chaat",          name:"Chaat & Pani Puri",             emoji:"🥙", query:"chaat pani puri bhel puri Indian snacks San Francisco",            keywords:["chaat","pani puri","bhel puri","sev puri","golgappa","aloo tikki"] },
       { id:"ind-saag",           name:"Saag Paneer & Dal Makhani",     emoji:"🫕", query:"saag paneer dal makhani palak paneer Indian restaurant San Francisco", keywords:["saag paneer","dal makhani","palak paneer","paneer","makhani dal"] }
     ]
+  },
+
+  chinese: {
+    label: "Chinese",
+    dishes: [
+      { id:"chn-xiaolongbao", name:"Xiao Long Bao",              emoji:"🥟", query:"xiao long bao soup dumplings San Francisco",                    keywords:["xiao long bao","xlb","soup dumpling","xiaolongbao"] },
+      { id:"chn-roastduck",   name:"Peking / Roast Duck",        emoji:"🦆", query:"peking duck roast duck Chinese San Francisco",                  keywords:["peking duck","roast duck","duck","crispy duck"] },
+      { id:"chn-dimsum",      name:"Dim Sum",                    emoji:"🧋", query:"dim sum yum cha Chinese San Francisco",                         keywords:["dim sum","har gow","siu mai","char siu bao","yum cha","dumpling"] },
+      { id:"chn-mapo",        name:"Mapo Tofu & Sichuan",        emoji:"🌶️", query:"mapo tofu sichuan szechuan San Francisco",                      keywords:["mapo tofu","mapo","sichuan","szechuan","numbing","mala"] },
+      { id:"chn-wontonnoods", name:"Wonton Noodle Soup",         emoji:"🍜", query:"wonton noodle soup Chinese San Francisco",                      keywords:["wonton","wonton noodle","won ton","dumpling noodle","wonton soup"] }
+    ]
   }
 };

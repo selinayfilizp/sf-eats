@@ -179,7 +179,7 @@ async function processDish(dish) {
     // hype vs love: automatic (read ALL reviews via provider), unless a manual
     // verified-dishes.js entry overrides it.
     let hl = { mentions: null, approval: null, sample: null, source: null };
-    if (REVIEWS.reviewsEnabled()) {
+    if (!NO_REVIEWS && REVIEWS.reviewsEnabled()) {
       try {
         const s = await REVIEWS.dishStats({ placeId: p.id }, dish.keywords);
         if (s) hl = { mentions: s.mentions, approval: s.approval, sample: s.sample, source: s.source };
