@@ -1315,7 +1315,7 @@ module.exports = {
       sample: 8,
       chip: "hot pot",
       asOf: "2026-06",
-      note: "Sunset AYCE hot pot — ~$38 for two broth flavors with endless sliced meats, marinated proteins, and noodles. 'Probably never going to any other AYCE hot pot in SF' — that's a real review. Order via QR code every 15 min. Individual pots for smaller parties."
+      note: "Inner Sunset (1420 Irving). Google 4.4★, 1,629 Yelp reviews. AYCE hot pot + Korean BBQ ~$38 for two broth flavors. 18 signature house-made broths simmered for hours. 'Probably never going to any other AYCE hot pot in SF' — real review. Biang biang noodles on a clothesline are the sleeper hit. Multi-floor dining, QR code ordering every 15 min."
     },
     {
       place: "Liuyishou Hot Pot",
@@ -1324,8 +1324,8 @@ module.exports = {
       sample: 8,
       chip: "hot pot",
       asOf: "2026-06",
-      note: "Chongqing-style with real mala broth. Premium marbled beef, wild mushrooms, seasonal greens. Main Bay Area location in San Mateo but the quality of broth and ingredients is a cut above most."
-    }
+      note: "Chongqing-style at 98 E 3rd Ave, San Mateo. Google 4.3★, 638 Yelp reviews. Real mala broth — the Sichuan peppercorn numbing is legit. Premium marbled beef, wild mushrooms. 45+ min waits on weekends. Broth quality and ingredient freshness are a cut above AYCE spots."
+    },
   ],
 
   "chn-congee": [
@@ -1336,7 +1336,16 @@ module.exports = {
       sample: 8,
       chip: "congee",
       asOf: "2026-06",
-      note: "Chinatown legend — 100+ years old. Reopened Sep 2025 under new ownership honoring its legacy. Chicken jook with scallions and pork-preserved-egg jook are staples. Mixed reviews on consistency — some say not soupy enough — but the history is unbeatable. 1,450 Yelp reviews."
+      note: "Chinatown legend (est. 1907, 713 Clay St). Google 4.3★, 1,467 Yelp reviews. Pork-preserved-egg jook and chicken jook are the staples — poet Gary Snyder recommended 'congee at Sam Wo' in his books. Chinese donuts for dipping are essential. Mixed reviews on consistency post-reopening but the history is unbeatable."
+    },
+    {
+      place: "Hing Lung Cafe",
+      mentions: 50,
+      approval: 87,
+      sample: 6,
+      chip: "congee",
+      asOf: "2026-06",
+      note: "South San Francisco (331 Grand Ave). Google 3.8★, 265 Yelp reviews. Century egg and pork congee, fish congee, yellow chicken congee — all standouts. Pork liver congee 'truly stands out.' No-frills Cantonese cafe with extensive menu. The congee specialist the city needs — hearty, flavorful, old-school."
     },
     {
       place: "Hai Ky Mi Gia Chinese Cuisine",
@@ -1346,7 +1355,7 @@ module.exports = {
       chip: "congee",
       asOf: "2026-06",
       note: "Little Saigon Cantonese-Vietnamese spot. Congee is silky smooth with good depth of flavor. Also excellent for wonton noodles — a two-category contender."
-    }
+    },
   ]
 
 };
