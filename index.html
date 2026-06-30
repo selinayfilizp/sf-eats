@@ -230,6 +230,28 @@
     padding: 1rem 1.5rem;
     border-bottom: var(--border-width) solid var(--line-color);
   }
+  .results-head-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .add-rec-top-btn {
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    border: var(--border-width) solid var(--line-color);
+    background: transparent;
+    color: var(--ink-dark);
+    padding: 6px 14px;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: all 0.2s;
+  }
+  .add-rec-top-btn:hover {
+    background: var(--ink-dark);
+    color: var(--sage-bg);
+    border-color: var(--ink-dark);
+  }
   .results-head .dishname {
     font-size: 1.1rem;
     font-weight: 500;
@@ -244,9 +266,11 @@
     line-height: 1.5;
   }
 
-  .spots {
+  .spots-scroll {
     overflow-y: auto;
     flex: 1;
+  }
+  .spots {
   }
 
   .spot {
@@ -546,133 +570,7 @@
   }
   .rec-form .btn-cancel:hover { background: rgba(42, 47, 40, 0.06); }
 
-  /* ─── Onboarding animated intro ─── */
-  .onboarding {
-    position: fixed;
-    inset: 0;
-    z-index: 10000;
-    background-color: var(--sage-bg);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
-  }
-  .onboarding.slide-out {
-    transform: translateY(-100%);
-  }
-  .onboarding.hidden { display: none; }
-
-  .onboarding-inner {
-    max-width: 680px;
-    width: 100%;
-    padding: 3rem 2rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-  }
-
-  .onboarding .ob-logo {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    margin-bottom: 2rem;
-    opacity: 0;
-    transform: scale(0.8);
-    transition: opacity 0.5s, transform 0.5s;
-  }
-  .onboarding .ob-logo.visible {
-    opacity: 1;
-    transform: scale(1);
-  }
-
-  .ob-typed-line {
-    font-size: 2.8rem;
-    font-weight: 300;
-    letter-spacing: -0.03em;
-    line-height: 1.3;
-    overflow: hidden;
-    white-space: nowrap;
-    width: 0;
-    opacity: 0;
-  }
-  .ob-typed-line.typing {
-    opacity: 1;
-    animation: typewrite 0.6s steps(20, end) forwards;
-  }
-  .ob-typed-line.fast { animation-duration: 0.4s; }
-  .ob-typed-line strong { font-weight: 600; }
-
-  @keyframes typewrite {
-    from { width: 0; }
-    to { width: 100%; }
-  }
-
-  .ob-cta-area {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.4s, transform 0.4s;
-    margin-top: 2rem;
-  }
-  .ob-cta-area.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  .ob-question {
-    font-size: 0.7rem;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: var(--ink-muted);
-    margin-bottom: 1.25rem;
-  }
-
-  .ob-cuisines {
-    display: flex;
-    gap: 10px;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-
-  .ob-cuisine-btn {
-    border: var(--border-width) solid var(--line-color);
-    background: transparent;
-    color: var(--ink-dark);
-    padding: 12px 28px;
-    cursor: pointer;
-    font-size: 0.85rem;
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    transition: all 0.2s;
-  }
-  .ob-cuisine-btn .swatch {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-  }
-  .ob-cuisine-btn:hover {
-    background: var(--ink-dark);
-    color: var(--sage-bg);
-    border-color: var(--ink-dark);
-  }
-
-  .ob-skip {
-    margin-top: 1.5rem;
-    font-size: 0.7rem;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: var(--ink-muted);
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 8px 16px;
-    transition: color 0.2s;
-  }
-  .ob-skip:hover { color: var(--ink-dark); }
+  /* ─── Community picks inline ─── */
 
   /* ─── Footer ─── */
   .footer {
@@ -736,23 +634,6 @@
 </style>
 </head>
 <body>
-<div class="onboarding" id="onboarding">
-  <div class="onboarding-inner">
-    <div class="ob-logo" id="obLogo">
-      <img class="ob-logo-img" src="sf-logo.png" alt="SF Eats">
-    </div>
-
-    <div class="ob-typed-line" id="obLine1">It doesn't matter <strong>where</strong> you go.</div>
-    <div class="ob-typed-line" id="obLine2">It matters <strong>what you eat.</strong></div>
-
-    <div class="ob-cta-area" id="obCta">
-      <div class="ob-question">Pick a cuisine</div>
-      <div class="ob-cuisines" id="obCuisines"></div>
-      <button class="ob-skip" onclick="skipOnboarding()">or just explore</button>
-    </div>
-  </div>
-</div>
-
 <div class="app-container">
   <header class="header-section">
     <div class="header-left">
@@ -784,11 +665,19 @@
     <div class="center"><div id="map"></div></div>
     <div class="right">
       <div class="results-head">
-        <div class="dishname" id="resultsTitle">Pick a dish</div>
-        <div class="hint" id="resultsHint">Spots appear here, ranked best-first.</div>
+        <div class="results-head-top">
+          <div>
+            <div class="dishname" id="resultsTitle">Pick a dish</div>
+            <div class="hint" id="resultsHint">Spots appear here, ranked best-first.</div>
+          </div>
+          <button class="add-rec-top-btn" id="addRecTopBtn" style="display:none" onclick="showRecFormFromTop()">+ Add yours</button>
+        </div>
       </div>
-      <div class="spots" id="spots">
-        <div class="empty"><div class="big">&#9733;</div>Choose a dish to see where to eat it in SF.</div>
+      <div class="spots-scroll">
+        <div id="communityInline"></div>
+        <div class="spots" id="spots">
+          <div class="empty"><div class="big">&#9733;</div>Choose a dish to see where to eat it in SF.</div>
+        </div>
       </div>
     </div>
   </div>
@@ -844,6 +733,8 @@ function resetResults(){
   document.getElementById('resultsTitle').textContent='Pick a dish';
   document.getElementById('resultsHint').textContent='Spots appear here, ranked best-first.';
   document.getElementById('spots').innerHTML='<div class="empty"><div class="big">✳</div>Choose a dish.</div>';
+  document.getElementById('addRecTopBtn').style.display='none';
+  document.getElementById('communityInline').innerHTML='';
   clearMarkers();
 }
 
@@ -901,9 +792,13 @@ async function convexMutation(name, args) {
   return j.value;
 }
 
-async function renderCommunitySection(dishId, container) {
+async function renderCommunityInline(dishId) {
+  const container = document.getElementById('communityInline');
+  container.innerHTML = '';
+
   const section = document.createElement('div');
   section.className = 'community-section';
+  section.id = 'communitySection';
 
   const header = document.createElement('div');
   header.className = 'community-header';
@@ -914,22 +809,37 @@ async function renderCommunitySection(dishId, container) {
   recsWrap.id = 'recs-list';
   section.appendChild(recsWrap);
 
-  const addBtn = document.createElement('button');
-  addBtn.className = 'add-rec-btn';
-  addBtn.innerHTML = '＋ Know a better spot? Add your rec';
-  addBtn.onclick = () => showRecForm(dishId, section, addBtn);
-  section.appendChild(addBtn);
-
   container.appendChild(section);
 
   try {
     const recs = await convexQuery('recs:list', { dishId });
     document.getElementById('rec-count').textContent = recs.length ? `${recs.length} rec${recs.length !== 1 ? 's' : ''}` : '';
-    renderRecCards(recs, recsWrap);
+    if (recs.length) {
+      renderRecCards(recs, recsWrap);
+    } else {
+      section.style.display = 'none';
+    }
   } catch (e) {
     document.getElementById('rec-count').textContent = '';
-    recsWrap.innerHTML = '<div style="padding:0.5rem 1.5rem;font-size:0.7rem;color:var(--ink-muted)">Could not load community recs.</div>';
+    section.style.display = 'none';
   }
+}
+
+function showRecFormFromTop() {
+  const dishId = document.getElementById('addRecTopBtn').getAttribute('data-dish');
+  const section = document.getElementById('communitySection');
+  if (section) {
+    section.style.display = '';
+    const addBtn = section.querySelector('.add-rec-btn');
+    if (addBtn) { showRecForm(dishId, section, addBtn); return; }
+  }
+  const container = document.getElementById('communityInline');
+  const s = document.createElement('div');
+  s.className = 'community-section';
+  s.id = 'communitySection';
+  container.appendChild(s);
+  const fakeBtn = document.createElement('span');
+  showRecForm(dishId, s, fakeBtn);
 }
 
 function renderRecCards(recs, container) {
@@ -1044,53 +954,13 @@ function showDish(d){
     } else markers.push(null);
   });
   if(bounds.length) map.flyToBounds(bounds,{padding:[60,60],maxZoom:14.5,duration:.6});
-  renderCommunitySection(d.id, wrap);
+  document.getElementById('addRecTopBtn').style.display = '';
+  document.getElementById('addRecTopBtn').setAttribute('data-dish', d.id);
+  renderCommunityInline(d.id);
 }
 function highlight(i){ document.querySelectorAll('.spot').forEach(c=>c.classList.remove('active')); const c=document.querySelector(`.spot[data-idx="${i}"]`); if(c){c.classList.add('active');c.scrollIntoView({behavior:'smooth',block:'nearest'});} }
 function focusSpot(i){ highlight(i); const m=markers[i]; if(m){map.flyTo(m.getLatLng(),15.5,{duration:.5});m.openPopup();} }
 
-function dismissOnboarding() {
-  const ob = document.getElementById('onboarding');
-  ob.classList.add('slide-out');
-  setTimeout(() => { ob.classList.add('hidden'); }, 750);
-}
-
-function startWithCuisine(key) {
-  activeCuisine = key;
-  activeDishId = null;
-  renderCuisines();
-  renderDishes();
-  resetResults();
-  dismissOnboarding();
-}
-
-function skipOnboarding() {
-  dismissOnboarding();
-}
-
-function renderOnboardingCuisines() {
-  const el = document.getElementById('obCuisines');
-  el.innerHTML = '';
-  Object.keys(DATA).forEach(key => {
-    const b = document.createElement('button');
-    b.className = 'ob-cuisine-btn';
-    b.innerHTML = `<span class="swatch" style="background:${COLORS[key]||'#666'}"></span>${DATA[key].label}`;
-    b.onclick = () => startWithCuisine(key);
-    el.appendChild(b);
-  });
-}
-
-function runOnboardingAnimation() {
-  const logo = document.getElementById('obLogo');
-  const line1 = document.getElementById('obLine1');
-  const line2 = document.getElementById('obLine2');
-  const cta = document.getElementById('obCta');
-
-  setTimeout(() => { logo.classList.add('visible'); }, 200);
-  setTimeout(() => { line1.classList.add('typing'); }, 800);
-  setTimeout(() => { line2.classList.add('typing', 'fast'); }, 1600);
-  setTimeout(() => { cta.classList.add('visible'); }, 2200);
-}
 
 function boot(){
   const live = window.SF_FOOD_DATA;
@@ -1105,8 +975,6 @@ function boot(){
   }
   activeCuisine = Object.keys(DATA)[0];
   initMap(); renderCuisines(); renderDishes();
-  renderOnboardingCuisines();
-  runOnboardingAnimation();
 }
 
 (function(){
