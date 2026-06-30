@@ -66,7 +66,7 @@ async function fetchAllReviews_serpapi(place) {
     pageToken = j.serpapi_pagination?.next_page_token || null;
     pages++;
     if (!pageToken) break;
-    await sleep(300); // be gentle / respect rate limits
+    await sleep(1500); // stay under 200 searches/hour rate limit
   }
   return all;
 }
