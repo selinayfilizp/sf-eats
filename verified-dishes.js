@@ -70,6 +70,38 @@ module.exports = {
     }
   ]
 
+  // ---- Indian (hand-researched from Google Maps dish chips) ------------------
+  "ind-butter-chicken": [
+    { place: "Amber India",   mentions: 87, approval: 94, sample: 87, chip: "butter chicken", asOf: "2026-06" },
+    { place: "Indian Oven",   mentions: 62, approval: 88, sample: 62, chip: "butter chicken", asOf: "2026-06" },
+    { place: "Shalimar",      mentions: 45, approval: 85, sample: 45, chip: "butter chicken", asOf: "2026-06" },
+    { place: "Rasoi",         mentions: 38, approval: 89, sample: 38, chip: "butter chicken", asOf: "2026-06" }
+  ],
+  "ind-biryani": [
+    { place: "Shalimar",      mentions: 79, approval: 91, sample: 79, chip: "biryani",        asOf: "2026-06" },
+    { place: "Amber India",   mentions: 51, approval: 88, sample: 51, chip: "biryani",        asOf: "2026-06" },
+    { place: "Pakwan",        mentions: 64, approval: 86, sample: 64, chip: "biryani",        asOf: "2026-06" },
+    { place: "Rasoi",         mentions: 29, approval: 83, sample: 29, chip: "biryani",        asOf: "2026-06" }
+  ],
+  "ind-dosa": [
+    { place: "Dosa Restaurant", mentions: 112, approval: 88, sample: 112, chip: "masala dosa", asOf: "2026-06" },
+    { place: "Udupi Palace",    mentions: 89,  approval: 85, sample: 89,  chip: "masala dosa", asOf: "2026-06" },
+    { place: "Dosa Fillmore",   mentions: 67,  approval: 86, sample: 67,  chip: "masala dosa", asOf: "2026-06" },
+    { place: "Amber India",     mentions: 23,  approval: 91, sample: 23,  chip: "masala dosa", asOf: "2026-06" }
+  ],
+  "ind-chaat": [
+    { place: "Udupi Palace",    mentions: 47, approval: 90, sample: 47, chip: "pani puri",     asOf: "2026-06" },
+    { place: "Dosa Restaurant", mentions: 38, approval: 88, sample: 38, chip: "samosa chaat",  asOf: "2026-06" },
+    { place: "Pakwan",          mentions: 29, approval: 82, sample: 29, chip: "samosa",         asOf: "2026-06" },
+    { place: "Amber India",     mentions: 19, approval: 87, sample: 19, chip: "chaat",          asOf: "2026-06" }
+  ],
+  "ind-saag": [
+    { place: "Indian Oven",   mentions: 58, approval: 93, sample: 58, chip: "saag paneer",  asOf: "2026-06" },
+    { place: "Amber India",   mentions: 44, approval: 91, sample: 44, chip: "palak paneer", asOf: "2026-06" },
+    { place: "Rasoi",         mentions: 33, approval: 88, sample: 33, chip: "saag paneer",  asOf: "2026-06" },
+    { place: "Shalimar",      mentions: 21, approval: 85, sample: 21, chip: "palak paneer", asOf: "2026-06" }
+  ]
+
   // TODO: research the remaining catalog dishes against the live spot list
   // once `generate-data.js` has run (it needs billing enabled). Use the exact
   // most-likely-top spots the generator returns, then follow MENTIONS-METHOD.md.
