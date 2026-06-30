@@ -546,7 +546,7 @@
   }
   .rec-form .btn-cancel:hover { background: rgba(42, 47, 40, 0.06); }
 
-  /* ─── Onboarding slide ─── */
+  /* ─── Onboarding animated intro ─── */
   .onboarding {
     position: fixed;
     inset: 0;
@@ -576,37 +576,50 @@
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    margin-bottom: 3rem;
+    margin-bottom: 2rem;
+    opacity: 0;
+    transform: scale(0.8);
+    transition: opacity 0.5s, transform 0.5s;
+  }
+  .onboarding .ob-logo.visible {
+    opacity: 1;
+    transform: scale(1);
   }
 
-  .onboarding .ob-tagline {
-    font-size: 0.65rem;
-    text-transform: uppercase;
-    letter-spacing: 0.12em;
-    color: var(--ink-muted);
-    margin-bottom: 1.5rem;
-  }
-
-  .onboarding .ob-headline {
+  .ob-typed-line {
     font-size: 2.8rem;
     font-weight: 300;
     letter-spacing: -0.03em;
-    line-height: 1.15;
-    margin-bottom: 1.5rem;
+    line-height: 1.3;
+    overflow: hidden;
+    white-space: nowrap;
+    width: 0;
+    opacity: 0;
   }
-  .onboarding .ob-headline strong {
-    font-weight: 600;
+  .ob-typed-line.typing {
+    opacity: 1;
+    animation: typewrite 0.6s steps(20, end) forwards;
+  }
+  .ob-typed-line.fast { animation-duration: 0.4s; }
+  .ob-typed-line strong { font-weight: 600; }
+
+  @keyframes typewrite {
+    from { width: 0; }
+    to { width: 100%; }
   }
 
-  .onboarding .ob-story {
-    font-size: 1.05rem;
-    line-height: 1.65;
-    color: var(--olive-dark);
-    max-width: 520px;
-    margin-bottom: 3rem;
+  .ob-cta-area {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.4s, transform 0.4s;
+    margin-top: 2rem;
+  }
+  .ob-cta-area.visible {
+    opacity: 1;
+    transform: translateY(0);
   }
 
-  .onboarding .ob-question {
+  .ob-question {
     font-size: 0.7rem;
     text-transform: uppercase;
     letter-spacing: 0.1em;
@@ -614,14 +627,14 @@
     margin-bottom: 1.25rem;
   }
 
-  .onboarding .ob-cuisines {
+  .ob-cuisines {
     display: flex;
     gap: 10px;
     flex-wrap: wrap;
     justify-content: center;
   }
 
-  .onboarding .ob-cuisine-btn {
+  .ob-cuisine-btn {
     border: var(--border-width) solid var(--line-color);
     background: transparent;
     color: var(--ink-dark);
@@ -636,22 +649,30 @@
     gap: 8px;
     transition: all 0.2s;
   }
-  .onboarding .ob-cuisine-btn .swatch {
+  .ob-cuisine-btn .swatch {
     width: 10px;
     height: 10px;
     border-radius: 50%;
   }
-  .onboarding .ob-cuisine-btn:hover {
+  .ob-cuisine-btn:hover {
     background: var(--ink-dark);
     color: var(--sage-bg);
     border-color: var(--ink-dark);
   }
 
-  .onboarding .ob-barcode {
-    width: 140px;
-    height: 50px;
-    margin-top: 3rem;
+  .ob-skip {
+    margin-top: 1.5rem;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--ink-muted);
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px 16px;
+    transition: color 0.2s;
   }
+  .ob-skip:hover { color: var(--ink-dark); }
 
   /* ─── Footer ─── */
   .footer {
@@ -717,31 +738,18 @@
 <body>
 <div class="onboarding" id="onboarding">
   <div class="onboarding-inner">
-    <div class="ob-logo">
+    <div class="ob-logo" id="obLogo">
       <img class="ob-logo-img" src="sf-logo.png" alt="SF Eats">
     </div>
 
-    <div class="ob-tagline">San Francisco, CA</div>
+    <div class="ob-typed-line" id="obLine1">It doesn't matter <strong>where</strong> you go.</div>
+    <div class="ob-typed-line" id="obLine2">It matters <strong>what you eat.</strong></div>
 
-    <h1 class="ob-headline">
-      Sometimes it doesn't matter<br>
-      <strong>where</strong> you go.<br>
-      It matters <strong>what you eat.</strong>
-    </h1>
-
-    <p class="ob-story">
-      Here's the thing. When I go to a restaurant, I don't just order anything.
-      I look at what they're actually known for, the dish people keep coming back for,
-      and I order that. Every place has one thing they do better than anyone else.
-      So we went through thousands of reviews to find exactly that for you.
-      The best version of every dish, at the spot that does it best.
-    </p>
-
-    <div class="ob-question">What are you in the mood for?</div>
-
-    <div class="ob-cuisines" id="obCuisines"></div>
-
-    <div class="ob-barcode barcode-pattern"></div>
+    <div class="ob-cta-area" id="obCta">
+      <div class="ob-question">Pick a cuisine</div>
+      <div class="ob-cuisines" id="obCuisines"></div>
+      <button class="ob-skip" onclick="skipOnboarding()">or just explore</button>
+    </div>
   </div>
 </div>
 
@@ -1041,15 +1049,23 @@ function showDish(d){
 function highlight(i){ document.querySelectorAll('.spot').forEach(c=>c.classList.remove('active')); const c=document.querySelector(`.spot[data-idx="${i}"]`); if(c){c.classList.add('active');c.scrollIntoView({behavior:'smooth',block:'nearest'});} }
 function focusSpot(i){ highlight(i); const m=markers[i]; if(m){map.flyTo(m.getLatLng(),15.5,{duration:.5});m.openPopup();} }
 
+function dismissOnboarding() {
+  const ob = document.getElementById('onboarding');
+  ob.classList.add('slide-out');
+  setTimeout(() => { ob.classList.add('hidden'); }, 750);
+}
+
 function startWithCuisine(key) {
   activeCuisine = key;
   activeDishId = null;
   renderCuisines();
   renderDishes();
   resetResults();
-  const ob = document.getElementById('onboarding');
-  ob.classList.add('slide-out');
-  setTimeout(() => { ob.classList.add('hidden'); }, 750);
+  dismissOnboarding();
+}
+
+function skipOnboarding() {
+  dismissOnboarding();
 }
 
 function renderOnboardingCuisines() {
@@ -1062,6 +1078,18 @@ function renderOnboardingCuisines() {
     b.onclick = () => startWithCuisine(key);
     el.appendChild(b);
   });
+}
+
+function runOnboardingAnimation() {
+  const logo = document.getElementById('obLogo');
+  const line1 = document.getElementById('obLine1');
+  const line2 = document.getElementById('obLine2');
+  const cta = document.getElementById('obCta');
+
+  setTimeout(() => { logo.classList.add('visible'); }, 200);
+  setTimeout(() => { line1.classList.add('typing'); }, 800);
+  setTimeout(() => { line2.classList.add('typing', 'fast'); }, 1600);
+  setTimeout(() => { cta.classList.add('visible'); }, 2200);
 }
 
 function boot(){
@@ -1078,6 +1106,7 @@ function boot(){
   activeCuisine = Object.keys(DATA)[0];
   initMap(); renderCuisines(); renderDishes();
   renderOnboardingCuisines();
+  runOnboardingAnimation();
 }
 
 (function(){

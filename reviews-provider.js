@@ -56,7 +56,18 @@ async function fetchAllReviews_serpapi(place) {
     const url = "https://serpapi.com/search.json?engine=google_maps_reviews"
       + `&${idParam}&sort_by=newest&api_key=${key}`
       + (pageToken ? `&num=20&next_page_token=${encodeURIComponent(pageToken)}` : "");
-    const res = await fetch(url);
+    let res, retries = 0;
+    while (true) {
+      res = await fetch(url);
+      if (res.status === 429 && retries < 6) {
+        const wait = 60;
+        console.log(`    ⏳ rate-limited, waiting ${wait}s… (retry ${retries + 1})`);
+        await sleep(wait * 1000);
+        retries++;
+        continue;
+      }
+      break;
+    }
     if (!res.ok) throw new Error(`serpapi ${res.status}: ${(await res.text()).slice(0,120)}`);
     const j = await res.json();
     if (j.error) throw new Error(`serpapi: ${j.error}`);
@@ -66,7 +77,7 @@ async function fetchAllReviews_serpapi(place) {
     pageToken = j.serpapi_pagination?.next_page_token || null;
     pages++;
     if (!pageToken) break;
-    await sleep(1500); // stay under 200 searches/hour rate limit
+    await sleep(2000);
   }
   return all;
 }
