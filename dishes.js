@@ -42,5 +42,16 @@ module.exports = {
       { id:"tur-doner",     name:"Doner Kebab",              emoji:"🌯", query:"doner kebab San Francisco",                    keywords:["doner","döner","durum"] },
       { id:"tur-baklava",   name:"Baklava",                  emoji:"🍯", query:"baklava turkish San Francisco",                keywords:["baklava"] }
     ]
+  },
+
+  indian: {
+    label: "Indian",
+    dishes: [
+      { id:"ind-butter-chicken", name:"Butter Chicken & Tikka Masala", emoji:"🍛", query:"butter chicken tikka masala Indian restaurant San Francisco",       keywords:["butter chicken","tikka masala","murgh makhani","makhani"] },
+      { id:"ind-biryani",        name:"Biryani",                       emoji:"🍚", query:"biryani dum biryani Indian restaurant San Francisco",               keywords:["biryani","dum biryani","hyderabadi biryani","pulao"] },
+      { id:"ind-dosa",           name:"Masala Dosa",                   emoji:"🫓", query:"masala dosa south Indian restaurant San Francisco",                 keywords:["dosa","masala dosa","idli","vada","uttapam"] },
+      { id:"ind-chaat",          name:"Chaat & Pani Puri",             emoji:"🥙", query:"chaat pani puri bhel puri Indian snacks San Francisco",            keywords:["chaat","pani puri","bhel puri","sev puri","golgappa","aloo tikki"] },
+      { id:"ind-saag",           name:"Saag Paneer & Dal Makhani",     emoji:"🫕", query:"saag paneer dal makhani palak paneer Indian restaurant San Francisco", keywords:["saag paneer","dal makhani","palak paneer","paneer","makhani dal"] }
+    ]
   }
 };
