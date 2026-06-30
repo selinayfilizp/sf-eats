@@ -78,5 +78,44 @@ module.exports = {
       { id:"chn-hotpot",      name:"Hot Pot",                    emoji:"🫕", query:"hot pot hotpot Chinese San Francisco",                          keywords:["hot pot","hotpot","shabu","火锅"] },
       { id:"chn-congee",      name:"Congee & Jook",              emoji:"🥣", query:"congee jook rice porridge Chinese San Francisco",               keywords:["congee","jook","porridge","粥"] }
     ]
+  },
+
+  japanese: {
+    label: "Japanese",
+    dishes: [
+      { id:"jpn-ramen",     name:"Tonkotsu & Specialty Ramen",  emoji:"🍜", query:"best ramen tonkotsu San Francisco",                             keywords:["tonkotsu","ramen","tori paitan","chashu","pork broth","tsukemen"] },
+      { id:"jpn-omakase",   name:"Omakase Sushi",               emoji:"🍣", query:"omakase sushi San Francisco",                                   keywords:["omakase","sushi","nigiri","edomae","tasting menu"] },
+      { id:"jpn-izakaya",   name:"Izakaya & Yakitori",          emoji:"🍢", query:"izakaya yakitori San Francisco",                                keywords:["izakaya","yakitori","skewers","grilled chicken","binchotan"] },
+      { id:"jpn-curry",     name:"Japanese Curry",               emoji:"🍛", query:"japanese curry katsu curry San Francisco",                      keywords:["japanese curry","katsu curry","curry rice","tonkatsu curry"] },
+      { id:"jpn-udon",      name:"Handmade Udon",               emoji:"🍲", query:"udon noodles handmade San Francisco",                          keywords:["udon","thick noodles","tempura udon","curry udon","dashi"] },
+      { id:"jpn-tonkatsu",  name:"Tonkatsu & Katsu Sando",      emoji:"🥩", query:"tonkatsu katsu sando pork cutlet San Francisco",                keywords:["tonkatsu","katsu sando","panko","pork cutlet"] },
+      { id:"jpn-matcha",    name:"Matcha Desserts",              emoji:"🍵", query:"matcha desserts soft serve San Francisco",                      keywords:["matcha","soft serve","mochi","green tea","parfait"] },
+      { id:"jpn-takoyaki",  name:"Takoyaki & Japantown Snacks",  emoji:"🐙", query:"takoyaki Japantown street food San Francisco",                  keywords:["takoyaki","octopus balls","mochi donuts","taiyaki"] }
+    ]
+  },
+
+  korean: {
+    label: "Korean",
+    dishes: [
+      { id:"kor-bbq",       name:"Korean BBQ",                  emoji:"🥩", query:"Korean BBQ galbi bulgogi San Francisco",                        keywords:["galbi","bulgogi","korean bbq","kalbi","samgyeopsal","bbq"] },
+      { id:"kor-friedchx",  name:"Korean Fried Chicken",        emoji:"🍗", query:"Korean fried chicken San Francisco",                            keywords:["korean fried chicken","KFC","yangnyeom","crispy chicken","double fried"] },
+      { id:"kor-bibimbap",  name:"Bibimbap",                    emoji:"🍚", query:"bibimbap dolsot stone pot Korean San Francisco",                keywords:["bibimbap","dolsot","stone pot","rice bowl","gochujang"] },
+      { id:"kor-jjigae",    name:"Kimchi Jjigae & Stews",       emoji:"🫕", query:"kimchi jjigae sundubu Korean stew San Francisco",               keywords:["jjigae","kimchi jjigae","sundubu","tofu stew","budae"] },
+      { id:"kor-tteokbokki", name:"Tteokbokki & Street Food",   emoji:"🌶️", query:"tteokbokki Korean street food San Francisco",                   keywords:["tteokbokki","rice cake","hotteok","corn dog","street food"] },
+      { id:"kor-kbbqtaco",  name:"Korean Fusion Tacos",         emoji:"🌮", query:"Korean fusion tacos short rib San Francisco",                   keywords:["korean taco","short rib","fusion","ssam","gochujang"] }
+    ]
+  },
+
+  vietnamese: {
+    label: "Vietnamese",
+    dishes: [
+      { id:"viet-pho",      name:"Pho",                         emoji:"🍜", query:"pho Vietnamese noodle soup San Francisco",                      keywords:["pho","pho bo","pho ga","beef noodle","rare steak"] },
+      { id:"viet-banhmi",   name:"Banh Mi",                     emoji:"🥖", query:"banh mi Vietnamese sandwich San Francisco",                     keywords:["banh mi","baguette","pate","vietnamese sandwich"] },
+      { id:"viet-bunbohue", name:"Bun Bo Hue",                  emoji:"🥣", query:"bun bo hue Vietnamese spicy noodle San Francisco",              keywords:["bun bo hue","spicy beef","lemongrass","hue"] },
+      { id:"viet-comtam",   name:"Com Tam (Broken Rice)",        emoji:"🍚", query:"com tam broken rice Vietnamese San Francisco",                  keywords:["com tam","broken rice","suon","grilled pork","rice plate"] },
+      { id:"viet-garlicnoodle", name:"Garlic Noodles & Roast Crab", emoji:"🦀", query:"garlic noodles roast crab Vietnamese San Francisco",            keywords:["garlic noodles","roast crab","dungeness","butter garlic"] },
+      { id:"viet-banhxeo",  name:"Banh Xeo",                    emoji:"🥞", query:"banh xeo Vietnamese crepe San Francisco",                       keywords:["banh xeo","crepe","sizzling","turmeric","crispy"] },
+      { id:"viet-coffee",   name:"Vietnamese Coffee",            emoji:"☕", query:"vietnamese coffee ca phe sua da San Francisco",                  keywords:["ca phe","vietnamese coffee","condensed milk","egg coffee","sua da"] }
+    ]
   }
 };

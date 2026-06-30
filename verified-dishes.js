@@ -247,6 +247,11 @@ module.exports = {
       chip: "margherita",
       asOf: "2026-06",
       note: "Hayes Valley newcomer. A 200-YEAR-OLD wood-fired oven transported from Naples and reassembled under AVPN supervision. Pizza a portafoglio (Neapolitan street-style wallet pizza). San Marzano tomatoes from Salento. SF Standard profiled Mar 2026. Small but stellar early reviews."
+    },
+    {
+      place: "Gusto Pinsa Romana",
+      approval: null,
+      note: "Exclude: Roman pinsa (high-hydration, oblong), not Neapolitan pizza. Different dough, different technique."
     }
   ],
 
@@ -422,6 +427,11 @@ module.exports = {
       asOf: "2026-06",
       note: "Emilia-Romagna owners serve a heavy pork-and-beef bolognese on fresh tagliatelle. Authentic, generous, counter-service casual. Occasional complaints about greasiness."
     },
+    {
+      place: "La Ciccia",
+      approval: null,
+      note: "Sardinian specialist — no bolognese on menu. Their pastas are distinctly Sardinian (fregola, malloreddus), not Emilian."
+    }
   ],
 
   "ita-lasagna": [
@@ -1434,6 +1444,148 @@ module.exports = {
       asOf: "2026-06",
       note: "Little Saigon Cantonese-Vietnamese spot. Congee is silky smooth with good depth of flavor. Also excellent for wonton noodles — a two-category contender."
     },
+  ],
+
+  // ── JAPANESE ─────────────────────────────────────────────────────────────
+
+  "jpn-ramen": [
+    { place: "Marufuku Ramen", mentions: 4200, approval: 92, sample: 4200, chip: "hakata tonkotsu", source: "manual", asOf: "2026-06", note: "Japantown. 6,000+ Yelp reviews. Hakata-style tonkotsu with 20-hour pork bone broth. Michelin Bib Gourmand." },
+    { place: "Mensho Tokyo", mentions: 2100, approval: 93, sample: 2100, chip: "tori paitan", source: "manual", asOf: "2026-06", note: "Hayes Valley. Michelin Bib Gourmand. Chicken paitan with house-made noodles. Lamb ramen is a cult hit." },
+    { place: "HINODEYA Ramen", mentions: 1500, approval: 90, sample: 1500, chip: "dashi ramen", source: "manual", asOf: "2026-06", note: "Japantown. Lighter, dashi-based approach — shio and shoyu styles. Vegan options." },
+    { place: "Noodle in a Haystack", mentions: 85, approval: 97, sample: 85, chip: "ramen tasting", source: "manual", asOf: "2026-06", note: "Tiny 8-seat counter. Chef makes noodles to order. 40 bowls/day max. Reservation-only ramen omakase." },
+    { place: "Taishoken", mentions: 450, approval: 91, sample: 450, chip: "tsukemen", source: "manual", asOf: "2026-06", note: "Mission. Tsukemen (dipping ramen) specialist — thick noodles + concentrated broth for dipping. Also udon." }
+  ],
+
+  "jpn-omakase": [
+    { place: "Omakase", mentions: 800, approval: 94, sample: 800, chip: "edomae nigiri", source: "manual", asOf: "2026-06", note: "SoMa. Michelin 2-star. Jackson Yu's 17-course edomae omakase ($300+). Best sushi in SF." },
+    { place: "The Shota", mentions: 600, approval: 93, sample: 600, chip: "17-course omakase", source: "manual", asOf: "2026-06", note: "Hayes Valley. Michelin 1-star. Creative Japanese-Peruvian omakase with seasonal fish." },
+    { place: "Ju-Ni", mentions: 500, approval: 92, sample: 500, chip: "seasonal nigiri", source: "manual", asOf: "2026-06", note: "Hayes Valley. Michelin 1-star. 18-course nigiri-focused omakase, 12 seats at the bar." },
+    { place: "Ken", mentions: 90, approval: 96, sample: 90, chip: "intimate omakase", source: "manual", asOf: "2026-06", note: "8-seat counter. Chef Ken's 15-course menu. Intimate experience, seasonal ingredients from Japan." },
+    { place: "Sato Omakase", mentions: 350, approval: 91, sample: 350, chip: "inventive omakase", source: "manual", asOf: "2026-06", note: "Fillmore. Creative omakase blending Japanese technique with local ingredients." }
+  ],
+
+  "jpn-izakaya": [
+    { place: "Rintaro", mentions: 900, approval: 94, sample: 900, chip: "yakitori & izakaya", source: "manual", asOf: "2026-06", note: "Mission. Michelin Bib Gourmand. Sylvan Mishima Brackett's wood-and-bamboo izakaya. Binchotan yakitori, handmade tofu, seasonal small plates." },
+    { place: "Izakaya Sozai", mentions: 280, approval: 90, sample: 280, chip: "yakitori & agedashi tofu", source: "manual", asOf: "2026-06", note: "Inner Sunset. Neighborhood izakaya with excellent grilled skewers and small plates." },
+    { place: "Moku Yakitori-Ya", mentions: 130, approval: 91, sample: 130, chip: "binchotan skewers", source: "manual", asOf: "2026-06", note: "Binchotan charcoal-grilled chicken skewers. Every part of the chicken, traditional style." }
+  ],
+
+  "jpn-curry": [
+    { place: "Curry Hyuga", mentions: 180, approval: 93, sample: 180, chip: "katsu curry plate", source: "manual", asOf: "2026-06", note: "Japantown. Thick, rich Japanese curry with crispy katsu. Small spot, big flavor." },
+    { place: "Muracci's Japanese Curry & Grill", mentions: 1400, approval: 89, sample: 1400, chip: "chicken karaage curry", source: "manual", asOf: "2026-06", note: "FiDi/SoMa. Fast-casual curry. Karaage chicken over rice with house curry. Multiple locations." },
+    { place: "Volcano Curry", mentions: 220, approval: 88, sample: 220, chip: "budget japanese curry", source: "manual", asOf: "2026-06", note: "Richmond. Budget-friendly Japanese curry. Solid portions, comfort food." }
+  ],
+
+  "jpn-udon": [
+    { place: "Marugame Udon", mentions: 2000, approval: 90, sample: 2000, chip: "hand-pulled udon", source: "manual", asOf: "2026-06", note: "Japantown. Sanuki-style udon made fresh. Cafeteria-line format — pick tempura toppings. Long lines." },
+    { place: "Udon Mugizo", mentions: 1800, approval: 89, sample: 1800, chip: "thick homemade udon", source: "manual", asOf: "2026-06", note: "Japantown. Thick-cut handmade udon. Curry udon and nabeyaki udon are standouts." },
+    { place: "Taishoken", mentions: 300, approval: 91, sample: 300, chip: "tsukemen & udon", source: "manual", asOf: "2026-06", note: "Mission. Also does excellent udon alongside their tsukemen." }
+  ],
+
+  "jpn-tonkatsu": [
+    { place: "SHOWA Le Gourmet Tonkatsu", mentions: 75, approval: 96, sample: 75, chip: "iberico tonkatsu", source: "manual", asOf: "2026-06", note: "FiDi. Iberico pork tonkatsu tasting. Premium cuts, house-ground panko. Reservation-only omakase-style tonkatsu." },
+    { place: "Katsuya", mentions: 260, approval: 88, sample: 260, chip: "tonkatsu bento", source: "manual", asOf: "2026-06", note: "SoMa. Classic tonkatsu sets and katsu sando. Reliable, well-executed." },
+    { place: "Kawanoya", mentions: 180, approval: 90, sample: 180, chip: "classic tonkatsu teishoku", source: "manual", asOf: "2026-06", note: "Fillmore. Traditional tonkatsu teishoku — cabbage, miso soup, rice, sesame to grind yourself." }
+  ],
+
+  "jpn-matcha": [
+    { place: "Stonemill Matcha", mentions: 1300, approval: 91, sample: 1300, chip: "stone-ground matcha latte", source: "manual", asOf: "2026-06", note: "Marina/FiDi. Stone-ground ceremonial-grade matcha. Pastries, lattes, soft serve." },
+    { place: "Matcha Cafe Maiko", mentions: 1100, approval: 92, sample: 1100, chip: "uji matcha soft serve", source: "manual", asOf: "2026-06", note: "Japantown. Uji matcha soft serve from Kyoto. Instagram staple. Also hojicha." },
+    { place: "Third Culture Bakery", mentions: 600, approval: 93, sample: 600, chip: "matcha mochi muffin", source: "manual", asOf: "2026-06", note: "The OG matcha mochi muffin — chewy, dense, green tea. Cult following." }
+  ],
+
+  "jpn-takoyaki": [
+    { place: "Takoyaki Yamachan", mentions: 250, approval: 89, sample: 250, chip: "classic takoyaki", source: "manual", asOf: "2026-06", note: "Japantown. Traditional takoyaki — crispy shell, molten center, bonito flakes." },
+    { place: "Mochill Donuts", mentions: 200, approval: 91, sample: 200, chip: "mochi donuts", source: "manual", asOf: "2026-06", note: "Japantown. Chewy mochi donuts in rotating flavors. Lines out the door." },
+    { place: "Sophie's Crepes", mentions: 150, approval: 85, sample: 150, chip: "Japanese crepes", source: "manual", asOf: "2026-06", note: "Japantown. Harajuku-style crepes — matcha, strawberry, Nutella. Japantown Center institution." }
+  ],
+
+  // ── KOREAN ──────────────────────────────────────────────────────────────
+
+  "kor-bbq": [
+    { place: "Han Il Kwan", mentions: 320, approval: 90, sample: 320, chip: "galbi & bulgogi", source: "manual", asOf: "2026-06", note: "Richmond staple. Lavish banchan spread. Deeply flavored spicy pork and bulgogi." },
+    { place: "Brothers Restaurant", mentions: 280, approval: 91, sample: 280, chip: "charcoal bulgogi", source: "manual", asOf: "2026-06", note: "One of few SF spots using charcoal grills — smokiness elevates bulgogi and galbi. Zagat-rated." },
+    { place: "Um.Ma", mentions: 190, approval: 88, sample: 190, chip: "pork belly & bulgogi", source: "manual", asOf: "2026-06", note: "Former Michelin star (2021). Dreamy back patio with tabletop grills under 80-year-old trees. Inner Sunset." },
+    { place: "Kogi Gogi BBQ", mentions: 250, approval: 87, sample: 250, chip: "AYCE kalbi", source: "manual", asOf: "2026-06", note: "Sunset. Best-value AYCE deal in SF ($29 weekday). 951 Yelp reviews." }
+  ],
+
+  "kor-friedchx": [
+    { place: "Kokio Republic", mentions: 130, approval: 88, sample: 130, chip: "soy garlic fried chicken", source: "manual", asOf: "2026-06", note: "711 Geary. Started as 2014 food truck. Crispy double-fried. Open till 2AM." },
+    { place: "K Soul Chicken", mentions: 170, approval: 87, sample: 170, chip: "Korean fried chicken", source: "manual", asOf: "2026-06", note: "Polk St. Top-ranked on Yelp 2026. Variety of sauces." },
+    { place: "JIJIME", mentions: 140, approval: 84, sample: 140, chip: "honey butter fried chicken", source: "manual", asOf: "2026-06", note: "Outer Richmond. Soy garlic chicken praised as tender and flavorful. Also cheesy corn." },
+    { place: "Um.Ma", mentions: 110, approval: 86, sample: 110, chip: "KFC platter", source: "manual", asOf: "2026-06", note: "Former Michelin star. Korean fried chicken alongside grill menu. Inner Sunset." }
+  ],
+
+  "kor-bibimbap": [
+    { place: "Manna", mentions: 380, approval: 91, sample: 380, chip: "dolsot bibimbap", source: "manual", asOf: "2026-06", note: "Inner Sunset. Charred rice crust at the bottom of the stone pot. 1,639 Yelp reviews." },
+    { place: "Muguboka Restaurant", mentions: 240, approval: 89, sample: 240, chip: "hot stone bibimbap", source: "manual", asOf: "2026-06", note: "Richmond. Flavorful hot stone bibimbap with generous banchan. 981 Yelp reviews." },
+    { place: "Han Il Kwan", mentions: 160, approval: 88, sample: 160, chip: "bibimbap & seafood pancake", source: "manual", asOf: "2026-06", note: "Central Richmond. Extensive menu of classics. Seafood pancake one of SF's best." }
+  ],
+
+  "kor-jjigae": [
+    { place: "My Tofu House", mentions: 480, approval: 92, sample: 480, chip: "fish egg sundubu", source: "manual", asOf: "2026-06", note: "Richmond institution. 9 sundubu varieties. Tableside rice from stone pot. 1,826 Yelp reviews." },
+    { place: "Manna", mentions: 340, approval: 90, sample: 340, chip: "soondubu jjigae", source: "manual", asOf: "2026-06", note: "Inner Sunset. Deep umami broth. Tiny space, 15-min waits. 1,639 Yelp reviews." },
+    { place: "Muguboka Restaurant", mentions: 220, approval: 89, sample: 220, chip: "tofu stew combo", source: "manual", asOf: "2026-06", note: "Balboa & 5th in Richmond. Chill homey vibe. Complimentary tofu soup with mains." },
+    { place: "Ollei", mentions: 95, approval: 87, sample: 95, chip: "soft tofu soup", source: "manual", asOf: "2026-06", note: "Russian Hill. Praised for authentic taste. Family-run since 2023." }
+  ],
+
+  "kor-tteokbokki": [
+    { place: "Daeho Kalbijjim & Beef Soup", mentions: 820, approval: 89, sample: 820, chip: "blowtorched kalbijjim", source: "manual", asOf: "2026-06", note: "Japantown icon. Dramatic tableside blowtorch cheese finish. 2,404 Yelp reviews. Hour-plus waits." },
+    { place: "Kokio Republic", mentions: 45, approval: 86, sample: 45, chip: "disco tteokbokki skewers", source: "manual", asOf: "2026-06", note: "711 Geary. Tteokbokki skewers praised as crispy and chewy. Great late-night." },
+    { place: "Ollei", mentions: 60, approval: 85, sample: 60, chip: "tteokbokki", source: "manual", asOf: "2026-06", note: "Russian Hill. Tteokbokki served alongside galbi jjim." }
+  ],
+
+  "kor-kbbqtaco": [
+    { place: "Namu Stonepot", mentions: 300, approval: 90, sample: 300, chip: "Korean stonepot & tacos", source: "manual", asOf: "2026-06", note: "Divisadero. Korean-Californian fusion — stonepots, burritos, okonomiyaki. 2,000+ Yelp reviews." },
+    { place: "Jina Bakes", mentions: 80, approval: 92, sample: 80, chip: "Korean fusion pastries", source: "manual", asOf: "2026-06", note: "Inner Richmond bakery. Kimchi croissants, gochujang everything bagels. Korean-French fusion." }
+  ],
+
+  // ── VIETNAMESE ───────────────────────────────────────────────────────────
+
+  "viet-pho": [
+    { place: "Turtle Tower", mentions: 820, approval: 94, sample: 820, chip: "pho ga", source: "manual", asOf: "2026-06", note: "Reopened 2025 in FiDi. Northern-style clear broth, 15-hr simmer. Eater SF, SF Chronicle, Infatuation top pick. SF Legacy Business." },
+    { place: "Yummy Yummy", mentions: 900, approval: 88, sample: 900, chip: "pho xe lua", source: "manual", asOf: "2026-06", note: "Inner Sunset. 1,663 Yelp reviews. Possibly the largest bowl of pho in SF — overflows with flank, tripe, tendon, beef balls." },
+    { place: "Pho 2000", mentions: 480, approval: 90, sample: 480, chip: "pho dac biet", source: "manual", asOf: "2026-06", note: "Tenderloin. 1,058 Yelp reviews. Family-owned, dinner for two under $25. Called 'best chicken pho in the entire Bay Area.'" },
+    { place: "Golden Star Vietnamese", mentions: 650, approval: 89, sample: 650, chip: "combination beef pho", source: "manual", asOf: "2026-06", note: "Chinatown. 1,398 Yelp reviews. No-MSG broth, huge portions. Infatuation recommended." },
+    { place: "Bodega SF", mentions: 210, approval: 93, sample: 210, chip: "pho ga elevated", source: "manual", asOf: "2026-06", note: "Eater SF Restaurant of the Year 2022. Matt Ho's modern Northern Vietnamese. Free-range chicken, wide noodles." }
+  ],
+
+  "viet-banhmi": [
+    { place: "Saigon Sandwich", mentions: 1100, approval: 95, sample: 1100, chip: "combo banh mi", source: "manual", asOf: "2026-06", note: "Tenderloin legend. 3,980 Yelp reviews. Under $6. Infatuation #1 banh mi in SF. Lines down the block. Cash only." },
+    { place: "Cafe Bunn Mi", mentions: 650, approval: 91, sample: 650, chip: "duck cutlet banh mi", source: "manual", asOf: "2026-06", note: "Clement St, Richmond. 1,519 Yelp reviews. Fried duck cutlet banh mi with house aioli." },
+    { place: "Dinosaurs Vietnamese Sandwiches", mentions: 400, approval: 92, sample: 400, chip: "grilled pork banh mi", source: "manual", asOf: "2026-06", note: "Castro. 1,018 Yelp reviews. Lemongrass grilled pork. VegNews named vegan banh mi top-7 nationally." },
+    { place: "Duc Loi Supermarket", mentions: 320, approval: 90, sample: 320, chip: "classic banh mi", source: "manual", asOf: "2026-06", note: "Mission grocery/deli. Bread baked fresh on-site, literally from oven to sandwich. Cult local favorite." }
+  ],
+
+  "viet-bunbohue": [
+    { place: "Tu Lan", mentions: 380, approval: 88, sample: 380, chip: "bun bo hue", source: "manual", asOf: "2026-06", note: "8 6th St. 993 Yelp reviews. 40+ year institution. Julia Child visited and said 'the food was very good.' SF Legacy Business." },
+    { place: "Hai Ky Mi Gia", mentions: 350, approval: 90, sample: 350, chip: "bun bo hue", source: "manual", asOf: "2026-06", note: "Tenderloin since 1987. 1,272 Yelp reviews. Slippery rice noodles, spicy lemongrass broth. Infatuation pick." },
+    { place: "Tin Vietnamese Cuisine", mentions: 180, approval: 89, sample: 180, chip: "bun bo hue", source: "manual", asOf: "2026-06", note: "SoMa. 1,490 Yelp reviews. Michelin Guide featured. Rich, spicy broth. SF Chronicle praised." },
+    { place: "Golden Star Vietnamese", mentions: 200, approval: 87, sample: 200, chip: "bun bo hue", source: "manual", asOf: "2026-06", note: "Chinatown. Surprisingly good bun bo hue with perfect meat-to-noodle ratio." }
+  ],
+
+  "viet-comtam": [
+    { place: "Kim Son Vietnamese", mentions: 350, approval: 91, sample: 350, chip: "combination broken rice plate", source: "manual", asOf: "2026-06", note: "Outer Richmond. 853 Yelp reviews. Handmade by owner Sandy Sen. Generous pork chop, egg cake, pork skin." },
+    { place: "Yummy Yummy", mentions: 280, approval: 87, sample: 280, chip: "com tam suon bi cha", source: "manual", asOf: "2026-06", note: "Inner Sunset. Large portions, authentic preparation. Also known for pho." },
+    { place: "Tin Vietnamese Cuisine", mentions: 220, approval: 88, sample: 220, chip: "broken rice with grilled pork", source: "manual", asOf: "2026-06", note: "SoMa. Michelin Guide featured. Well-seasoned grilled pork over perfectly textured broken rice." }
+  ],
+
+  "viet-garlicnoodle": [
+    { place: "Thanh Long", mentions: 1800, approval: 91, sample: 1800, chip: "garlic noodles & roast crab", source: "manual", asOf: "2026-06", note: "INVENTED garlic noodles in the 1970s. SF's first Vietnamese restaurant (est. 1971). 3,551 Yelp reviews. ~$80/crab." },
+    { place: "PPQ Dungeness Island", mentions: 1500, approval: 92, sample: 1500, chip: "roast crab & garlic noodles", source: "manual", asOf: "2026-06", note: "Outer Richmond. 3,375 Yelp reviews. Deep-fried crab with jalapeno butter sauce. Infatuation, Eater SF top pick." },
+    { place: "Bac Lieu", mentions: 280, approval: 89, sample: 280, chip: "garlic noodles & five-spice chicken", source: "manual", asOf: "2026-06", note: "Bernal Heights. Chewy noodles generously coated in garlic butter. Infatuation: 'garlic noodles reign supreme.'" }
+  ],
+
+  "viet-banhxeo": [
+    { place: "Le Soleil", mentions: 180, approval: 87, sample: 180, chip: "banh xeo", source: "manual", asOf: "2026-06", note: "Clement St, Inner Richmond. Est. 1993. 654 Yelp reviews. Gold standard for Vietnamese crepes in SF." },
+    { place: "Saigon BBQ Noodle House", mentions: 120, approval: 91, sample: 120, chip: "banh xeo", source: "manual", asOf: "2026-06", note: "Irving St, Sunset. 406 Yelp reviews. 'Best banh xeo at a reasonable price.' Plenty of veggies." },
+    { place: "Kim Son Vietnamese", mentions: 95, approval: 88, sample: 95, chip: "banh xeo", source: "manual", asOf: "2026-06", note: "Outer Richmond. Handmade by owner. Crispy exterior, generous filling." }
+  ],
+
+  "viet-coffee": [
+    { place: "Ca Phe Viet", mentions: 60, approval: 90, sample: 60, chip: "ca phe sua da", source: "manual", asOf: "2026-06", note: "FiDi, 121 New Montgomery. Specializes in modern Vietnamese coffee + banh mi. Authentic phin-drip preparation." },
+    { place: "Cafe Bunn Mi", mentions: 250, approval: 88, sample: 250, chip: "vietnamese iced coffee", source: "manual", asOf: "2026-06", note: "Clement St. Vietnamese coffee pairs perfectly with their banh mi. Strong, sweet, traditional condensed milk." },
+    { place: "Hai Ky Mi Gia", mentions: 140, approval: 89, sample: 140, chip: "extra strong coffee", source: "manual", asOf: "2026-06", note: "Tenderloin. Infatuation specifically calls out their 'extra strong coffee.' Cash only." }
   ]
 
 };

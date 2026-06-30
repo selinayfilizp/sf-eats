@@ -624,12 +624,26 @@
     .right { width: 340px; }
   }
   @media (max-width: 768px) {
+    body { overflow: auto; }
+    .app-container { height: auto; min-height: 100vh; grid-template-rows: auto 1fr auto; }
+    .header-section { padding: 1rem; flex-direction: column; align-items: flex-start; gap: 0.75rem; }
+    .header-right { width: 100%; }
+    .cuisines { width: 100%; overflow-x: auto; flex-wrap: nowrap; -webkit-overflow-scrolling: touch; }
+    .cuisine-btn { flex-shrink: 0; }
     .main { flex-direction: column; }
-    .left { width: 100%; border-right: none; border-bottom: var(--border-width) solid var(--line-color); }
-    .dishes { flex-direction: row; overflow-x: auto; }
-    .dish { border-bottom: none; border-right: var(--border-width) solid var(--line-color); white-space: nowrap; }
-    .center { min-height: 300px; }
+    .left { width: 100%; border-right: none; border-bottom: var(--border-width) solid var(--line-color); max-height: none; }
+    .dishes { flex-direction: row; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    .dish { border-bottom: none; border-right: var(--border-width) solid var(--line-color); white-space: nowrap; padding: 0.65rem 1rem; }
+    .center { min-height: 250px; height: 250px; position: relative; }
+    #map { position: absolute; inset: 0; }
     .right { width: 100%; border-left: none; border-top: var(--border-width) solid var(--line-color); }
+    .spot .sname { font-size: 1.1rem; }
+    .spot { padding: 1.25rem 1rem; }
+    .spot .card-meta { flex-wrap: wrap; gap: 0.75rem; }
+  }
+  @media (max-width: 400px) {
+    .header-section { padding: 0.75rem; }
+    .spot .hl { flex-direction: column; gap: 0.5rem; }
   }
 </style>
 </head>
@@ -682,11 +696,11 @@
     </div>
   </div>
 
-  <div class="footer" id="footer">Ranked by Google review consensus &middot; re-run <b>generate-data.js</b> monthly to refresh.</div>
+  <div class="footer" id="footer">Ranked by Google review consensus &middot; data refreshed monthly.</div>
 </div>
 
 <script>
-const COLORS = { mexican:'#8a6e3a', italian:'#4a6e3a', turkish:'#3a5a6e', indian:'#8a5a2a', chinese:'#6e3a3a' };
+const COLORS = { mexican:'#8a6e3a', italian:'#4a6e3a', turkish:'#3a5a6e', indian:'#8a5a2a', chinese:'#6e3a3a', japanese:'#5a3a6e', korean:'#6e5a3a', vietnamese:'#3a6e5a' };
 
 const DEMO = { mexican:{ label:"Mexican", dishes:[
   {id:"demo-burrito", emoji:"\u{1F32F}", name:"Mission Burrito", spots:[
@@ -714,7 +728,7 @@ function renderCuisines(){
     const b=document.createElement('button');
     b.className='cuisine-btn'+(key===activeCuisine?' active':'');
     b.innerHTML=`<span class="swatch" style="background:${COLORS[key]||'#666'}"></span>${DATA[key].label}`;
-    b.onclick=()=>{ activeCuisine=key; activeDishId=null; renderCuisines(); renderDishes(); resetResults(); };
+    b.onclick=()=>{ activeCuisine=key; activeDishId=null; updateHash(); renderCuisines(); renderDishes(); resetResults(); };
     el.appendChild(b);
   });
 }
@@ -725,7 +739,7 @@ function renderDishes(){
     const div=document.createElement('div');
     div.className='dish'+(d.id===activeDishId?' active':'');
     div.innerHTML=`<div class="emoji">${d.emoji||'\u{1F374}'}</div><div><div class="name">${d.name}</div><div class="meta">${d.spots.length} spot${d.spots.length!==1?'s':''}</div></div>`;
-    div.onclick=()=>{ activeDishId=d.id; renderDishes(); showDish(d); };
+    div.onclick=()=>{ activeDishId=d.id; updateHash(); renderDishes(); showDish(d); };
     el.appendChild(div);
   });
 }
@@ -962,6 +976,26 @@ function highlight(i){ document.querySelectorAll('.spot').forEach(c=>c.classList
 function focusSpot(i){ highlight(i); const m=markers[i]; if(m){map.flyTo(m.getLatLng(),15.5,{duration:.5});m.openPopup();} }
 
 
+function updateHash() {
+  let h = '#' + activeCuisine;
+  if (activeDishId) h += '/' + activeDishId;
+  if (location.hash !== h) history.replaceState(null, '', h);
+}
+function restoreFromHash() {
+  const h = location.hash.replace(/^#/, '');
+  if (!h) return;
+  const [cuisine, dishId] = h.split('/');
+  if (DATA[cuisine]) {
+    activeCuisine = cuisine;
+    renderCuisines(); renderDishes();
+    if (dishId) {
+      const dish = DATA[cuisine].dishes.find(d => d.id === dishId);
+      if (dish) { activeDishId = dish.id; renderDishes(); showDish(dish); }
+    }
+  }
+}
+window.addEventListener('hashchange', restoreFromHash);
+
 function boot(){
   const live = window.SF_FOOD_DATA;
   const badge = document.getElementById('srcBadge');
@@ -969,12 +1003,13 @@ function boot(){
     DATA = live.cuisines;
     const when = live.generatedAt ? new Date(live.generatedAt).toLocaleDateString(undefined,{month:'short',day:'numeric',year:'numeric'}) : '';
     badge.className='badge live'; badge.textContent=`Live · ${when}`;
-    document.getElementById('footer').innerHTML=`Live data from Google Places API · last refreshed <b>${when}</b> · re-run generate-data.js to update.`;
+    document.getElementById('footer').innerHTML=`Live data from Google Places API · last refreshed <b>${when}</b> · data refreshed monthly.`;
   } else {
     badge.className='badge demo'; badge.textContent='Demo / run generator';
   }
   activeCuisine = Object.keys(DATA)[0];
   initMap(); renderCuisines(); renderDishes();
+  restoreFromHash();
 }
 
 (function(){
