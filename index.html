@@ -471,7 +471,23 @@
     border-bottom: var(--border-width) solid var(--line-color);
     padding: 1rem 1.5rem;
     background: rgba(42, 47, 40, 0.03);
+    position: relative;
   }
+  .rec-delete {
+    position: absolute;
+    top: 0.75rem;
+    right: 1rem;
+    background: none;
+    border: var(--border-width) solid transparent;
+    color: var(--ink-muted);
+    cursor: pointer;
+    font-size: 0.7rem;
+    padding: 2px 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    transition: all 0.15s;
+  }
+  .rec-delete:hover { color: var(--love-low); border-color: var(--love-low); }
   .rec-card .rec-name {
     font-size: 1rem;
     font-weight: 500;
@@ -807,7 +823,7 @@
 </div>
 
 <script>
-const COLORS = { mexican:'#8a6e3a', italian:'#4a6e3a', turkish:'#3a5a6e', indian:'#8a5a2a', chinese:'#6e3a3a', japanese:'#5a3a6e', korean:'#6e5a3a', vietnamese:'#3a6e5a' };
+const COLORS = { michelin:'#c41e3a', mexican:'#8a6e3a', italian:'#4a6e3a', turkish:'#3a5a6e', indian:'#8a5a2a', chinese:'#6e3a3a', japanese:'#5a3a6e', korean:'#6e5a3a', vietnamese:'#3a6e5a' };
 
 const DEMO = { mexican:{ label:"Mexican", dishes:[
   {id:"demo-burrito", emoji:"\u{1F32F}", name:"Mission Burrito", spots:[
@@ -829,6 +845,8 @@ function pinIcon(r, gold){
   return L.divIcon({className:'',html:`<div class="pin${gold?' gold':''}""><span>${r}</span></div>`,iconSize:[26,26],iconAnchor:[13,24],popupAnchor:[0,-22]});
 }
 
+const isAdmin = new URLSearchParams(window.location.search).has('admin');
+
 function renderCuisines(){
   const el=document.getElementById('cuisines'); el.innerHTML='';
   Object.keys(DATA).forEach(key=>{
@@ -841,11 +859,14 @@ function renderCuisines(){
 }
 function renderDishes(){
   const c=DATA[activeCuisine]; document.getElementById('dishPanelTitle').textContent=c.label;
+  const isMichelin = activeCuisine === 'michelin';
+  document.querySelector('.panel-head .label').textContent = isMichelin ? 'Star Level' : 'Dishes';
   const el=document.getElementById('dishes'); el.innerHTML='';
   c.dishes.forEach(d=>{
     const div=document.createElement('div');
     div.className='dish'+(d.id===activeDishId?' active':'');
-    div.innerHTML=`<div class="emoji">${d.emoji||'\u{1F374}'}</div><div><div class="name">${d.name}</div><div class="meta">${d.spots.length} spot${d.spots.length!==1?'s':''}</div></div>`;
+    const metaText = isMichelin ? `${d.spots.length} restaurant${d.spots.length!==1?'s':''}` : `${d.spots.length} spot${d.spots.length!==1?'s':''}`;
+    div.innerHTML=`<div class="emoji">${d.emoji||'\u{1F374}'}</div><div><div class="name">${d.name}</div><div class="meta">${metaText}</div></div>`;
     div.onclick=()=>{ activeDishId=d.id; updateHash(); renderDishes(); showDish(d); };
     el.appendChild(div);
   });
@@ -970,10 +991,22 @@ function renderRecCards(recs, container) {
     card.className = 'rec-card';
     const when = new Date(r._creationTime).toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric' });
     card.innerHTML = `
+      ${isAdmin ? `<button class="rec-delete" data-id="${r._id}">remove</button>` : ''}
       <div class="rec-name">${esc(r.name)}</div>
       ${r.neighborhood ? `<div class="rec-meta">${esc(r.neighborhood)}</div>` : ''}
       ${r.note ? `<div class="rec-note">"${esc(r.note)}"</div>` : ''}
       <div class="rec-byline">${r.by ? esc(r.by) : 'Anonymous'} · ${when}</div>`;
+    if (isAdmin) {
+      card.querySelector('.rec-delete').onclick = async (e) => {
+        if (!confirm('Remove this community pick?')) return;
+        const btn = e.target;
+        btn.textContent = '...';
+        btn.disabled = true;
+        await convexMutation('recs:remove', { id: r._id });
+        const dish = DATA[activeCuisine].dishes.find(d => d.id === r.dishId);
+        if (dish) showDish(dish);
+      };
+    }
     container.appendChild(card);
   });
 }
@@ -1103,6 +1136,29 @@ function restoreFromHash() {
 }
 window.addEventListener('hashchange', restoreFromHash);
 
+const MICHELIN = {
+  michelin: {
+    label: "Michelin",
+    dishes: [
+      { id:"mic-3star", emoji:"⭐", name:"3 Stars", spots:[
+        {name:"Atelier Crenn", neighborhood:"Marina", rating:4.6, reviews:"1,200", price:"$$$$", why:"Dominique Crenn's poetic culinaria. One of the most singular dining experiences in the world.", address:"3127 Fillmore St", lat:37.7965, lng:-122.4358, mapsUri:""}
+      ]},
+      { id:"mic-2star", emoji:"⭐", name:"2 Stars", spots:[
+        {name:"Benu", neighborhood:"SoMa", rating:4.5, reviews:"820", price:"$$$$", why:"Corey Lee's tasting menu blends Korean, Chinese, and French technique. Extraordinary craft.", address:"22 Hawthorne St", lat:37.7858, lng:-122.3977, mapsUri:""},
+        {name:"Californios", neighborhood:"SoMa", rating:4.6, reviews:"680", price:"$$$$", why:"Mexican fine dining elevated to an art form. Val Cantu's tasting menu is unlike anything else.", address:"355 11th St", lat:37.7706, lng:-122.4138, mapsUri:""}
+      ]},
+      { id:"mic-1star", emoji:"⭐", name:"1 Star", spots:[
+        {name:"Acquerello", neighborhood:"Nob Hill", rating:4.6, reviews:"1,100", price:"$$$$", why:"A refined Italian tasting menu in a former chapel. One of SF's longest-running starred restaurants.", address:"1722 Sacramento St", lat:37.7912, lng:-122.4208, mapsUri:""},
+        {name:"Lazy Bear", neighborhood:"Mission", rating:4.5, reviews:"1,400", price:"$$$$", why:"A communal dinner party atmosphere with a multi-course American tasting menu. Creative and memorable.", address:"3416 19th St", lat:37.7603, lng:-122.4201, mapsUri:""},
+        {name:"Mister Jiu's", neighborhood:"Chinatown", rating:4.4, reviews:"1,800", price:"$$$", why:"Modern Chinese-American cooking in a beautiful Chinatown dining room. Brandon Jew at his best.", address:"28 Waverly Pl", lat:37.7946, lng:-122.4070, mapsUri:""},
+        {name:"Kin Khao", neighborhood:"Union Square", rating:4.3, reviews:"2,100", price:"$$$", why:"Bold, personal Thai cooking. The curries and larb are exceptional — not your typical Thai spot.", address:"55 Cyril Magnin St", lat:37.7862, lng:-122.4082, mapsUri:""},
+        {name:"Sorrel", neighborhood:"Presidio Heights", rating:4.7, reviews:"450", price:"$$$$", why:"Alex Hong's seasonal Californian tasting menu. Intimate, precise, and deeply satisfying.", address:"3228 Sacramento St", lat:37.7878, lng:-122.4446, mapsUri:""},
+        {name:"Spruce", neighborhood:"Presidio Heights", rating:4.5, reviews:"1,600", price:"$$$$", why:"A neighborhood institution with polished Californian cooking and one of the best burger-and-wine combos in the city.", address:"3640 Sacramento St", lat:37.7876, lng:-122.4520, mapsUri:""}
+      ]}
+    ]
+  }
+};
+
 function boot(){
   const live = window.SF_FOOD_DATA;
   const badge = document.getElementById('srcBadge');
@@ -1114,6 +1170,7 @@ function boot(){
   } else {
     badge.className='badge demo'; badge.textContent='Demo / run generator';
   }
+  DATA = Object.assign({}, MICHELIN, DATA);
   activeCuisine = Object.keys(DATA)[0];
   initMap(); renderCuisines(); renderDishes();
   restoreFromHash();
