@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>SF Eats — Admin</title>
+<meta name="robots" content="noindex, nofollow" />
+<style>
+  :root {
+    --sage-bg: #C3C9B8;
+    --sage-dark: #A9B09A;
+    --ink-dark: #2A2F28;
+    --ink-muted: rgba(42, 47, 40, 0.5);
+    --line-color: #2A2F28;
+    --mustard-yellow: #DFD154;
+    --love-high: #4a6e3a;
+    --love-mid: #8a7a2a;
+    --love-low: #8a3a3a;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--sage-bg);
+    color: var(--ink-dark);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    min-height: 100vh;
+  }
+  .wrap { max-width: 860px; margin: 0 auto; padding: 2rem 1.25rem 4rem; }
+  h1 { font-size: 1.3rem; letter-spacing: -0.02em; }
+  .sub { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--ink-muted); margin-top: 4px; }
+  a { color: var(--ink-dark); }
+
+  /* login */
+  .gate { margin-top: 3rem; max-width: 380px; }
+  .gate label { display: block; font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--ink-muted); margin-bottom: 6px; }
+  .gate input {
+    width: 100%; padding: 10px 12px; font-size: 0.9rem;
+    border: 1px solid var(--line-color); background: transparent; color: var(--ink-dark);
+  }
+  .gate button {
+    margin-top: 0.75rem; padding: 10px 20px; font-size: 0.75rem; font-weight: 500;
+    text-transform: uppercase; letter-spacing: 0.08em; cursor: pointer;
+    background: var(--ink-dark); color: var(--sage-bg); border: 1px solid var(--ink-dark);
+  }
+  .gate .err { color: var(--love-low); font-size: 0.8rem; margin-top: 0.75rem; }
+
+  /* stats */
+  .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--line-color); border: 1px solid var(--line-color); margin: 1.5rem 0; }
+  .stat { background: var(--sage-bg); padding: 0.9rem 1rem; }
+  .stat .k { font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-muted); }
+  .stat .v { font-size: 1.5rem; font-weight: 500; margin-top: 2px; font-variant-numeric: tabular-nums; }
+
+  /* filter tabs */
+  .tabs { display: flex; gap: 6px; margin-bottom: 1rem; flex-wrap: wrap; }
+  .tab {
+    border: 1px solid var(--line-color); background: transparent; color: var(--ink-dark);
+    padding: 6px 14px; cursor: pointer; font-size: 0.7rem; font-weight: 500;
+    text-transform: uppercase; letter-spacing: 0.08em;
+  }
+  .tab.active { background: var(--ink-dark); color: var(--sage-bg); }
+
+  /* rec cards */
+  .rec {
+    border: 1px solid var(--line-color); padding: 1rem 1.25rem; margin-bottom: 0.75rem;
+    background: rgba(42, 47, 40, 0.03); position: relative;
+  }
+  .rec .dish-tag { font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-muted); }
+  .rec .name { font-size: 1rem; font-weight: 500; margin-top: 2px; }
+  .rec .meta { font-size: 0.7rem; color: var(--ink-muted); margin-top: 2px; }
+  .rec .note { font-size: 0.8rem; font-style: italic; opacity: 0.85; margin-top: 0.5rem; line-height: 1.5; }
+  .rec .byline { font-size: 0.6rem; color: var(--ink-muted); margin-top: 0.4rem; text-transform: uppercase; letter-spacing: 0.05em; }
+  .rec .status {
+    position: absolute; top: 0.9rem; right: 1.1rem;
+    font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.08em;
+    padding: 3px 8px; border: 1px solid currentColor;
+  }
+  .status.pending { color: var(--love-mid); }
+  .status.approved { color: var(--love-high); }
+  .status.rejected { color: var(--love-low); }
+  .actions { display: flex; gap: 6px; margin-top: 0.75rem; }
+  .actions button {
+    border: 1px solid var(--line-color); background: transparent; color: var(--ink-dark);
+    padding: 5px 12px; cursor: pointer; font-size: 0.65rem; font-weight: 500;
+    text-transform: uppercase; letter-spacing: 0.06em; transition: all 0.15s;
+  }
+  .actions button:hover { background: rgba(42,47,40,0.08); }
+  .actions .approve:hover { color: var(--love-high); border-color: var(--love-high); }
+  .actions .reject:hover { color: var(--love-mid); border-color: var(--love-mid); }
+  .actions .delete:hover { color: var(--love-low); border-color: var(--love-low); }
+  .empty { color: var(--ink-muted); font-size: 0.85rem; padding: 2rem 0; }
+  .topbar { display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; flex-wrap: wrap; }
+  .links { font-size: 0.7rem; display: flex; gap: 1rem; }
+  .logout { background: none; border: none; color: var(--ink-muted); cursor: pointer; font-size: 0.7rem; text-decoration: underline; }
+  @media (max-width: 560px) { .stats { grid-template-columns: repeat(2, 1fr); } }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="topbar">
+    <div>
+      <h1>SF Eats — Admin</h1>
+      <div class="sub">Community picks moderation</div>
+    </div>
+    <div class="links" id="links" style="display:none">
+      <a href="https://vercel.com/selinayfilizps-projects/sf-eats/analytics" target="_blank">Analytics ↗</a>
+      <a href="https://dashboard.convex.dev" target="_blank">Convex ↗</a>
+      <button class="logout" id="logout">log out</button>
+    </div>
+  </div>
+
+  <div class="gate" id="gate">
+    <label for="keyInput">Admin key</label>
+    <input type="password" id="keyInput" autocomplete="current-password" />
+    <button id="loginBtn">Enter</button>
+    <div class="err" id="gateErr"></div>
+  </div>
+
+  <div id="dash" style="display:none">
+    <div class="stats">
+      <div class="stat"><div class="k">Total</div><div class="v" id="st-total">–</div></div>
+      <div class="stat"><div class="k">Pending</div><div class="v" id="st-pending">–</div></div>
+      <div class="stat"><div class="k">Approved</div><div class="v" id="st-approved">–</div></div>
+      <div class="stat"><div class="k">This week</div><div class="v" id="st-week">–</div></div>
+    </div>
+    <div class="tabs" id="tabs"></div>
+    <div id="list"></div>
+  </div>
+</div>
+
+<script src="sf-food-data.js"></script>
+<script>
+const CONVEX_URL = 'https://peaceful-cricket-351.convex.cloud';
+let KEY = localStorage.getItem('sfeats-admin-key') || '';
+let RECS = [];
+let FILTER = 'pending';
+
+// dishId -> "Cuisine · Dish" label
+const DISH_LABELS = {};
+try {
+  Object.keys(DATA).forEach(c => (DATA[c].dishes || []).forEach(d => {
+    DISH_LABELS[d.id] = `${DATA[c].label} · ${d.name}`;
+  }));
+} catch (e) {}
+
+async function convexCall(kind, path, args) {
+  const res = await fetch(`${CONVEX_URL}/api/${kind}`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ path, args })
+  });
+  const j = await res.json();
+  if (!res.ok || j.status === 'error') throw new Error(j.errorMessage || `HTTP ${res.status}`);
+  return j.value;
+}
+
+function esc(s) { const d = document.createElement('div'); d.textContent = s; return d.innerHTML; }
+function statusOf(r) { return r.status || 'approved'; }
+
+async function login(key) {
+  document.getElementById('gateErr').textContent = '';
+  try {
+    RECS = await convexCall('query', 'admin:listAll', { key });
+    KEY = key;
+    localStorage.setItem('sfeats-admin-key', key);
+    document.getElementById('gate').style.display = 'none';
+    document.getElementById('dash').style.display = '';
+    document.getElementById('links').style.display = '';
+    render();
+  } catch (e) {
+    localStorage.removeItem('sfeats-admin-key');
+    document.getElementById('gateErr').textContent = /unauthorized/i.test(e.message) ? 'Wrong key.' : `Error: ${e.message}`;
+  }
+}
+
+async function refresh() {
+  RECS = await convexCall('query', 'admin:listAll', { key: KEY });
+  render();
+}
+
+function render() {
+  const counts = { all: RECS.length, pending: 0, approved: 0, rejected: 0 };
+  const weekAgo = Date.now() - 7 * 24 * 3600 * 1000;
+  let week = 0;
+  RECS.forEach(r => { counts[statusOf(r)]++; if (r._creationTime > weekAgo) week++; });
+
+  document.getElementById('st-total').textContent = counts.all;
+  document.getElementById('st-pending').textContent = counts.pending;
+  document.getElementById('st-approved').textContent = counts.approved;
+  document.getElementById('st-week').textContent = week;
+
+  const tabs = document.getElementById('tabs');
+  tabs.innerHTML = '';
+  ['pending', 'approved', 'rejected', 'all'].forEach(f => {
+    const b = document.createElement('button');
+    b.className = 'tab' + (f === FILTER ? ' active' : '');
+    b.textContent = `${f} (${counts[f]})`;
+    b.onclick = () => { FILTER = f; render(); };
+    tabs.appendChild(b);
+  });
+
+  const list = document.getElementById('list');
+  list.innerHTML = '';
+  const shown = RECS.filter(r => FILTER === 'all' || statusOf(r) === FILTER);
+  if (!shown.length) {
+    list.innerHTML = `<div class="empty">Nothing ${FILTER === 'all' ? 'here yet' : FILTER}.</div>`;
+    return;
+  }
+  shown.forEach(r => {
+    const st = statusOf(r);
+    const when = new Date(r._creationTime).toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric' });
+    const card = document.createElement('div');
+    card.className = 'rec';
+    card.innerHTML = `
+      <span class="status ${st}">${st}</span>
+      <div class="dish-tag">${esc(DISH_LABELS[r.dishId] || r.dishId)}</div>
+      <div class="name">${esc(r.name)}</div>
+      ${r.neighborhood ? `<div class="meta">${esc(r.neighborhood)}</div>` : ''}
+      ${r.note ? `<div class="note">"${esc(r.note)}"</div>` : ''}
+      <div class="byline">${r.by ? esc(r.by) : 'Anonymous'} · ${when}</div>
+      <div class="actions">
+        ${st !== 'approved' ? '<button class="approve">Approve</button>' : ''}
+        ${st !== 'rejected' ? '<button class="reject">Reject</button>' : ''}
+        <button class="delete">Delete</button>
+      </div>`;
+    const act = async (fn) => {
+      card.querySelectorAll('.actions button').forEach(b => b.disabled = true);
+      try { await fn(); await refresh(); }
+      catch (e) { alert(`Failed: ${e.message}`); card.querySelectorAll('.actions button').forEach(b => b.disabled = false); }
+    };
+    const ap = card.querySelector('.approve');
+    if (ap) ap.onclick = () => act(() => convexCall('mutation', 'admin:setStatus', { key: KEY, id: r._id, status: 'approved' }));
+    const rj = card.querySelector('.reject');
+    if (rj) rj.onclick = () => act(() => convexCall('mutation', 'admin:setStatus', { key: KEY, id: r._id, status: 'rejected' }));
+    card.querySelector('.delete').onclick = () => {
+      if (!confirm(`Permanently delete "${r.name}"? Reject hides it without deleting.`)) return;
+      act(() => convexCall('mutation', 'admin:remove', { key: KEY, id: r._id }));
+    };
+    list.appendChild(card);
+  });
+}
+
+document.getElementById('loginBtn').onclick = () => login(document.getElementById('keyInput').value.trim());
+document.getElementById('keyInput').addEventListener('keydown', e => { if (e.key === 'Enter') login(e.target.value.trim()); });
+document.getElementById('logout').onclick = () => { localStorage.removeItem('sfeats-admin-key'); location.reload(); };
+
+if (KEY) login(KEY);
+</script>
+</body>
+</html>

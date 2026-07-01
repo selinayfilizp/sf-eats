@@ -4,11 +4,13 @@ import { v } from "convex/values";
 export const list = query({
   args: { dishId: v.string() },
   handler: async (ctx, args) => {
-    return await ctx.db
+    const recs = await ctx.db
       .query("recs")
       .withIndex("by_dish", (q) => q.eq("dishId", args.dishId))
       .order("desc")
       .collect();
+    // Only approved recs are public; legacy recs (no status) were already live
+    return recs.filter((r) => r.status === "approved" || r.status === undefined);
   },
 });
 
@@ -21,13 +23,6 @@ export const add = mutation({
     by: v.optional(v.string()),
   },
   handler: async (ctx, args) => {
-    return await ctx.db.insert("recs", args);
-  },
-});
-
-export const remove = mutation({
-  args: { id: v.id("recs") },
-  handler: async (ctx, args) => {
-    await ctx.db.delete(args.id);
+    return await ctx.db.insert("recs", { ...args, status: "pending" });
   },
 });

@@ -473,21 +473,12 @@
     background: rgba(42, 47, 40, 0.03);
     position: relative;
   }
-  .rec-delete {
-    position: absolute;
-    top: 0.75rem;
-    right: 1rem;
-    background: none;
-    border: var(--border-width) solid transparent;
-    color: var(--ink-muted);
-    cursor: pointer;
-    font-size: 0.7rem;
-    padding: 2px 6px;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    transition: all 0.15s;
+  .rec-thanks {
+    padding: 1rem 1.5rem;
+    font-size: 0.8rem;
+    border-bottom: var(--border-width) solid var(--line-color);
+    background: rgba(42, 47, 40, 0.03);
   }
-  .rec-delete:hover { color: var(--love-low); border-color: var(--love-low); }
   .rec-card .rec-name {
     font-size: 1rem;
     font-weight: 500;
@@ -845,7 +836,7 @@ function pinIcon(r, gold){
   return L.divIcon({className:'',html:`<div class="pin${gold?' gold':''}""><span>${r}</span></div>`,iconSize:[26,26],iconAnchor:[13,24],popupAnchor:[0,-22]});
 }
 
-const isAdmin = new URLSearchParams(window.location.search).has('admin');
+function track(name, data){ try { window.va && window.va('event', { name, data }); } catch(e){} }
 
 function renderCuisines(){
   const el=document.getElementById('cuisines'); el.innerHTML='';
@@ -853,7 +844,7 @@ function renderCuisines(){
     const b=document.createElement('button');
     b.className='cuisine-btn'+(key===activeCuisine?' active':'');
     b.innerHTML=`<span class="swatch" style="background:${COLORS[key]||'#666'}"></span>${DATA[key].label}`;
-    b.onclick=()=>{ activeCuisine=key; activeDishId=null; updateHash(); renderCuisines(); renderDishes(); resetResults(); };
+    b.onclick=()=>{ activeCuisine=key; activeDishId=null; updateHash(); renderCuisines(); renderDishes(); resetResults(); track('cuisine_view', { cuisine: key }); };
     el.appendChild(b);
   });
 }
@@ -867,7 +858,7 @@ function renderDishes(){
     div.className='dish'+(d.id===activeDishId?' active':'');
     const metaText = isMichelin ? `${d.spots.length} restaurant${d.spots.length!==1?'s':''}` : `${d.spots.length} spot${d.spots.length!==1?'s':''}`;
     div.innerHTML=`<div class="emoji">${d.emoji||'\u{1F374}'}</div><div><div class="name">${d.name}</div><div class="meta">${metaText}</div></div>`;
-    div.onclick=()=>{ activeDishId=d.id; updateHash(); renderDishes(); showDish(d); };
+    div.onclick=()=>{ activeDishId=d.id; updateHash(); renderDishes(); showDish(d); track('dish_view', { cuisine: activeCuisine, dish: d.name }); };
     el.appendChild(div);
   });
 }
@@ -991,22 +982,10 @@ function renderRecCards(recs, container) {
     card.className = 'rec-card';
     const when = new Date(r._creationTime).toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric' });
     card.innerHTML = `
-      ${isAdmin ? `<button class="rec-delete" data-id="${r._id}">remove</button>` : ''}
       <div class="rec-name">${esc(r.name)}</div>
       ${r.neighborhood ? `<div class="rec-meta">${esc(r.neighborhood)}</div>` : ''}
       ${r.note ? `<div class="rec-note">"${esc(r.note)}"</div>` : ''}
       <div class="rec-byline">${r.by ? esc(r.by) : 'Anonymous'} · ${when}</div>`;
-    if (isAdmin) {
-      card.querySelector('.rec-delete').onclick = async (e) => {
-        if (!confirm('Remove this community pick?')) return;
-        const btn = e.target;
-        btn.textContent = '...';
-        btn.disabled = true;
-        await convexMutation('recs:remove', { id: r._id });
-        const dish = DATA[activeCuisine].dishes.find(d => d.id === r.dishId);
-        if (dish) showDish(dish);
-      };
-    }
     container.appendChild(card);
   });
 }
@@ -1047,8 +1026,12 @@ function showRecForm(dishId, section, addBtn) {
         note: form.querySelector('#rec-note').value.trim() || undefined,
         by: form.querySelector('#rec-by').value.trim() || undefined
       });
-      const dish = DATA[activeCuisine].dishes.find(d => d.id === dishId);
-      if (dish) showDish(dish);
+      track('rec_submit', { dish: dishId });
+      const thanks = document.createElement('div');
+      thanks.className = 'rec-thanks';
+      thanks.textContent = 'Thanks! Your pick will show up once it’s reviewed.';
+      form.replaceWith(thanks);
+      addBtn.style.display = '';
     } catch (e) {
       btn.textContent = 'Error, retry'; btn.disabled = false;
     }
