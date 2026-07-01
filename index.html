@@ -193,7 +193,22 @@
     white-space: nowrap;
   }
 
-  .results-head-actions { display: flex; gap: 6px; }
+  .results-head-actions { display: flex; gap: 6px; flex-wrap: wrap; justify-content: flex-end; }
+
+  .search-row { display: flex; gap: 6px; }
+  .search-row input { flex: 1; }
+  .dice-btn {
+    border: var(--border-width) solid var(--line-color);
+    background: transparent;
+    cursor: pointer;
+    font-size: 0.9rem;
+    padding: 0 10px;
+    line-height: 1;
+    transition: background 0.15s;
+  }
+  .dice-btn:hover { background: var(--mustard-yellow); }
+
+  .surprise-cta { margin-top: 1rem; display: inline-block; }
 
   .cuisines { display: flex; gap: 6px; flex-wrap: wrap; }
 
@@ -828,7 +843,10 @@
       </h1>
     </div>
     <div class="search-wrap">
-      <input id="searchInput" type="search" placeholder="Search a dish or restaurant…" autocomplete="off" />
+      <div class="search-row">
+        <input id="searchInput" type="search" placeholder="Search a dish or restaurant…" autocomplete="off" />
+        <button class="dice-btn" title="Surprise me" onclick="surpriseMe()">🎲</button>
+      </div>
       <div class="search-results" id="searchResults"></div>
     </div>
     <div class="header-right">
@@ -854,6 +872,7 @@
             <div class="hint" id="resultsHint">Spots appear here, ranked best-first.</div>
           </div>
           <div class="results-head-actions">
+            <button class="add-rec-top-btn" id="nearBtn" style="display:none">📍 Near me</button>
             <button class="add-rec-top-btn" id="shareBtn" style="display:none">Share</button>
             <button class="add-rec-top-btn" id="addRecTopBtn" style="display:none" onclick="showRecFormFromTop()">+ Add yours</button>
           </div>
@@ -862,7 +881,7 @@
       <div class="spots-scroll">
         <div id="communityInline"></div>
         <div class="spots" id="spots">
-          <div class="empty"><div class="big">&#9733;</div>Choose a dish to see where to eat it in SF.</div>
+          <div class="empty"><div class="big">&#9733;</div>Pick a cuisine up top, then a dish — or let fate decide.<br><button class="add-rec-top-btn surprise-cta" onclick="surpriseMe()">🎲 Surprise me</button></div>
         </div>
       </div>
     </div>
@@ -923,9 +942,10 @@ function renderDishes(){
 function resetResults(){
   document.getElementById('resultsTitle').textContent='Pick a dish';
   document.getElementById('resultsHint').textContent='Spots appear here, ranked best-first.';
-  document.getElementById('spots').innerHTML='<div class="empty"><div class="big">✳</div>Choose a dish.</div>';
+  document.getElementById('spots').innerHTML='<div class="empty"><div class="big">✳</div>Now pick a dish on the left — or let fate decide.<br><button class="add-rec-top-btn surprise-cta" onclick="surpriseMe()">🎲 Surprise me</button></div>';
   document.getElementById('addRecTopBtn').style.display='none';
   document.getElementById('shareBtn').style.display='none';
+  document.getElementById('nearBtn').style.display='none';
   document.getElementById('communityInline').innerHTML='';
   clearMarkers();
 }
@@ -1097,13 +1117,27 @@ function showRecForm(dishId, section, addBtn) {
   };
 }
 
+let userLoc = null;
+let sortMode = 'rank';
+function distMi(a, s){
+  const R = 3958.8, toR = x => x * Math.PI / 180;
+  const dLat = toR(s.lat - a.lat), dLng = toR(s.lng - a.lng);
+  const h = Math.sin(dLat/2)**2 + Math.cos(toR(a.lat)) * Math.cos(toR(s.lat)) * Math.sin(dLng/2)**2;
+  return 2 * R * Math.asin(Math.sqrt(h));
+}
+
 function showDish(d){
   document.getElementById('resultsTitle').textContent=d.name;
   document.getElementById('resultsHint').innerHTML=`Top ${d.spots.length} SF spots &middot; Mentions = how talked-about &middot; Loved = how positive`;
   const wrap=document.getElementById('spots'); wrap.innerHTML=''; clearMarkers();
   const bounds=[];
-  d.spots.forEach((s,i)=>{
-    const rank=i+1;
+  const nearActive = sortMode === 'near' && userLoc;
+  let list = d.spots.map((s, idx) => ({
+    s, rank: idx + 1,
+    dist: (nearActive && typeof s.lat === 'number') ? distMi(userLoc, s) : null
+  }));
+  if (nearActive) list.sort((a, b) => (a.dist ?? 1e9) - (b.dist ?? 1e9));
+  list.forEach(({s, rank, dist}, i)=>{
     const isFeatured = rank === 1;
     const cnt=s.reviews?`(${s.reviews})`:'';
     const link=s.mapsUri?s.mapsUri:`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(s.name+' '+(s.address||'San Francisco'))}`;
@@ -1113,9 +1147,10 @@ function showDish(d){
 
     const rankSuffix = isFeatured ? ' / THE GOLD STANDARD' : '';
     const rankNum = String(rank).padStart(2,'0');
+    const distTag = dist != null ? ` · ${dist < 10 ? dist.toFixed(1) : Math.round(dist)} MI AWAY` : '';
 
     card.innerHTML=`
-      <div class="rank-label">RANK ${rankNum}${rankSuffix}</div>
+      <div class="rank-label">RANK ${rankNum}${rankSuffix}${distTag}</div>
       <div class="sname">${s.name}</div>
       <div class="card-meta">
         <div class="meta-item">
@@ -1153,6 +1188,9 @@ function showDish(d){
   document.getElementById('addRecTopBtn').style.display = '';
   document.getElementById('addRecTopBtn').setAttribute('data-dish', d.id);
   document.getElementById('shareBtn').style.display = '';
+  const nearBtn = document.getElementById('nearBtn');
+  nearBtn.style.display = '';
+  nearBtn.textContent = nearActive ? '↺ By rank' : '📍 Near me';
   renderCommunityInline(d.id);
 }
 function highlight(i){ document.querySelectorAll('.spot').forEach(c=>c.classList.remove('active')); const c=document.querySelector(`.spot[data-idx="${i}"]`); if(c){c.classList.add('active');c.scrollIntoView({behavior:'smooth',block:'nearest'});} }
@@ -1220,11 +1258,49 @@ searchInput.addEventListener('keydown', e => {
 });
 document.addEventListener('click', e => { if (!e.target.closest('.search-wrap')) searchResults.style.display = 'none'; });
 
+/* ─── Near me ─── */
+function reShowActiveDish() {
+  const d = (DATA[activeCuisine] && DATA[activeCuisine].dishes.find(x => x.id === activeDishId));
+  if (d) showDish(d);
+}
+document.getElementById('nearBtn').onclick = () => {
+  if (sortMode === 'near') { sortMode = 'rank'; reShowActiveDish(); return; }
+  if (userLoc) { sortMode = 'near'; reShowActiveDish(); return; }
+  const b = document.getElementById('nearBtn');
+  b.textContent = 'Locating…';
+  navigator.geolocation.getCurrentPosition(
+    pos => {
+      userLoc = { lat: pos.coords.latitude, lng: pos.coords.longitude };
+      sortMode = 'near';
+      track('near_me', {});
+      reShowActiveDish();
+    },
+    () => { b.textContent = 'Location off'; setTimeout(() => { b.textContent = '📍 Near me'; }, 1800); },
+    { timeout: 8000, maximumAge: 300000 }
+  );
+};
+
+/* ─── Surprise me ─── */
+function surpriseMe() {
+  const cuisines = Object.keys(DATA).filter(c => c !== 'michelin');
+  const c = cuisines[Math.floor(Math.random() * cuisines.length)];
+  const ds = DATA[c].dishes;
+  const d = ds[Math.floor(Math.random() * ds.length)];
+  activeCuisine = c; activeDishId = d.id;
+  updateHash(); renderCuisines(); renderDishes(); showDish(d);
+  track('surprise_me', { dish: d.name });
+}
+
 /* ─── Share ─── */
 document.getElementById('shareBtn').onclick = async () => {
   const d = (DATA[activeCuisine] && DATA[activeCuisine].dishes.find(x => x.id === activeDishId));
   if (!d) return;
-  const url = `${location.origin}${location.pathname}#${activeCuisine}/${d.id}`;
+  // Per-dish share pages (/s/<dishId>) carry dish-specific OG previews;
+  // michelin entries are client-side only and have no share page.
+  const hasSharePage = location.protocol.startsWith('http') && activeCuisine !== 'michelin';
+  const url = hasSharePage
+    ? `${location.origin}/s/${d.id}`
+    : `${location.origin}${location.pathname}#${activeCuisine}/${d.id}`;
   const text = `Best ${d.name} in SF`;
   track('share', { dish: d.name });
   if (navigator.share) {

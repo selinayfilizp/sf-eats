@@ -6,6 +6,7 @@
   "scripts": {
     "generate": "node generate-data.js",
     "generate:dry": "node generate-data.js --dry-run",
+    "share-pages": "node generate-share-pages.js && python3 generate-og-images.py",
     "deploy": "npx convex deploy"
   },
   "engines": { "node": ">=18" },
