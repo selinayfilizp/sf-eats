@@ -88,6 +88,22 @@
   .actions .reject:hover { color: var(--love-mid); border-color: var(--love-mid); }
   .actions .delete:hover { color: var(--love-low); border-color: var(--love-low); }
   .empty { color: var(--ink-muted); font-size: 0.85rem; padding: 2rem 0; }
+
+  /* data quality view */
+  .views { margin-top: 1.5rem; }
+  .dq-section { margin-top: 1.75rem; }
+  .dq-section h2 { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--ink-muted); font-weight: 500; margin-bottom: 0.6rem; }
+  .dq-row { display: flex; align-items: center; gap: 0.75rem; padding: 0.4rem 0; font-size: 0.8rem; border-bottom: 1px solid rgba(42,47,40,0.12); }
+  .dq-row .n { width: 110px; flex-shrink: 0; }
+  .dq-row .bar { flex: 1; height: 8px; background: rgba(42,47,40,0.1); position: relative; }
+  .dq-row .bar i { position: absolute; inset: 0 auto 0 0; background: var(--love-low); }
+  .dq-row .c { width: 105px; text-align: right; font-variant-numeric: tabular-nums; color: var(--ink-muted); font-size: 0.7rem; }
+  .dq-item { padding: 0.5rem 0.75rem; border: 1px solid rgba(42,47,40,0.2); margin-bottom: 4px; font-size: 0.78rem; display: flex; justify-content: space-between; gap: 0.5rem; flex-wrap: wrap; background: rgba(42,47,40,0.03); }
+  .dq-item .tag { color: var(--ink-muted); font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.05em; }
+  .dq-note { font-size: 0.72rem; color: var(--ink-muted); margin-top: 0.5rem; line-height: 1.5; }
+  details.dq-group { margin-bottom: 0.5rem; }
+  details.dq-group summary { cursor: pointer; font-size: 0.8rem; padding: 0.5rem 0; font-weight: 500; }
+  details.dq-group summary .cnt { color: var(--ink-muted); font-weight: 400; font-size: 0.7rem; }
   .topbar { display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; flex-wrap: wrap; }
   .links { font-size: 0.7rem; display: flex; gap: 1rem; }
   .logout { background: none; border: none; color: var(--ink-muted); cursor: pointer; font-size: 0.7rem; text-decoration: underline; }
@@ -116,14 +132,23 @@
   </div>
 
   <div id="dash" style="display:none">
-    <div class="stats">
-      <div class="stat"><div class="k">Total</div><div class="v" id="st-total">–</div></div>
-      <div class="stat"><div class="k">Pending</div><div class="v" id="st-pending">–</div></div>
-      <div class="stat"><div class="k">Approved</div><div class="v" id="st-approved">–</div></div>
-      <div class="stat"><div class="k">This week</div><div class="v" id="st-week">–</div></div>
+    <div class="tabs views" id="views">
+      <button class="tab view-tab active" data-view="picks">Community Picks</button>
+      <button class="tab view-tab" data-view="data">Data Quality</button>
     </div>
-    <div class="tabs" id="tabs"></div>
-    <div id="list"></div>
+
+    <div id="view-picks">
+      <div class="stats">
+        <div class="stat"><div class="k">Total</div><div class="v" id="st-total">–</div></div>
+        <div class="stat"><div class="k">Pending</div><div class="v" id="st-pending">–</div></div>
+        <div class="stat"><div class="k">Approved</div><div class="v" id="st-approved">–</div></div>
+        <div class="stat"><div class="k">This week</div><div class="v" id="st-week">–</div></div>
+      </div>
+      <div class="tabs" id="tabs"></div>
+      <div id="list"></div>
+    </div>
+
+    <div id="view-data" style="display:none"></div>
   </div>
 </div>
 
@@ -134,13 +159,15 @@ let KEY = localStorage.getItem('sfeats-admin-key') || '';
 let RECS = [];
 let FILTER = 'pending';
 
+// sf-food-data.js exposes window.SF_FOOD_DATA
+const FOOD = window.SF_FOOD_DATA || {};
+const CUISINES = FOOD.cuisines || {};
+
 // dishId -> "Cuisine · Dish" label
 const DISH_LABELS = {};
-try {
-  Object.keys(DATA).forEach(c => (DATA[c].dishes || []).forEach(d => {
-    DISH_LABELS[d.id] = `${DATA[c].label} · ${d.name}`;
-  }));
-} catch (e) {}
+Object.keys(CUISINES).forEach(c => (CUISINES[c].dishes || []).forEach(d => {
+  DISH_LABELS[d.id] = `${CUISINES[c].label} · ${d.name}`;
+}));
 
 async function convexCall(kind, path, args) {
   const res = await fetch(`${CONVEX_URL}/api/${kind}`, {
@@ -238,6 +265,84 @@ function render() {
     list.appendChild(card);
   });
 }
+
+// ── Data quality view ──────────────────────────────────────────────
+function renderData() {
+  const el = document.getElementById('view-data');
+  let spots = 0, unrated = 0, verified = 0;
+  const perCuisine = [];   // {label, unrated, total}
+  const unratedByDish = []; // {label, spots: [names]}
+  const hypeTraps = [];    // {dish, name, mentions, approval}
+
+  Object.keys(CUISINES).forEach(c => {
+    const cu = CUISINES[c];
+    let cUn = 0, cTot = 0;
+    (cu.dishes || []).forEach(d => {
+      const missing = [];
+      (d.spots || []).forEach(s => {
+        spots++; cTot++;
+        if (s.dishVerified) verified++;
+        if (s.dishApproval == null && s.dishMentions == null) { unrated++; cUn++; missing.push(s.name); }
+        if (s.dishMentions >= 60 && s.dishApproval != null && s.dishApproval < 70)
+          hypeTraps.push({ dish: `${cu.label} · ${d.name}`, name: s.name, mentions: s.dishMentions, approval: s.dishApproval });
+      });
+      if (missing.length) unratedByDish.push({ label: `${cu.label} · ${d.name}`, spots: missing });
+    });
+    perCuisine.push({ label: cu.label, unrated: cUn, total: cTot });
+  });
+  perCuisine.sort((a, b) => (b.unrated / b.total) - (a.unrated / a.total));
+
+  const genDate = FOOD.generatedAt ? new Date(FOOD.generatedAt).toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric' }) : '?';
+  const pct = spots ? Math.round(100 * unrated / spots) : 0;
+
+  el.innerHTML = `
+    <div class="stats">
+      <div class="stat"><div class="k">Spots</div><div class="v">${spots}</div></div>
+      <div class="stat"><div class="k">Unrated</div><div class="v">${unrated} <span style="font-size:0.8rem;color:var(--ink-muted)">(${pct}%)</span></div></div>
+      <div class="stat"><div class="k">Verified</div><div class="v">${verified}</div></div>
+      <div class="stat"><div class="k">Data from</div><div class="v" style="font-size:0.95rem;padding-top:6px">${genDate}</div></div>
+    </div>
+
+    <div class="dq-section">
+      <h2>Unrated by cuisine</h2>
+      ${perCuisine.map(c => `
+        <div class="dq-row">
+          <span class="n">${esc(c.label)}</span>
+          <span class="bar"><i style="width:${c.total ? Math.round(100 * c.unrated / c.total) : 0}%"></i></span>
+          <span class="c">${c.unrated}/${c.total} unrated</span>
+        </div>`).join('')}
+    </div>
+
+    ${hypeTraps.length ? `
+    <div class="dq-section">
+      <h2>Hype traps (talked about a lot, loved less)</h2>
+      ${hypeTraps.map(t => `
+        <div class="dq-item">
+          <span><strong>${esc(t.name)}</strong> <span class="tag">${esc(t.dish)}</span></span>
+          <span class="tag">${t.mentions} mentions · ${t.approval}% loved</span>
+        </div>`).join('')}
+    </div>` : ''}
+
+    <div class="dq-section">
+      <h2>Checklist — spots missing hype/love scores</h2>
+      <div class="dq-note">Work through these in <code>verified-dishes.js</code>, or run the generator with a topped-up SerpAPI key to score them all automatically.</div>
+      ${unratedByDish.map(g => `
+        <details class="dq-group">
+          <summary>${esc(g.label)} <span class="cnt">— ${g.spots.length} spot${g.spots.length !== 1 ? 's' : ''}</span></summary>
+          ${g.spots.map(n => `<div class="dq-item">${esc(n)}</div>`).join('')}
+        </details>`).join('')}
+    </div>`;
+}
+
+document.querySelectorAll('.view-tab').forEach(b => {
+  b.onclick = () => {
+    document.querySelectorAll('.view-tab').forEach(x => x.classList.toggle('active', x === b));
+    const v = b.dataset.view;
+    document.getElementById('view-picks').style.display = v === 'picks' ? '' : 'none';
+    document.getElementById('view-data').style.display = v === 'data' ? '' : 'none';
+    if (v === 'data') renderData();
+  };
+});
 
 document.getElementById('loginBtn').onclick = () => login(document.getElementById('keyInput').value.trim());
 document.getElementById('keyInput').addEventListener('keydown', e => { if (e.key === 'Enter') login(e.target.value.trim()); });

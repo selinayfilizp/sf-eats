@@ -145,6 +145,56 @@
   .badge.live { color: var(--ink-dark); border-color: var(--ink-dark); background: rgba(42, 47, 40, 0.08); }
   .badge.demo { color: var(--olive-dark); border-color: var(--olive-dark); background: rgba(68, 75, 65, 0.08); }
 
+  /* ─── Search ─── */
+  .search-wrap { position: relative; flex: 1; min-width: 170px; max-width: 300px; }
+  .search-wrap input {
+    width: 100%;
+    padding: 8px 12px;
+    border: var(--border-width) solid var(--line-color);
+    background: transparent;
+    color: var(--ink-dark);
+    font-size: 0.8rem;
+    font-family: inherit;
+    border-radius: 0;
+    -webkit-appearance: none;
+  }
+  .search-wrap input::placeholder { color: var(--ink-muted); }
+  .search-wrap input:focus { outline: none; background: rgba(42, 47, 40, 0.04); }
+  .search-results {
+    position: absolute;
+    top: calc(100% + 4px);
+    left: 0;
+    right: 0;
+    background: var(--sage-bg);
+    border: var(--border-width) solid var(--line-color);
+    box-shadow: 4px 4px 0 rgba(42, 47, 40, 0.15);
+    z-index: 600;
+    max-height: 320px;
+    overflow-y: auto;
+    display: none;
+  }
+  .search-result {
+    padding: 0.6rem 0.9rem;
+    cursor: pointer;
+    border-bottom: var(--border-width) solid rgba(42, 47, 40, 0.12);
+    font-size: 0.8rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 0.5rem;
+  }
+  .search-result:last-child { border-bottom: none; }
+  .search-result:hover { background: var(--mustard-yellow); }
+  .search-result .sr-tag {
+    font-size: 0.6rem;
+    color: var(--ink-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    white-space: nowrap;
+  }
+
+  .results-head-actions { display: flex; gap: 6px; }
+
   .cuisines { display: flex; gap: 6px; flex-wrap: wrap; }
 
   .cuisine-btn {
@@ -666,6 +716,7 @@
     .search-title { font-size: 1rem; }
     .header-right { width: 100%; }
     .badge { display: none; }
+    .search-wrap { width: 100%; max-width: none; flex: none; }
 
     /* ── Cuisine tabs: 2-row wrapping grid ── */
     .cuisines {
@@ -776,6 +827,10 @@
         <span class="text-medium">&amp; Where</span>
       </h1>
     </div>
+    <div class="search-wrap">
+      <input id="searchInput" type="search" placeholder="Search a dish or restaurant…" autocomplete="off" />
+      <div class="search-results" id="searchResults"></div>
+    </div>
     <div class="header-right">
       <span class="badge" id="srcBadge">loading...</span>
       <div class="cuisines" id="cuisines"></div>
@@ -798,7 +853,10 @@
             <div class="dishname" id="resultsTitle">Pick a dish</div>
             <div class="hint" id="resultsHint">Spots appear here, ranked best-first.</div>
           </div>
-          <button class="add-rec-top-btn" id="addRecTopBtn" style="display:none" onclick="showRecFormFromTop()">+ Add yours</button>
+          <div class="results-head-actions">
+            <button class="add-rec-top-btn" id="shareBtn" style="display:none">Share</button>
+            <button class="add-rec-top-btn" id="addRecTopBtn" style="display:none" onclick="showRecFormFromTop()">+ Add yours</button>
+          </div>
         </div>
       </div>
       <div class="spots-scroll">
@@ -867,6 +925,7 @@ function resetResults(){
   document.getElementById('resultsHint').textContent='Spots appear here, ranked best-first.';
   document.getElementById('spots').innerHTML='<div class="empty"><div class="big">✳</div>Choose a dish.</div>';
   document.getElementById('addRecTopBtn').style.display='none';
+  document.getElementById('shareBtn').style.display='none';
   document.getElementById('communityInline').innerHTML='';
   clearMarkers();
 }
@@ -1093,6 +1152,7 @@ function showDish(d){
   if(bounds.length) map.flyToBounds(bounds,{padding:[60,60],maxZoom:14.5,duration:.6});
   document.getElementById('addRecTopBtn').style.display = '';
   document.getElementById('addRecTopBtn').setAttribute('data-dish', d.id);
+  document.getElementById('shareBtn').style.display = '';
   renderCommunityInline(d.id);
 }
 function highlight(i){ document.querySelectorAll('.spot').forEach(c=>c.classList.remove('active')); const c=document.querySelector(`.spot[data-idx="${i}"]`); if(c){c.classList.add('active');c.scrollIntoView({behavior:'smooth',block:'nearest'});} }
@@ -1118,6 +1178,66 @@ function restoreFromHash() {
   }
 }
 window.addEventListener('hashchange', restoreFromHash);
+
+/* ─── Search ─── */
+let SEARCH_IDX = null;
+function buildSearchIndex() {
+  const idx = [];
+  Object.keys(DATA).forEach(c => {
+    (DATA[c].dishes || []).forEach(d => {
+      idx.push({ type: 'dish', label: `${d.emoji || ''} ${d.name}`.trim(), sub: DATA[c].label, cuisine: c, dish: d, text: (d.name + ' ' + DATA[c].label).toLowerCase() });
+      (d.spots || []).forEach(s => {
+        idx.push({ type: 'spot', label: s.name, sub: `${d.name} · ${DATA[c].label}`, cuisine: c, dish: d, text: (s.name + ' ' + d.name).toLowerCase() });
+      });
+    });
+  });
+  return idx;
+}
+const searchInput = document.getElementById('searchInput');
+const searchResults = document.getElementById('searchResults');
+function searchGo(r) {
+  activeCuisine = r.cuisine; activeDishId = r.dish.id;
+  updateHash(); renderCuisines(); renderDishes(); showDish(r.dish);
+  track('search_select', { dish: r.dish.name });
+  searchInput.value = ''; searchResults.style.display = 'none'; searchInput.blur();
+}
+searchInput.addEventListener('input', () => {
+  const q = searchInput.value.trim().toLowerCase();
+  if (!q) { searchResults.style.display = 'none'; return; }
+  if (!SEARCH_IDX) SEARCH_IDX = buildSearchIndex();
+  const hits = SEARCH_IDX.filter(r => r.text.includes(q));
+  hits.sort((a, b) => (a.type === 'dish' ? 0 : 1) - (b.type === 'dish' ? 0 : 1));
+  const top = hits.slice(0, 8);
+  searchResults.innerHTML = top.length
+    ? top.map((r, i) => `<div class="search-result" data-i="${i}"><span>${esc(r.label)}</span><span class="sr-tag">${esc(r.sub)}</span></div>`).join('')
+    : '<div class="search-result" style="cursor:default;color:var(--ink-muted)">No matches</div>';
+  searchResults.style.display = 'block';
+  top.forEach((r, i) => { searchResults.querySelector(`[data-i="${i}"]`).onclick = () => searchGo(r); });
+});
+searchInput.addEventListener('keydown', e => {
+  if (e.key === 'Escape') { searchResults.style.display = 'none'; searchInput.blur(); }
+  if (e.key === 'Enter') { const first = searchResults.querySelector('.search-result[data-i]'); if (first) first.click(); }
+});
+document.addEventListener('click', e => { if (!e.target.closest('.search-wrap')) searchResults.style.display = 'none'; });
+
+/* ─── Share ─── */
+document.getElementById('shareBtn').onclick = async () => {
+  const d = (DATA[activeCuisine] && DATA[activeCuisine].dishes.find(x => x.id === activeDishId));
+  if (!d) return;
+  const url = `${location.origin}${location.pathname}#${activeCuisine}/${d.id}`;
+  const text = `Best ${d.name} in SF`;
+  track('share', { dish: d.name });
+  if (navigator.share) {
+    try { await navigator.share({ title: text, text, url }); } catch (e) {}
+  } else {
+    try {
+      await navigator.clipboard.writeText(`${text} → ${url}`);
+      const b = document.getElementById('shareBtn');
+      b.textContent = 'Copied!';
+      setTimeout(() => { b.textContent = 'Share'; }, 1500);
+    } catch (e) {}
+  }
+};
 
 const MICHELIN = {
   michelin: {
