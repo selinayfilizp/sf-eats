@@ -26,3 +26,24 @@ export const add = mutation({
     return await ctx.db.insert("recs", { ...args, status: "pending" });
   },
 });
+
+export const upvote = mutation({
+  args: { id: v.id("recs") },
+  handler: async (ctx, args) => {
+    const rec = await ctx.db.get(args.id);
+    if (!rec) return;
+    await ctx.db.patch(args.id, { votes: (rec.votes ?? 0) + 1 });
+  },
+});
+
+export const report = mutation({
+  args: {
+    dishId: v.string(),
+    spotName: v.string(),
+    kind: v.union(v.literal("closed"), v.literal("wrong-info"), v.literal("other")),
+    note: v.optional(v.string()),
+  },
+  handler: async (ctx, args) => {
+    return await ctx.db.insert("reports", args);
+  },
+});

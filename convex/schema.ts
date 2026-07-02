@@ -10,5 +10,14 @@ export default defineSchema({
     by: v.optional(v.string()),
     // undefined = legacy rec, treated as approved
     status: v.optional(v.union(v.literal("pending"), v.literal("approved"), v.literal("rejected"))),
+    votes: v.optional(v.number()),
   }).index("by_dish", ["dishId"]),
+
+  reports: defineTable({
+    dishId: v.string(),
+    spotName: v.string(),
+    kind: v.union(v.literal("closed"), v.literal("wrong-info"), v.literal("other")),
+    note: v.optional(v.string()),
+    resolved: v.optional(v.boolean()),
+  }),
 });

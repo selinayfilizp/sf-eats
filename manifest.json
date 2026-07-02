@@ -1,0 +1,13 @@
+{
+  "name": "SF Eats — What to Eat & Where",
+  "short_name": "SF Eats",
+  "description": "The best version of every dish in San Francisco, ranked by what reviewers actually love.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#C3C9B8",
+  "theme_color": "#C3C9B8",
+  "icons": [
+    { "src": "/icons/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/icons/icon-512.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}

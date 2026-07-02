@@ -6,16 +6,22 @@
 <title>SF Eats - What to Eat & Where</title>
 <meta name="description" content="It doesn't matter where you go. It matters what you eat. The best version of every dish in San Francisco, ranked by thousands of real reviews." />
 <meta property="og:type" content="website" />
-<meta property="og:url" content="https://sf-eats.vercel.app/" />
+<meta property="og:url" content="https://sfeats.vercel.app/" />
 <meta property="og:title" content="SF Eats - What to Eat & Where" />
 <meta property="og:description" content="It doesn't matter where you go. It matters what you eat. The best version of every dish in SF, ranked by thousands of real reviews." />
-<meta property="og:image" content="https://sf-eats.vercel.app/og-image.png" />
+<meta property="og:image" content="https://sfeats.vercel.app/og-image.png" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="SF Eats - What to Eat & Where" />
 <meta name="twitter:description" content="It doesn't matter where you go. It matters what you eat. The best dish at every spot in San Francisco." />
-<meta name="twitter:image" content="https://sf-eats.vercel.app/og-image.png" />
+<meta name="twitter:image" content="https://sfeats.vercel.app/og-image.png" />
+<link rel="manifest" href="/manifest.json" />
+<meta name="theme-color" content="#C3C9B8" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="default" />
+<meta name="apple-mobile-web-app-title" content="SF Eats" />
+<link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
 <style>
@@ -544,6 +550,47 @@
     border-bottom: var(--border-width) solid var(--line-color);
     background: rgba(42, 47, 40, 0.03);
   }
+
+  .rec-vote {
+    position: absolute;
+    top: 0.85rem;
+    right: 1.25rem;
+    border: var(--border-width) solid var(--line-color);
+    background: transparent;
+    color: var(--ink-dark);
+    padding: 4px 10px;
+    cursor: pointer;
+    font-size: 0.7rem;
+    font-variant-numeric: tabular-nums;
+    transition: all 0.15s;
+  }
+  .rec-vote:hover:not(:disabled) { background: var(--mustard-yellow); }
+  .rec-vote.voted { background: var(--ink-dark); color: var(--sage-bg); border-color: var(--ink-dark); cursor: default; }
+
+  .report-link {
+    background: none;
+    border: none;
+    color: var(--ink-muted);
+    cursor: pointer;
+    font-size: 0.65rem;
+    text-decoration: underline;
+    padding: 0;
+    margin-left: 0.75rem;
+    font-family: inherit;
+  }
+  .report-link:hover { color: var(--love-low); }
+
+  .report-form { margin-top: 0.75rem; display: flex; flex-direction: column; gap: 6px; }
+  .report-form select, .report-form input {
+    border: var(--border-width) solid var(--line-color);
+    background: transparent;
+    color: var(--ink-dark);
+    padding: 7px 10px;
+    font-size: 0.75rem;
+    font-family: inherit;
+    border-radius: 0;
+  }
+  .report-thanks { font-size: 0.75rem; padding: 0.4rem 0; }
   .rec-card .rec-name {
     font-size: 1rem;
     font-weight: 500;
@@ -615,12 +662,12 @@
     outline: none;
     border-color: var(--ink-dark);
   }
-  .rec-form .form-actions {
+  .rec-form .form-actions, .report-form .form-actions {
     display: flex;
     gap: 0.5rem;
     margin-top: 0.25rem;
   }
-  .rec-form .btn-submit {
+  .rec-form .btn-submit, .report-form .btn-submit {
     border: var(--border-width) solid var(--ink-dark);
     background: var(--ink-dark);
     color: var(--sage-bg);
@@ -632,8 +679,8 @@
     letter-spacing: 0.06em;
     transition: opacity 0.12s;
   }
-  .rec-form .btn-submit:hover { opacity: 0.85; }
-  .rec-form .btn-cancel {
+  .rec-form .btn-submit:hover, .report-form .btn-submit:hover { opacity: 0.85; }
+  .rec-form .btn-cancel, .report-form .btn-cancel {
     border: var(--border-width) solid var(--line-color);
     background: transparent;
     color: var(--ink-dark);
@@ -643,7 +690,7 @@
     text-transform: uppercase;
     letter-spacing: 0.06em;
   }
-  .rec-form .btn-cancel:hover { background: rgba(42, 47, 40, 0.06); }
+  .rec-form .btn-cancel:hover, .report-form .btn-cancel:hover { background: rgba(42, 47, 40, 0.06); }
 
   /* ─── Community picks inline ─── */
 
@@ -1054,17 +1101,39 @@ function showRecFormFromTop() {
   showRecForm(dishId, s, fakeBtn);
 }
 
+function votedIds() { try { return JSON.parse(localStorage.getItem('sfeats-voted') || '[]'); } catch (e) { return []; } }
+
 function renderRecCards(recs, container) {
   container.innerHTML = '';
-  recs.forEach(r => {
+  const voted = votedIds();
+  const sorted = [...recs].sort((a, b) => (b.votes ?? 0) - (a.votes ?? 0) || b._creationTime - a._creationTime);
+  sorted.forEach(r => {
     const card = document.createElement('div');
     card.className = 'rec-card';
     const when = new Date(r._creationTime).toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric' });
+    const hasVoted = voted.includes(r._id);
     card.innerHTML = `
+      <button class="rec-vote${hasVoted ? ' voted' : ''}" ${hasVoted ? 'disabled' : ''}>👍 <span>${r.votes ?? 0}</span></button>
       <div class="rec-name">${esc(r.name)}</div>
       ${r.neighborhood ? `<div class="rec-meta">${esc(r.neighborhood)}</div>` : ''}
       ${r.note ? `<div class="rec-note">"${esc(r.note)}"</div>` : ''}
       <div class="rec-byline">${r.by ? esc(r.by) : 'Anonymous'} · ${when}</div>`;
+    const btn = card.querySelector('.rec-vote');
+    btn.onclick = async () => {
+      if (btn.disabled) return;
+      btn.disabled = true;
+      btn.classList.add('voted');
+      btn.querySelector('span').textContent = (r.votes ?? 0) + 1;
+      try {
+        await convexMutation('recs:upvote', { id: r._id });
+        localStorage.setItem('sfeats-voted', JSON.stringify([...votedIds(), r._id]));
+        track('rec_upvote', { dish: r.dishId });
+      } catch (e) {
+        btn.disabled = false;
+        btn.classList.remove('voted');
+        btn.querySelector('span').textContent = r.votes ?? 0;
+      }
+    };
     container.appendChild(card);
   });
 }
@@ -1172,11 +1241,12 @@ function showDish(d){
       <div class="card-footer">
         <div>
           ${s.address?`<div class="addr">${s.address}</div>`:''}
-          <div class="links"><a class="maplink" href="${link}" target="_blank" rel="noopener">Google Maps &rarr;</a></div>
+          <div class="links"><a class="maplink" href="${link}" target="_blank" rel="noopener">Google Maps &rarr;</a> <button class="report-link">Report an issue</button></div>
         </div>
         <div class="pattern-accent barcode-pattern"></div>
       </div>`;
     card.onclick=()=>focusSpot(i);
+    card.querySelector('.report-link').onclick=(e)=>{ e.stopPropagation(); showReportForm(card, d.id, s.name); };
     wrap.appendChild(card);
     if(typeof s.lat==='number'&&typeof s.lng==='number'){
       const m=L.marker([s.lat,s.lng],{icon:pinIcon(rank, isFeatured)}).addTo(map);
@@ -1193,6 +1263,42 @@ function showDish(d){
   nearBtn.textContent = nearActive ? '↺ By rank' : '📍 Near me';
   renderCommunityInline(d.id);
 }
+function showReportForm(card, dishId, spotName){
+  if (card.querySelector('.report-form')) return;
+  const form = document.createElement('div');
+  form.className = 'report-form';
+  form.innerHTML = `
+    <select id="rep-kind">
+      <option value="closed">Permanently closed</option>
+      <option value="wrong-info">Wrong info (address, price…)</option>
+      <option value="other">Something else</option>
+    </select>
+    <input type="text" id="rep-note" placeholder="Anything else? (optional)" />
+    <div class="form-actions">
+      <button class="btn-submit" id="rep-send">Send</button>
+      <button class="btn-cancel" id="rep-cancel">Cancel</button>
+    </div>`;
+  form.onclick = e => e.stopPropagation();
+  card.appendChild(form);
+  form.querySelector('#rep-cancel').onclick = () => form.remove();
+  form.querySelector('#rep-send').onclick = async () => {
+    const btn = form.querySelector('#rep-send');
+    btn.textContent = '…'; btn.disabled = true;
+    try {
+      await convexMutation('recs:report', {
+        dishId, spotName,
+        kind: form.querySelector('#rep-kind').value,
+        note: form.querySelector('#rep-note').value.trim() || undefined
+      });
+      track('report', { spot: spotName });
+      form.innerHTML = '<div class="report-thanks">Thanks — noted. I\'ll take a look.</div>';
+      setTimeout(() => form.remove(), 2500);
+    } catch (e) {
+      btn.textContent = 'Error, retry'; btn.disabled = false;
+    }
+  };
+}
+
 function highlight(i){ document.querySelectorAll('.spot').forEach(c=>c.classList.remove('active')); const c=document.querySelector(`.spot[data-idx="${i}"]`); if(c){c.classList.add('active');c.scrollIntoView({behavior:'smooth',block:'nearest'});} }
 function focusSpot(i){ highlight(i); const m=markers[i]; if(m){map.flyTo(m.getLatLng(),15.5,{duration:.5});m.openPopup();} }
 

@@ -134,6 +134,7 @@
   <div id="dash" style="display:none">
     <div class="tabs views" id="views">
       <button class="tab view-tab active" data-view="picks">Community Picks</button>
+      <button class="tab view-tab" data-view="reports">Reports <span id="rep-badge"></span></button>
       <button class="tab view-tab" data-view="data">Data Quality</button>
     </div>
 
@@ -148,6 +149,7 @@
       <div id="list"></div>
     </div>
 
+    <div id="view-reports" style="display:none"></div>
     <div id="view-data" style="display:none"></div>
   </div>
 </div>
@@ -183,6 +185,8 @@ async function convexCall(kind, path, args) {
 function esc(s) { const d = document.createElement('div'); d.textContent = s; return d.innerHTML; }
 function statusOf(r) { return r.status || 'approved'; }
 
+let REPORTS = [];
+
 async function login(key) {
   document.getElementById('gateErr').textContent = '';
   try {
@@ -193,6 +197,7 @@ async function login(key) {
     document.getElementById('dash').style.display = '';
     document.getElementById('links').style.display = '';
     render();
+    loadReports();
   } catch (e) {
     localStorage.removeItem('sfeats-admin-key');
     document.getElementById('gateErr').textContent = /unauthorized/i.test(e.message) ? 'Wrong key.' : `Error: ${e.message}`;
@@ -202,6 +207,48 @@ async function login(key) {
 async function refresh() {
   RECS = await convexCall('query', 'admin:listAll', { key: KEY });
   render();
+}
+
+async function loadReports() {
+  try {
+    REPORTS = await convexCall('query', 'admin:listReports', { key: KEY });
+  } catch (e) { REPORTS = []; }
+  const open = REPORTS.filter(r => !r.resolved).length;
+  document.getElementById('rep-badge').textContent = open ? `(${open})` : '';
+  renderReports();
+}
+
+function renderReports() {
+  const el = document.getElementById('view-reports');
+  if (!REPORTS.length) { el.innerHTML = '<div class="empty">No reports yet. They\'ll show up when visitors flag a closed spot or wrong info.</div>'; return; }
+  el.innerHTML = '';
+  const KINDS = { 'closed': 'Permanently closed', 'wrong-info': 'Wrong info', 'other': 'Other' };
+  [...REPORTS].sort((a, b) => (a.resolved ? 1 : 0) - (b.resolved ? 1 : 0) || b._creationTime - a._creationTime).forEach(r => {
+    const when = new Date(r._creationTime).toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric' });
+    const card = document.createElement('div');
+    card.className = 'rec';
+    card.innerHTML = `
+      <span class="status ${r.resolved ? 'approved' : 'pending'}">${r.resolved ? 'resolved' : 'open'}</span>
+      <div class="dish-tag">${esc(DISH_LABELS[r.dishId] || r.dishId)}</div>
+      <div class="name">${esc(r.spotName)}</div>
+      <div class="meta">${esc(KINDS[r.kind] || r.kind)}</div>
+      ${r.note ? `<div class="note">"${esc(r.note)}"</div>` : ''}
+      <div class="byline">${when}</div>
+      <div class="actions">
+        <button class="approve">${r.resolved ? 'Reopen' : 'Mark resolved'}</button>
+        <button class="delete">Delete</button>
+      </div>`;
+    card.querySelector('.approve').onclick = async () => {
+      await convexCall('mutation', 'admin:resolveReport', { key: KEY, id: r._id, resolved: !r.resolved });
+      loadReports();
+    };
+    card.querySelector('.delete').onclick = async () => {
+      if (!confirm('Delete this report?')) return;
+      await convexCall('mutation', 'admin:removeReport', { key: KEY, id: r._id });
+      loadReports();
+    };
+    el.appendChild(card);
+  });
 }
 
 function render() {
@@ -339,8 +386,10 @@ document.querySelectorAll('.view-tab').forEach(b => {
     document.querySelectorAll('.view-tab').forEach(x => x.classList.toggle('active', x === b));
     const v = b.dataset.view;
     document.getElementById('view-picks').style.display = v === 'picks' ? '' : 'none';
+    document.getElementById('view-reports').style.display = v === 'reports' ? '' : 'none';
     document.getElementById('view-data').style.display = v === 'data' ? '' : 'none';
     if (v === 'data') renderData();
+    if (v === 'reports') loadReports();
   };
 });
 

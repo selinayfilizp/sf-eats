@@ -36,3 +36,27 @@ export const remove = mutation({
     await ctx.db.delete(args.id);
   },
 });
+
+export const listReports = query({
+  args: { key: v.string() },
+  handler: async (ctx, args) => {
+    checkKey(args.key);
+    return await ctx.db.query("reports").order("desc").collect();
+  },
+});
+
+export const resolveReport = mutation({
+  args: { key: v.string(), id: v.id("reports"), resolved: v.boolean() },
+  handler: async (ctx, args) => {
+    checkKey(args.key);
+    await ctx.db.patch(args.id, { resolved: args.resolved });
+  },
+});
+
+export const removeReport = mutation({
+  args: { key: v.string(), id: v.id("reports") },
+  handler: async (ctx, args) => {
+    checkKey(args.key);
+    await ctx.db.delete(args.id);
+  },
+});
