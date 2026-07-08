@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>SF Eats Blog: Data-Driven Guides to Eating in San Francisco</title>
+<meta name="description" content="Rankings and guides built from thousands of Google reviews: the best burrito, ramen, and pizza in SF, plus the methodology behind hype vs love scores." />
+<link rel="canonical" href="https://sfeats.vercel.app/blog/" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://sfeats.vercel.app/blog/" />
+<meta property="og:title" content="SF Eats Blog: Data-Driven Guides to Eating in San Francisco" />
+<meta property="og:description" content="Rankings and guides built from thousands of Google reviews: the best burrito, ramen, and pizza in SF, plus the methodology behind hype vs love scores." />
+<meta property="og:image" content="https://sfeats.vercel.app/og-image.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="SF Eats Blog: Data-Driven Guides to Eating in San Francisco" />
+<meta name="twitter:description" content="Rankings and guides built from thousands of Google reviews: the best burrito, ramen, and pizza in SF, plus the methodology behind hype vs love scores." />
+<meta name="twitter:image" content="https://sfeats.vercel.app/og-image.png" />
+
+<style>
+  :root { --bg:#C3C9B8; --ink:#2A2F28; --muted:rgba(42,47,40,0.55); --line:#2A2F28; --yellow:#DFD154;
+          --high:#4a6e3a; --mid:#8a7a2a; --low:#8a3a3a; }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  body { background:var(--bg); color:var(--ink); font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+         -webkit-font-smoothing:antialiased; line-height:1.65; }
+  .wrap { max-width:680px; margin:0 auto; padding:1.5rem 1.25rem 4rem; }
+  a { color:var(--ink); }
+  .brand { font-size:0.7rem; font-weight:700; letter-spacing:0.1em; text-decoration:none; }
+  .crumb { font-size:0.65rem; text-transform:uppercase; letter-spacing:0.08em; color:var(--muted); margin-top:1.75rem; }
+  h1 { font-size:1.75rem; letter-spacing:-0.02em; margin-top:0.35rem; line-height:1.2; }
+  .byline { font-size:0.72rem; color:var(--muted); margin-top:0.6rem; }
+  article p { margin-top:1rem; font-size:0.95rem; }
+  article h2 { font-size:1.2rem; margin-top:2rem; letter-spacing:-0.01em; }
+  article h3 { font-size:1rem; margin-top:1.4rem; }
+  article ul, article ol { margin:1rem 0 0 1.25rem; font-size:0.95rem; }
+  article li { margin-top:0.4rem; }
+  .rankcard { border:1px solid var(--line); background:rgba(42,47,40,0.03); padding:1rem 1.25rem; margin-top:1.1rem; }
+  .rankcard .rk { font-size:0.6rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--muted); }
+  .rankcard h3 { margin-top:0.15rem; }
+  .rankcard .meta { font-size:0.75rem; color:var(--muted); margin-top:2px; }
+  .rankcard .scores { font-size:0.72rem; margin-top:0.4rem; }
+  .rankcard .scores b { font-variant-numeric:tabular-nums; }
+  .quote { font-size:0.85rem; font-style:italic; opacity:0.85; margin-top:0.6rem; border-left:2px solid var(--line); padding-left:0.75rem; }
+  .cta { display:inline-block; margin-top:1.5rem; background:var(--ink); color:var(--bg); text-decoration:none;
+         padding:11px 20px; font-size:0.72rem; font-weight:600; text-transform:uppercase; letter-spacing:0.08em; }
+  .postlist a.post { display:block; border:1px solid var(--line); padding:1.1rem 1.25rem; margin-top:1rem;
+         text-decoration:none; background:rgba(42,47,40,0.03); }
+  .postlist a.post:hover { background:var(--yellow); }
+  .postlist .pt { font-weight:600; font-size:1.05rem; letter-spacing:-0.01em; }
+  .postlist .pd { font-size:0.8rem; color:var(--muted); margin-top:0.25rem; }
+  .more { margin-top:2.75rem; }
+  .more h3 { font-size:0.7rem; text-transform:uppercase; letter-spacing:0.1em; color:var(--muted); font-weight:500; }
+  footer { margin-top:3rem; font-size:0.65rem; color:var(--muted); text-transform:uppercase; letter-spacing:0.08em; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<a class="brand" href="/">SF EATS</a>
+<div class="crumb">Blog</div>
+<h1>The SF Eats Blog</h1>
+<div class="byline">Data-driven answers to "where should I eat in San Francisco?"</div>
+<div class="postlist">
+  <a class="post" href="/blog/best-burrito-san-francisco"><div class="pt">The Best Mission Burrito in San Francisco, Ranked by Review Data (2026)</div><div class="pd">We analyzed thousands of Google reviews to rank SF's Mission burritos by how much reviewers actually love them, not just how often they mention them. El Metate beats the famous names.</div></a>
+  <a class="post" href="/blog/best-ramen-san-francisco"><div class="pt">The Best Ramen in San Francisco: 4 Bowls Ranked by 9,000+ Reviews (2026)</div><div class="pd">Marufuku, Mensho, Hinodeya or Taishoken? We scored SF's ramen shops on how positively thousands of reviewers describe the actual bowl. The answer is not the one with the longest line.</div></a>
+  <a class="post" href="/blog/best-pizza-san-francisco"><div class="pt">The Best Pizza in San Francisco by Style: Neapolitan, Detroit, and NY Slice (2026)</div><div class="pd">Golden Boy, Tony's, Il Casaro, Square Pie Guys and more, ranked by what reviewers actually say about the pizza. One ranking per style, because comparing a Detroit square to a Margherita is unfair to both.</div></a>
+  <a class="post" href="/blog/most-mentioned-isnt-best"><div class="pt">High Mentions ≠ High Quality: How SF Eats Ranks Every Dish in San Francisco</div><div class="pd">The most-mentioned dish in reviews is not always the best one. The methodology behind SF Eats: hype vs love, Bayesian-weighted ratings, and dish-level sentiment across thousands of Google reviews.</div></a>
+  <a class="post" href="/blog/what-to-eat-in-san-francisco"><div class="pt">What to Eat in San Francisco: One Gold-Standard Dish per Cuisine (2026 Guide)</div><div class="pd">A data-driven SF food itinerary: the single best-reviewed spot for burritos, birria, ramen, pho, banh mi, Peking duck, Korean BBQ, kebab and more, chosen from thousands of Google reviews.</div></a>
+</div>
+<a class="cta" href="/">Open the interactive map →</a>
+<footer>SF Eats · ranked by Google review consensus · <a href="/">sfeats.vercel.app</a> · <a href="/blog/">blog</a></footer>
+</div>
+</body>
+</html>

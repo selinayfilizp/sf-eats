@@ -935,7 +935,7 @@
     </div>
   </div>
 
-  <div class="footer" id="footer">Ranked by Google review consensus &middot; data refreshed monthly.</div>
+  <div class="footer" id="footer">Ranked by Google review consensus &middot; data refreshed monthly. &middot; <a href="/blog/" style="color:inherit">Blog</a></div>
 </div>
 
 <script>
@@ -1452,7 +1452,7 @@ function boot(){
     DATA = live.cuisines;
     const when = live.generatedAt ? new Date(live.generatedAt).toLocaleDateString(undefined,{month:'short',day:'numeric',year:'numeric'}) : '';
     badge.className='badge live'; badge.textContent=`Live · ${when}`;
-    document.getElementById('footer').innerHTML=`Live data from Google Places API · last refreshed <b>${when}</b> · data refreshed monthly.`;
+    document.getElementById('footer').innerHTML=`Live data from Google Places API · last refreshed <b>${when}</b> · <a href='/blog/' style='color:inherit'>Blog</a>`;
   } else {
     badge.className='badge demo'; badge.textContent='Demo / run generator';
   }

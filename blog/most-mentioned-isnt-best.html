@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>High Mentions ≠ High Quality: How SF Eats Ranks Every Dish in San Francisco</title>
+<meta name="description" content="The most-mentioned dish in reviews is not always the best one. The methodology behind SF Eats: hype vs love, Bayesian-weighted ratings, and dish-level sentiment across thousands of Google reviews." />
+<link rel="canonical" href="https://sfeats.vercel.app/blog/most-mentioned-isnt-best" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://sfeats.vercel.app/blog/most-mentioned-isnt-best" />
+<meta property="og:title" content="High Mentions ≠ High Quality: How SF Eats Ranks Every Dish in San Francisco" />
+<meta property="og:description" content="The most-mentioned dish in reviews is not always the best one. The methodology behind SF Eats: hype vs love, Bayesian-weighted ratings, and dish-level sentiment across thousands of Google reviews." />
+<meta property="og:image" content="https://sfeats.vercel.app/og-image.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="High Mentions ≠ High Quality: How SF Eats Ranks Every Dish in San Francisco" />
+<meta name="twitter:description" content="The most-mentioned dish in reviews is not always the best one. The methodology behind SF Eats: hype vs love, Bayesian-weighted ratings, and dish-level sentiment across thousands of Google reviews." />
+<meta name="twitter:image" content="https://sfeats.vercel.app/og-image.png" />
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"High Mentions ≠ High Quality: How SF Eats Ranks Every Dish in San Francisco","description":"The most-mentioned dish in reviews is not always the best one. The methodology behind SF Eats: hype vs love, Bayesian-weighted ratings, and dish-level sentiment across thousands of Google reviews.","datePublished":"2026-07-07","author":{"@type":"Person","name":"Selinay"},"publisher":{"@type":"Organization","name":"SF Eats","url":"https://sfeats.vercel.app"},"mainEntityOfPage":"https://sfeats.vercel.app/blog/most-mentioned-isnt-best","image":"https://sfeats.vercel.app/og-image.png"}</script>
+<style>
+  :root { --bg:#C3C9B8; --ink:#2A2F28; --muted:rgba(42,47,40,0.55); --line:#2A2F28; --yellow:#DFD154;
+          --high:#4a6e3a; --mid:#8a7a2a; --low:#8a3a3a; }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  body { background:var(--bg); color:var(--ink); font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+         -webkit-font-smoothing:antialiased; line-height:1.65; }
+  .wrap { max-width:680px; margin:0 auto; padding:1.5rem 1.25rem 4rem; }
+  a { color:var(--ink); }
+  .brand { font-size:0.7rem; font-weight:700; letter-spacing:0.1em; text-decoration:none; }
+  .crumb { font-size:0.65rem; text-transform:uppercase; letter-spacing:0.08em; color:var(--muted); margin-top:1.75rem; }
+  h1 { font-size:1.75rem; letter-spacing:-0.02em; margin-top:0.35rem; line-height:1.2; }
+  .byline { font-size:0.72rem; color:var(--muted); margin-top:0.6rem; }
+  article p { margin-top:1rem; font-size:0.95rem; }
+  article h2 { font-size:1.2rem; margin-top:2rem; letter-spacing:-0.01em; }
+  article h3 { font-size:1rem; margin-top:1.4rem; }
+  article ul, article ol { margin:1rem 0 0 1.25rem; font-size:0.95rem; }
+  article li { margin-top:0.4rem; }
+  .rankcard { border:1px solid var(--line); background:rgba(42,47,40,0.03); padding:1rem 1.25rem; margin-top:1.1rem; }
+  .rankcard .rk { font-size:0.6rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--muted); }
+  .rankcard h3 { margin-top:0.15rem; }
+  .rankcard .meta { font-size:0.75rem; color:var(--muted); margin-top:2px; }
+  .rankcard .scores { font-size:0.72rem; margin-top:0.4rem; }
+  .rankcard .scores b { font-variant-numeric:tabular-nums; }
+  .quote { font-size:0.85rem; font-style:italic; opacity:0.85; margin-top:0.6rem; border-left:2px solid var(--line); padding-left:0.75rem; }
+  .cta { display:inline-block; margin-top:1.5rem; background:var(--ink); color:var(--bg); text-decoration:none;
+         padding:11px 20px; font-size:0.72rem; font-weight:600; text-transform:uppercase; letter-spacing:0.08em; }
+  .postlist a.post { display:block; border:1px solid var(--line); padding:1.1rem 1.25rem; margin-top:1rem;
+         text-decoration:none; background:rgba(42,47,40,0.03); }
+  .postlist a.post:hover { background:var(--yellow); }
+  .postlist .pt { font-weight:600; font-size:1.05rem; letter-spacing:-0.01em; }
+  .postlist .pd { font-size:0.8rem; color:var(--muted); margin-top:0.25rem; }
+  .more { margin-top:2.75rem; }
+  .more h3 { font-size:0.7rem; text-transform:uppercase; letter-spacing:0.1em; color:var(--muted); font-weight:500; }
+  footer { margin-top:3rem; font-size:0.65rem; color:var(--muted); text-transform:uppercase; letter-spacing:0.08em; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<a class="brand" href="/">SF EATS</a>
+<div class="crumb"><a href="/blog/">Blog</a> · San Francisco</div>
+<h1>High Mentions ≠ High Quality: How SF Eats Ranks Every Dish in San Francisco</h1>
+<div class="byline">By Selinay, Google Maps Level 7 local guide (2,259 contributions, 6.3M views) · 2026-07-07</div>
+<article>
+<p>I have made 2,259 contributions to Google Maps with 6.3 million views, and my ordering strategy was always the same: open the reviews, see which dish gets mentioned the most, order that. It works until it does not.</p>
+<p>The problem is that people also write about what they hated. A dish can rack up mentions because it is genuinely great, or because it is famous and mildly disappointing at scale. Mention count measures fame. It does not measure quality. That gap is the entire reason SF Eats exists.</p>
+
+<h2>Two numbers instead of one</h2>
+<p>Every spot on SF Eats gets scored on two independent signals:</p>
+<ul>
+<li><strong>Hype</strong>: how many reviews mention the specific dish. This is the number everyone already uses.</li>
+<li><strong>Love</strong>: of the reviews that mention the dish, how positively they describe it. Sentiment analysis runs on the dish sentences themselves, not the whole review, so a rant about parking does not drag down the carnitas.</li>
+</ul>
+<p>When hype is high and love is low, we flag it as a hype trap. Fame without flavor.</p>
+
+<h2>A real example: the burrito wars</h2>
+<p>La Taqueria has 107 burrito mentions, the most in San Francisco. El Farolito has 85. El Metate has 45. Ranked by hype, El Metate does not even make the podium.</p>
+<p>Ranked by love, it flips: El Metate 93%, La Taqueria 90%, El Farolito 82%. The least famous of the three has the happiest customers, and the 1am-line legend has a quarter of its burrito reviews carrying complaints. Both numbers are true at once. You just need to see them separately. Full ranking: <a href="/blog/best-burrito-san-francisco">the best Mission burrito in SF</a>.</p>
+
+<h2>The other correction: small-sample stars</h2>
+<p>Raw star ratings have their own trap: a 4.9 from 12 reviews beats a 4.6 from 3,000 on paper and loses to it in real life. We use a Bayesian weight (roughly, every place starts with 200 phantom average reviews) so ratings only mean something once enough people have voted.</p>
+
+<h2>Where the data comes from</h2>
+<ul>
+<li>Places and ratings: the Google Places API, restricted to San Francisco proper, permanently-closed places removed.</li>
+<li>Dish sentiment: reviews that name the dish, scored with a lexicon-based sentiment model with negation handling.</li>
+<li>A manual verification layer: for many spots I have read the reviews myself and hand-set the scores. Those entries always win over the automatic numbers.</li>
+<li>Community picks: visitor-submitted recommendations, moderated before they publish.</li>
+</ul>
+<p>61 dishes, 300+ spots, 8 cuisines, refreshed regularly.</p>
+<a class="cta" href="/">Explore the map →</a></article>
+<div class="more">
+  <h3>More from the blog</h3>
+  <div class="postlist">
+    <a class="post" href="/blog/best-burrito-san-francisco"><div class="pt">The Best Mission Burrito in San Francisco, Ranked by Review Data (2026)</div></a>
+    <a class="post" href="/blog/best-ramen-san-francisco"><div class="pt">The Best Ramen in San Francisco: 4 Bowls Ranked by 9,000+ Reviews (2026)</div></a>
+    <a class="post" href="/blog/best-pizza-san-francisco"><div class="pt">The Best Pizza in San Francisco by Style: Neapolitan, Detroit, and NY Slice (2026)</div></a>
+  </div>
+</div>
+<footer>SF Eats · ranked by Google review consensus · <a href="/">sfeats.vercel.app</a> · <a href="/blog/">blog</a></footer>
+</div>
+</body>
+</html>

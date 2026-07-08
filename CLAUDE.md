@@ -35,6 +35,12 @@ Requires Node 18+ (uses global `fetch`). There is no package to install.
   name. A manual entry wins over the automatic API number.
 - `test-reviews.js` — cheap single-place sanity check before a full run:
   `node test-reviews.js <place_id> "carne asada" burrito`
+- `enrich-quotes.js` — adds a real reviewer quote to every spot using the 5 free
+  Places-API reviews (no SerpAPI). Sentiment-picks the most positive dish-naming
+  review. Caches in `quote-cache.json`; run after generate: `node enrich-quotes.js`.
+- `generate-share-pages.js` — writes `s/<dishId>.html` SEO pages + sitemap.xml +
+  robots.txt. `generate-og-images.py` — per-dish OG cards. Both via `npm run share-pages`.
+- `generate-blog.js` — writes `blog/*.html` posts + index from its POSTS array.
 - `sf-food-data.js` — GENERATED output. Do not hand-edit; re-run the generator.
 - `SETUP.md` — key setup walkthrough. `MENTIONS-METHOD.md` — how hype/love is sourced.
 
