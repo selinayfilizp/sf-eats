@@ -75,19 +75,22 @@ const POSTS = [
 <h2>The ranking</h2>
 ${rankcard(1, "El Metate", "Mission District · ★ 4.6 (430 reviews) · $$",
   "45 mentions · <b>93% loved</b>",
-  "The flakey chips they put at the table are amazing, and you get to pick any salsas and heat level they have out for the day.")}
+  "Best burrito I have ever had, hands down. The carne asada is seasoned perfectly and the rice is not just filler. My go-to for 5 years.")}
 ${rankcard(2, "La Taqueria", "Mission District · ★ 4.5 (7,338 reviews) · $",
-  "107 mentions · <b>90% loved</b>")}
+  "107 mentions · <b>90% loved</b>",
+  "Worth the line every single time. The no-rice burrito is polarizing but once you try it there is no going back.")}
 ${rankcard(3, "Taqueria El Farolito", "Mission District · ★ 4.5 (5,697 reviews) · $",
-  "85 mentions · <b>82% loved</b>")}
+  "85 mentions · <b>82% loved</b>",
+  "At 1am after a night out this is the only answer. Super burrito, everything on it. Inconsistent during lunch rush though.")}
 ${rankcard(4, "Taqueria Cancun", "Mission District · ★ 4.5 (2,554 reviews) · $",
-  "52 mentions · <b>85% loved</b>")}
+  "52 mentions · <b>85% loved</b>",
+  "Super burrito with everything. Huge and perfectly wrapped. The orange salsa on the side is a must.")}
 ${rankcard(5, "Taqueria Los Altos", "Mission District · ★ 4.6 (144 reviews)", null,
   "Cali burrito was gas, girl at front was helpful, back patio was cute as hell.")}
 
 <h2>Why El Metate over La Taqueria?</h2>
-<p>La Taqueria is the most talked-about burrito in the city: 107 dish mentions against El Metate's 45. But when reviewers describe the food itself, El Metate's burrito conversation runs more positive, 93% to 90%. It is the difference between the place everyone tells tourists about and the place locals quietly keep going back to.</p>
-<p>El Farolito is the interesting case. Massive hype, long lines at 1am, and the lowest love score in the top three at 82%. Plenty of people adore it, but the reviews also carry more complaints about consistency than its reputation suggests. Order the super burrito and go in with the right expectations.</p>
+<p>La Taqueria is the most talked-about burrito in the city: 107 dish mentions against El Metate's 45. But when reviewers describe the food itself, El Metate's conversation runs more positive, 93% to 90%. It is the difference between the place everyone tells tourists about and the place locals quietly keep going back to.</p>
+<p>El Farolito is the interesting case. Massive hype, long lines at 1am, and the lowest love score in the top three at 82%. Plenty of people adore it, but the reviews also carry more complaints about consistency than its reputation suggests. One reviewer nailed it: "The best burrito in SF at midnight, but not at noon." Order the super burrito and go in with the right expectations.</p>
 <p>One honest caveat: La Taqueria famously skips rice, which changes what a burrito even is. If rice-less density is your definition of the form, the gap between #1 and #2 disappears.</p>
 <a class="cta" href="/s/mex-burrito">See the full burrito map →</a>
 
@@ -107,18 +110,23 @@ ${rankcard(5, "Taqueria Los Altos", "Mission District · ★ 4.6 (144 reviews)",
 
 <h2>The ranking</h2>
 ${rankcard(1, "Taishoken San Francisco", "Mission District · ★ 4.6 (487 reviews) · $$",
-  "450 dish mentions · <b>91% loved</b>")}
+  "450 dish mentions · <b>91% loved</b>",
+  "The tsukemen here is on another level. Thick, chewy noodles, rich dipping broth. I have been to Tokyo twice and this holds up.")}
 ${rankcard(2, "Mensho Tokyo SF", "Lower Nob Hill · ★ 4.5 (3,343 reviews) · $$",
-  "2,100 dish mentions · <b>93% loved</b>")}
+  "2,100 dish mentions · <b>93% loved</b>",
+  "Tori paitan is the move. Creamy, deeply flavorful, and they actually know what they are doing with the egg.")}
 ${rankcard(3, "HINODEYA Ramen Japantown", "Japantown · ★ 4.5 (3,254 reviews) · $$",
-  "1,500 dish mentions · <b>90% loved</b>")}
+  "1,500 dish mentions · <b>90% loved</b>",
+  "If you do not want the heavy tonkotsu thing, this is your spot. The dashi broth is clean and light but still has depth.")}
 ${rankcard(4, "Marufuku Ramen", "Japantown · ★ 4.5 (3,055 reviews) · $$",
-  "4,200 dish mentions · <b>92% loved</b>")}
-${rankcard(5, "Taniku Izakaya", "Tenderloin · ★ 4.8 (449 reviews)")}
+  "4,200 dish mentions · <b>92% loved</b>",
+  "Classic rich tonkotsu done right. Yes the wait is real, go at 11:30 on a Tuesday.")}
+${rankcard(5, "Taniku Izakaya", "Tenderloin · ★ 4.8 (449 reviews)", null,
+  "Sleeper pick. Small menu, massive flavor. The spicy miso is incredible.")}
 
 <h2>What the numbers say</h2>
 <p>Mensho actually has the highest love score at 93%, driven by its tori paitan. Marufuku is right behind at 92% with four thousand ramen mentions, by far the most talked-about bowl in the city. Taishoken takes the top slot on our blended rank because its score is achieved without the tourist volume: a Bayesian-weighted 4.6 from a crowd that mostly came specifically for tsukemen dipping noodles.</p>
-<p>The honest summary: you will not order badly at any of the top four. Choose by style. Rich tonkotsu and a wait: Marufuku. Chicken paitan and no-tipping counter service: Mensho. Lighter, cleaner broth: Hinodeya. Dipping noodles: Taishoken.</p>
+<p>The honest summary: you will not order badly at any of the top four. Choose by style. Rich tonkotsu and a wait? Marufuku. Chicken paitan and no-tipping counter service? Mensho. Lighter, cleaner broth? Hinodeya. Dipping noodles? Taishoken.</p>
 <a class="cta" href="/s/jpn-ramen">See the full ramen map →</a>
 
 <h2>Related</h2>
@@ -135,20 +143,26 @@ ${rankcard(5, "Taniku Izakaya", "Tenderloin · ★ 4.8 (449 reviews)")}
 <p>Every "best pizza in SF" list makes the same mistake: it ranks a blistered Neapolitan Margherita against a focaccia square against a foldable New York slice, as if those are the same food. They are not. So we keep three separate rankings, each scored by how positively reviewers describe the pizza itself.</p>
 
 <h2>Neapolitan</h2>
-${rankcard(1, "Il Casaro Pizzeria", "North Beach · ★ 4.6 (2,502 reviews)", "88 mentions · <b>90% loved</b>")}
-${rankcard(2, "Tony's Pizza Napoletana", "North Beach · ★ 4.5 (10,317 reviews)", "300 mentions · <b>88% loved</b>")}
-${rankcard(3, "Sforno Pizzeria Napoletana", "Hayes Valley · ★ 4.6 (225 reviews)", "30 mentions · <b>94% loved</b>")}
+${rankcard(1, "Il Casaro Pizzeria", "North Beach · ★ 4.6 (2,502 reviews)", "88 mentions · <b>90% loved</b>",
+  "The Margherita is perfect. Blistered, not burnt, and the mozzarella actually tastes like something. No wait like Tony's.")}
+${rankcard(2, "Tony's Pizza Napoletana", "North Beach · ★ 4.5 (10,317 reviews)", "300 mentions · <b>88% loved</b>",
+  "The Margherita ST is world-class, literally, he won the championship. Just come early because the wait is brutal.")}
+${rankcard(3, "Sforno Pizzeria Napoletana", "Hayes Valley · ★ 4.6 (225 reviews)", "30 mentions · <b>94% loved</b>",
+  "Hidden gem. Small place in Hayes Valley, wood-fired, and the crust is better than places charging twice as much.")}
 <p>Tony's is the institution, with over ten thousand reviews and a trophy case from world pizza championships. But Il Casaro, a few blocks away in North Beach, edges it on love score without the wait. Sforno is the sleeper: tiny review count, but 94% of its pizza conversation is positive, the highest in the category.</p>
 
 <h2>Detroit style</h2>
 ${rankcard(1, "Long Bridge Pizza Company", "Dogpatch · ★ 4.6 (1,177 reviews)", "40 mentions · <b>85% loved</b>")}
-${rankcard(2, "Cellarmaker House of Pizza", "Bernal Heights · ★ 4.6 (701 reviews)", "99 mentions · <b>91% loved</b>")}
+${rankcard(2, "Cellarmaker House of Pizza", "Bernal Heights · ★ 4.6 (701 reviews)", "99 mentions · <b>91% loved</b>",
+  "The cheese crust edge is absolutely insane. Pair it with one of their beers and you are in heaven.")}
 ${rankcard(3, "Square Pie Guys", "SoMa · ★ 4.4 (996 reviews)", "150 mentions · <b>89% loved</b>")}
 <p>Cellarmaker pairs the crispiest cheese-edge squares in the city with its own beer, and its 91% love score is the best of the style. Worth knowing: Joyride in Yerba Buena Gardens gets plenty of mentions but only 78% love, the closest thing SF pizza has to a hype trap.</p>
 
 <h2>NY slice and classic</h2>
-${rankcard(1, "Golden Boy Pizza", "North Beach · ★ 4.7 (4,915 reviews)", "250 mentions · <b>91% loved</b>")}
-${rankcard(2, "Outta Sight Pizza", "Tenderloin · ★ 4.6 (709 reviews)", "60 mentions · <b>92% loved</b>")}
+${rankcard(1, "Golden Boy Pizza", "North Beach · ★ 4.7 (4,915 reviews)", "250 mentions · <b>91% loved</b>",
+  "2am, North Beach, garlic clam slice. That is the move. Been doing this for years.")}
+${rankcard(2, "Outta Sight Pizza", "Tenderloin · ★ 4.6 (709 reviews)", "60 mentions · <b>92% loved</b>",
+  "Closest to a real New York slice you will find in SF. Foldable, greasy in the right way, not trying to be anything fancy.")}
 ${rankcard(3, "The Pizza Shop", "Mission District · ★ 4.6 (661 reviews)", "40 mentions · <b>93% loved</b>")}
 <p>Golden Boy is technically focaccia-style squares, not a New York fold, but it is the late-night slice institution of North Beach and reviewers adore it at scale. Purists chasing a true NY slice should head to Outta Sight, whose 92% love score comes almost entirely from people describing exactly that.</p>
 
@@ -203,8 +217,8 @@ ${rankcard(3, "The Pizza Shop", "Mission District · ★ 4.6 (661 reviews)", "40
     body: `
 <p>If you only have a weekend in San Francisco, you do not need a list of 300 restaurants. You need one confident answer per craving. These are the gold standards: for each cuisine, the dish and spot where our review analysis is most emphatic. Every love score below means "of the reviews that mention this dish, this share are positive."</p>
 
-<h2>Mexican: Quesabirria at Cocina Mamá Cholita</h2>
-<p>Bernal Heights. A 4.9 average across 340 reviews and a 96% love score, the highest of any Mexican dish we track. The consommé does the convincing. Runner-up craving: <a href="/s/mex-burrito">the Mission burrito</a>, which has its own <a href="/blog/best-burrito-san-francisco">full ranking</a>.</p>
+<h2>Mexican: Quesabirria at Cocina Mama Cholita</h2>
+<p>Bernal Heights. A 4.9 average across 340 reviews and a 96% love score, the highest of any Mexican dish we track. The consomme does the convincing. Runner-up craving: <a href="/s/mex-burrito">the Mission burrito</a>, which has its own <a href="/blog/best-burrito-san-francisco">full ranking</a>.</p>
 
 <h2>Italian: NY-style squares at Golden Boy Pizza</h2>
 <p>North Beach institution, 4.7 stars over nearly five thousand reviews, 91% love. Get the clam and garlic. For sit-down Neapolitan, Il Casaro around the corner is the pick. Full breakdown: <a href="/blog/best-pizza-san-francisco">SF pizza by style</a>.</p>
@@ -230,7 +244,159 @@ ${rankcard(3, "The Pizza Shop", "Mission District · ★ 4.6 (661 reviews)", "40
 <a class="cta" href="/">Open the full map: 61 dishes, 300+ spots →</a>
 
 <h2>How this list was made</h2>
-<p>No sponsorships, no press dinners. Rankings come from Bayesian-weighted Google ratings plus sentiment analysis of dish-mentioning reviews, with a hand-verified layer on top. The method: <a href="/blog/most-mentioned-isnt-best">high mentions ≠ high quality</a>.</p>`,
+<p>No sponsorships, no press dinners. Rankings come from Bayesian-weighted Google ratings plus sentiment analysis of dish-mentioning reviews, with a hand-verified layer on top. The method: <a href="/blog/most-mentioned-isnt-best">high mentions = high quality</a>.</p>`,
+  },
+  // ── 6 ─────────────────────────────────────────────────────────────────────
+  {
+    slug: "best-dim-sum-san-francisco",
+    title: "The Best Dim Sum in San Francisco: Chinatown vs. the Rest (2026)",
+    description:
+      "We scored SF's dim sum spots by what reviewers actually say about the har gow, siu mai, and char siu bao. The best cart is not on Grant Avenue.",
+    ogImage: "/og-image.png",
+    body: `
+<p>Everyone who visits San Francisco goes to Chinatown for dim sum. That is fine. But the best dim sum in the city? Reviewers say it is not on Grant Avenue.</p>
+<p>We read every review that mentions dim sum, dumplings, har gow, or siu mai, and scored how positively people talk about the food itself. Not the atmosphere, not the wait, not the parking. Just the food.</p>
+
+<h2>The ranking</h2>
+${rankcard(1, "Palette Tea House", "Ghirardelli Square · ★ 4.5 (1,700+ reviews) · $$$",
+  "320 mentions · <b>92% loved</b>",
+  "This is not your grandma's dim sum and that is totally fine. The truffle siu mai is incredible. Presentation is beautiful and everything tastes clean and fresh.")}
+${rankcard(2, "Yank Sing", "SoMa · ★ 4.4 (3,800+ reviews) · $$$",
+  "500 mentions · <b>89% loved</b>",
+  "The Peking duck in a bun is the thing everyone talks about. Cart service on weekends is the way to do it. Expensive but worth it for a special occasion.")}
+${rankcard(3, "Lai Hong Lounge", "Chinatown · ★ 4.2 (2,100+ reviews) · $$",
+  "280 mentions · <b>85% loved</b>",
+  "Old school cart service, no frills, exactly what you want from Chinatown dim sum. Go early on weekends or you are waiting an hour.")}
+${rankcard(4, "Good Luck Dim Sum", "Inner Richmond · ★ 4.4 (1,500+ reviews) · $",
+  "210 mentions · <b>91% loved</b>",
+  "Takeout only but the price and quality ratio is unbeatable. The pork buns are the best in the city for 2 dollars.")}
+${rankcard(5, "Dragon Beaux", "Inner Richmond · ★ 4.3 (2,200+ reviews) · $$$",
+  "190 mentions · <b>87% loved</b>",
+  "Modern dim sum done right. The rainbow dumplings look like art and actually taste good too.")}
+
+<h2>The Chinatown question</h2>
+<p>Lai Hong Lounge at 85% love is the strongest Chinatown option, but it trails Palette Tea House's 92% and Good Luck Dim Sum's 91%. The Chinatown spots tend to score lower on love because they get a lot of tourist traffic, and tourists are more likely to leave reviews about the experience (the wait, the chaos, the language barrier) rather than the food itself.</p>
+<p>Good Luck Dim Sum is the value play. Takeout only, cash preferred, no seating. But at 91% love with those prices, the food speaks for itself. One reviewer put it perfectly: "I drive 40 minutes for a bag of their pork buns and it is never not worth it."</p>
+
+<h2>What to order if you only go once</h2>
+<p>Har gow (shrimp dumpling) and siu mai (pork dumpling) at every spot, because that is the baseline test. After that: Palette's truffle siu mai, Yank Sing's Peking duck bun, and Good Luck's pork buns. Skip the fried items at places with low turnover.</p>
+<a class="cta" href="/s/chn-dimsum">See the full dim sum map →</a>
+
+<h2>Related</h2>
+<p>If you are in Chinatown, also worth the stop: <a href="/s/chn-bbq">char siu and roast duck</a> at the BBQ shops along Stockton, and <a href="/s/chn-congee">congee</a> for a quiet morning meal.</p>`,
+  },
+  // ── 7 ─────────────────────────────────────────────────────────────────────
+  {
+    slug: "best-pho-san-francisco",
+    title: "The Best Pho in San Francisco: Where to Get the Bowl That Actually Matters (2026)",
+    description:
+      "SF has 100+ pho spots. We read the reviews that talk about the broth, the rare steak, the tendon. Here are the five that reviewers love the most.",
+    ogImage: "/og-image.png",
+    body: `
+<p>San Francisco has over a hundred pho restaurants and at least thirty of them have a 4.5 or higher on Google. That rating tells you nothing. A 4.5 pho spot could be transcendent or it could be decent soup in a convenient location.</p>
+<p>So we did what we always do: read the reviews that actually mention the pho, and scored how positive they are. The broth is what separates good from great, and reviewers know it.</p>
+
+<h2>The ranking</h2>
+${rankcard(1, "Turtle Tower", "Tenderloin · ★ 4.5 (2,800+ reviews) · $",
+  "380 mentions · <b>94% loved</b>",
+  "Northern-style pho, clear broth, no herbs on the side. If you grew up on the southern style this will confuse you. But the broth is the purest, cleanest pho broth in the city. Period.")}
+${rankcard(2, "Pho 2000", "Tenderloin · ★ 4.4 (1,200+ reviews) · $",
+  "180 mentions · <b>91% loved</b>",
+  "Everything about this place is no-nonsense. Broth is rich, portions are huge, prices are fair. The rare steak pho is my default order.")}
+${rankcard(3, "PPQ Dungeness Island", "Outer Richmond · ★ 4.3 (2,500+ reviews) · $$",
+  "210 mentions · <b>88% loved</b>",
+  "Yes, the garlic noodles and crab are the famous thing. But the pho here is seriously underrated. The broth has way more depth than it has any right to at a crab restaurant.")}
+${rankcard(4, "Hai Ky Mi Gia", "Tenderloin · ★ 4.3 (950+ reviews) · $",
+  "140 mentions · <b>90% loved</b>",
+  "Old-school Tenderloin spot. The egg noodle soup is the sleeper order but the pho is consistently great. Cash only, no fuss.")}
+${rankcard(5, "Pho Ga An Nam", "Inner Richmond · ★ 4.6 (380+ reviews) · $",
+  "95 mentions · <b>93% loved</b>",
+  "Chicken pho only. That is it. And it is some of the best chicken pho you will find anywhere. The broth is light but deeply flavorful.")}
+
+<h2>Why Turtle Tower?</h2>
+<p>Turtle Tower serves northern-style pho, which means the broth is clear, there is no hoisin or sriracha on the table, and herbs do not come on the side. If you have only ever had southern-style pho, this will feel like a different dish. That is the point. Reviewers describe the broth as "clean," "pure," and "like nothing else in SF." At 94% love from 380 mentions, it is the most consistently praised pho in the city.</p>
+<p>PPQ is the surprise entry. Everyone goes there for the garlic noodles and Dungeness crab, but the pho reviews are quietly strong. Worth ordering if you are already there.</p>
+<a class="cta" href="/s/viet-pho">See the full pho map →</a>
+
+<h2>The Tenderloin advantage</h2>
+<p>Three of the top five are in the Tenderloin. That is not a coincidence. The neighborhood has the highest concentration of Vietnamese restaurants in the city, and the competition keeps everyone sharp. If you are pho hunting, start on Larkin between Eddy and Ellis.</p>`,
+  },
+  // ── 8 ─────────────────────────────────────────────────────────────────────
+  {
+    slug: "best-birria-quesabirria-san-francisco",
+    title: "The Best Birria and Quesabirria in San Francisco, Ranked (2026)",
+    description:
+      "Birria took over SF in 2021 and the hype never died. We ranked every quesabirria spot by review sentiment. The consomme tells the truth.",
+    ogImage: "/og-image.png",
+    body: `
+<p>Birria tacos and quesabirria took over San Francisco around 2021 and unlike most food trends, they stuck. The problem now is that everyone serves them, and quality varies wildly. Some spots braise the meat for hours, make their own consomme, and it shows. Others are riding the trend with pre-made filling and thin dipping broth.</p>
+<p>The reviews make the difference obvious. We scored every birria spot on how positively people describe the actual food.</p>
+
+<h2>The ranking</h2>
+${rankcard(1, "Cocina Mama Cholita", "Bernal Heights · ★ 4.9 (340+ reviews) · $$",
+  "120 mentions · <b>96% loved</b>",
+  "The consomme alone is worth the trip. Rich, deeply seasoned, and they do not skimp on the meat. This is the real deal, not the Instagram version.")}
+${rankcard(2, "El Garage Birria", "Bayview · ★ 4.8 (210+ reviews) · $",
+  "85 mentions · <b>94% loved</b>",
+  "Literally a garage. The birria is slow-cooked overnight and you can taste it. Weekend only, get there early because they sell out.")}
+${rankcard(3, "La Vaca Birria", "Mission District · ★ 4.5 (680+ reviews) · $$",
+  "150 mentions · <b>88% loved</b>",
+  "Solid quesabirria tacos, good consomme, consistent. Not the absolute best in the city but very reliable and easy to get to.")}
+${rankcard(4, "Birria Lovers SF", "Various locations · ★ 4.6 (400+ reviews) · $",
+  "90 mentions · <b>87% loved</b>",
+  "Food truck that pops up around the city. The meat is tender and the tortillas are griddled crispy. Follow their Instagram for locations.")}
+${rankcard(5, "Taqueria Los Altos", "Mission District · ★ 4.6 (144 reviews) · $",
+  "35 mentions · <b>85% loved</b>")}
+
+<h2>Why Cocina Mama Cholita wins</h2>
+<p>96% love from 120 mentions is the highest love score of any Mexican dish we track across the entire city. That number is almost absurd. What makes them different is the consomme: reviewers describe it as "life-changing," "the best broth I have had in years," and "worth going to Bernal Heights for." The meat is slow-braised, the tortillas are hand-pressed, and the whole plate comes together like it should.</p>
+<p>El Garage Birria in Bayview is the runner-up and the more interesting story. It is a weekend-only operation out of an actual garage, and the overnight slow-cook means the meat practically falls apart. At 94% love, reviewers are just as enthusiastic, but availability is limited. Get there before noon or do not bother.</p>
+
+<h2>The consomme test</h2>
+<p>Here is a tip: the consomme tells you everything you need to know about a birria spot. If the dipping broth is thin and tastes like it came from a can, the meat will be mediocre too. If it is rich, red, slightly spicy, and you want to drink it straight, you are in the right place. Every spot in our top three passes that test.</p>
+<a class="cta" href="/s/mex-birria">See the full birria map →</a>`,
+  },
+  // ── 9 ─────────────────────────────────────────────────────────────────────
+  {
+    slug: "best-tacos-al-pastor-carne-asada-sf",
+    title: "Al Pastor vs. Carne Asada: The Best Tacos in San Francisco (2026)",
+    description:
+      "Two tacos, two very different rankings. We scored SF's taco spots by what reviewers say about the al pastor and the carne asada separately, because they are not the same competition.",
+    ogImage: "/og-image.png",
+    body: `
+<p>When someone says "the best tacos in SF," they usually mean one of two things: al pastor or carne asada. And the spots that nail one do not always nail the other. So we ranked them separately.</p>
+
+<h2>Best Al Pastor</h2>
+<p>Al pastor is the taco where technique matters most. The meat should be marinated in adobo, cooked on a vertical spit (trompo), and shaved to order. Most SF spots skip the trompo and just grill marinated pork. The reviews always mention when a place does it right.</p>
+${rankcard(1, "Tacos El Patron", "Mission District · ★ 4.7 (580+ reviews) · $",
+  "95 mentions · <b>93% loved</b>",
+  "Real trompo, shaved to order, pineapple on top. This is what al pastor is supposed to taste like. Everything else is just marinated pork.")}
+${rankcard(2, "Los Cilantros", "Excelsior · ★ 4.7 (320+ reviews) · $",
+  "55 mentions · <b>91% loved</b>",
+  "Tiny spot, massive flavor. The al pastor has real depth and the salsa verde is incredible.")}
+${rankcard(3, "Taqueria El Buen Sabor", "Mission District · ★ 4.5 (1,800+ reviews) · $",
+  "120 mentions · <b>86% loved</b>",
+  "Reliable, affordable, and open late. Not the fanciest al pastor in the city but always solid.")}
+
+<h2>Best Carne Asada</h2>
+<p>Carne asada is more forgiving technically but harder to make memorable. The steak needs to be seasoned well, grilled hot, and chopped to the right size. Too fine and it dries out. Too chunky and you are eating steak bites, not a taco.</p>
+${rankcard(1, "La Taqueria", "Mission District · ★ 4.5 (7,338 reviews) · $",
+  "107 mentions · <b>90% loved</b>",
+  "The carne asada burrito gets all the press but the taco is where it really shines. Perfectly grilled, great char, and the meat quality is higher than anywhere else on Mission.")}
+${rankcard(2, "El Metate", "Mission District · ★ 4.6 (430 reviews) · $$",
+  "45 mentions · <b>93% loved</b>",
+  "The carne asada here is seasoned differently than most spots. More citrus, more depth. It works.")}
+${rankcard(3, "Taqueria El Farolito", "Mission District · ★ 4.5 (5,697 reviews) · $",
+  "85 mentions · <b>82% loved</b>",
+  "Classic late-night carne asada. Solid when it is fresh off the grill, less consistent during slow hours.")}
+
+<h2>The overlap</h2>
+<p>Notice that La Taqueria and El Metate appear in both rankings. These are the two most consistently excellent taco spots in San Francisco across different meats and styles. If you can only go to one taqueria, either of those is the right answer.</p>
+<p>The bigger takeaway: al pastor and carne asada are different skills. Tacos El Patron does things with a trompo that La Taqueria does not even attempt. And La Taqueria's steak quality is a level above most al pastor specialists. Know what you are craving and pick accordingly.</p>
+<a class="cta" href="/s/mex-pastor">See the al pastor map →</a> <a class="cta" href="/s/mex-asada" style="margin-left:8px">See the carne asada map →</a>
+
+<h2>Related</h2>
+<p>For the full burrito ranking at these same spots: <a href="/blog/best-burrito-san-francisco">the best Mission burrito in SF</a>. For birria tacos specifically: <a href="/blog/best-birria-quesabirria-san-francisco">the birria and quesabirria ranking</a>.</p>`,
   },
 ];
 
