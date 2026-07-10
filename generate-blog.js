@@ -401,15 +401,21 @@ ${rankcard(3, "Taqueria El Farolito", "Mission District · ★ 4.5 (5,697 review
   // ── 10 ────────────────────────────────────────────────────────────────────
   {
     slug: "new-coffee-food-spots-sf-2026",
-    title: "New in SF 2026: An Honest Look at the New Coffee, Matcha, and Food Spots",
+    title: "New Coffee Shops, Matcha Cafes & Restaurants in San Francisco 2026: An Honest Review Roundup",
     description:
-      "Every notable SF opening of 2026 with live Google ratings and what early reviewers actually say, good and bad: Kope House, Side Characters, Constance, Maria Isabel, and more.",
+      "Every notable new San Francisco opening of 2026 with live Google Maps ratings and what early reviewers actually say, good and bad: Kope House, Side Characters, Constance Tea & Matcha, Maria Isabel, SIGNAL Coffee, and more.",
     ogImage: "/og-image.png",
+    published: "2026-07-09",
+    spotList: [
+      "Kopê House", "Side Characters", "elaichi co. chai house", "SIGNAL Coffee Roasters",
+      "Hardware Coffee Co. West Portal", "Stray Dog Coffee & Bar", "Constance Tea & Matcha",
+      "Moriwa Matcha", "Kiss of Matcha Irving St", "Maria Isabel", "JouJou", "Catalyst Coffee Lab"
+    ],
     body: `
 <p>Here's the thing about new spots. The Instagram posts all look the same, every opening gets called a "hidden gem" within a week, and by the time the food press writes the roundup, half the info is already outdated. So I did what I always do: pulled the live Google ratings and read the actual reviews, including the unhappy ones. Some of these places are great. Some are fine. A couple are coasting on aesthetics. Here is what the early reviews actually say about each.</p>
 <p>One caveat before we start. Most of these places are weeks old, so the review counts are small. A 5.0 from 20 people is a good sign, not a guarantee. I flagged the sample size on every spot so you can judge for yourself.</p>
 
-<h2>Coffee</h2>
+<h2>New coffee shops in San Francisco (2026)</h2>
 
 ${rankcard(1, "Kopê House", "Hayes Valley, 546 Laguna St · ★ 5.0 (20 reviews) · opened February",
   null,
@@ -441,7 +447,7 @@ ${rankcard(6, "Stray Dog Coffee & Bar", "Mission, 2545 24th St · ★ 4.9 (15 re
   "The drinks are amazing. I highly recommend the Sit Stay Matcha, honestly the best drink ever. Stray Dog is truly a hidden gem.")}
 <p>Coffee shop by day, bar by night, from the owner of Lost Cat. The drink names commit to the theme (Sit Stay Matcha, dirty pistachio latte) and the big space open late is genuinely useful in the Mission. But read the 4-star reviews and a pattern shows up: "the strawberry matcha cloud isn't too strong," "cold brew could have been stronger," "I wish there was more of it." The drinks look better than they hit right now. Fifteen reviews is nothing, and soft-opening kinks are normal, but the early signal is style ahead of substance. Worth a visit for the space, not yet for the coffee.</p>
 
-<h2>Matcha</h2>
+<h2>New matcha cafes in San Francisco (2026)</h2>
 
 ${rankcard(1, "Constance Tea & Matcha", "Outer Richmond, 3512 Balboa St · ★ 4.9 (163 reviews) · opened May 31",
   null,
@@ -458,7 +464,7 @@ ${rankcard(3, "Kiss of Matcha, Irving St", "Sunset, 2127 Irving St · ★ 4.1 (5
   "Soft serves are super good but they are hollow inside, so you are not getting as much as it looks like.")}
 <p>The third location of a local favorite, closer to Ocean Beach. Regulars are happy it exists and the parfait gets real love (black sesame ice cream, warabi mochi, a warm croffle on top). But at 4.1 it is the weakest rating of the matcha wave, and the honest reviews mention hollow soft serve and a light hand with the matcha. Go for the parfait, keep expectations calibrated on the rest.</p>
 
-<h2>Food</h2>
+<h2>New restaurants in San Francisco (2026)</h2>
 
 ${rankcard(1, "Maria Isabel", "Presidio Heights, 500 Presidio Ave · ★ 4.9 (101 reviews) · opened February",
   null,
@@ -475,7 +481,7 @@ ${rankcard(3, "Catalyst Coffee Lab", "Embarcadero, Pier 15 at the Exploratorium 
   "I got the breakfast burrito and it was SO GOOD. Vegetarian with a couple types of sweet potatoes, loads of eggs, and the green sauce was the star.")}
 <p>A refresh of the Exploratorium's cafe with a new operator and, by the early accounts, better food than before. Five reviews is not a rating, it is an anecdote. Nobody should make a trip for this. But if you are already at Pier 15 with kids, knowing the breakfast burrito is decent is genuinely useful information, and that is the only claim I will make for it.</p>
 
-<h2>Still coming in 2026</h2>
+<h2>Opening later in 2026: what's still coming</h2>
 <ul>
 <li><strong>The Coffee Movement, Chinatown extension</strong> (1200 Mason St), opening this fall. The flagship holds 4.7 over 1,356 reviews, so the bar is set.</li>
 <li><strong>Bageletto on Polk</strong> (2139 Polk St), taking over a former Peet's.</li>
@@ -528,22 +534,35 @@ ${bodyHtml}
 for (const post of POSTS) {
   const canonical = `${SITE}/blog/${post.slug}`;
   const others = POSTS.filter((p) => p.slug !== post.slug).slice(0, 3);
-  const jsonLd = JSON.stringify({
+  const published = post.published || PUBLISHED;
+  const schemas = [{
     "@context": "https://schema.org",
     "@type": "Article",
     headline: post.title,
     description: post.description,
-    datePublished: PUBLISHED,
+    datePublished: published,
+    dateModified: published,
     author: { "@type": "Person", name: "Selinay" },
     publisher: { "@type": "Organization", name: "SF Eats", url: SITE },
     mainEntityOfPage: canonical,
     image: `${SITE}${post.ogImage}`,
-  });
+  }];
+  if (post.spotList) {
+    schemas.push({
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      name: post.title,
+      itemListElement: post.spotList.map((name, i) => ({
+        "@type": "ListItem", position: i + 1, name,
+      })),
+    });
+  }
+  const jsonLd = JSON.stringify(schemas.length === 1 ? schemas[0] : schemas);
   const bodyHtml = `
 <a class="brand" href="/">SF EATS</a>
 <div class="crumb"><a href="/blog/">Blog</a> · San Francisco</div>
 <h1>${post.title}</h1>
-<div class="byline">By ${AUTHOR} · ${PUBLISHED}</div>
+<div class="byline">By ${AUTHOR} · ${published}</div>
 <article>${post.body}</article>
 <div class="more">
   <h3>More from the blog</h3>
