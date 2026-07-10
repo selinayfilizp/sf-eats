@@ -398,6 +398,96 @@ ${rankcard(3, "Taqueria El Farolito", "Mission District · ★ 4.5 (5,697 review
 <h2>Related</h2>
 <p>For the full burrito ranking at these same spots: <a href="/blog/best-burrito-san-francisco">the best Mission burrito in SF</a>. For birria tacos specifically: <a href="/blog/best-birria-quesabirria-san-francisco">the birria and quesabirria ranking</a>.</p>`,
   },
+  // ── 10 ────────────────────────────────────────────────────────────────────
+  {
+    slug: "new-coffee-food-spots-sf-2026",
+    title: "New in SF 2026: The Coffee Shops, Matcha Spots, and Restaurants Actually Worth Your Time",
+    description:
+      "Every notable SF opening of 2026 with live Google ratings and what early reviewers actually say: Kope House, Side Characters, Constance, Maria Isabel, and more.",
+    ogImage: "/og-image.png",
+    body: `
+<p>Here's the thing about new spots. The Instagram posts all look the same, every opening gets called a "hidden gem" within a week, and by the time the food press writes the roundup, half the info is already outdated. So I did what I always do: pulled the live Google ratings and read the actual reviews. This is every 2026 opening worth knowing about, with what real people said after actually going.</p>
+<p>One caveat before we start. Most of these places are weeks old, so the review counts are small. A 5.0 from 20 people is a good sign, not a guarantee. I flagged the sample size on every spot so you can judge for yourself.</p>
+
+<h2>Coffee</h2>
+
+${rankcard(1, "Kopê House", "Hayes Valley, 546 Laguna St · ★ 5.0 (20 reviews) · opened February",
+  null,
+  "The best latte in SF. Ended up taking a cute package of coffee beans home.")}
+<p>Three baristas who built a following through pop-ups finally got their own space, and they are doing things nobody else in the city does. Espresso mai tais. A gochujang latte. One reviewer summed up the general mood in four words: "take my money." No indoor seating, just a sidewalk in front of an old flower shop, and they want to make late-night coffee a thing in Hayes Valley. I am rooting for them.</p>
+
+${rankcard(2, "Side Characters", "Polk Gulch, 2216 Polk St · ★ 4.8 (32 reviews)",
+  null,
+  "Great vibes, chill music, good coffee and friendly service. Pistachio Latte is delish! They even give you Marcona almonds with wine.")}
+<p>This one is flying under the radar because the food press has not caught up yet, but the reviews are lovely. People keep mentioning three things: the pistachio butter latte, the hojicha latte, and the sound system. It turns into a wine spot in the evenings, with Marcona almonds on the side. Multiple reviewers call out the owner Sam by name, which tells you something about the place.</p>
+
+${rankcard(3, "elaichi co. chai house", "SoMa, 360 3rd St · ★ 4.8 (113 reviews) · opened April",
+  null,
+  "My favorite is the karak chai, sweet cardamom bliss. I also love the paratha quiche.")}
+<p>All chai, all the time, from the team behind the Berkeley shop of the same name. The karak chai is the order, and the paratha quiche keeps showing up in reviews as the sleeper hit. 113 reviews at 4.8 in three months is the strongest sample of any new coffee spot this year. It gets crowded inside, but there is shaded seating out front.</p>
+
+${rankcard(4, "SIGNAL Coffee Roasters", "Fisherman's Wharf, 2701 Leavenworth St · ★ 4.7 (75 reviews) · opened May",
+  null,
+  "I can firmly say that the coffee here is hands down the best I have had anywhere in the US. I went at least once every day during my stay.")}
+<p>An Alameda roaster's first SF location, in the old Cafe de Casa space. The iced black sesame oat latte and the Mexican mocha get named constantly, and the breakfast sandwich has its own fan club. Honest note from the reviews: the first weeks were chaotic and a few people caught slow service. The ones who went back say it settled.</p>
+
+${rankcard(5, "Hardware Coffee Co., West Portal", "32 W Portal Ave · ★ 4.6 (59 reviews) · opened May",
+  null,
+  "The baristas are very knowledgeable, they know their craft well, akin to coffee sommeliers. Ample space to work on the computer.")}
+<p>Two stories, lit almost entirely by sunlight, in the former Papenhausen Hardware store. There is a full florist in the back, which sounds like a gimmick until you see people leaving with coffee in one hand and a bouquet in the other. Reviewers love it as a laptop spot: lots of tables, outlets, working wifi, and they serve beer and wine when you are done pretending to work.</p>
+
+${rankcard(6, "Stray Dog Coffee & Bar", "Mission, 2545 24th St · ★ 4.9 (15 reviews)",
+  null,
+  "The drinks are amazing. I highly recommend the Sit Stay Matcha, honestly the best drink ever. Stray Dog is truly a hidden gem.")}
+<p>Coffee shop by day, bar by night, from the owner of Lost Cat. The drink names commit to the theme (Sit Stay Matcha, dirty pistachio latte) and the big chill space is open late, which the Mission needed. Only 15 reviews so far, so consider this a promising early read rather than a verdict.</p>
+
+<h2>Matcha</h2>
+
+${rankcard(1, "Constance Tea & Matcha", "Outer Richmond, 3512 Balboa St · ★ 4.9 (163 reviews) · opened May 31",
+  null,
+  "They serve freshly milled matcha, which is something I have only experienced in Japan. You can immediately taste the difference. Incredibly fresh, smooth, aromatic.")}
+<p>The opening of the year, honestly. First shop in the Bay Area milling matcha on-site with commercial stone mills, and the only one stocking black matcha. The line went down the block on day one with two-hour waits, and the rating still held at 4.9 across 163 reviews. That almost never happens. The fresh milled reserve latte runs about $12, which is steep, but there is a normal-priced option too, and one employee reportedly gives tours of the milling machines if you ask.</p>
+
+${rankcard(2, "Moriwa Matcha", "Parkside, 1143 Taraval St · ★ 4.4 (27 reviews)",
+  null,
+  "I came in not expecting much but the matcha is actually really good quality. It might be one of the best matchas I have tasted in SF so far.")}
+<p>Tiny kiosk-order spot on Taraval with real fruit in the drinks: actual mango chunks, actual strawberry. One bench inside, so plan on to-go. The reviews read like people being genuinely surprised, which is my favorite kind of review.</p>
+
+${rankcard(3, "Kiss of Matcha, Irving St", "Sunset, 2127 Irving St · ★ 4.1 (55 reviews)",
+  null,
+  "Soft serves are super good but they are hollow inside, so you are not getting as much as it looks like.")}
+<p>The third location of a local favorite, closer to Ocean Beach. Regulars are happy it exists and the parfait gets real love (black sesame ice cream, warabi mochi, a warm croffle on top). But at 4.1 it is the weakest rating of the matcha wave, and the honest reviews mention hollow soft serve and a light hand with the matcha. Go for the parfait, keep expectations calibrated on the rest.</p>
+
+<h2>Food</h2>
+
+${rankcard(1, "Maria Isabel", "Presidio Heights, 500 Presidio Ave · ★ 4.9 (101 reviews) · opened February",
+  null,
+  "The smoked mussel sope was the most memorable single dish I have had in months. The dry aged ribeye taco was so simple and flavorful.")}
+<p>The best-rated 2026 opening with a real sample size, full stop. This is the new spot from Laura and Sayat Ozyilmaz, the chefs behind Dalida, doing coastal Acapulco-inspired Mexican. A 4.9 over 101 reviews for a sit-down restaurant is genuinely rare. People describe following these chefs from their pop-up days like following a band. Book ahead.</p>
+
+${rankcard(2, "JouJou", "SoMa, 65 Division St · ★ 4.1 (105 reviews)",
+  null,
+  "The restaurant SF was missing. Classy but comfortable. Elevated but not pretentious. Do not sleep on the Louie. And get down on that heavenly butter.")}
+<p>The buzzy French one. Here is the interesting part: the written reviews are glowing (the baba au rhum, the chopped-onion French onion soup, the butter that gets its own sentences) but the overall rating sits at 4.1, well below the hype. That gap usually means the misses are real when they happen. I would still go for the classics and the room, just with eyes open. This is exactly the hype-vs-love gap <a href="/blog/most-mentioned-isnt-best">our whole site is built around</a>.</p>
+
+${rankcard(3, "Catalyst Coffee Lab", "Embarcadero, Pier 15 at the Exploratorium · ★ 5.0 (5 reviews)",
+  null,
+  "I got the breakfast burrito and it was SO GOOD. Vegetarian with a couple types of sweet potatoes, loads of eggs, and the green sauce was the star.")}
+<p>A full refresh of the Exploratorium's cafe with a new operator and noticeably better food. Five reviews is nothing, but a museum cafe getting this kind of enthusiasm for a breakfast burrito is worth noting if you are already headed to Pier 15.</p>
+
+<h2>Still coming in 2026</h2>
+<ul>
+<li><strong>The Coffee Movement, Chinatown extension</strong> (1200 Mason St), opening this fall. The flagship holds 4.7 over 1,356 reviews, so the bar is set.</li>
+<li><strong>Bageletto on Polk</strong> (2139 Polk St), taking over a former Peet's.</li>
+<li><strong>Tadaima's new Sunset location</strong>, soft-opened in February, no separate Google listing yet.</li>
+<li><strong>Sons and Daughters</strong>, the two-Michelin-star spot, relocating to a bigger Mission space.</li>
+<li><strong>The Presidio food hall</strong>: cafe, full bar, seafood, burgers, sandwiches, Korean.</li>
+</ul>
+
+<h2>How I made this list</h2>
+<p>Ratings pulled live from Google Maps in July 2026, quotes taken from real reviews, lightly trimmed for length. No invites, no comps, no affiliate anything. When a place has 15 reviews I say so, because a 5.0 from 15 people and a 4.9 from 163 are not the same claim. For how we think about ratings in general: <a href="/blog/most-mentioned-isnt-best">high mentions do not mean high quality</a>.</p>
+<a class="cta" href="/">Explore the full SF Eats map →</a>`,
+  },
 ];
 
 // ── render ────────────────────────────────────────────────────────────────
