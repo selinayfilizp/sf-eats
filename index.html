@@ -707,6 +707,165 @@
   }
   .footer b { font-weight: 500; color: var(--ink-dark); }
 
+  /* ─── Michelin sourcing banner ─── */
+  .michelin-banner {
+    padding: 1rem 1.5rem;
+    background: var(--ink-dark);
+    color: var(--sage-bg);
+    border-bottom: var(--border-width) solid var(--line-color);
+  }
+  .michelin-banner .mb-title {
+    font-size: 0.95rem;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    margin-bottom: 4px;
+  }
+  .michelin-banner .mb-sub {
+    font-size: 0.7rem;
+    opacity: 0.7;
+    line-height: 1.4;
+  }
+  .michelin-banner .mb-stats {
+    display: flex;
+    gap: 1.25rem;
+    margin-top: 0.6rem;
+  }
+  .michelin-banner .mb-stat {
+    display: flex;
+    flex-direction: column;
+  }
+  .michelin-banner .mb-stat .n {
+    font-size: 1.1rem;
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  }
+  .michelin-banner .mb-stat .l {
+    font-size: 0.55rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    opacity: 0.6;
+  }
+
+  /* ─── Sourcing cards (Michelin mode) ─── */
+  .source-trail {
+    border-top: 2px dashed var(--line-color);
+    padding: 1rem 1.5rem;
+    background: rgba(42, 47, 40, 0.04);
+  }
+  .source-trail .st-label {
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--ink-dark);
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+  }
+  .source-trail .st-summary {
+    font-size: 0.8rem;
+    line-height: 1.5;
+    margin-bottom: 0.6rem;
+  }
+  .source-trail .st-ingredients {
+    font-size: 0.75rem;
+    color: var(--ink-muted);
+    margin-bottom: 0.6rem;
+  }
+  .source-trail .st-places {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .source-trail .st-place {
+    border: var(--border-width) solid var(--line-color);
+    border-left: 3px solid var(--love-high);
+    padding: 0.6rem 0.8rem;
+    cursor: pointer;
+    transition: background 0.12s;
+    background: var(--sage-bg);
+  }
+  .source-trail .st-place:hover {
+    background: var(--mustard-yellow);
+  }
+  .source-trail .st-place .sp-name {
+    font-size: 0.85rem;
+    font-weight: 600;
+  }
+  .source-trail .st-place .sp-type {
+    font-size: 0.6rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--ink-muted);
+    margin-top: 2px;
+  }
+  .source-trail .st-place .sp-visit {
+    font-size: 0.7rem;
+    margin-top: 4px;
+    color: var(--love-high);
+    font-weight: 500;
+  }
+  .source-trail .st-place.private {
+    border-left-color: var(--ink-muted);
+    opacity: 0.7;
+  }
+  .source-trail .st-place.private .sp-visit {
+    color: var(--ink-muted);
+  }
+  .evidence-pill {
+    display: inline-block;
+    font-size: 0.6rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    padding: 4px 10px;
+    border: var(--border-width) solid var(--line-color);
+    margin-left: 8px;
+    vertical-align: middle;
+    font-weight: 600;
+  }
+  .evidence-pill.direct { border-color: var(--love-high); color: #fff; background: var(--love-high); }
+  .evidence-pill.general { border-color: var(--love-mid); color: var(--love-mid); }
+  .evidence-pill.historical { border-color: var(--ink-muted); color: var(--ink-muted); }
+  .evidence-pill.gap { border-color: var(--love-low); color: #fff; background: var(--love-low); }
+
+  .source-pin {
+    width: 20px;
+    height: 20px;
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid var(--sage-bg);
+    box-shadow: 0 2px 6px rgba(42, 47, 40, 0.3);
+    font-size: 10px;
+  }
+  .source-pin.public { background: var(--love-high); color: #fff; }
+  .source-pin.private { background: var(--ink-muted); color: #fff; }
+
+  .visitable-section {
+    border-top: 2px dashed var(--line-color);
+    padding: 1rem 1.5rem 1.5rem;
+  }
+  .visitable-section .vs-label {
+    font-size: 0.6rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--ink-muted);
+    margin-bottom: 0.75rem;
+  }
+  .visitable-card {
+    border: var(--border-width) solid var(--line-color);
+    padding: 0.75rem 1rem;
+    margin-bottom: 8px;
+    cursor: pointer;
+    transition: background 0.12s;
+  }
+  .visitable-card:hover { background: rgba(42, 47, 40, 0.06); }
+  .visitable-card .vc-name { font-size: 0.85rem; font-weight: 500; }
+  .visitable-card .vc-type { font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-muted); margin-top: 2px; }
+  .visitable-card .vc-visit { font-size: 0.7rem; margin-top: 4px; color: var(--love-high); }
+  .visitable-card .vc-why { font-size: 0.75rem; color: var(--ink-muted); margin-top: 4px; line-height: 1.4; }
+  .visitable-card .vc-chefs { font-size: 0.65rem; color: var(--ink-muted); margin-top: 4px; }
+
   /* ─── Leaflet overrides ─── */
   .leaflet-popup-content-wrapper {
     background: var(--sage-bg);
@@ -952,12 +1111,17 @@ const DEMO = { mexican:{ label:"Mexican", dishes:[
 ]}};
 
 let DATA = DEMO, map, markers = [], activeCuisine, activeDishId = null;
+let sourceMarkers = new Map();
 
 function initMap(){
   map = L.map('map',{zoomControl:true}).setView([37.7649,-122.4194],12.6);
   L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png',{attribution:'© OpenStreetMap © CARTO',maxZoom:19}).addTo(map);
 }
-function clearMarkers(){ markers.forEach(m=>m&&map.removeLayer(m)); markers=[]; }
+function clearMarkers(){ markers.forEach(m=>m&&map.removeLayer(m)); markers=[]; clearSourceMarkers(); }
+function clearSourceMarkers(){ sourceMarkers.forEach(m=>map.removeLayer(m)); sourceMarkers.clear(); }
+function sourcePinIcon(pub){
+  return L.divIcon({className:'',html:`<div class="source-pin ${pub?'public':'private'}">&#9830;</div>`,iconSize:[20,20],iconAnchor:[10,10],popupAnchor:[0,-10]});
+}
 function pinIcon(r, gold){
   return L.divIcon({className:'',html:`<div class="pin${gold?' gold':''}""><span>${r}</span></div>`,iconSize:[26,26],iconAnchor:[13,24],popupAnchor:[0,-22]});
 }
@@ -1198,9 +1362,29 @@ function distMi(a, s){
 }
 
 function showDish(d){
+  const isMichelin = activeCuisine === 'michelin';
   document.getElementById('resultsTitle').textContent=d.name;
-  document.getElementById('resultsHint').innerHTML=`Top ${d.spots.length} SF spots &middot; Mentions = how talked-about &middot; Loved = how positive`;
+  document.getElementById('resultsHint').innerHTML= isMichelin
+    ? `${d.spots.length} restaurant${d.spots.length!==1?'s':''} &middot; sourcing evidence from public reporting`
+    : `Top ${d.spots.length} SF spots &middot; Mentions = how talked-about &middot; Loved = how positive`;
   const wrap=document.getElementById('spots'); wrap.innerHTML=''; clearMarkers();
+  document.getElementById('communityInline').innerHTML = '';
+  if (isMichelin && window.MICHELIN_SOURCES) {
+    const src = window.MICHELIN_SOURCES;
+    const directCount = Object.values(src.restaurants).filter(r => r.evidence === 'direct').length;
+    const visitCount = src.places.filter(p => p.publicAccess).length;
+    const banner = document.createElement('div');
+    banner.className = 'michelin-banner';
+    banner.innerHTML = `
+      <div class="mb-title">Where the stars source their food</div>
+      <div class="mb-sub">Tracing publicly documented links between Michelin restaurants and their farms, markets, and suppliers. Scroll each card for the source trail.</div>
+      <div class="mb-stats">
+        <div class="mb-stat"><span class="n">${directCount}</span><span class="l">Named sources</span></div>
+        <div class="mb-stat"><span class="n">${visitCount}</span><span class="l">Visitable places</span></div>
+        <div class="mb-stat"><span class="n">${Object.keys(src.restaurants).length}</span><span class="l">Restaurants tracked</span></div>
+      </div>`;
+    wrap.appendChild(banner);
+  }
   const bounds=[];
   const nearActive = sortMode === 'near' && userLoc;
   let list = d.spots.map((s, idx) => ({
@@ -1220,9 +1404,12 @@ function showDish(d){
     const rankNum = String(rank).padStart(2,'0');
     const distTag = dist != null ? ` · ${dist < 10 ? dist.toFixed(1) : Math.round(dist)} MI AWAY` : '';
 
+    const srcData = isMichelin && window.MICHELIN_SOURCES ? window.MICHELIN_SOURCES.restaurants[s.name] : null;
+    const evidencePill = srcData ? `<span class="evidence-pill ${srcData.evidence}">${srcData.evidence === 'gap' ? 'needs reporting' : srcData.evidence}</span>` : '';
+
     card.innerHTML=`
       <div class="rank-label">RANK ${rankNum}${rankSuffix}${distTag}</div>
-      <div class="sname">${s.name}</div>
+      <div class="sname">${s.name}${evidencePill}</div>
       <div class="card-meta">
         <div class="meta-item">
           <span class="meta-label">Rating</span>
@@ -1237,8 +1424,8 @@ function showDish(d){
           <span class="meta-value text-val">${s.neighborhood||'...'}</span>
         </div>
       </div>
-      ${hypeLove(s, d.name)}
-      ${sourceTag(s)}
+      ${isMichelin ? '' : hypeLove(s, d.name)}
+      ${isMichelin ? '' : sourceTag(s)}
       ${s.why?`<div class="quote-box">${s.why}</div>`:''}
       <div class="card-footer">
         <div>
@@ -1247,6 +1434,46 @@ function showDish(d){
         </div>
         <div class="pattern-accent barcode-pattern"></div>
       </div>`;
+    if (srcData && srcData.places.length > 0) {
+      const trail = document.createElement('div');
+      trail.className = 'source-trail';
+      const placeById = {};
+      if (window.MICHELIN_SOURCES) window.MICHELIN_SOURCES.places.forEach(p => placeById[p.id] = p);
+      trail.innerHTML = `
+        <div class="st-label">Source trail</div>
+        <div class="st-summary">${srcData.summary}</div>
+        <div class="st-ingredients">Ingredients: ${srcData.ingredients}</div>
+        <div class="st-places">
+          ${srcData.places.map(pid => {
+            const p = placeById[pid];
+            if (!p) return '';
+            return `<div class="st-place${p.publicAccess ? '' : ' private'}" data-place-id="${pid}">
+              <div class="sp-name">${p.name}</div>
+              <div class="sp-type">${p.type}${p.publicAccess ? ' · open to public' : ' · private'}</div>
+              <div class="sp-visit">${p.visit}</div>
+            </div>`;
+          }).join('')}
+        </div>`;
+      card.appendChild(trail);
+      trail.querySelectorAll('.st-place').forEach(el => {
+        el.onclick = (e) => {
+          e.stopPropagation();
+          const p = placeById[el.dataset.placeId];
+          if (p && sourceMarkers.has(p.id)) {
+            map.flyTo([p.lat, p.lng], 11, {duration: .5});
+            sourceMarkers.get(p.id).openPopup();
+          }
+        };
+      });
+    } else if (srcData) {
+      const trail = document.createElement('div');
+      trail.className = 'source-trail';
+      trail.innerHTML = `
+        <div class="st-label">Source trail</div>
+        <div class="st-summary">${srcData.summary}</div>
+        ${srcData.ingredients !== 'Needs outreach' ? `<div class="st-ingredients">Ingredients: ${srcData.ingredients}</div>` : ''}`;
+      card.appendChild(trail);
+    }
     card.onclick=()=>focusSpot(i);
     card.querySelector('.report-link').onclick=(e)=>{ e.stopPropagation(); showReportForm(card, d.id, s.name); };
     wrap.appendChild(card);
@@ -1256,14 +1483,65 @@ function showDish(d){
       m.on('click',()=>highlight(i)); markers.push(m); bounds.push([s.lat,s.lng]);
     } else markers.push(null);
   });
-  if(bounds.length) map.flyToBounds(bounds,{padding:[60,60],maxZoom:14.5,duration:.6});
-  document.getElementById('addRecTopBtn').style.display = '';
+  if (isMichelin && window.MICHELIN_SOURCES) {
+    const src = window.MICHELIN_SOURCES;
+    const placeById = {};
+    src.places.forEach(p => placeById[p.id] = p);
+    const connectedPlaceIds = new Set();
+    d.spots.forEach(s => {
+      const r = src.restaurants[s.name];
+      if (r) r.places.forEach(pid => connectedPlaceIds.add(pid));
+    });
+    connectedPlaceIds.forEach(pid => {
+      const p = placeById[pid];
+      if (!p) return;
+      const m = L.marker([p.lat, p.lng], {icon: sourcePinIcon(p.publicAccess)}).addTo(map);
+      m.bindPopup(`<b>${p.name}</b><br>${p.type}<br><span style="color:var(--ink-muted)">${p.visit}</span>`);
+      sourceMarkers.set(p.id, m);
+      bounds.push([p.lat, p.lng]);
+    });
+    if (connectedPlaceIds.size > 0) {
+      const visitSection = document.createElement('div');
+      visitSection.className = 'visitable-section';
+      const visitablePlaces = [...connectedPlaceIds].map(pid => placeById[pid]).filter(p => p && p.publicAccess);
+      const privatePlaces = [...connectedPlaceIds].map(pid => placeById[pid]).filter(p => p && !p.publicAccess);
+      visitSection.innerHTML = `
+        <div class="vs-label">Where chefs shop &middot; ${visitablePlaces.length} visitable place${visitablePlaces.length !== 1 ? 's' : ''}</div>
+        ${visitablePlaces.map(p => `
+          <div class="visitable-card" data-place-id="${p.id}">
+            <div class="vc-name">${p.name}</div>
+            <div class="vc-type">${p.type}</div>
+            <div class="vc-visit">${p.visit}</div>
+            <div class="vc-why">${p.why}</div>
+            <div class="vc-chefs">Used by: ${p.connectedRestaurants.join(', ')}</div>
+          </div>`).join('')}
+        ${privatePlaces.map(p => `
+          <div class="visitable-card" data-place-id="${p.id}" style="opacity:0.6">
+            <div class="vc-name">${p.name}</div>
+            <div class="vc-type">${p.type} &middot; private</div>
+            <div class="vc-why">${p.why}</div>
+            <div class="vc-chefs">Supplies: ${p.connectedRestaurants.join(', ')}</div>
+          </div>`).join('')}`;
+      wrap.appendChild(visitSection);
+      visitSection.querySelectorAll('.visitable-card').forEach(el => {
+        el.onclick = () => {
+          const p = placeById[el.dataset.placeId];
+          if (p && sourceMarkers.has(p.id)) {
+            map.flyTo([p.lat, p.lng], 11, {duration: .5});
+            sourceMarkers.get(p.id).openPopup();
+          }
+        };
+      });
+    }
+  }
+  if(bounds.length) map.flyToBounds(bounds,{padding:[60,60],maxZoom:isMichelin ? 9 : 14.5,duration:.6});
+  document.getElementById('addRecTopBtn').style.display = isMichelin ? 'none' : '';
   document.getElementById('addRecTopBtn').setAttribute('data-dish', d.id);
   document.getElementById('shareBtn').style.display = '';
   const nearBtn = document.getElementById('nearBtn');
-  nearBtn.style.display = '';
+  nearBtn.style.display = isMichelin ? 'none' : '';
   nearBtn.textContent = nearActive ? '↺ By rank' : '📍 Near me';
-  renderCommunityInline(d.id);
+  if (!isMichelin) renderCommunityInline(d.id);
 }
 function showReportForm(card, dishId, spotName){
   if (card.querySelector('.report-form')) return;
@@ -1427,20 +1705,36 @@ const MICHELIN = {
   michelin: {
     label: "Michelin",
     dishes: [
-      { id:"mic-3star", emoji:"⭐", name:"3 Stars", spots:[
-        {name:"Atelier Crenn", neighborhood:"Marina", rating:4.6, reviews:"1,200", price:"$$$$", why:"Dominique Crenn's poetic culinaria. One of the most singular dining experiences in the world.", address:"3127 Fillmore St", lat:37.7965, lng:-122.4358, mapsUri:""}
+      { id:"mic-3star", emoji:"⭐⭐⭐", name:"3 Stars", spots:[
+        {name:"Atelier Crenn", neighborhood:"Cow Hollow", rating:4.6, reviews:"1,200", price:"$$$$", why:"Dominique Crenn's poetic culinaria, directly linked to her Bleu Belle Farm in Sonoma.", address:"3127 Fillmore St", lat:37.7984, lng:-122.4358, mapsUri:""},
+        {name:"Californios", neighborhood:"SoMa", rating:4.6, reviews:"680", price:"$$$$", why:"Val Cantu's Mexican fine dining. Publicly tied to Tierra Vegetables' heirloom corn and masa.", address:"355 11th St", lat:37.7716, lng:-122.4136, mapsUri:""},
+        {name:"Quince", neighborhood:"Jackson Square", rating:4.7, reviews:"900", price:"$$$$", why:"Michael Tusk's farm-to-table vision, with an exclusive Fresh Run Farm partnership in Bolinas.", address:"470 Pacific Ave", lat:37.7972, lng:-122.4034, mapsUri:""},
+        {name:"Benu", neighborhood:"SoMa", rating:4.5, reviews:"820", price:"$$$$", why:"Corey Lee's tasting menu blends Korean, Chinese, and French technique.", address:"22 Hawthorne St", lat:37.7854, lng:-122.3992, mapsUri:""}
       ]},
-      { id:"mic-2star", emoji:"⭐", name:"2 Stars", spots:[
-        {name:"Benu", neighborhood:"SoMa", rating:4.5, reviews:"820", price:"$$$$", why:"Corey Lee's tasting menu blends Korean, Chinese, and French technique. Extraordinary craft.", address:"22 Hawthorne St", lat:37.7858, lng:-122.3977, mapsUri:""},
-        {name:"Californios", neighborhood:"SoMa", rating:4.6, reviews:"680", price:"$$$$", why:"Mexican fine dining elevated to an art form. Val Cantu's tasting menu is unlike anything else.", address:"355 11th St", lat:37.7706, lng:-122.4138, mapsUri:""}
+      { id:"mic-2star", emoji:"⭐⭐", name:"2 Stars", spots:[
+        {name:"Lazy Bear", neighborhood:"Mission", rating:4.5, reviews:"1,400", price:"$$$$", why:"Communal dinner party with a multi-course menu. David Barzelay has been a Tierra Vegetables customer for nearly two decades.", address:"3416 19th St", lat:37.7607, lng:-122.4195, mapsUri:""},
+        {name:"Saison", neighborhood:"SoMa", rating:4.6, reviews:"950", price:"$$$$", why:"Emphasizes California terroir and the work of farmers, ranchers, and fishermen.", address:"178 Townsend St", lat:37.7793, lng:-122.3938, mapsUri:""},
+        {name:"Birdsong", neighborhood:"SoMa", rating:4.5, reviews:"600", price:"$$$$", why:"Whole ingredients from ecosystem-minded producers. Wood-fire cooking.", address:"1085 Mission St", lat:37.7797, lng:-122.4101, mapsUri:""},
+        {name:"Kiln", neighborhood:"Hayes Valley", rating:4.6, reviews:"400", price:"$$$$", why:"Ingredient-driven cooking with local produce, sustainably sourced meats, and wild seafood.", address:"400 Grove St", lat:37.7767, lng:-122.4202, mapsUri:""},
+        {name:"Sons & Daughters", neighborhood:"Mission", rating:4.5, reviews:"500", price:"$$$$", why:"Seasonal Californian produce with preservation-focused pantry. Historical ties to Dark Hill Farm.", address:"708 Bush St", lat:37.7615, lng:-122.4109, mapsUri:""},
+        {name:"Acquerello", neighborhood:"Nob Hill", rating:4.6, reviews:"1,100", price:"$$$$", why:"Refined Italian tasting menu in a former chapel. One of SF's longest-running starred restaurants.", address:"1722 Sacramento St", lat:37.7934, lng:-122.4218, mapsUri:""}
       ]},
       { id:"mic-1star", emoji:"⭐", name:"1 Star", spots:[
-        {name:"Acquerello", neighborhood:"Nob Hill", rating:4.6, reviews:"1,100", price:"$$$$", why:"A refined Italian tasting menu in a former chapel. One of SF's longest-running starred restaurants.", address:"1722 Sacramento St", lat:37.7912, lng:-122.4208, mapsUri:""},
-        {name:"Lazy Bear", neighborhood:"Mission", rating:4.5, reviews:"1,400", price:"$$$$", why:"A communal dinner party atmosphere with a multi-course American tasting menu. Creative and memorable.", address:"3416 19th St", lat:37.7603, lng:-122.4201, mapsUri:""},
-        {name:"Mister Jiu's", neighborhood:"Chinatown", rating:4.4, reviews:"1,800", price:"$$$", why:"Modern Chinese-American cooking in a beautiful Chinatown dining room. Brandon Jew at his best.", address:"28 Waverly Pl", lat:37.7946, lng:-122.4070, mapsUri:""},
-        {name:"Kin Khao", neighborhood:"Union Square", rating:4.3, reviews:"2,100", price:"$$$", why:"Bold, personal Thai cooking. The curries and larb are exceptional — not your typical Thai spot.", address:"55 Cyril Magnin St", lat:37.7862, lng:-122.4082, mapsUri:""},
-        {name:"Sorrel", neighborhood:"Presidio Heights", rating:4.7, reviews:"450", price:"$$$$", why:"Alex Hong's seasonal Californian tasting menu. Intimate, precise, and deeply satisfying.", address:"3228 Sacramento St", lat:37.7878, lng:-122.4446, mapsUri:""},
-        {name:"Spruce", neighborhood:"Presidio Heights", rating:4.5, reviews:"1,600", price:"$$$$", why:"A neighborhood institution with polished Californian cooking and one of the best burger-and-wine combos in the city.", address:"3640 Sacramento St", lat:37.7876, lng:-122.4520, mapsUri:""}
+        {name:"State Bird Provisions", neighborhood:"Fillmore", rating:4.6, reviews:"3,200", price:"$$$", why:"Eater documented a detailed Ferry Plaza market walk naming Brokaw, Dirty Girl, Mariquita, Zuckerman's, and more.", address:"1529 Fillmore St", lat:37.7838, lng:-122.4328, mapsUri:""},
+        {name:"Niku Steakhouse", neighborhood:"Design District", rating:4.5, reviews:"1,100", price:"$$$$", why:"Public retail butcher shop lists Japanese A5 wagyu partnerships including Kobe beef raised by Usanaga-san.", address:"61 Division St", lat:37.7697, lng:-122.4022, mapsUri:""},
+        {name:"Mister Jiu's", neighborhood:"Chinatown", rating:4.4, reviews:"1,800", price:"$$$", why:"Brandon Jew named among chefs supporting Tierra Vegetables.", address:"28 Waverly Pl", lat:37.7938, lng:-122.4068, mapsUri:""},
+        {name:"Nisei", neighborhood:"Russian Hill", rating:4.7, reviews:"350", price:"$$$$", why:"Sells a 'Day in the Life' experience that starts sourcing at the farmers market.", address:"2316 Polk St", lat:37.7985, lng:-122.4221, mapsUri:""},
+        {name:"Sorrel", neighborhood:"Pacific Heights", rating:4.7, reviews:"450", price:"$$$$", why:"Works with Bay Area farmers markets and maintains a rooftop garden.", address:"3228 Sacramento St", lat:37.7877, lng:-122.4471, mapsUri:""},
+        {name:"Wolfsbane", neighborhood:"Dogpatch", rating:4.6, reviews:"300", price:"$$$$", why:"Chef told ABC7 the team goes to farmers markets several times a week, buys directly from farms.", address:"2431 3rd St", lat:37.7577, lng:-122.3889, mapsUri:""},
+        {name:"The Progress", neighborhood:"Fillmore", rating:4.5, reviews:"1,200", price:"$$$", why:"Whole-animal and whole-vegetable menus defined by local farm relationships.", address:"1525 Fillmore St", lat:37.7837, lng:-122.4327, mapsUri:""},
+        {name:"Hilda and Jesse", neighborhood:"North Beach", rating:4.4, reviews:"800", price:"$$$", why:"A 2021 menu named Root Down Farm chicken. Current supplier status needs reverification.", address:"701 Union St", lat:37.8007, lng:-122.4105, mapsUri:""},
+        {name:"Nari", neighborhood:"Japantown", rating:4.4, reviews:"700", price:"$$$", why:"Pim Techamuanvivit works with local farmers, incorporates California seasonal produce into Thai dishes.", address:"1625 Post St", lat:37.7851, lng:-122.4289, mapsUri:""},
+        {name:"Restaurant Naides", neighborhood:"Union Square", rating:4.5, reviews:"200", price:"$$$$", why:"Foraged local ingredients, preserved wild ingredients from near Lake Tahoe, pineapple-leaf menu paper.", address:"532 Jones St", lat:37.7901, lng:-122.4097, mapsUri:""},
+        {name:"Kin Khao", neighborhood:"Union Square", rating:4.3, reviews:"2,100", price:"$$$", why:"Bold, personal Thai cooking. Seasonal produce and Thai pantry.", address:"55 Cyril Magnin St", lat:37.7847, lng:-122.4084, mapsUri:""},
+        {name:"Angler", neighborhood:"Embarcadero", rating:4.4, reviews:"1,000", price:"$$$$", why:"Deliberate seasonal sourcing for a seafood-focused, live-fire restaurant.", address:"132 The Embarcadero", lat:37.7938, lng:-122.3929, mapsUri:""},
+        {name:"7 Adams", neighborhood:"Fillmore", rating:4.5, reviews:"250", price:"$$$$", why:"Seasonal, ingredient-availability driven menu.", address:"7 Adams St", lat:37.7867, lng:-122.4317, mapsUri:""},
+        {name:"San Ho Won", neighborhood:"Mission", rating:4.4, reviews:"600", price:"$$$", why:"Local ingredient use and house kimchi. Korean flavors through NorCal seasonality.", address:"3321 20th St", lat:37.7599, lng:-122.4102, mapsUri:""},
+        {name:"Ssal", neighborhood:"Russian Hill", rating:4.5, reviews:"200", price:"$$$$", why:"Korean flavors through Northern California seasonality.", address:"2379 Polk St", lat:37.7979, lng:-122.422, mapsUri:""}
       ]}
     ]
   }
@@ -1464,6 +1758,9 @@ function boot(){
 }
 
 (function(){
+  const ms=document.createElement('script');
+  ms.src='michelin-sources.js';
+  document.head.appendChild(ms);
   const s=document.createElement('script');
   s.src='sf-food-data.js';
   s.onload=boot; s.onerror=boot;
