@@ -557,6 +557,15 @@ for (const post of POSTS) {
       })),
     });
   }
+  schemas.push({
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "SF Eats", item: `${SITE}/` },
+      { "@type": "ListItem", position: 2, name: "Blog", item: `${SITE}/blog/` },
+      { "@type": "ListItem", position: 3, name: post.title },
+    ],
+  });
   const jsonLd = JSON.stringify(schemas.length === 1 ? schemas[0] : schemas);
   const bodyHtml = `
 <a class="brand" href="/">SF EATS</a>
@@ -591,6 +600,20 @@ fs.writeFileSync(
     canonical: `${SITE}/blog/`,
     ogImage: "/og-image.png",
     bodyHtml: indexBody,
+    jsonLd: JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Blog",
+      name: "The SF Eats Blog",
+      url: `${SITE}/blog/`,
+      description: "Data-driven guides to eating in San Francisco, built from thousands of Google reviews.",
+      publisher: { "@type": "Organization", name: "SF Eats", url: SITE },
+      blogPost: POSTS.map((p) => ({
+        "@type": "BlogPosting",
+        headline: p.title,
+        url: `${SITE}/blog/${p.slug}`,
+        datePublished: p.published || PUBLISHED,
+      })),
+    }),
   })
 );
 

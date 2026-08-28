@@ -3,8 +3,10 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-<title>SF Eats - What to Eat & Where</title>
+<title>SF Eats: What to Eat in San Francisco & Where to Get It</title>
 <meta name="description" content="It doesn't matter where you go. It matters what you eat. The best version of every dish in San Francisco, ranked by thousands of real reviews." />
+<link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"SF Eats","alternateName":"SF Eats: What to Eat in San Francisco","url":"https://sfeats.vercel.app/","description":"The best version of every dish in San Francisco, ranked by review consensus. Hype vs love scoring across thousands of Google reviews.","publisher":{"@type":"Organization","name":"SF Eats","url":"https://sfeats.vercel.app/","logo":"https://sfeats.vercel.app/sf-logo.png"}}</script>
 <meta name="google-site-verification" content="9tlk0AmRG1XLqMegLtdonlk43qgvGtQFRK9zDt30IjM" />
 <link rel="canonical" href="https://sfeats.vercel.app/" />
 <meta property="og:type" content="website" />
@@ -707,6 +709,12 @@
   }
   .footer b { font-weight: 500; color: var(--ink-dark); }
 
+  /* crawlable dish directory (injected by generate-share-pages.js) */
+  .seo-directory { padding: 0.5rem 1.5rem 1rem; font-size: 0.7rem; color: var(--ink-muted); }
+  .seo-directory summary { cursor: pointer; text-transform: uppercase; letter-spacing: 0.08em; font-size: 0.65rem; }
+  .seo-directory p { margin-top: 0.5rem; line-height: 1.8; }
+  .seo-directory a { color: inherit; }
+
   /* ─── Michelin sourcing banner ─── */
   .michelin-banner {
     padding: 1rem 1.5rem;
@@ -1089,13 +1097,26 @@
       <div class="spots-scroll">
         <div id="communityInline"></div>
         <div class="spots" id="spots">
-          <div class="empty"><div class="big">&#9733;</div>Pick a cuisine up top, then a dish — or let fate decide.<br><button class="add-rec-top-btn surprise-cta" onclick="surpriseMe()">🎲 Surprise me</button></div>
+          <div class="empty"><div class="big">&#9733;</div>Pick a cuisine up top, then a dish, or let fate decide.<br><button class="add-rec-top-btn surprise-cta" onclick="surpriseMe()">🎲 Surprise me</button></div>
         </div>
       </div>
     </div>
   </div>
 
   <div class="footer" id="footer">Ranked by Google review consensus &middot; data refreshed monthly. &middot; <a href="/blog/" style="color:inherit">Blog</a></div>
+  <!-- seo-links:start -->
+<details class="seo-directory"><summary>Browse all dishes</summary>
+<p><strong>Mexican:</strong> <a href="/s/mex-burrito">Best Mission Burrito</a> · <a href="/s/mex-asada">Best Carne Asada</a> · <a href="/s/mex-birria">Best Quesabirria / Birria Tacos</a> · <a href="/s/mex-pastor">Best Al Pastor</a> · <a href="/s/mex-mole">Best Mole &amp; Enchiladas</a> · <a href="/s/mex-carnitas">Best Carnitas</a> · <a href="/s/mex-tamale">Best Tamales</a> · <a href="/s/mex-chilaquiles">Best Chilaquiles</a></p>
+<p><strong>Italian:</strong> <a href="/s/ita-neapolitan">Best Neapolitan Pizza</a> · <a href="/s/ita-detroit">Best Detroit-Style Pizza</a> · <a href="/s/ita-nyslice">Best NY Slice &amp; Classic Pizza</a> · <a href="/s/ita-cacio">Best Cacio e Pepe</a> · <a href="/s/ita-bolognese">Best Tagliatelle Bolognese &amp; Ragu</a> · <a href="/s/ita-lasagna">Best Lasagna</a> · <a href="/s/ita-cioppino">Best Cioppino</a> · <a href="/s/ita-carbonara">Best Carbonara</a> · <a href="/s/ita-tiramisu">Best Tiramisu</a></p>
+<p><strong>Turkish:</strong> <a href="/s/tur-lahmacun">Best Lahmacun</a> · <a href="/s/tur-pide">Best Pide</a> · <a href="/s/tur-adana">Best Adana / Lamb Shish Kebab</a> · <a href="/s/tur-doner">Best Doner Kebab</a> · <a href="/s/tur-baklava">Best Baklava</a> · <a href="/s/tur-borek">Best Börek</a> · <a href="/s/tur-breakfast">Best Turkish Breakfast</a></p>
+<p><strong>Indian:</strong> <a href="/s/ind-butter-chicken">Best Butter Chicken &amp; Tikka Masala</a> · <a href="/s/ind-biryani">Best Biryani</a> · <a href="/s/ind-dosa">Best Masala Dosa</a> · <a href="/s/ind-chaat">Best Chaat &amp; Pani Puri</a> · <a href="/s/ind-saag">Best Saag Paneer &amp; Dal Makhani</a> · <a href="/s/ind-tandoori">Best Tandoori &amp; Naan</a> · <a href="/s/ind-curry">Best Lamb / Goat Curry</a></p>
+<p><strong>Chinese:</strong> <a href="/s/chn-xiaolongbao">Best Xiao Long Bao</a> · <a href="/s/chn-roastduck">Best Peking / Roast Duck</a> · <a href="/s/chn-dimsum">Best Dim Sum</a> · <a href="/s/chn-mapo">Best Mapo Tofu &amp; Sichuan</a> · <a href="/s/chn-wontonnoods">Best Wonton Noodle Soup</a> · <a href="/s/chn-bbq">Best Char Siu &amp; BBQ</a> · <a href="/s/chn-hotpot">Best Hot Pot</a> · <a href="/s/chn-congee">Best Congee &amp; Jook</a></p>
+<p><strong>Japanese:</strong> <a href="/s/jpn-ramen">Best Tonkotsu &amp; Specialty Ramen</a> · <a href="/s/jpn-omakase">Best Omakase Sushi</a> · <a href="/s/jpn-izakaya">Best Izakaya &amp; Yakitori</a> · <a href="/s/jpn-curry">Best Japanese Curry</a> · <a href="/s/jpn-udon">Best Handmade Udon</a> · <a href="/s/jpn-tonkatsu">Best Tonkatsu &amp; Katsu Sando</a> · <a href="/s/jpn-matcha">Best Matcha Desserts</a> · <a href="/s/jpn-matchalatte">Best Matcha Latte</a> · <a href="/s/jpn-takoyaki">Best Takoyaki &amp; Japantown Snacks</a></p>
+<p><strong>Korean:</strong> <a href="/s/kor-bbq">Best Korean BBQ</a> · <a href="/s/kor-friedchx">Best Korean Fried Chicken</a> · <a href="/s/kor-bibimbap">Best Bibimbap</a> · <a href="/s/kor-jjigae">Best Kimchi Jjigae &amp; Stews</a> · <a href="/s/kor-tteokbokki">Best Tteokbokki &amp; Street Food</a> · <a href="/s/kor-kbbqtaco">Best Korean Fusion Tacos</a></p>
+<p><strong>Vietnamese:</strong> <a href="/s/viet-pho">Best Pho</a> · <a href="/s/viet-banhmi">Best Banh Mi</a> · <a href="/s/viet-bunbohue">Best Bun Bo Hue</a> · <a href="/s/viet-comtam">Best Com Tam (Broken Rice)</a> · <a href="/s/viet-garlicnoodle">Best Garlic Noodles &amp; Roast Crab</a> · <a href="/s/viet-banhxeo">Best Banh Xeo</a> · <a href="/s/viet-coffee">Best Vietnamese Coffee</a></p>
+<p><strong>Guides:</strong> <a href="/blog/">The SF Eats blog</a></p>
+</details>
+<!-- seo-links:end -->
 </div>
 
 <script>
@@ -1155,7 +1176,7 @@ function renderDishes(){
 function resetResults(){
   document.getElementById('resultsTitle').textContent='Pick a dish';
   document.getElementById('resultsHint').textContent='Spots appear here, ranked best-first.';
-  document.getElementById('spots').innerHTML='<div class="empty"><div class="big">✳</div>Now pick a dish on the left — or let fate decide.<br><button class="add-rec-top-btn surprise-cta" onclick="surpriseMe()">🎲 Surprise me</button></div>';
+  document.getElementById('spots').innerHTML='<div class="empty"><div class="big">✳</div>Now pick a dish on the left, or let fate decide.<br><button class="add-rec-top-btn surprise-cta" onclick="surpriseMe()">🎲 Surprise me</button></div>';
   document.getElementById('addRecTopBtn').style.display='none';
   document.getElementById('shareBtn').style.display='none';
   document.getElementById('nearBtn').style.display='none';
@@ -1571,7 +1592,7 @@ function showReportForm(card, dishId, spotName){
         note: form.querySelector('#rep-note').value.trim() || undefined
       });
       track('report', { spot: spotName });
-      form.innerHTML = '<div class="report-thanks">Thanks — noted. I\'ll take a look.</div>';
+      form.innerHTML = '<div class="report-thanks">Thanks, noted. I\'ll take a look.</div>';
       setTimeout(() => form.remove(), 2500);
     } catch (e) {
       btn.textContent = 'Error, retry'; btn.disabled = false;

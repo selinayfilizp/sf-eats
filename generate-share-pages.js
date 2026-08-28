@@ -25,7 +25,8 @@ const CUISINES = FOOD.cuisines;
 const outDir = path.join(__dirname, "s");
 fs.mkdirSync(outDir, { recursive: true });
 
-const escHtml = (s) => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+// no em dashes anywhere on the site (house style) — normalize them out of data-sourced text
+const escHtml = (s) => String(s).replace(/\s*—\s*/g, " - ").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
 const escAttr = (s) => escHtml(s).replace(/"/g, "&quot;");
 
 const CSS = `
@@ -82,23 +83,41 @@ function spotHtml(s, rank) {
 }
 
 function jsonLd(dish, cuisineId) {
-  return JSON.stringify({
+  const list = {
     "@context": "https://schema.org",
     "@type": "ItemList",
     name: `Best ${dish.name} in San Francisco`,
     url: `${SITE}/s/${dish.id}`,
+    numberOfItems: dish.spots.length,
     itemListElement: dish.spots.map((s, i) => ({
       "@type": "ListItem",
       position: i + 1,
       item: {
         "@type": "Restaurant",
         name: s.name,
-        address: s.address || undefined,
         servesCuisine: CUISINES[cuisineId].label,
+        url: s.mapsUri || undefined,
+        priceRange: s.price || undefined,
+        address: s.address
+          ? { "@type": "PostalAddress", streetAddress: s.address.replace(/,?\s*San Francisco.*$/i, ""), addressLocality: "San Francisco", addressRegion: "CA", addressCountry: "US" }
+          : undefined,
+        geo: (typeof s.lat === "number" && typeof s.lng === "number")
+          ? { "@type": "GeoCoordinates", latitude: s.lat, longitude: s.lng }
+          : undefined,
         aggregateRating: s.rating ? { "@type": "AggregateRating", ratingValue: s.rating, reviewCount: parseInt(String(s.reviews).replace(/\D/g, "")) || undefined } : undefined,
       },
     })),
-  });
+  };
+  const breadcrumbs = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "SF Eats", item: `${SITE}/` },
+      { "@type": "ListItem", position: 2, name: CUISINES[cuisineId].label, item: `${SITE}/s/${dish.id}` },
+      { "@type": "ListItem", position: 3, name: `Best ${dish.name} in San Francisco` },
+    ],
+  };
+  return JSON.stringify([list, breadcrumbs]);
 }
 
 const urls = [{ loc: `${SITE}/`, priority: "1.0" }];
@@ -107,10 +126,10 @@ let count = 0;
 for (const [cuisineId, cuisine] of Object.entries(CUISINES)) {
   for (const dish of cuisine.dishes) {
     const top = dish.spots.slice(0, 3).map((s) => s.name).join(", ");
-    const title = `Best ${dish.name} in San Francisco — SF Eats`;
+    const title = `Best ${dish.name} in San Francisco (${new Date().getFullYear()}) | SF Eats`;
     const desc = top
-      ? `The ${dish.spots.length} best spots for ${dish.name} in SF: ${top}. Ranked by what reviewers actually love, not just what they mention.`
-      : `The best ${dish.name} in SF, ranked by what reviewers actually love.`;
+      ? `The ${dish.spots.length} best spots for ${dish.name} in San Francisco: ${top}. Ranked by what reviewers actually love, not just what they mention.`
+      : `The best ${dish.name} in San Francisco, ranked by what reviewers actually love.`;
     const pageUrl = `${SITE}/s/${dish.id}`;
     const appUrl = `/#${cuisineId}/${dish.id}`;
     const ogImage = `${SITE}/og/${dish.id}.png`;
@@ -143,14 +162,25 @@ for (const [cuisineId, cuisine] of Object.entries(CUISINES)) {
   <a class="brand" href="/">SF EATS</a>
   <div class="crumb">${escHtml(cuisine.label)} · San Francisco</div>
   <h1>${dish.emoji ? dish.emoji + " " : ""}Best ${escHtml(dish.name)} in San Francisco</h1>
-  <p class="lede">${dish.spots.length} spots ranked by what reviewers actually love — high mentions ≠ high quality.</p>
+  <p class="lede">${dish.spots.length} spots ranked by what reviewers actually love. High mentions do not mean high quality.</p>
   <a class="cta" href="${appUrl}">Open the interactive map →</a>
   ${dish.spots.map((s, i) => spotHtml(s, i + 1)).join("\n")}
   <div class="more">
     <h3>More ${escHtml(cuisine.label)}</h3>
     <ul>${siblings.map((d) => `<li><a href="/s/${d.id}">${d.emoji ? d.emoji + " " : ""}${escHtml(d.name)}</a></li>`).join("")}</ul>
   </div>
-  <footer>Data from Google review consensus · <a href="/">sfeats.vercel.app</a></footer>
+  <div class="more">
+    <h3>Other cuisines</h3>
+    <ul>${Object.entries(CUISINES).filter(([id]) => id !== cuisineId).map(([, c]) => {
+      const first = c.dishes[0];
+      return first ? `<li><a href="/s/${first.id}">${escHtml(c.label)}</a></li>` : "";
+    }).join("")}</ul>
+  </div>
+  <div class="more">
+    <h3>From the blog</h3>
+    <ul><li><a href="/blog/">All guides</a></li><li><a href="/blog/most-mentioned-isnt-best">How we rank</a></li><li><a href="/blog/what-to-eat-in-san-francisco">What to eat in SF</a></li></ul>
+  </div>
+  <footer>Data from Google review consensus · <a href="/">sfeats.vercel.app</a> · <a href="/blog/">blog</a></footer>
 </div>
 </body>
 </html>
@@ -161,23 +191,46 @@ for (const [cuisineId, cuisine] of Object.entries(CUISINES)) {
   }
 }
 
-// blog posts (generated by generate-blog.js)
+// blog posts (generated by generate-blog.js) — lastmod from each file's mtime
 const blogDir = path.join(__dirname, "blog");
 if (fs.existsSync(blogDir)) {
-  urls.push({ loc: `${SITE}/blog/`, priority: "0.7" });
+  const mtime = (f) => fs.statSync(path.join(blogDir, f)).mtime.toISOString().slice(0, 10);
+  urls.push({ loc: `${SITE}/blog/`, priority: "0.7", lastmod: mtime("index.html") });
   for (const f of fs.readdirSync(blogDir)) {
     if (f.endsWith(".html") && f !== "index.html")
-      urls.push({ loc: `${SITE}/blog/${f.replace(/\.html$/, "")}`, priority: "0.7" });
+      urls.push({ loc: `${SITE}/blog/${f.replace(/\.html$/, "")}`, priority: "0.7", lastmod: mtime(f) });
   }
 }
 
-const lastmod = (FOOD.generatedAt || new Date().toISOString()).slice(0, 10);
+const dataLastmod = (FOOD.generatedAt || new Date().toISOString()).slice(0, 10);
 const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${urls.map((u) => `  <url><loc>${u.loc}</loc><lastmod>${lastmod}</lastmod><priority>${u.priority}</priority></url>`).join("\n")}
+${urls.map((u) => `  <url><loc>${u.loc}</loc><lastmod>${u.lastmod || dataLastmod}</lastmod><priority>${u.priority}</priority></url>`).join("\n")}
 </urlset>
 `;
 fs.writeFileSync(path.join(__dirname, "sitemap.xml"), sitemap);
+
+// Inject a crawlable link directory into index.html between marker comments.
+// The homepage app is JS-rendered, so without this Google has no plain-HTML
+// path from / to the 61 dish pages.
+const indexPath = path.join(__dirname, "index.html");
+let indexHtml = fs.readFileSync(indexPath, "utf8");
+const START = "<!-- seo-links:start -->", END = "<!-- seo-links:end -->";
+if (indexHtml.includes(START) && indexHtml.includes(END)) {
+  const dirHtml = `${START}
+<details class="seo-directory"><summary>Browse all dishes</summary>
+${Object.entries(CUISINES).map(([, c]) =>
+  `<p><strong>${escHtml(c.label)}:</strong> ${c.dishes.map((d) => `<a href="/s/${d.id}">Best ${escHtml(d.name)}</a>`).join(" · ")}</p>`
+).join("\n")}
+<p><strong>Guides:</strong> <a href="/blog/">The SF Eats blog</a></p>
+</details>
+${END}`;
+  indexHtml = indexHtml.slice(0, indexHtml.indexOf(START)) + dirHtml + indexHtml.slice(indexHtml.indexOf(END) + END.length);
+  fs.writeFileSync(indexPath, indexHtml);
+  console.log("Injected crawlable dish directory into index.html");
+} else {
+  console.log("NOTE: seo-links markers not found in index.html; directory not injected");
+}
 
 fs.writeFileSync(path.join(__dirname, "robots.txt"), `User-agent: *
 Allow: /
