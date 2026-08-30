@@ -811,7 +811,7 @@ ${jsonLd ? `<script type="application/ld+json">${jsonLd}</script>` : ""}
 <body>
 <div class="wrap">
 ${bodyHtml}
-<footer>SF Eats · ranked by Google review consensus · <a href="/">sfeats.vercel.app</a> · <a href="/blog/">blog</a></footer>
+<footer>SF Eats · ranked by Google review consensus · <a href="/">sfeats.vercel.app</a> · <a href="/blog/">blog</a> · <a href="https://sfgems.substack.com" rel="me">SF Gems newsletter</a></footer>
 </div>
 </body>
 </html>
@@ -874,7 +874,7 @@ const indexBody = `
 <a class="brand" href="/">SF EATS</a>
 <div class="crumb">Blog</div>
 <h1>The SF Eats Blog</h1>
-<div class="byline">Data-driven answers to "where should I eat in San Francisco?"</div>
+<div class="byline">Data-driven answers to "where should I eat in San Francisco?" · Also: <a href="https://sfgems.substack.com">SF Gems</a>, my newsletter of favorite SF spots.</div>
 <div class="postlist">
 ${POSTS.map((p) => `  <a class="post" href="/blog/${p.slug}"><div class="pt">${p.title}</div><div class="pd">${p.description}</div></a>`).join("\n")}
 </div>
