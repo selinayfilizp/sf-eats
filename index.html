@@ -1120,7 +1120,7 @@
 </div>
 
 <script>
-const COLORS = { michelin:'#c41e3a', mexican:'#8a6e3a', italian:'#4a6e3a', turkish:'#3a5a6e', indian:'#8a5a2a', chinese:'#6e3a3a', japanese:'#5a3a6e', korean:'#6e5a3a', vietnamese:'#3a6e5a' };
+const COLORS = { michelin:'#c41e3a', lunch:'#8a7a2a', mexican:'#8a6e3a', italian:'#4a6e3a', turkish:'#3a5a6e', indian:'#8a5a2a', chinese:'#6e3a3a', japanese:'#5a3a6e', korean:'#6e5a3a', vietnamese:'#3a6e5a' };
 
 const DEMO = { mexican:{ label:"Mexican", dishes:[
   {id:"demo-burrito", emoji:"\u{1F32F}", name:"Mission Burrito", spots:[
@@ -1690,7 +1690,7 @@ document.getElementById('nearBtn').onclick = () => {
 
 /* ─── Surprise me ─── */
 function surpriseMe() {
-  const cuisines = Object.keys(DATA).filter(c => c !== 'michelin');
+  const cuisines = Object.keys(DATA).filter(c => c !== 'michelin' && c !== 'lunch');
   const c = cuisines[Math.floor(Math.random() * cuisines.length)];
   const ds = DATA[c].dishes;
   const d = ds[Math.floor(Math.random() * ds.length)];
@@ -1705,7 +1705,7 @@ document.getElementById('shareBtn').onclick = async () => {
   if (!d) return;
   // Per-dish share pages (/s/<dishId>) carry dish-specific OG previews;
   // michelin entries are client-side only and have no share page.
-  const hasSharePage = location.protocol.startsWith('http') && activeCuisine !== 'michelin';
+  const hasSharePage = location.protocol.startsWith('http') && activeCuisine !== 'michelin' && activeCuisine !== 'lunch';
   const url = hasSharePage
     ? `${location.origin}/s/${d.id}`
     : `${location.origin}${location.pathname}#${activeCuisine}/${d.id}`;
@@ -1773,7 +1773,8 @@ function boot(){
   } else {
     badge.className='badge demo'; badge.textContent='Demo / run generator';
   }
-  DATA = Object.assign({}, MICHELIN, DATA);
+  const LUNCH_TAB = window.LUNCH_DATA ? { lunch: { label: window.LUNCH_DATA.label || 'Lunch', dishes: window.LUNCH_DATA.dishes } } : {};
+  DATA = Object.assign({}, MICHELIN, LUNCH_TAB, DATA);
   activeCuisine = Object.keys(DATA)[0];
   initMap(); renderCuisines(); renderDishes();
   restoreFromHash();
@@ -1783,6 +1784,9 @@ function boot(){
   const ms=document.createElement('script');
   ms.src='michelin-sources.js';
   document.head.appendChild(ms);
+  const ls=document.createElement('script');
+  ls.src='lunch-data.js';
+  document.head.appendChild(ls);
   const s=document.createElement('script');
   s.src='sf-food-data.js';
   s.onload=boot; s.onerror=boot;
