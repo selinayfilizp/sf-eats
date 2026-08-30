@@ -42,7 +42,7 @@ const cache = fs.existsSync(CACHE_PATH) ? JSON.parse(fs.readFileSync(CACHE_PATH,
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
 function cleanQuote(t) {
-  let s = t.replace(/\s+/g, " ").trim();
+  let s = t.replace(/\s*—\s*/g, " - ").replace(/\s+/g, " ").trim();
   if (s.length > 150) s = s.slice(0, 147).replace(/[ ,.;:]+\S*$/, "") + "…";
   return "“" + s + "”";
 }

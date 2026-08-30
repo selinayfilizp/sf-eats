@@ -1136,7 +1136,7 @@ let sourceMarkers = new Map();
 
 function initMap(){
   map = L.map('map',{zoomControl:true}).setView([37.7649,-122.4194],12.6);
-  L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png',{attribution:'© OpenStreetMap © CARTO',maxZoom:19}).addTo(map);
+  L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}',{attribution:'© Esri © OpenStreetMap contributors',maxNativeZoom:16,maxZoom:19}).addTo(map);
 }
 function clearMarkers(){ markers.forEach(m=>m&&map.removeLayer(m)); markers=[]; clearSourceMarkers(); }
 function clearSourceMarkers(){ sourceMarkers.forEach(m=>map.removeLayer(m)); sourceMarkers.clear(); }
@@ -1384,6 +1384,7 @@ function distMi(a, s){
 
 function showDish(d){
   const isMichelin = activeCuisine === 'michelin';
+  d = Object.assign({}, d, { spots: d.spots.filter(s => !s.businessStatus || s.businessStatus === 'OPERATIONAL') });
   document.getElementById('resultsTitle').textContent=d.name;
   document.getElementById('resultsHint').innerHTML= isMichelin
     ? `${d.spots.length} restaurant${d.spots.length!==1?'s':''} &middot; sourcing evidence from public reporting`
@@ -1737,7 +1738,7 @@ const MICHELIN = {
         {name:"Saison", neighborhood:"SoMa", rating:4.6, reviews:"950", price:"$$$$", why:"Emphasizes California terroir and the work of farmers, ranchers, and fishermen.", address:"178 Townsend St", lat:37.7793, lng:-122.3938, mapsUri:""},
         {name:"Birdsong", neighborhood:"SoMa", rating:4.5, reviews:"600", price:"$$$$", why:"Whole ingredients from ecosystem-minded producers. Wood-fire cooking.", address:"1085 Mission St", lat:37.7797, lng:-122.4101, mapsUri:""},
         {name:"Kiln", neighborhood:"Hayes Valley", rating:4.6, reviews:"400", price:"$$$$", why:"Ingredient-driven cooking with local produce, sustainably sourced meats, and wild seafood.", address:"400 Grove St", lat:37.7767, lng:-122.4202, mapsUri:""},
-        {name:"Sons & Daughters", neighborhood:"Mission", rating:4.5, reviews:"500", price:"$$$$", why:"Seasonal Californian produce with preservation-focused pantry. Historical ties to Dark Hill Farm.", address:"708 Bush St", lat:37.7615, lng:-122.4109, mapsUri:""},
+        {name:"Sons & Daughters", neighborhood:"Nob Hill", rating:4.5, reviews:"500", price:"$$$$", why:"Seasonal Californian produce with preservation-focused pantry. A move to a larger Mission space is announced for 2026.", address:"708 Bush St", lat:37.7905, lng:-122.4093, mapsUri:""},
         {name:"Acquerello", neighborhood:"Nob Hill", rating:4.6, reviews:"1,100", price:"$$$$", why:"Refined Italian tasting menu in a former chapel. One of SF's longest-running starred restaurants.", address:"1722 Sacramento St", lat:37.7934, lng:-122.4218, mapsUri:""}
       ]},
       { id:"mic-1star", emoji:"⭐", name:"1 Star", spots:[

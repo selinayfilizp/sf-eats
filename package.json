@@ -6,7 +6,11 @@
   "scripts": {
     "generate": "node generate-data.js",
     "generate:dry": "node generate-data.js --dry-run",
+    "refresh": "node fill-missing-stats.js",
+    "validate": "node validate-data.js",
+    "blog": "node generate-blog.js",
     "share-pages": "node generate-share-pages.js && python3 generate-og-images.py",
+    "build-all": "node generate-blog.js && node generate-share-pages.js && node validate-data.js",
     "deploy": "npx convex deploy"
   },
   "engines": { "node": ">=18" },

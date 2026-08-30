@@ -494,6 +494,224 @@ ${rankcard(3, "Catalyst Coffee Lab", "Embarcadero, Pier 15 at the Exploratorium 
 <p>Ratings pulled live from Google Maps in July 2026, quotes taken from real reviews, lightly trimmed for length. No invites, no comps, no affiliate anything. When a place has 15 reviews I say so, because a 5.0 from 15 people and a 4.9 from 163 are not the same claim. For how we think about ratings in general: <a href="/blog/most-mentioned-isnt-best">high mentions do not mean high quality</a>.</p>
 <a class="cta" href="/">Explore the full SF Eats map →</a>`,
   },
+  // ── 11 ────────────────────────────────────────────────────────────────────
+  {
+    slug: "michelin-star-restaurants-san-francisco",
+    title: "Every Michelin Star Restaurant in San Francisco (2026): The Full List, With Google Ratings",
+    description:
+      "All 25 Michelin-starred restaurants in San Francisco: 4 three-stars, 6 two-stars, 15 one-stars. Google ratings for each, plus where the stars actually buy their ingredients.",
+    ogImage: "/og-image.png",
+    published: "2026-08-29",
+    spotList: [
+      "Atelier Crenn", "Californios", "Quince", "Benu", "Lazy Bear", "Saison", "Birdsong",
+      "Kiln", "Sons & Daughters", "Acquerello", "State Bird Provisions", "Niku Steakhouse",
+      "Mister Jiu's", "Nisei", "Sorrel", "Wolfsbane", "The Progress", "Hilda and Jesse",
+      "Nari", "Restaurant Naides", "Kin Khao", "Angler", "7 Adams", "San Ho Won", "Ssal"
+    ],
+    body: `
+<p>San Francisco holds 25 Michelin-starred restaurants in 2026: four with three stars, six with two, fifteen with one. This is the full list, with a number the Michelin Guide will not give you: what Google reviewers actually rate each one.</p>
+<p>Why put those side by side? Because stars and crowd satisfaction measure different things. A starred kitchen can leave a chunk of its Google reviewers cold, usually over price, portion, or formality, and that gap is worth knowing about before you commit a few hundred dollars to a tasting menu.</p>
+
+<h2>Three Michelin stars in San Francisco</h2>
+${rankcard(1, "Quince", "Jackson Square · ★ 4.7 on Google · $$$$", null,
+  "Michael Tusk's farm-to-table tasting menu. An entire Bolinas farm, Fresh Run Farm, grows exclusively for this restaurant.")}
+${rankcard(2, "Atelier Crenn", "Cow Hollow · ★ 4.6 on Google · $$$$", null,
+  "Dominique Crenn's poetic culinaria, supplied by her own Bleu Belle Farm in Sonoma.")}
+${rankcard(3, "Californios", "SoMa · ★ 4.6 on Google · $$$$", null,
+  "Val Cantu's Mexican fine dining, publicly tied to Tierra Vegetables' heirloom corn and masa.")}
+${rankcard(4, "Benu", "SoMa · ★ 4.5 on Google · $$$$", null,
+  "Corey Lee's tasting menu blends Korean, Chinese, and French technique.")}
+<p>All four sit between 4.5 and 4.7 on Google, which sounds unremarkable until you remember these are $400+ dinners being judged by people spending their own money. Nobody hands a three-star restaurant a five easily. Quince edging the group at 4.7 tracks with what its reviews emphasize: consistency, not fireworks.</p>
+
+<h2>Two Michelin stars</h2>
+${rankcard(1, "Saison", "SoMa · ★ 4.6 on Google · $$$$")}
+${rankcard(2, "Acquerello", "Nob Hill · ★ 4.6 on Google · $$$$", null,
+  "Refined Italian in a former chapel, one of the city's longest-running starred rooms.")}
+${rankcard(3, "Kiln", "Hayes Valley · ★ 4.6 on Google · $$$$")}
+${rankcard(4, "Lazy Bear", "Mission · ★ 4.5 on Google · $$$$", null,
+  "The communal dinner party format. David Barzelay has bought from Tierra Vegetables for nearly two decades.")}
+${rankcard(5, "Birdsong", "SoMa · ★ 4.5 on Google · $$$$")}
+<p>Sons & Daughters (★ 4.5) rounds out the two-star group from its Nob Hill room at 708 Bush St, with an announced move to a larger Mission space. If you want the two-star experience with the least ceremony, Lazy Bear's shared tables are the outlier format in the whole starred list.</p>
+
+<h2>One Michelin star: where the interesting gaps live</h2>
+<p>The fifteen one-stars are where Google ratings and Michelin's opinion diverge most, in both directions.</p>
+${rankcard(1, "Nisei", "Russian Hill · ★ 4.7 on Google", null,
+  "Washoku-inspired tasting menu. Sells a 'Day in the Life' experience that starts with sourcing at the farmers market.")}
+${rankcard(2, "Sorrel", "Pacific Heights · ★ 4.7 on Google", null,
+  "Bay Area farmers markets plus a rooftop garden.")}
+${rankcard(3, "State Bird Provisions", "Fillmore · ★ 4.6 on Google · $$$", null,
+  "Dim-sum-cart California cooking. Eater once documented its Ferry Plaza market walk naming the exact farms.")}
+<p>At the other end: Kin Khao holds a star and a 4.3 on Google across 2,100 reviews, the lowest in the starred set. Mister Jiu's and Hilda and Jesse sit at 4.4. None of those are bad numbers, but the pattern is consistent: the further a starred restaurant leans into casual volume service, the more its Google score converges toward ordinary. The full fifteen: State Bird Provisions, Niku Steakhouse, Mister Jiu's, Nisei, Sorrel, Wolfsbane, The Progress, Hilda and Jesse, Nari, Restaurant Naides, Kin Khao, Angler, 7 Adams, San Ho Won, and Ssal.</p>
+
+<h2>The part nobody else covers: where the stars buy their food</h2>
+<p>SF Eats keeps a sourcing map for the starred restaurants, built from public reporting, and a lot of it is places you can shop yourself. Tierra Vegetables sells the same heirloom corn Californios uses, at the Ferry Plaza Saturday market. The Butcher Shop by Niku retails the same A5 wagyu program as Niku Steakhouse. State Bird's produce trail runs through vendors any of us can visit on a Saturday morning. The map on the site marks which suppliers are public and which are restaurant-only.</p>
+<a class="cta" href="/#michelin/mic-1star">Open the Michelin sourcing map →</a>
+
+<h2>Honest notes</h2>
+<p>Google ratings here are as of mid-2026 and drift over time. A 4.5 at a $$$$ tasting counter is not comparable to a 4.5 at a taqueria; expensive restaurants attract tougher graders and higher expectations. And a Michelin star measures a specific thing (technique, consistency, vision as judged by anonymous professional inspectors), which is exactly why the crowd number beside it is useful context rather than a contradiction. For how we think about ratings generally: <a href="/blog/most-mentioned-isnt-best">high mentions do not mean high quality</a>.</p>`,
+  },
+  // ── 12 ────────────────────────────────────────────────────────────────────
+  {
+    slug: "best-omakase-sushi-san-francisco",
+    title: "Best Omakase in San Francisco (2026): Sushi Counters Ranked by 2,000+ Reviews",
+    description:
+      "Ju-Ni, KEN, Omakase, Kusakabe and more, ranked by how positively reviewers describe the actual sushi. Plus what each counter costs and how to book.",
+    ogImage: "/og-image.png",
+    published: "2026-08-29",
+    spotList: ["Ju-Ni", "KEN", "Omakase", "Chisai Sushi Club", "KUSAKABE"],
+    body: `
+<p>Omakase in San Francisco runs from about $120 to over $300 a seat, the menus all promise roughly the same arc of nigiri, and every counter has a 4.5 or better on Google. The star ratings cannot separate them. So we read the reviews that actually describe the sushi and scored how positive they are.</p>
+
+<h2>The ranking</h2>
+${rankcard(1, "KEN", "Lower Haight · ★ 4.9 (157 reviews)",
+  "90 dish mentions · <b>96% loved</b>",
+  "By far the best and most memorable omakase experience I have ever had!")}
+${rankcard(2, "Omakase", "Showplace Square · ★ 4.6 (460 reviews) · $$$$",
+  "800 dish mentions · <b>94% loved</b>",
+  "We even got to see the chef's amazing sushi knives, some worth thousands, and his hilarious stories.")}
+${rankcard(3, "Ju-Ni", "North of the Panhandle · ★ 4.7 (514 reviews) · $$$$",
+  "500 dish mentions · <b>92% loved</b>",
+  "Twelve seats, twelve courses. The uni and A5 wagyu courses are the ones people cannot stop writing about.")}
+${rankcard(4, "KUSAKABE", "North Beach · ★ 4.7 (786 reviews) · $$$$", null,
+  "Really love the contrast of the dry aged fish sushi and the fresh fish sushi.")}
+${rankcard(5, "Chisai Sushi Club", "Bernal Heights · ★ 4.8 (372 reviews)", null,
+  "The neighborhood option: a small Bernal counter with a rare vegan omakase track that reviewers rate surprisingly well.")}
+
+<h2>Reading the numbers honestly</h2>
+<p>KEN tops the list at 96% love, but note the sample: 157 total reviews, 90 of them describing the omakase. That is a small, devoted crowd, the kind a 14-seat counter with hard-to-get reservations selects for. People who fight for a booking arrive wanting to love it. The score is real, just understand what produced it.</p>
+<p>Omakase (the restaurant named Omakase) has the strongest large-sample number: 94% positive across 800 sushi mentions. Ju-Ni sits at 92% across 500. The practical difference between 92 and 94 at these volumes is nothing you would taste. What actually separates them is format: Ju-Ni serves everything in a strict 12-course seating with two time slots, Omakase runs slightly looser and takes later bookings.</p>
+<p>KUSAKABE is the one to watch if you care about technique specifics. Its dry-aged fish program comes up constantly in reviews. We have not finished scoring its full review set, so it sits unranked on love for now, and it would be dishonest to invent a number.</p>
+
+<h2>Which one should you book?</h2>
+<p>First omakase ever: Ju-Ni, because the 12-seat format explains itself as it goes. Special occasion where budget is not the constraint: KEN, booked well ahead. Best odds of a seat this week: Omakase or KUSAKABE. Sushi-curious but not $250-curious: Chisai's Bernal counter is the gentlest entry point, and the only one with a serious vegan path.</p>
+<a class="cta" href="/s/jpn-omakase">See the full omakase map →</a>
+
+<h2>Related</h2>
+<p>Japanese food beyond sushi: <a href="/blog/best-ramen-san-francisco">the ramen ranking</a>, <a href="/s/jpn-izakaya">izakaya and yakitori</a> (Rintaro holds the highest Japanese love score we track at 94%), and <a href="/s/jpn-udon">handmade udon</a>.</p>`,
+  },
+  // ── 13 ────────────────────────────────────────────────────────────────────
+  {
+    slug: "best-korean-bbq-san-francisco",
+    title: "Best Korean BBQ in San Francisco (2026): Ranked by What 3,700+ Reviewers Say",
+    description:
+      "Brothers, Han Il Kwan, um.ma, Kogi Gogi, and San Ho Won compared: galbi quality, charcoal vs gas, AYCE or not, and what reviewers actually complain about.",
+    ogImage: "/og-image.png",
+    published: "2026-08-29",
+    spotList: ["Brothers Restaurant", "Han Il Kwan", "um.ma", "Kogi Gogi BBQ", "San Ho Won"],
+    body: `
+<p>Korean BBQ is a category where San Francisco punches below its weight, and locals know it. The serious KBBQ crowd drives to Santa Clara or Oakland. But if you are staying in the city, there is a real ranking to be had, and the review data is clear about both the order and the complaints.</p>
+
+<h2>The ranking</h2>
+${rankcard(1, "Brothers Restaurant", "Inner Richmond · ★ 4.5 (684 reviews) · $$",
+  "280 dish mentions · <b>91% loved</b>",
+  "Overall 10/10, fav kbbq in sf hands down.")}
+${rankcard(2, "Han Il Kwan", "Central Richmond · ★ 4.4 (1,505 reviews) · $$",
+  "320 dish mentions · <b>90% loved</b>",
+  "Great portion for the BBQ, every dish is so flavorful, I absolutely love everything including the banchan.")}
+${rankcard(3, "um.ma", "Inner Sunset · ★ 4.4 (929 reviews) · $$",
+  "190 dish mentions · <b>88% loved</b>",
+  "Galbi wasn't too fatty and was delish, bulgogi was slightly too sweet but still tasty.")}
+${rankcard(4, "Kogi Gogi BBQ", "Inner Sunset · ★ 4.2 (602 reviews) · $$",
+  "250 dish mentions · <b>87% loved</b>",
+  "I would definitely recommend choosing marinated meats as the bulgogi and galbi were our favorites.")}
+${rankcard(5, "San Ho Won", "Mission · ★ 4.6 (723 reviews) · $$$", null,
+  "The Michelin-starred one, from the Benu team. Charcoal galbi in a reservation-required, not-all-you-can-eat format.")}
+
+<h2>What the reviews actually argue about</h2>
+<p>Brothers wins on the meat itself: charcoal tables, aged galbi, and a 91% love score from 280 mentions. The recurring complaint is everything around the meat, namely waits with no real system and brusque service on busy nights. Reviewers keep saying the food is worth it, which is exactly what a 4.5 with a 91% dish score looks like: great product, rough edges.</p>
+<p>Han Il Kwan is the volume pick, the most-mentioned KBBQ in the city at 320. It is an old-school Richmond institution where the banchan spread does a lot of the work. The critical reviews cluster on inconsistency during rushes. um.ma runs a more modern menu (their kimchi fried rice finishes tableside) and reads slightly behind on pure grill quality at 88%.</p>
+<p>Kogi Gogi is the all-you-can-eat entry, and its 87% needs that context: AYCE reviews always run lower because the format invites quantity judgments. For what it is, the marinated meats hold up.</p>
+
+<h2>The San Ho Won question</h2>
+<p>San Ho Won holds a Michelin star and a 4.6, the highest rating in this group, but we score dishes on what reviewers say about them, and its full review set is still being processed, so it carries no love score yet. What the reviews already show: the charcoal galbi is the dish everyone orders, the portions read small to people expecting KBBQ abundance, and it is a different product category, closer to a Korean grill restaurant than a wrap-it-yourself KBBQ night. Judge it on that axis and it belongs at or near the top. Judge it as AYCE-style KBBQ and you will leave hungry and lighter by $90.</p>
+<a class="cta" href="/s/kor-bbq">See the full KBBQ map →</a>
+
+<h2>Related</h2>
+<p>More Korean: <a href="/s/kor-friedchx">Korean fried chicken</a>, <a href="/s/kor-jjigae">kimchi jjigae and stews</a>, and <a href="/s/kor-tteokbokki">tteokbokki and street food</a>.</p>`,
+  },
+  // ── 14 ────────────────────────────────────────────────────────────────────
+  {
+    slug: "best-soup-dumplings-xiao-long-bao-san-francisco",
+    title: "Best Soup Dumplings in San Francisco (2026): Xiao Long Bao Ranked, Including One Hype Trap",
+    description:
+      "Dumpling Story, Dumpling Zone, Yuanbao Jiaozi, Dumpling Time, Dumpling Home: SF's xiao long bao ranked by review sentiment. The most famous one scores the lowest.",
+    ogImage: "/og-image.png",
+    published: "2026-08-29",
+    spotList: ["Dumpling Story", "Dumpling Zone", "Yuanbao Jiaozi", "Dumpling Time", "Dumpling Home"],
+    body: `
+<p>Xiao long bao is an unforgiving dish. The skin has to be thin enough to see the soup through and strong enough to survive the chopstick lift, and the difference between great and average is about eight seconds of steam. San Francisco has five spots people argue about. The review data settles a few of those arguments, including one result the Instagram crowd will not like.</p>
+
+<h2>The ranking</h2>
+${rankcard(1, "Dumpling Zone", "West of Twin Peaks · ★ 4.8 (258 reviews) · $$",
+  "35 dish mentions · <b>93% loved</b>",
+  "Literally some of the best XLB I might have ever had.")}
+${rankcard(2, "Dumpling Story", "Valencia St, Mission Dolores · ★ 4.8 (500 reviews) · $$",
+  "55 dish mentions · <b>91% loved</b>",
+  "The pan fried soup dumplings were so incredibly tasty. And the curry lamb steamed dumplings.")}
+${rankcard(3, "Yuanbao Jiaozi 元寶餃子", "Outer Sunset · ★ 4.6 (694 reviews) · $",
+  "40 dish mentions · <b>90% loved</b>",
+  "That was an exceptional place to eat the freshest dumplings you will ever eat!")}
+${rankcard(4, "Dumpling Home", "Civic Center · ★ 4.5 (1,644 reviews) · $$", null,
+  "We had the pork xiao long bao, pan-fried juicy pork bao (my favorite) and the dry-fried chicken wings.")}
+${rankcard(5, "Dumpling Time", "Design District · ★ 4.5 (2,800 reviews) · $$",
+  "70 dish mentions · <b>82% loved</b>",
+  "The Wagyu XLB is one of the best things I've ever eaten.")}
+
+<h2>The hype trap: Dumpling Time</h2>
+<p>Dumpling Time is the most famous name here, with 2,800 reviews, a Design District flagship, and the Instagram-bait King Dum giant soup dumpling. It also has the lowest love score of the five at 82%. Read the mentioning reviews and the pattern is consistent: people love the theater, then note the XLB skins run thick and the soup runs thin. The wagyu XLB gets genuine praise; the standard pork is where the disappointment concentrates. This is the exact pattern our <a href="/blog/most-mentioned-isnt-best">hype-vs-love scoring</a> exists to catch: maximum fame, weakest dish sentiment.</p>
+
+<h2>The quiet winners</h2>
+<p>Dumpling Zone at 93% is a strip-mall-plain room by Twin Peaks that tourists never reach. Small sample caveat applies: 35 XLB mentions is enough to trust the direction but not to declare an eight-point gap over Yuanbao meaningful. Dumpling Story on Valencia is the strongest all-rounder, with the pan-fried sheng jian bao variant earning as much praise as the classic steamed. Yuanbao in the Outer Sunset is the value pick, a dollar-sign cheaper with handmade wrappers you can watch being rolled.</p>
+<p>Dumpling Home sits unscored for now (its full review set is still processing), but its 1,644-review 4.5 and the specificity of its praise suggest it will land in the upper half when the numbers come in.</p>
+
+<h2>Ordering notes from the reviews</h2>
+<p>Consensus across all five: order the classic pork XLB as the benchmark before any truffle or wagyu variant, ask for black vinegar with ginger if it does not come automatically, and skip XLB delivery entirely. Every one-star XLB review that mentions DoorDash describes the same collapsed, soup-less result. This dish does not travel.</p>
+<a class="cta" href="/s/chn-xiaolongbao">See the full soup dumpling map →</a>
+
+<h2>Related</h2>
+<p>More Chinese: <a href="/blog/best-dim-sum-san-francisco">the dim sum ranking</a>, <a href="/s/chn-roastduck">Peking duck</a>, and <a href="/s/chn-mapo">mapo tofu and Sichuan</a>.</p>`,
+  },
+  // ── 15 ────────────────────────────────────────────────────────────────────
+  {
+    slug: "mission-district-food-guide",
+    title: "Mission District Food Guide (2026): The Best Thing to Order on Every Block",
+    description:
+      "What to eat in SF's Mission District, dish by dish: burritos, tamales, birria, omakase-level izakaya, tsukemen, Japanese curry, soup dumplings, and a Michelin dinner party. All ranked from review data.",
+    ogImage: "/og-image.png",
+    published: "2026-08-29",
+    spotList: [
+      "La Palma Mexicatessen", "Donaji", "El Metate", "La Taqueria", "Rintaro",
+      "Taishoken", "Curry Hyuga", "Dumpling Story", "Pakwan", "Baklavastory",
+      "Hi Hat", "Stonemill Matcha", "Lazy Bear", "San Ho Won"
+    ],
+    body: `
+<p>The Mission is the highest-density great-food neighborhood in San Francisco, and most guides cover exactly one dimension of it: the burritos. Fair, the burritos matter, and <a href="/blog/best-burrito-san-francisco">we ranked those separately</a>. But our data covers 60+ dishes across the city, and when you filter it to the Mission, a much stranger and better neighborhood shows up: the city's best izakaya, its best tsukemen, its best Japanese curry, its best tamales, and its best baklava are all within about fifteen blocks of each other.</p>
+<p>Every score below means: of the Google reviews that mention this dish at this spot, this share describe it positively.</p>
+
+<h2>The Mexican core</h2>
+<p><strong>Tamales at La Palma Mexicatessen</strong> (24th St): 94% love across 95 mentions, and the masa is ground on site. Donaji nearby scores higher at 96% on a smaller sample of 55. Either way, the Mission's tamale game is stronger than its burrito game and nobody writes about it.</p>
+<p><strong>Burritos</strong>: El Metate at 93% is the data's pick over La Taqueria's 90%, with the caveat that La Taqueria's rice-less style is its own category. The full argument is in <a href="/blog/best-burrito-san-francisco">the burrito ranking</a>.</p>
+<p><strong>Chilaquiles at el Mil Amores</strong>: 95% across 60 mentions, the best brunch number in the neighborhood. <strong>Mole at La Oaxaqueña</strong>: 91%, and its tamales score 93% too.</p>
+
+<h2>The Japanese block nobody expects</h2>
+<p>Within a few blocks of 18th and Valencia the Mission quietly hosts the top of our entire Japanese ranking:</p>
+${rankcard(1, "Rintaro", "Izakaya · ★ 4.5 (1,387 reviews)", "900 mentions · <b>94% loved</b>",
+  "Our favorite was the mushroom yakitori. If we came back we'd try more yakitori.")}
+${rankcard(2, "Taishoken", "Tsukemen · ★ 4.6 (487 reviews)", "450 mentions · <b>91% loved</b>")}
+${rankcard(3, "Curry Hyuga", "Japanese curry · ★ 4.7 (157 reviews)", "180 mentions · <b>93% loved</b>",
+  "Killer casual Japanese curry in the Mission district.")}
+<p>Rintaro's 94% over 900 mentions is the highest large-sample Japanese score we track. Taishoken is the city's best tsukemen (<a href="/blog/best-ramen-san-francisco">it tops our ramen ranking</a>). Curry Hyuga's 93% comes from a small room, so expect a wait at peak.</p>
+
+<h2>The rest of the map</h2>
+<p><strong>Soup dumplings at Dumpling Story</strong> (Valencia): 91%, strongest all-rounder in <a href="/blog/best-soup-dumplings-xiao-long-bao-san-francisco">our XLB ranking</a>. <strong>Goat curry at Pakwan</strong>: 92% across 310 mentions, cash only, BYO chai expectations. <strong>Baklava at Baklavastory</strong>: a 4.9-star shop whose 97% love score is the highest Turkish number we track. <strong>Pizza at Hi Hat</strong>: 96% on the slice. <strong>Matcha at Stonemill</strong>: 93%, though reviewers flag the line and the prices in the same breath.</p>
+
+<h2>The fine-dining tier</h2>
+<p>The Mission holds two Michelin stars: Lazy Bear (two stars, the communal dinner party, ★ 4.5) and San Ho Won (one star, charcoal Korean grill, ★ 4.6), with Sons & Daughters announced to join once its move from Nob Hill completes. Details in <a href="/blog/michelin-star-restaurants-san-francisco">the full Michelin list</a>.</p>
+
+<h2>Honest limits of this guide</h2>
+<p>Our data ranks dishes we track city-wide, so a Mission spot that is beloved for something we do not score yet will be missing here. The neighborhood also changes fast, and review sentiment lags reality by months. Treat this as a data-grounded starting map, not a census. When a place has a small mention count we said so inline.</p>
+<a class="cta" href="/">Open the full interactive map →</a>`,
+  },
 ];
 
 // ── render ────────────────────────────────────────────────────────────────

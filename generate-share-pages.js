@@ -22,6 +22,11 @@ vm.runInContext(fs.readFileSync(path.join(__dirname, "sf-food-data.js"), "utf8")
 const FOOD = ctx.window.SF_FOOD_DATA;
 const CUISINES = FOOD.cuisines;
 
+// never publish a spot flagged as closed by the freshness refresh
+for (const c of Object.values(CUISINES))
+  for (const d of c.dishes)
+    d.spots = d.spots.filter((s) => !s.businessStatus || s.businessStatus === "OPERATIONAL");
+
 const outDir = path.join(__dirname, "s");
 fs.mkdirSync(outDir, { recursive: true });
 
