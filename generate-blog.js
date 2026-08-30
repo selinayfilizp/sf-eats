@@ -712,6 +712,75 @@ ${rankcard(3, "Curry Hyuga", "Japanese curry · ★ 4.7 (157 reviews)", "180 men
 <p>Our data ranks dishes we track city-wide, so a Mission spot that is beloved for something we do not score yet will be missing here. The neighborhood also changes fast, and review sentiment lags reality by months. Treat this as a data-grounded starting map, not a census. When a place has a small mention count we said so inline.</p>
 <a class="cta" href="/">Open the full interactive map →</a>`,
   },
+  // ── 16 ────────────────────────────────────────────────────────────────────
+  {
+    slug: "best-lunch-spots-san-francisco",
+    title: "Best Lunch Spots in San Francisco (2026): Where to Eat In, and What Actually Survives Delivery",
+    description:
+      "The best lunch in San Francisco ranked by review data: Saigon Sandwich, Golden Boy, Muracci's, El Metate, Pho 2000. Plus which dishes to order in, and which fall apart in a delivery bag.",
+    ogImage: "/og-image.png",
+    published: "2026-08-29",
+    spotList: [
+      "Saigon Sandwich", "El Metate", "Golden Boy Pizza", "Muracci's Japanese Curry",
+      "Pho 2000", "Manna", "Hai Ky Mi Gia", "Yummy Yummy", "La Palma Mexicatessen",
+      "Pakwan", "Volcano Curry", "Cafe Bunn Mi"
+    ],
+    body: `
+<p>Lunch is a different problem than dinner. You have an hour, maybe less, and the question is not "what is the best restaurant" but "what is the best thing I can be eating twenty minutes from now." So this guide is ranked for exactly that, in two halves: where to go when you can leave the desk, and what to order in when you cannot. The second half matters more than people admit, because some of the best lunch food in this city turns into a sad, steamed version of itself inside a delivery bag.</p>
+<p>As always, the love score means: of the Google reviews that mention the dish, this share describe it positively.</p>
+
+<h2>Best lunch spots in San Francisco: eat there</h2>
+
+${rankcard(1, "Saigon Sandwich", "Tenderloin, 560 Larkin St · ★ 4.6 (1,609 reviews) · $",
+  "1,100 banh mi mentions · <b>95% loved</b>",
+  "The roast pork was very tender and slightly sweet, definitely not your usual banh mi filling.")}
+<p>The best lunch number in our entire dataset. Under ten dollars, cash, a line that moves fast, and 95% positive across eleven hundred mentions. The honest caveats: it is a counter with nowhere to sit, and the Larkin Street block requires a tolerance for the Tenderloin at midday. Neither has dented the score.</p>
+
+${rankcard(2, "Muracci's Japanese Curry & Grill", "Chinatown, near FiDi · ★ 4.5 (696 reviews) · $$",
+  "1,400 curry mentions · <b>89% loved</b>",
+  "The katsu curry at lunch rush is the order. Expect a line of office workers who all know each other's orders.")}
+<p>1,400 mentions makes this the most talked-about lunch dish we track downtown. An 89% love score is good, not elite, and the critical reviews are consistent about why: portions read small for the price, and peak-hour waits stretch. It ranks this high because of what it is: the only serious Japanese curry within walking distance of the Financial District.</p>
+
+${rankcard(3, "El Metate", "Mission, 2406 Bryant St · ★ 4.6 (448 reviews) · $$",
+  "45 mentions · <b>93% loved</b>",
+  "Actual tables, fast counter service, and the burrito that beats the famous names in our ranking.")}
+<p>If your lunch hour can absorb a trip to the Mission, this is the sit-down-without-the-sit-down-tax option. The full argument for it over La Taqueria is in <a href="/blog/best-burrito-san-francisco">the burrito ranking</a>.</p>
+
+${rankcard(4, "Golden Boy Pizza", "North Beach, 542 Green St · ★ 4.7 (4,974 reviews) · $",
+  "250 mentions · <b>91% loved</b>",
+  "Two focaccia squares and you are done in fifteen minutes. The clam and garlic is the one.")}
+
+${rankcard(5, "Pho 2000", "Little Saigon, Tenderloin · ★ 4.7 (560 reviews) · $",
+  "480 pho mentions · <b>90% loved</b>",
+  "Broth is rich, portions are huge, prices are fair. In and out in forty minutes.")}
+<p>Worth knowing about the pho tier: Turtle Tower's newer Marina location actually scores higher at 94%, but from only 55 total reviews so far, too few to rank it above a 560-review 4.7. Small samples get named, not crowned.</p>
+
+<h2>The rest of the eat-in shortlist</h2>
+<p><strong>Manna</strong> (Inner Sunset): the best bibimbap number in the city, 91% across 380 mentions, and a lunch line of UCSF people who treat it as a cafeteria. <strong>Hai Ky Mi Gia</strong> (Little Saigon): wonton noodle soup at 88%, cash only, nothing on the menu over about twelve dollars. <strong>Yummy Yummy</strong> (Inner Sunset): com tam broken rice at 87% and the 900-mention pho as backup. <strong>La Palma Mexicatessen</strong> (Mission): 94% tamales you can be holding within five minutes of walking in.</p>
+
+<h2>Best lunch to order in: what survives the bag</h2>
+<p>Delivery is a physics problem. Steam is the enemy. Here is what the review data and basic thermodynamics agree on.</p>
+<p><strong>Order with confidence:</strong></p>
+<ul>
+<li><strong>Burritos.</strong> The foil wrap is genuinely protective; a Mission burrito arrives at 90% of its counter self. El Metate and Taqueria Cancun both hold up. This is the single safest delivery lunch in San Francisco.</li>
+<li><strong>Japanese curry.</strong> Curry is already a held, stewed dish; there is nothing for the bag to ruin. Volcano Curry (88%, and a dollar-sign cheaper) is the delivery pick over Muracci's, whose katsu loses crispness in transit.</li>
+<li><strong>Banh mi, with a clock.</strong> Cafe Bunn Mi (91%) survives a 15-to-20-minute ride fine. Past half an hour the baguette starts losing the argument with the pickled daikon.</li>
+<li><strong>Indian.</strong> Curries and biryani are transport-proof. Pakwan's goat curry (92% across 310 mentions) arrives exactly as it left.</li>
+<li><strong>Tamales.</strong> Masa is steam-stable by design. La Palma's travel better than almost anything else we track.</li>
+</ul>
+<p><strong>Do not order these for delivery, eat them there:</strong></p>
+<ul>
+<li><strong>Soup dumplings.</strong> Every one-star XLB review that mentions DoorDash describes the same collapsed, soup-less result. Covered in <a href="/blog/best-soup-dumplings-xiao-long-bao-san-francisco">the XLB ranking</a>.</li>
+<li><strong>Dosa.</strong> One Udupi Palace reviewer put it better than I can: they ordered DoorDash a second time "knowing the dosa won't be crispy." That is a person negotiating with physics and losing. A dosa is 80% crispness.</li>
+<li><strong>Neapolitan pizza.</strong> A blistered 90-second crust steams into flatbread inside ten minutes. Detroit and focaccia squares (Golden Boy, Square Pie Guys) reheat far better if you must.</li>
+<li><strong>Pho, mostly.</strong> Good spots pack broth separately, which saves the soup but not the noodles, which arrive bloated. Acceptable in a pinch, never at its best.</li>
+<li><strong>Anything fried.</strong> Karaage, katsu, Korean fried chicken: the steam problem, maximally expressed.</li>
+</ul>
+
+<h2>Honest notes</h2>
+<p>This list skews cheap and fast because that is what lunch usually is; the tasting-counter crowd should read <a href="/blog/michelin-star-restaurants-san-francisco">the Michelin list</a> instead. Love scores come from all-day reviews, not lunch-specific ones, so a spot with a strong dinner reputation gets some halo here. And delivery quality depends on your distance as much as the kitchen: every "order with confidence" call above assumes a ride under about 25 minutes.</p>
+<a class="cta" href="/">Open the full map: 60+ dishes, 300+ spots →</a>`,
+  },
 ];
 
 // ── render ────────────────────────────────────────────────────────────────
