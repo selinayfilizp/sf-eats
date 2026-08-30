@@ -41,6 +41,14 @@ Requires Node 18+ (uses global `fetch`). There is no package to install.
 - `generate-share-pages.js` — writes `s/<dishId>.html` SEO pages + sitemap.xml +
   robots.txt. `generate-og-images.py` — per-dish OG cards. Both via `npm run share-pages`.
 - `generate-blog.js` — writes `blog/*.html` posts + index from its POSTS array.
+- `fill-missing-stats.js` — data refresh without a full regen: re-pulls rating /
+  review count / businessStatus for every spot (Places), runs the SerpAPI review
+  analysis only for spots missing hype/love. Incremental saves; resumable.
+  `npm run refresh`. Check SerpAPI budget first: ~5-6 searches per filled spot.
+- `validate-data.js` — QA gate (`npm run validate`): fails on missing geo/address,
+  closed spots still listed, em dashes in data text, out-of-range scores; warns on
+  <90% stats coverage and data older than 45 days. `npm run build-all` runs
+  blog + share pages + validate together.
 - `sf-food-data.js` — GENERATED output. Do not hand-edit; re-run the generator.
 - `SETUP.md` — key setup walkthrough. `MENTIONS-METHOD.md` — how hype/love is sourced.
 

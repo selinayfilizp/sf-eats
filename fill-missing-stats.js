@@ -70,7 +70,9 @@ async function placeLookup(spot) {
   for (const [cuisineId, cuisine] of Object.entries(FOOD.cuisines)) {
     for (const dish of cuisine.dishes) {
       for (const spot of dish.spots) {
-        const needsStats = spot.dishApproval == null && !spot.dishVerified;
+        // dishMentions === 0 means the analysis ran and found nothing — that is
+        // an answer, not a gap; only null (never analyzed) needs a fill.
+        const needsStats = spot.dishApproval == null && spot.dishMentions == null && !spot.dishVerified;
         const already = spot._refreshedAt && !needsStats;
         if (already) { skippedDone++; continue; }
         if (DRY) {
