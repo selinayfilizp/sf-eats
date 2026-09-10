@@ -1,0 +1,94 @@
+# SF Eats
+
+> A dish-first guide to eating in San Francisco. Every dish is ranked on two signals read from thousands of Google reviews: hype (how many reviews mention the dish) and love (what share of those mentions are positive). High mentions do not mean high quality; the site exists to separate the two. Data is refreshed from the Google Places API and full-review analysis; permanently closed spots are pruned.
+
+Site: https://sfeats.vercel.app
+Blog: https://sfeats.vercel.app/blog/
+Sitemap: https://sfeats.vercel.app/sitemap.xml
+
+## How rankings work
+
+- [High Mentions vs High Quality (methodology)](https://sfeats.vercel.app/blog/most-mentioned-isnt-best): hype vs love scoring, Bayesian-weighted ratings, dish-level sentiment.
+
+## Guides
+
+- [The Best Birria and Quesabirria in San Francisco, Ranked (2026)](https://sfeats.vercel.app/blog/best-birria-quesabirria-san-francisco): Birria took over SF in 2021 and the hype never died. We ranked every quesabirria spot by review sentiment. The consomme tells the truth.
+- [The Best Mission Burrito in San Francisco, Ranked by Review Data (2026)](https://sfeats.vercel.app/blog/best-burrito-san-francisco): We analyzed thousands of Google reviews to rank SF's Mission burritos by how much reviewers actually love them, not just how often they mention them. El Metate beats the famous names.
+- [The Best Dim Sum in San Francisco: Chinatown vs. the Rest (2026)](https://sfeats.vercel.app/blog/best-dim-sum-san-francisco): We scored SF's dim sum spots by what reviewers actually say about the har gow, siu mai, and char siu bao. The best cart is not on Grant Avenue.
+- [Best Korean BBQ in San Francisco (2026): Ranked by What 3,700+ Reviewers Say](https://sfeats.vercel.app/blog/best-korean-bbq-san-francisco): Brothers, Han Il Kwan, um.ma, Kogi Gogi, and San Ho Won compared: galbi quality, charcoal vs gas, AYCE or not, and what reviewers actually complain about.
+- [Best Lunch Spots in San Francisco (2026): Where to Eat In, and What Actually Survives Delivery](https://sfeats.vercel.app/blog/best-lunch-spots-san-francisco): The best lunch in San Francisco ranked by review data: Saigon Sandwich, Golden Boy, Muracci's, El Metate, Pho 2000. Plus which dishes to order in, and which fall apart in a delivery bag.
+- [Best Omakase in San Francisco (2026): Sushi Counters Ranked by 2,000+ Reviews](https://sfeats.vercel.app/blog/best-omakase-sushi-san-francisco): Ju-Ni, KEN, Omakase, Kusakabe and more, ranked by how positively reviewers describe the actual sushi. Plus what each counter costs and how to book.
+- [The Best Pho in San Francisco: Where to Get the Bowl That Actually Matters (2026)](https://sfeats.vercel.app/blog/best-pho-san-francisco): SF has 100+ pho spots. We read the reviews that talk about the broth, the rare steak, the tendon. Here are the five that reviewers love the most.
+- [The Best Pizza in San Francisco by Style: Neapolitan, Detroit, and NY Slice (2026)](https://sfeats.vercel.app/blog/best-pizza-san-francisco): Golden Boy, Tony's, Il Casaro, Square Pie Guys and more, ranked by what reviewers actually say about the pizza. One ranking per style, because comparing a Detroit square to a Margherita is unfair to both.
+- [The Best Ramen in San Francisco: 4 Bowls Ranked by 9,000+ Reviews (2026)](https://sfeats.vercel.app/blog/best-ramen-san-francisco): Marufuku, Mensho, Hinodeya or Taishoken? We scored SF's ramen shops on how positively thousands of reviewers describe the actual bowl. The answer is not the one with the longest line.
+- [Best Soup Dumplings in San Francisco (2026): Xiao Long Bao Ranked, Including One Hype Trap](https://sfeats.vercel.app/blog/best-soup-dumplings-xiao-long-bao-san-francisco): Dumpling Story, Dumpling Zone, Yuanbao Jiaozi, Dumpling Time, Dumpling Home: SF's xiao long bao ranked by review sentiment. The most famous one scores the lowest.
+- [Al Pastor vs. Carne Asada: The Best Tacos in San Francisco (2026)](https://sfeats.vercel.app/blog/best-tacos-al-pastor-carne-asada-sf): Two tacos, two very different rankings. We scored SF's taco spots by what reviewers say about the al pastor and the carne asada separately, because they are not the same competition.
+- [Every Michelin Star Restaurant in San Francisco (2026): The Full List, With Google Ratings](https://sfeats.vercel.app/blog/michelin-star-restaurants-san-francisco): All 25 Michelin-starred restaurants in San Francisco: 4 three-stars, 6 two-stars, 15 one-stars. Google ratings for each, plus where the stars actually buy their ingredients.
+- [Mission District Food Guide (2026): The Best Thing to Order on Every Block](https://sfeats.vercel.app/blog/mission-district-food-guide): What to eat in SF's Mission District, dish by dish: burritos, tamales, birria, omakase-level izakaya, tsukemen, Japanese curry, soup dumplings, and a Michelin dinner party. All ranked from review data.
+- [High Mentions ≠ High Quality: How SF Eats Ranks Every Dish in San Francisco](https://sfeats.vercel.app/blog/most-mentioned-isnt-best): The most-mentioned dish in reviews is not always the best one. The methodology behind SF Eats: hype vs love, Bayesian-weighted ratings, and dish-level sentiment across thousands of Google reviews.
+- [New Coffee Shops, Matcha Cafes & Restaurants in San Francisco 2026: An Honest Review Roundup](https://sfeats.vercel.app/blog/new-coffee-food-spots-sf-2026): Every notable new San Francisco opening of 2026 with live Google Maps ratings and what early reviewers actually say, good and bad: Kope House, Side Characters, Constance Tea & Matcha, Maria Isabel, SIGNAL Coffee, and more.
+- [What to Eat in San Francisco: One Gold-Standard Dish per Cuisine (2026 Guide)](https://sfeats.vercel.app/blog/what-to-eat-in-san-francisco): A data-driven SF food itinerary: the single best-reviewed spot for burritos, birria, ramen, pho, banh mi, Peking duck, Korean BBQ, kebab and more, chosen from thousands of Google reviews.
+
+## Dish rankings
+
+- [Best Mission Burrito in San Francisco](https://sfeats.vercel.app/s/mex-burrito): top 5 spots, ranked by dish-level review sentiment (Mexican).
+- [Best Carne Asada in San Francisco](https://sfeats.vercel.app/s/mex-asada): top 5 spots, ranked by dish-level review sentiment (Mexican).
+- [Best Quesabirria / Birria Tacos in San Francisco](https://sfeats.vercel.app/s/mex-birria): top 5 spots, ranked by dish-level review sentiment (Mexican).
+- [Best Al Pastor in San Francisco](https://sfeats.vercel.app/s/mex-pastor): top 5 spots, ranked by dish-level review sentiment (Mexican).
+- [Best Mole & Enchiladas in San Francisco](https://sfeats.vercel.app/s/mex-mole): top 5 spots, ranked by dish-level review sentiment (Mexican).
+- [Best Carnitas in San Francisco](https://sfeats.vercel.app/s/mex-carnitas): top 5 spots, ranked by dish-level review sentiment (Mexican).
+- [Best Tamales in San Francisco](https://sfeats.vercel.app/s/mex-tamale): top 5 spots, ranked by dish-level review sentiment (Mexican).
+- [Best Chilaquiles in San Francisco](https://sfeats.vercel.app/s/mex-chilaquiles): top 5 spots, ranked by dish-level review sentiment (Mexican).
+- [Best Neapolitan Pizza in San Francisco](https://sfeats.vercel.app/s/ita-neapolitan): top 5 spots, ranked by dish-level review sentiment (Italian).
+- [Best Detroit-Style Pizza in San Francisco](https://sfeats.vercel.app/s/ita-detroit): top 5 spots, ranked by dish-level review sentiment (Italian).
+- [Best NY Slice & Classic Pizza in San Francisco](https://sfeats.vercel.app/s/ita-nyslice): top 5 spots, ranked by dish-level review sentiment (Italian).
+- [Best Cacio e Pepe in San Francisco](https://sfeats.vercel.app/s/ita-cacio): top 5 spots, ranked by dish-level review sentiment (Italian).
+- [Best Tagliatelle Bolognese & Ragu in San Francisco](https://sfeats.vercel.app/s/ita-bolognese): top 5 spots, ranked by dish-level review sentiment (Italian).
+- [Best Lasagna in San Francisco](https://sfeats.vercel.app/s/ita-lasagna): top 5 spots, ranked by dish-level review sentiment (Italian).
+- [Best Cioppino in San Francisco](https://sfeats.vercel.app/s/ita-cioppino): top 5 spots, ranked by dish-level review sentiment (Italian).
+- [Best Carbonara in San Francisco](https://sfeats.vercel.app/s/ita-carbonara): top 5 spots, ranked by dish-level review sentiment (Italian).
+- [Best Tiramisu in San Francisco](https://sfeats.vercel.app/s/ita-tiramisu): top 5 spots, ranked by dish-level review sentiment (Italian).
+- [Best Lahmacun in San Francisco](https://sfeats.vercel.app/s/tur-lahmacun): top 5 spots, ranked by dish-level review sentiment (Turkish).
+- [Best Pide in San Francisco](https://sfeats.vercel.app/s/tur-pide): top 5 spots, ranked by dish-level review sentiment (Turkish).
+- [Best Adana / Lamb Shish Kebab in San Francisco](https://sfeats.vercel.app/s/tur-adana): top 5 spots, ranked by dish-level review sentiment (Turkish).
+- [Best Doner Kebab in San Francisco](https://sfeats.vercel.app/s/tur-doner): top 5 spots, ranked by dish-level review sentiment (Turkish).
+- [Best Baklava in San Francisco](https://sfeats.vercel.app/s/tur-baklava): top 5 spots, ranked by dish-level review sentiment (Turkish).
+- [Best Börek in San Francisco](https://sfeats.vercel.app/s/tur-borek): top 5 spots, ranked by dish-level review sentiment (Turkish).
+- [Best Turkish Breakfast in San Francisco](https://sfeats.vercel.app/s/tur-breakfast): top 5 spots, ranked by dish-level review sentiment (Turkish).
+- [Best Butter Chicken & Tikka Masala in San Francisco](https://sfeats.vercel.app/s/ind-butter-chicken): top 5 spots, ranked by dish-level review sentiment (Indian).
+- [Best Biryani in San Francisco](https://sfeats.vercel.app/s/ind-biryani): top 5 spots, ranked by dish-level review sentiment (Indian).
+- [Best Masala Dosa in San Francisco](https://sfeats.vercel.app/s/ind-dosa): top 5 spots, ranked by dish-level review sentiment (Indian).
+- [Best Chaat & Pani Puri in San Francisco](https://sfeats.vercel.app/s/ind-chaat): top 5 spots, ranked by dish-level review sentiment (Indian).
+- [Best Saag Paneer & Dal Makhani in San Francisco](https://sfeats.vercel.app/s/ind-saag): top 5 spots, ranked by dish-level review sentiment (Indian).
+- [Best Tandoori & Naan in San Francisco](https://sfeats.vercel.app/s/ind-tandoori): top 5 spots, ranked by dish-level review sentiment (Indian).
+- [Best Lamb / Goat Curry in San Francisco](https://sfeats.vercel.app/s/ind-curry): top 5 spots, ranked by dish-level review sentiment (Indian).
+- [Best Xiao Long Bao in San Francisco](https://sfeats.vercel.app/s/chn-xiaolongbao): top 5 spots, ranked by dish-level review sentiment (Chinese).
+- [Best Peking / Roast Duck in San Francisco](https://sfeats.vercel.app/s/chn-roastduck): top 5 spots, ranked by dish-level review sentiment (Chinese).
+- [Best Dim Sum in San Francisco](https://sfeats.vercel.app/s/chn-dimsum): top 5 spots, ranked by dish-level review sentiment (Chinese).
+- [Best Mapo Tofu & Sichuan in San Francisco](https://sfeats.vercel.app/s/chn-mapo): top 4 spots, ranked by dish-level review sentiment (Chinese).
+- [Best Wonton Noodle Soup in San Francisco](https://sfeats.vercel.app/s/chn-wontonnoods): top 5 spots, ranked by dish-level review sentiment (Chinese).
+- [Best Char Siu & BBQ in San Francisco](https://sfeats.vercel.app/s/chn-bbq): top 5 spots, ranked by dish-level review sentiment (Chinese).
+- [Best Hot Pot in San Francisco](https://sfeats.vercel.app/s/chn-hotpot): top 5 spots, ranked by dish-level review sentiment (Chinese).
+- [Best Congee & Jook in San Francisco](https://sfeats.vercel.app/s/chn-congee): top 5 spots, ranked by dish-level review sentiment (Chinese).
+- [Best Tonkotsu & Specialty Ramen in San Francisco](https://sfeats.vercel.app/s/jpn-ramen): top 5 spots, ranked by dish-level review sentiment (Japanese).
+- [Best Omakase Sushi in San Francisco](https://sfeats.vercel.app/s/jpn-omakase): top 5 spots, ranked by dish-level review sentiment (Japanese).
+- [Best Izakaya & Yakitori in San Francisco](https://sfeats.vercel.app/s/jpn-izakaya): top 5 spots, ranked by dish-level review sentiment (Japanese).
+- [Best Japanese Curry in San Francisco](https://sfeats.vercel.app/s/jpn-curry): top 5 spots, ranked by dish-level review sentiment (Japanese).
+- [Best Handmade Udon in San Francisco](https://sfeats.vercel.app/s/jpn-udon): top 5 spots, ranked by dish-level review sentiment (Japanese).
+- [Best Tonkatsu & Katsu Sando in San Francisco](https://sfeats.vercel.app/s/jpn-tonkatsu): top 5 spots, ranked by dish-level review sentiment (Japanese).
+- [Best Matcha Desserts in San Francisco](https://sfeats.vercel.app/s/jpn-matcha): top 5 spots, ranked by dish-level review sentiment (Japanese).
+- [Best Matcha Latte in San Francisco](https://sfeats.vercel.app/s/jpn-matchalatte): top 5 spots, ranked by dish-level review sentiment (Japanese).
+- [Best Takoyaki & Japantown Snacks in San Francisco](https://sfeats.vercel.app/s/jpn-takoyaki): top 5 spots, ranked by dish-level review sentiment (Japanese).
+- [Best Korean BBQ in San Francisco](https://sfeats.vercel.app/s/kor-bbq): top 5 spots, ranked by dish-level review sentiment (Korean).
+- [Best Korean Fried Chicken in San Francisco](https://sfeats.vercel.app/s/kor-friedchx): top 5 spots, ranked by dish-level review sentiment (Korean).
+- [Best Bibimbap in San Francisco](https://sfeats.vercel.app/s/kor-bibimbap): top 4 spots, ranked by dish-level review sentiment (Korean).
+- [Best Kimchi Jjigae & Stews in San Francisco](https://sfeats.vercel.app/s/kor-jjigae): top 4 spots, ranked by dish-level review sentiment (Korean).
+- [Best Tteokbokki & Street Food in San Francisco](https://sfeats.vercel.app/s/kor-tteokbokki): top 5 spots, ranked by dish-level review sentiment (Korean).
+- [Best Korean Fusion Tacos in San Francisco](https://sfeats.vercel.app/s/kor-kbbqtaco): top 5 spots, ranked by dish-level review sentiment (Korean).
+- [Best Pho in San Francisco](https://sfeats.vercel.app/s/viet-pho): top 5 spots, ranked by dish-level review sentiment (Vietnamese).
+- [Best Banh Mi in San Francisco](https://sfeats.vercel.app/s/viet-banhmi): top 5 spots, ranked by dish-level review sentiment (Vietnamese).
+- [Best Bun Bo Hue in San Francisco](https://sfeats.vercel.app/s/viet-bunbohue): top 5 spots, ranked by dish-level review sentiment (Vietnamese).
+- [Best Com Tam (Broken Rice) in San Francisco](https://sfeats.vercel.app/s/viet-comtam): top 5 spots, ranked by dish-level review sentiment (Vietnamese).
+- [Best Garlic Noodles & Roast Crab in San Francisco](https://sfeats.vercel.app/s/viet-garlicnoodle): top 5 spots, ranked by dish-level review sentiment (Vietnamese).
+- [Best Banh Xeo in San Francisco](https://sfeats.vercel.app/s/viet-banhxeo): top 5 spots, ranked by dish-level review sentiment (Vietnamese).
+- [Best Vietnamese Coffee in San Francisco](https://sfeats.vercel.app/s/viet-coffee): top 5 spots, ranked by dish-level review sentiment (Vietnamese).

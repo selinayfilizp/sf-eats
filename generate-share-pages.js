@@ -237,11 +237,65 @@ ${END}`;
   console.log("NOTE: seo-links markers not found in index.html; directory not injected");
 }
 
+// Explicitly welcome the AI search/answer crawlers. "User-agent: *" already
+// allows them, but naming them makes the policy unambiguous and survives any
+// future change to the default rule. ChatGPT search draws on Bing + OpenAI's
+// crawlers; Claude search on Brave + Anthropic's.
+const AI_CRAWLERS = [
+  "GPTBot", "OAI-SearchBot", "ChatGPT-User",
+  "ClaudeBot", "Claude-SearchBot", "Claude-User", "anthropic-ai",
+  "PerplexityBot", "Perplexity-User", "Google-Extended", "CCBot", "Bingbot",
+];
 fs.writeFileSync(path.join(__dirname, "robots.txt"), `User-agent: *
 Allow: /
 Disallow: /admin
 
+${AI_CRAWLERS.map((b) => `User-agent: ${b}\nAllow: /`).join("\n\n")}
+
 Sitemap: ${SITE}/sitemap.xml
 `);
 
-console.log(`Wrote ${count} SEO pages to s/, sitemap.xml (${urls.length} urls), robots.txt`);
+// llms.txt — a curated markdown map of the site for AI crawlers/agents.
+// Blog descriptions come from each post's <meta name="description">.
+const metaDesc = (file) => {
+  try {
+    const m = fs.readFileSync(file, "utf8").match(/<meta name="description" content="([^"]+)"/);
+    return m ? m[1].replace(/&quot;/g, '"') : "";
+  } catch { return ""; }
+};
+const blogLines = fs.existsSync(blogDir)
+  ? fs.readdirSync(blogDir)
+      .filter((f) => f.endsWith(".html") && f !== "index.html")
+      .map((f) => {
+        const slug = f.replace(/\.html$/, "");
+        const title = (fs.readFileSync(path.join(blogDir, f), "utf8").match(/<title>([^<]+)<\/title>/) || [])[1] || slug;
+        return `- [${title}](${SITE}/blog/${slug}): ${metaDesc(path.join(blogDir, f))}`;
+      })
+  : [];
+const dishLines = [];
+for (const [cuisineId, cuisine] of Object.entries(CUISINES))
+  for (const dish of cuisine.dishes)
+    dishLines.push(`- [Best ${dish.name} in San Francisco](${SITE}/s/${dish.id}): top ${dish.spots.length} spots, ranked by dish-level review sentiment (${cuisine.label}).`);
+
+fs.writeFileSync(path.join(__dirname, "llms.txt"), `# SF Eats
+
+> A dish-first guide to eating in San Francisco. Every dish is ranked on two signals read from thousands of Google reviews: hype (how many reviews mention the dish) and love (what share of those mentions are positive). High mentions do not mean high quality; the site exists to separate the two. Data is refreshed from the Google Places API and full-review analysis; permanently closed spots are pruned.
+
+Site: ${SITE}
+Blog: ${SITE}/blog/
+Sitemap: ${SITE}/sitemap.xml
+
+## How rankings work
+
+- [High Mentions vs High Quality (methodology)](${SITE}/blog/most-mentioned-isnt-best): hype vs love scoring, Bayesian-weighted ratings, dish-level sentiment.
+
+## Guides
+
+${blogLines.join("\n")}
+
+## Dish rankings
+
+${dishLines.join("\n")}
+`);
+
+console.log(`Wrote ${count} SEO pages to s/, sitemap.xml (${urls.length} urls), robots.txt, llms.txt`);
