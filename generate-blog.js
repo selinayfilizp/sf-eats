@@ -781,6 +781,175 @@ ${rankcard(5, "Pho 2000", "Little Saigon, Tenderloin · ★ 4.7 (560 reviews) ·
 <p>This list skews cheap and fast because that is what lunch usually is; the tasting-counter crowd should read <a href="/blog/michelin-star-restaurants-san-francisco">the Michelin list</a> instead. Love scores come from all-day reviews, not lunch-specific ones, so a spot with a strong dinner reputation gets some halo here. And delivery quality depends on your distance as much as the kitchen: every "order with confidence" call above assumes a ride under about 25 minutes.</p>
 <a class="cta" href="/">Open the full map: 60+ dishes, 300+ spots →</a>`,
   },
+  // ── 17 ────────────────────────────────────────────────────────────────────
+  {
+    slug: "best-banh-mi-san-francisco",
+    title: "Best Banh Mi in San Francisco (2026): 5 Sandwiches Ranked by 1,800+ Review Mentions",
+    description:
+      "Saigon Sandwich, Cafe Bunn Mi, L & G, Mong Thu, Banh Mi Viet: SF's banh mi ranked by what reviewers actually say about the sandwich. The prettiest star rating is not the best sandwich.",
+    ogImage: "/og-image.png",
+    published: "2026-09-12",
+    spotList: ["Saigon Sandwich", "L & G Vietnamese Sandwich", "Cafe Bunn Mi", "Mong Thu Cafe", "Banh Mi Viet"],
+    body: `
+<p>The banh mi might be the best food deal left in San Francisco: a proper one still costs single digits, and the city's top spots are genuinely excellent. It is also a dish where the star rating misleads more than usual, because the highest-rated shop in this ranking has the weakest sandwich sentiment of the five. Mentions and love scores below come from reading every review that talks about the banh mi.</p>
+
+<h2>The ranking</h2>
+${rankcard(1, "Saigon Sandwich", "Tenderloin, 560 Larkin St · ★ 4.5 (1,647 reviews) · $",
+  "1,100 mentions · <b>95% loved</b>",
+  "The roast pork was very tender and slightly sweet, definitely not your usual banh mi filling.")}
+${rankcard(2, "L & G Vietnamese Sandwich", "Little Saigon · ★ 4.6 (327 reviews) · $",
+  "40 mentions · <b>95% loved</b>",
+  "Their prices are extremely wallet friendly, and their meat portions in the banh mi are generous.")}
+${rankcard(3, "Cafe Bunn Mi", "Inner Richmond, Clement St · ★ 4.3 (638 reviews) · $",
+  "650 mentions · <b>91% loved</b>",
+  "Perfect balance of meat and veggies. Grilled pork banh mi is the move.")}
+${rankcard(4, "Mong Thu Cafe", "Tenderloin · ★ 4.7 (230 reviews) · $",
+  "16 mentions · <b>94% loved</b>",
+  "An oasis in the Tenderloin. The shop is clean, the staff are friendly.")}
+${rankcard(5, "Banh Mi Viet", "Alamo Square · ★ 4.7 (263 reviews)",
+  "58 mentions · <b>84% loved</b>",
+  "Came on hot, fresh, super crunchy baguettes with generous helpings of pickled carrot.")}
+
+<h2>Reading the numbers</h2>
+<p>Saigon Sandwich is the rare case where the legend and the data agree: 1,100 banh mi mentions, 95% of them positive, at the biggest sample size in this category by far. The trade-offs are physical, not culinary. No seating, cash preferred, and a Larkin Street block that requires midday-Tenderloin tolerance.</p>
+<p>L & G matches the 95% on a fraction of the volume (40 mentions), so treat the tie as directional rather than settled. What its reviews repeat is portion size relative to price, which in 2026 is its own kind of quality.</p>
+<p>The interesting case is Banh Mi Viet: the highest star rating on this list at 4.7, and the lowest sandwich sentiment at 84%. People love the shop, the service, and the fresh baguettes; the complaints that exist are about balance, too much bread for the filling on some visits. A 4.7 star average and an 84% dish score are both true. That gap is <a href="/blog/most-mentioned-isnt-best">the whole reason we score dishes instead of restaurants</a>.</p>
+<p>Mong Thu at 94% comes from only 16 mentions, the smallest sample here. Named, not crowned.</p>
+
+<h2>Practical notes from the reviews</h2>
+<p>Banh mi has a clock: the baguette holds its crunch for roughly 20 to 30 minutes, so these are eat-soon sandwiches, a point covered in <a href="/blog/best-lunch-spots-san-francisco">the lunch guide's delivery section</a>. Roast pork is the benchmark order at Saigon Sandwich; grilled pork at Cafe Bunn Mi. Everything on this list is under about ten dollars.</p>
+<a class="cta" href="/s/viet-banhmi">See the full banh mi map →</a>
+
+<h2>Related</h2>
+<p>More Vietnamese: <a href="/blog/best-pho-san-francisco">the pho ranking</a>, <a href="/s/viet-comtam">com tam broken rice</a>, and <a href="/s/viet-coffee">Vietnamese coffee</a>.</p>`,
+  },
+  // ── 18 ────────────────────────────────────────────────────────────────────
+  {
+    slug: "chinatown-san-francisco-food-guide",
+    title: "Chinatown San Francisco Food Guide (2026): What to Actually Eat, Ranked From Review Data",
+    description:
+      "The best food in SF Chinatown by dish: Z & Y's Peking duck, Good Mong Kok's char siu bao, Sam Wo congee, Golden Star pho, plus the tourist traps the reviews warn about.",
+    ogImage: "/og-image.png",
+    published: "2026-09-12",
+    spotList: ["Z & Y Peking Duck", "Good Mong Kok Bakery", "QUACK HOUSE aka Hing Lung Company", "Sam Wo Restaurant", "Golden Star Vietnamese Restaurant", "Mister Jiu's", "Kingbob", "Muracci's Japanese Curry & Grill"],
+    body: `
+<p>Chinatown is the neighborhood where tourists eat worst relative to what is available. The busiest blocks of Grant Avenue are lined with places trading on foot traffic, while the food worth crossing the city for sits one street over on Stockton or up toward Broadway. This guide is the dish-by-dish version, from our review analysis, including the places where the data says temper your expectations.</p>
+
+<h2>The dishes worth a trip</h2>
+${rankcard(1, "Peking Duck at Z & Y Peking Duck", "655 Jackson St · ★ 4.6 (1,666 reviews) · $$",
+  "150 mentions · <b>94% loved</b>",
+  "A dedicated duck house from the Z & Y team, carved tableside. Book ahead.")}
+${rankcard(2, "Char siu bao at Good Mong Kok Bakery", "1039 Stockton St · ★ 4.2 (2,528 reviews) · $",
+  "250 mentions · <b>93% loved</b>",
+  "Cash only, line out the door, pork buns for about two dollars. The 4.2 star average is mostly people complaining about the line, not the buns.")}
+${rankcard(3, "Char siu at QUACK HOUSE (Hing Lung Company)", "Broadway · ★ 4.5 (196 reviews)",
+  "70 mentions · <b>90% loved</b>",
+  "The roast meat counter with the theatrical name. Watch the cleaver work through the window.")}
+<p>Good Mong Kok is the purest example of why we score dishes instead of stars in the whole dataset: a 4.2 rating that would scare most people off, hiding a 93% love score across 250 mentions. The low stars come from the queue and the brusque counter pace. The buns are not the problem.</p>
+
+<h2>The institutions, scored honestly</h2>
+<p><strong>Sam Wo</strong> (jook and late hours since 1907): 82% across 85 congee mentions. The reviews split between people who grew up on it and people who came expecting more than rice porridge. Go for the history and the jook, not for a revelation. <strong>QUACK HOUSE's roast duck</strong> scores 82% too, notably below its own char siu at 90%, so order the pork.</p>
+<p>One warning the data flags: <strong>Rice Roll Express</strong> has a 58% congee score, the lowest Chinatown number we track. Its rice rolls may be fine; the congee reviews are not.</p>
+
+<h2>The surprises inside the neighborhood</h2>
+<p>Chinatown's borders hold more than Cantonese food now. <strong>Golden Star</strong> on Walter U Lum Place serves pho with an 89% score across 650 mentions, one of the highest-volume pho conversations in the city (<a href="/blog/best-pho-san-francisco">full pho ranking here</a>). <strong>Kingbob</strong> does Korean fried chicken at 92%, though from only 12 mentions so far. <strong>Muracci's</strong> Japanese curry on the Financial District edge pulls 1,400 mentions at 89%. And <strong>Mister Jiu's</strong> holds a Michelin star inside a former banquet hall on Waverly Place; its 4.4 Google average is on the low end for <a href="/blog/michelin-star-restaurants-san-francisco">the starred set</a>, which tracks with a menu priced well above its neighbors.</p>
+
+<h2>How to do one afternoon well</h2>
+<p>The review-data itinerary: Good Mong Kok buns from the Stockton line as the walking snack, the Waverly Place and Ross Alley blocks between bites, then either an early Z & Y Peking Duck dinner (reserve) or a Sam Wo jook nightcap. Skip anything on Grant with a host outside waving a menu; no spot on that stretch cracks our rankings.</p>
+<a class="cta" href="/s/chn-roastduck">Open the Chinatown dish maps →</a>
+
+<h2>Related</h2>
+<p><a href="/blog/best-dim-sum-san-francisco">The dim sum ranking</a> compares Chinatown's carts against the rest of the city, and <a href="/blog/best-soup-dumplings-xiao-long-bao-san-francisco">the soup dumpling ranking</a> explains why the best XLB is not here.</p>`,
+  },
+  // ── 19 ────────────────────────────────────────────────────────────────────
+  {
+    slug: "cheap-eats-san-francisco",
+    title: "Best Cheap Eats in San Francisco (2026): 12 Spots Under $15 With the Highest Review Scores",
+    description:
+      "Every one of these SF spots is a single dollar sign on Google and scores 88%+ on dish sentiment: Donaji tamales, Saigon Sandwich, Good Mong Kok, North Beach Gyros, Golden Boy, Pakwan and more.",
+    ogImage: "/og-image.png",
+    published: "2026-09-12",
+    spotList: ["Donaji", "Saigon Sandwich", "L & G Vietnamese Sandwich", "La Palma Mexicatessen", "Good Mong Kok Bakery", "Golden Boy Pizza", "Matcha Cafe Maiko", "Pakwan Restaurant", "North Beach Gyros", "La Taqueria", "The Pizza Shop", "Cafe Bunn Mi"],
+    body: `
+<p>"Cheap eats" lists usually mean "places the writer likes that happen to be cheap." This one is a database query: every spot below is a single dollar sign on Google AND holds a dish love score of 88% or higher from at least 20 review mentions. Cheap and beloved, proven separately. San Francisco's reputation says this list should not exist. It runs twelve deep.</p>
+
+<h2>The top tier: 93% and up</h2>
+${rankcard(1, "Donaji", "Mission District · ★ 4.7 (307 reviews) · $",
+  "55 tamale mentions · <b>96% loved</b>",
+  "Oaxacan tamales that outscore every burrito in the city.")}
+${rankcard(2, "Saigon Sandwich", "Tenderloin · ★ 4.5 (1,647 reviews) · $",
+  "1,100 mentions · <b>95% loved</b>",
+  "The banh mi benchmark, still under ten dollars. Full ranking in the banh mi guide.")}
+${rankcard(3, "La Palma Mexicatessen", "24th St, Mission · ★ 4.5 (1,361 reviews) · $",
+  "95 tamale mentions · <b>94% loved</b>",
+  "Masa ground on site. Tamales and chicharrones at counter prices.")}
+${rankcard(4, "Good Mong Kok Bakery", "Chinatown · ★ 4.2 (2,528 reviews) · $",
+  "250 mentions · <b>93% loved</b>",
+  "Two-dollar pork buns. The star rating punishes the line, not the food.")}
+${rankcard(5, "Golden Boy Pizza", "North Beach · ★ 4.7 (4,974 reviews) · $",
+  "250 slice mentions · <b>93% on the square, 91% overall</b>",
+  "Focaccia squares since 1978. Clam and garlic is the order.")}
+
+<h2>The rest of the twelve</h2>
+<p><strong>L & G Vietnamese Sandwich</strong> (Little Saigon, 95% on 40 mentions): the value banh mi. <strong>Matcha Cafe Maiko</strong> (Japantown, 92% across 1,100 mentions): the most-discussed cheap treat in the city, soft serve included. <strong>Pakwan</strong> (Mission, 92% on 310 mentions): goat curry, cash only, BYO expectations about decor. <strong>North Beach Gyros</strong> (91% on 95 mentions, and a 4.9 average over 5,633 reviews, the highest-rated spot in this entire dataset): doner and gyros with a fan base that borders on organized. <strong>La Taqueria</strong> (91% on carnitas, 90% on the burrito): famous for a reason, still a dollar sign. <strong>The Pizza Shop</strong> (Mission, 93% on 40 mentions): the neighborhood slice. <strong>Cafe Bunn Mi</strong> (Inner Richmond, 91% on 650 mentions): the Richmond's banh mi answer.</p>
+
+<h2>What the list says about the city</h2>
+<p>Three patterns worth noticing. First, the top of the list is dominated by handheld food from immigrant-owned counters: tamales, banh mi, buns, slices, doner. Second, four of the twelve have star ratings at 4.3 or below while their dish scores sit above 90%, the clearest evidence that stars measure the experience of waiting in line while sentiment measures the food. Third, nothing here is a secret. Every spot has hundreds or thousands of reviews. Cheap and great in SF is not hidden, it is just drowned out by lists that rank ambiance.</p>
+<p>One honest limit: "$" on Google is self-reported and roughly means under $15 a person. A super burrito with extras or a loaded gyro plate can drift past that. Nothing on this list will surprise you past $20.</p>
+<a class="cta" href="/">Open the full map: 60+ dishes, 300+ spots →</a>
+
+<h2>Related</h2>
+<p><a href="/blog/best-lunch-spots-san-francisco">The lunch guide</a> covers which of these travel for delivery, and <a href="/blog/best-banh-mi-san-francisco">the banh mi ranking</a> goes deep on the sandwich tier.</p>`,
+  },
+  // ── 20 ────────────────────────────────────────────────────────────────────
+  {
+    slug: "best-pasta-san-francisco",
+    title: "Best Pasta in San Francisco (2026): Lasagna, Carbonara, Cacio e Pepe, and Bolognese Ranked",
+    description:
+      "SF's pasta ranked dish by dish from review sentiment: Marcella's Lasagneria's 95% lasagna, the Roma Antica vs Bella Trattoria carbonara tie, and where cacio e pepe actually disappoints.",
+    ogImage: "/og-image.png",
+    published: "2026-09-12",
+    spotList: ["Marcella's Lasagneria", "Roma Antica", "Bella Trattoria", "Piccolo Forno", "Luisa's Restaurant", "54 Mint Cucina Romana", "Ideale", "Cotogna", "The Italian Homemade Company"],
+    body: `
+<p>"Best pasta in San Francisco" is four different questions wearing one trench coat. The place that nails a baked lasagna is rarely the place that nails a cacio e pepe, because one is about assembly and patience and the other is about sixty seconds of emulsion under pressure. So, as with <a href="/blog/best-pizza-san-francisco">pizza</a>, we rank them separately.</p>
+
+<h2>Lasagna</h2>
+${rankcard(1, "Marcella's Lasagneria", "Dogpatch · ★ 4.8 (695 reviews) · $$",
+  "120 mentions · <b>95% loved</b>",
+  "A restaurant that picked one dish and built everything around it. The bechamel does the convincing.")}
+${rankcard(2, "Luisa's, since 1959", "Dolores Heights · ★ 4.7 (238 reviews) · $$",
+  "35 mentions · <b>95% loved</b>",
+  "Old-school red-sauce room. The lasagna order has survived six decades of menu changes for a reason.")}
+${rankcard(3, "The Italian Homemade Company", "North Beach · ★ 4.5 (3,382 reviews) · $",
+  "26 mentions · <b>88% loved</b>",
+  "Counter-service trays, the budget option that still lands.")}
+<p>Marcella's is the category's anchor: a Dogpatch shop whose entire identity is lasagna, with the highest-volume lasagna conversation in the city at 95% positive. Its bolognese scores 95% too, so the kitchen travels. Luisa's ties the score on a third of the sample.</p>
+
+<h2>Carbonara</h2>
+${rankcard(1, "Bella Trattoria", "Inner Richmond · ★ 4.6 (1,089 reviews) · $$",
+  "50 mentions · <b>93% loved</b>")}
+${rankcard(2, "Roma Antica", "Marina · ★ 4.5 (1,799 reviews) · $$",
+  "50 mentions · <b>93% loved</b>")}
+${rankcard(3, "Piccolo Forno", "Russian Hill · ★ 4.7 (2,373 reviews) · $$",
+  "25 mentions · <b>88% loved</b>")}
+<p>A dead tie at the top: 93% on identical 50-mention samples. Pick by neighborhood. Bella Trattoria's reviews emphasize the guanciale; Roma Antica's emphasize that it tastes like Rome, which its Roman owner would consider the point.</p>
+
+<h2>Cacio e pepe</h2>
+${rankcard(1, "Roma Antica", "Marina · ★ 4.5 (1,799 reviews) · $$",
+  "100 mentions · <b>90% loved</b>")}
+${rankcard(2, "54 Mint", "Mid-Market · ★ 4.4 (1,490 reviews) · $$",
+  "45 mentions · <b>85% loved</b>")}
+${rankcard(3, "Ideale", "North Beach · ★ 4.5 (513 reviews) · $$",
+  "45 mentions · <b>80% loved</b>")}
+<p>Notice the scores drop. Cacio e pepe is the hardest dish in this post to execute at restaurant pace, and the reviews show it: even the winner sits at 90%, and Ideale's 80% comes with the word "gluey" appearing more than once. If a menu offers it tableside in a cheese wheel, the data says order something else; theater and emulsion rarely coexist.</p>
+
+<h2>Bolognese and ragu</h2>
+<p>Marcella's again at 95% (20 mentions), Bella Trattoria at 88%, and one asterisk worth knowing: <strong>Cotogna's</strong> ragu scores 100% from just 8 mentions. Eight people is not a ranking, but when all eight rave about the same agnolotti at a Michelin-adjacent room, it is at least a strong lead.</p>
+<a class="cta" href="/s/ita-lasagna">Open the pasta maps →</a>
+
+<h2>Related</h2>
+<p><a href="/blog/best-pizza-san-francisco">Pizza by style</a>, <a href="/s/ita-cioppino">cioppino</a> (San Francisco's own pasta-adjacent invention), and <a href="/s/ita-tiramisu">tiramisu</a> for after.</p>`,
+  },
 ];
 
 // ── render ────────────────────────────────────────────────────────────────
