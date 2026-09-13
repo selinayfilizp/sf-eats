@@ -45,6 +45,13 @@ Requires Node 18+ (uses global `fetch`). There is no package to install.
   review count / businessStatus for every spot (Places), runs the SerpAPI review
   analysis only for spots missing hype/love. Incremental saves; resumable.
   `npm run refresh`. Check SerpAPI budget first: ~5-6 searches per filled spot.
+- `merge-stats.js` — the budget-safe FULL re-ranking runbook (refreshes WHICH
+  spots rank without re-analyzing all of them):
+      cp sf-food-data.js sf-food-data.prev.js
+      REVIEWS_PROVIDER=none node generate-data.js --top 5   # fresh lists+quotes, no SerpAPI
+      node merge-stats.js        # carry stats for spots that persist; prints fill cost
+      node fill-missing-stats.js # SerpAPI only for new entrants
+  Then `npm run build-all`, rebuild lunch data, push, `npm run indexnow`.
 - `validate-data.js` — QA gate (`npm run validate`): fails on missing geo/address,
   closed spots still listed, em dashes in data text, out-of-range scores; warns on
   <90% stats coverage and data older than 45 days. `npm run build-all` runs
