@@ -1612,16 +1612,29 @@ function updateHash() {
 }
 function restoreFromHash() {
   const h = location.hash.replace(/^#/, '');
-  if (!h) return;
+  if (!h) { openDefaultDish(); return; }
   const [cuisine, dishId] = h.split('/');
   if (DATA[cuisine]) {
     activeCuisine = cuisine;
     renderCuisines(); renderDishes();
     if (dishId) {
       const dish = DATA[cuisine].dishes.find(d => d.id === dishId);
-      if (dish) { activeDishId = dish.id; renderDishes(); showDish(dish); }
+      if (dish) { activeDishId = dish.id; renderDishes(); showDish(dish); return; }
     }
   }
+  openDefaultDish();
+}
+
+// First impression: never an empty map. With no (or bad) hash, land on the
+// signature dish so pins and ranked spots are visible immediately.
+function openDefaultDish() {
+  if (activeDishId) return;
+  const pick = (DATA.mexican && DATA.mexican.dishes.find(d => d.id === 'mex-burrito'))
+    || (DATA[activeCuisine] && DATA[activeCuisine].dishes[0]);
+  if (!pick) return;
+  if (DATA.mexican && DATA.mexican.dishes.includes(pick)) activeCuisine = 'mexican';
+  activeDishId = pick.id;
+  renderCuisines(); renderDishes(); showDish(pick);
 }
 window.addEventListener('hashchange', restoreFromHash);
 

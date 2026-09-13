@@ -16,3 +16,4 @@ npm-debug.log*
 # convex generated
 convex/_generated/
 .admin-key.local
+sf-food-data.prev.js

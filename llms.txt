@@ -69,7 +69,7 @@ Sitemap: https://sfeats.vercel.app/sitemap.xml
 - [Best Xiao Long Bao in San Francisco](https://sfeats.vercel.app/s/chn-xiaolongbao): top 5 spots, ranked by dish-level review sentiment (Chinese).
 - [Best Peking / Roast Duck in San Francisco](https://sfeats.vercel.app/s/chn-roastduck): top 5 spots, ranked by dish-level review sentiment (Chinese).
 - [Best Dim Sum in San Francisco](https://sfeats.vercel.app/s/chn-dimsum): top 5 spots, ranked by dish-level review sentiment (Chinese).
-- [Best Mapo Tofu & Sichuan in San Francisco](https://sfeats.vercel.app/s/chn-mapo): top 4 spots, ranked by dish-level review sentiment (Chinese).
+- [Best Mapo Tofu & Sichuan in San Francisco](https://sfeats.vercel.app/s/chn-mapo): top 5 spots, ranked by dish-level review sentiment (Chinese).
 - [Best Wonton Noodle Soup in San Francisco](https://sfeats.vercel.app/s/chn-wontonnoods): top 5 spots, ranked by dish-level review sentiment (Chinese).
 - [Best Char Siu & BBQ in San Francisco](https://sfeats.vercel.app/s/chn-bbq): top 5 spots, ranked by dish-level review sentiment (Chinese).
 - [Best Hot Pot in San Francisco](https://sfeats.vercel.app/s/chn-hotpot): top 5 spots, ranked by dish-level review sentiment (Chinese).
@@ -85,8 +85,8 @@ Sitemap: https://sfeats.vercel.app/sitemap.xml
 - [Best Takoyaki & Japantown Snacks in San Francisco](https://sfeats.vercel.app/s/jpn-takoyaki): top 5 spots, ranked by dish-level review sentiment (Japanese).
 - [Best Korean BBQ in San Francisco](https://sfeats.vercel.app/s/kor-bbq): top 5 spots, ranked by dish-level review sentiment (Korean).
 - [Best Korean Fried Chicken in San Francisco](https://sfeats.vercel.app/s/kor-friedchx): top 5 spots, ranked by dish-level review sentiment (Korean).
-- [Best Bibimbap in San Francisco](https://sfeats.vercel.app/s/kor-bibimbap): top 4 spots, ranked by dish-level review sentiment (Korean).
-- [Best Kimchi Jjigae & Stews in San Francisco](https://sfeats.vercel.app/s/kor-jjigae): top 4 spots, ranked by dish-level review sentiment (Korean).
+- [Best Bibimbap in San Francisco](https://sfeats.vercel.app/s/kor-bibimbap): top 3 spots, ranked by dish-level review sentiment (Korean).
+- [Best Kimchi Jjigae & Stews in San Francisco](https://sfeats.vercel.app/s/kor-jjigae): top 5 spots, ranked by dish-level review sentiment (Korean).
 - [Best Tteokbokki & Street Food in San Francisco](https://sfeats.vercel.app/s/kor-tteokbokki): top 5 spots, ranked by dish-level review sentiment (Korean).
 - [Best Korean Fusion Tacos in San Francisco](https://sfeats.vercel.app/s/kor-kbbqtaco): top 5 spots, ranked by dish-level review sentiment (Korean).
 - [Best Pho in San Francisco](https://sfeats.vercel.app/s/viet-pho): top 5 spots, ranked by dish-level review sentiment (Vietnamese).
